@@ -36,7 +36,7 @@ function Login({ onLoginSuccess }) {
     <div className='Login'>
       <Helmet>
         <title>Login</title>
-        <link rel="icon" src={icon} />
+        <link rel="icon" href={icon} />
       </Helmet>
       <h2>FactoryOutlet</h2>
       <div className='logo'>
