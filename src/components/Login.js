@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import icon from './login.jpeg';
+import icon from './login.jpg';
 import logo from './factoryoutlet_icon.jpeg';
 import './Login.css';
 function Login({ onLoginSuccess }) {
