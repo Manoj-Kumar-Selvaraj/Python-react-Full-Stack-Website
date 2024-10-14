@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-
+import { Helmet } from 'react-helmet';
+import './login.jpeg';
+import './factoryoutlet_icon.jpeg';
+import './Login.css';
 function Login({ onLoginSuccess }) {
   const [eid, setEid] = useState('');
   const [password, setPassword] = useState('');
@@ -30,8 +33,16 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='Login'>
+      <Helmet>
+        <title>Login</title>
+        <link rel="icon" href="login.jpeg" />
+      </Helmet>
+      <h2>FactoryOutlet</h2>
+      <div className='logo'>
+        <img src='factoryoutlet_icon.jpeg' alt='Icon'>
+        </img>
+      </div>
       <input
         type="text"
         value={eid}
