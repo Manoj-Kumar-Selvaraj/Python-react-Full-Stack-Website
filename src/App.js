@@ -23,14 +23,12 @@ function App() {
     switch (activeTab) {
       case 'home':
         return <Home />;
-      case 'barcode':
-        return <Barcode token={token} />;
       case 'billing':
         return <Billing />;
       case 'dashboard':
         return <Dashboard />;
       case 'admin':
-        return <Admin />;
+        return <Admin token={token} />;
       default:
         return <Home />;
     }
@@ -42,9 +40,6 @@ function App() {
         <nav className="tabs">
           <button onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}>
             Home
-          </button>
-          <button onClick={() => setActiveTab('barcode')} className={activeTab === 'barcode' ? 'active' : ''}>
-            Barcode
           </button>
           <button onClick={() => setActiveTab('billing')} className={activeTab === 'billing' ? 'active' : ''}>
             Billing
