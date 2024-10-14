@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import DOMPurify from 'dompurify';
 import './BarcodeForm.css'; // Import your CSS file
