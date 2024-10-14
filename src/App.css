@@ -1,15 +1,27 @@
-.tabs div {
-    color: #fff; /* Change text color to white for better contrast */
-    font-size: 2rem;
-    padding: 25px; /* Adjust padding for a more extended appearance */
-    flex: 1; /* Keeps the tabs taking equal space */
-    text-align: center;
-    border: none; /* Removes borders */
-    background: #333; /* Darker background for tabs */
-    margin: 10px; /* Adds margin for space between buttons */
+.tabs {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space evenly between buttons */
+    align-items: center; /* Center items vertically */
+    height: 80px; /* Set a fixed height for the tabs */
 }
 
-.tabs div:hover {
-    background-color: #0056b3; /* Maintains hover effect */
-    border-radius: 5px;
+.tabs button {
+    color: #fff; /* Change text color to white for better contrast */
+    font-size: 2rem;
+    padding: 20px; /* Increase padding for a larger clickable area */
+    flex: 1; /* Keeps the buttons taking equal space */
+    text-align: center;
+    border: none; /* Removes borders */
+    background: #333; /* Darker background for buttons */
+    margin: 5px; /* Adjust margin for space between buttons */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    transition: background 0.3s; /* Smooth transition for background on hover */
+}
+
+.tabs button:hover {
+    background: #444; /* Change background color on hover for better UX */
+}
+
+.tabs button.active {
+    background: #555; /* Highlight active button with a different color */
 }
