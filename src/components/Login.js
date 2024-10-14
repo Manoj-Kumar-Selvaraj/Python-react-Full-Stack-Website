@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import './login.jpeg';
-import './factoryoutlet_icon.jpeg';
+import icon from './login.jpeg';
+import logo from './factoryoutlet_icon.jpeg';
 import './Login.css';
 function Login({ onLoginSuccess }) {
   const [eid, setEid] = useState('');
@@ -36,11 +36,11 @@ function Login({ onLoginSuccess }) {
     <div className='Login'>
       <Helmet>
         <title>Login</title>
-        <link rel="icon" href="login.jpeg" />
+        <link rel="icon" src={icon} />
       </Helmet>
       <h2>FactoryOutlet</h2>
       <div className='logo'>
-        <img src='factoryoutlet_icon.jpeg' alt='Icon'>
+        <img src={logo} alt='Icon'>
         </img>
       </div>
       <input
