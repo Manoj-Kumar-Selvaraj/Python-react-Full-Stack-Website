@@ -40,7 +40,6 @@ class GenerateBarcodeView(APIView):
                 # Update last barcode and other fields
                 valid_type_instance.last_barcode = barcodes[-1]  # Last generated barcode
                 valid_type_instance.last_processed_date = timezone.now()
-                valid_type_instance.lat_pid = valid_type_instance.lat + number_of_barcodes
                 valid_type_instance.save()
 
                 # Create ProductsT instances
@@ -51,7 +50,6 @@ class GenerateBarcodeView(APIView):
                         psize=valid_type_instance.psize,
                         dop=valid_type_instance.last_processed_date,
                         pamount=valid_type_instance.pamount,
-                        eid=valid_type_instance.eid,
                         bar_code=barcode,
                         status='N'
                     )
