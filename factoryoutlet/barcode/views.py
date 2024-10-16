@@ -72,6 +72,7 @@ class GenerateBarcodeView(APIView):
             barcode_without_checksum = f"{prefix}{last_barcode:08d}"  # 8 digits for last_barcode
             
             # Ensure that barcode_without_checksum is 12 digits long
+            print(barcode_without_checksum)
             if len(barcode_without_checksum) != 12:
                 raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
             
