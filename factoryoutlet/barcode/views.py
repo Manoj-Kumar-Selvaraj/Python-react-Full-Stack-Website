@@ -5,23 +5,17 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .serializers import BarcodeCountSerializer, EmployeeTSerializer, ProductsTSerializer, TypeTSerializer
 from .models import EmployeeT, ProductsT, TypeT
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
-from django.utils import timezone  # Import timezone
-from rest_framework import status
-from rest_framework.authtoken.views import ObtainAuthToken
-from django.contrib.auth.hashers import check_password
-from rest_framework.authtoken.models import Token
-from custom_auth.views import CustomAuthView  # Correct import
-from django.contrib.auth.models import User
+from django.utils import timezone
+from custom_auth.views import CustomAuthView
 from .authentication import CustomTokenAuthentication
 
 class GenerateBarcodeView(APIView):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
+
     def get(self, request):
-        barcode_type = TypeT.objects.all()
-        serializer = TypeTSerializer(barcode_type, many=True)
+        barcode_types = TypeT.objects.all()
+        serializer = TypeTSerializer(barcode_types, many=True)
         return Response({"message": "GET SUCCESSFUL", "data": serializer.data}, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -33,7 +27,7 @@ class GenerateBarcodeView(APIView):
             ptype = request.data.get('Product Type')
             seller = request.data.get('Seller')
             pamount = request.data.get('Amount')
-            
+
             valid_type_instance = get_object_or_404(TypeT, pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
             
             if valid_type_instance:
@@ -71,13 +65,12 @@ class GenerateBarcodeView(APIView):
         Generate a new barcode based on the last barcode.
         """
         barcodes = []
-       #  last_code = int(str(last_barcode)[3:13])  # Assuming last 10 chars are numeric
-       for _ in range(number):
+        
+        for _ in range(number):
             # Increment the last barcode number
             last_barcode += 1
             
             # Create the barcode string without the checksum
-            # Ensure we have a total of 12 digits before adding the checksum
             barcode_without_checksum = f"{prefix}{last_barcode:08d}"  # 8 digits for last_barcode
             
             # Ensure that barcode_without_checksum is 12 digits long
