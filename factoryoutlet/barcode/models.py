@@ -48,7 +48,7 @@ class ProductsT(models.Model):
     dos = models.DateField(blank=True, null=True)
     pamount = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     eid = models.ForeignKey(EmployeeT, models.DO_NOTHING, db_column='eid', blank=True, null=True)
-    bar_code = models.IntegerField(blank=True, null=True)
+    bar_code = models.BigIntegerField(blank=True, null=True)
     bamount = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     status = models.CharField(max_length=1, blank=True, null=True)
 
@@ -63,7 +63,7 @@ class TypeT(models.Model):
     pseller = models.CharField(max_length=50, blank=True, null=True)
     b_type = models.CharField(primary_key=True, max_length=20)
     last_processed_date = models.DateField(blank=True, null=True)
-    last_barcode = models.IntegerField(blank=True, null=True)
+    last_barcode = models.BigIntegerField(blank=True, null=True)
     eid = models.ForeignKey(EmployeeT, models.DO_NOTHING, db_column='eid', blank=True, null=True)
     lat_pid = models.IntegerField(blank=True, null=True)
     pamount = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
