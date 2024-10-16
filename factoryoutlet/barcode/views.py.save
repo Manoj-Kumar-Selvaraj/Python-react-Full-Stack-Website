@@ -1,0 +1,30 @@
+from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import BarcodeCountSerializer,EmployeeTSerializer,BarcodeTSerializer,ProductsTSerializer,TypeTSerializer
+from .models import EmployeeT,BarcodeT,ProductsT,TypeT
+import random
+
+class GenerateBarcodeView(APIView):
+    def get(self, request):
+        barcode_type=TypeT.objects.all() 
+        serializer=TypeTSerializer(barcode_type,many=True)
+        return Response({"message":"GET SUCCESSFUL"},status=status.HTTP_200_OK)
+ 
+   def post(self, request):
+       serializer=BarcodeCountSerializer(data=request.data)
+       if serializer.is_valid():
+            number_of_barcodes = serializer.validated_data['number_of_barcodes']
+            pname=request.data.get('Product Name')
+            psize=request.data.get('Product Size')
+            seller=request.data.get('Seller')
+            pamount=request.data.get('Amount')
+# Create your views her
+            valid_type=get_object_or_404(TypeT, pname=pname,psize=psize,pamount=pamount,pseller=seller)
+            if valid_type:
+                prefix=valid_type.b_type
+                barcodes=[]
+                barcodes=barcode_generator(prefix,number_of_barcodes)
+                for barcode in barcodes:
+                    if barcode not in barcode 
