@@ -1,6 +1,7 @@
 .Login {
     width: 100%;
-    max-width: 400px;
+    padding-top:500px;
+    max-width: 600px;
     margin: 0 auto; /* Centers the login box horizontally */
     padding: 20px;
     background-color: #f4f4f4;
@@ -39,6 +40,7 @@
 }
 
 .logo {
+    background-color: #555;
     text-align: center;
     margin-bottom: 20px;
 }
