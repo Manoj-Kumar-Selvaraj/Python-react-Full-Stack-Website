@@ -33,30 +33,34 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className='Login'>
-      <Helmet>
-        <title>Login</title>
-        <link rel="icon" href={icon} />
-      </Helmet>
-      <h2>FactoryOutlet</h2>
-      <div className='logo'>
-        <img src={logo} alt='Icon'>
-        </img>
+    <div>
+      <div className='Header'>
+        <Helmet>
+          <title>Login</title>
+          <link rel="icon" href={icon} />
+        </Helmet>
+        <h2>FactoryOutlet</h2>
+        <div className='logo'>
+          <img src={logo} alt='Icon'>
+          </img>
+        </div>
       </div>
-      <input
-        type="text"
-        value={eid}
-        onChange={(e) => setEid(e.target.value)}
-        placeholder="Employee ID"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button onClick={handleLogin}>Login</button>
-    </div>
+      <div className='Login'>
+        <input
+          type="text"
+          value={eid}
+          onChange={(e) => setEid(e.target.value)}
+          placeholder="Employee ID"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button onClick={handleLogin}>Login</button>
+      </div>
+    </div>  
   );
 }
 

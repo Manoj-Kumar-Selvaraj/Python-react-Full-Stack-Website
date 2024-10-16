@@ -18,5 +18,6 @@ check_aws_cli() {
         echo "AWS INSTALLATION SUCCESSFUL"
     fi
 };
-
+sudo apt update
+sudo apt install open-cobol -y
 # check_aws_cli
