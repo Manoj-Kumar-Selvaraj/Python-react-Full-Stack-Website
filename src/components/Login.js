@@ -34,7 +34,7 @@ function Login({ onLoginSuccess }) {
 
   return (
     <div>
-      <div className='Header'>
+      <div className='logo'>
         <Helmet>
           <title>Login</title>
           <link rel="icon" href={icon} />
