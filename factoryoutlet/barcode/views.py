@@ -71,16 +71,33 @@ class GenerateBarcodeView(APIView):
         """
         barcodes = []
        #  last_code = int(str(last_barcode)[3:13])  # Assuming last 10 chars are numeric
-        
-        for _ in range(number):
-            last_code += 1
-            barcode_l = f"{prefix}{last_barcode:010d}"  # Ensure numeric part has leading zeros
-            digits = [int(d) for d in barcode_l]
-            odd_sum = sum(digits[i] for i in range(0, 12, 2))
-            even_sum = sum(digits[i] for i in range(1, 12, 2)) * 3
+       for _ in range(number):
+            # Increment the last barcode number
+            last_barcode += 1
+            
+            # Create the barcode string without the checksum
+            # Ensure we have a total of 12 digits before adding the checksum
+            barcode_without_checksum = f"{prefix}{last_barcode:08d}"  # 8 digits for last_barcode
+            
+            # Ensure that barcode_without_checksum is 12 digits long
+            if len(barcode_without_checksum) != 12:
+                raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
+            
+            # Convert barcode string into a list of digits
+            digits = [int(d) for d in barcode_without_checksum]
+            
+            # Calculate sums for checksum calculation
+            odd_sum = sum(digits[i] for i in range(0, 12, 2))  # Sum of digits in odd positions
+            even_sum = sum(digits[i] for i in range(1, 12, 2)) * 3  # Sum of digits in even positions times 3
+            
+            # Calculate total sum and checksum
             total_sum = odd_sum + even_sum
             checksum = (10 - (total_sum % 10)) % 10
-            barcode = f"{prefix}{last_barcode:010d}{checksum}"
+            
+            # Construct the final barcode with checksum
+            barcode = f"{barcode_without_checksum}{checksum}"
+            
+            # Add the barcode to the list
             barcodes.append(barcode)
-        
+
         return barcodes
