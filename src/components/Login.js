@@ -34,12 +34,11 @@ function Login({ onLoginSuccess }) {
 
   return (
     <div>
-      <div className='logo'>
+      <div>
         <Helmet>
           <title>Login</title>
           <link rel="icon" href={icon} />
         </Helmet>
-        <h2>FactoryOutlet</h2>
         <div className='logo'>
           <img src={logo} alt='Icon'>
           </img>
