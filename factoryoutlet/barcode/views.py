@@ -15,6 +15,7 @@ from rest_framework.authtoken.models import Token
 from custom_auth.views import CustomAuthView  # Correct import
 from django.contrib.auth.models import User
 from .authentication import CustomTokenAuthentication
+
 class GenerateBarcodeView(APIView):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
