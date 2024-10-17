@@ -8,6 +8,7 @@ from .models import EmployeeT, ProductsT, TypeT
 from django.utils import timezone
 from custom_auth.views import CustomAuthView
 from .authentication import CustomTokenAuthentication
+from barcode_print.views import barcode_print_init
 
 class GenerateBarcodeView(APIView):
     authentication_classes = [CustomTokenAuthentication]
@@ -36,6 +37,8 @@ class GenerateBarcodeView(APIView):
                 
                 # Generate new barcodes
                 barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
+                # Calling the Function
+                barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
 
                 # Update last barcode and other fields
                 valid_type_instance.last_barcode = barcodes[-1]  # Last generated barcode
