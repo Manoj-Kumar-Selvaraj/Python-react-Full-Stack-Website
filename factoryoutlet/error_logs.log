@@ -150,3 +150,132 @@ Traceback (most recent call last):
     _mysql.connection.query(self, query)
 django.db.utils.DataError: (1264, "Out of range value for column 'last_barcode' at row 1")
 ERROR 2024-10-16 16:18:38,684 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 204985
+ERROR 2024-10-16 16:52:45,451 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 38, in post
+    barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 76, in new_barcode
+    raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
+ValueError: The combination of prefix and last_barcode must result in a 12-digit number.
+ERROR 2024-10-16 16:52:45,454 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 99570
+ERROR 2024-10-16 17:19:51,864 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 38, in post
+    barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 77, in new_barcode
+    raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
+ValueError: The combination of prefix and last_barcode must result in a 12-digit number.
+ERROR 2024-10-16 17:19:51,869 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 99584
+ERROR 2024-10-17 03:46:48,943 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-17 03:46:48,947 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 108556
+ERROR 2024-10-17 03:47:38,462 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 38, in post
+    barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 77, in new_barcode
+    raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
+ValueError: The combination of prefix and last_barcode must result in a 12-digit number.
+ERROR 2024-10-17 03:47:38,466 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 99602
