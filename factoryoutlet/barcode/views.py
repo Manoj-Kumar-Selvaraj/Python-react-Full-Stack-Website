@@ -60,21 +60,35 @@ class GenerateBarcodeView(APIView):
 
     def new_barcode(self, prefix, number, last_barcode):
         """
-        Generate a new barcode based on the last barcode.
+        Generate new barcodes based on the last barcode.
         """
         barcodes = []
         
         for _ in range(number):
             # Increment the last barcode number
-            last_barcode += 1
+            last_barcode += 10
             
+            # Convert last_barcode to string
+            last_barcode_str = str(last_barcode)
+
+            # Pad with zeros to the left if less than 8 digits
+            if len(last_barcode_str) < 8:
+                last_barcode_str = last_barcode_str.zfill(8)  # Pad with zeros to 8 digits
+            
+            # Only take the last 8 digits if more than 8 digits
+            if len(last_barcode_str) > 8:
+                last_barcode_str = last_barcode_str[-8:]  # Take the last 8 digits
+
             # Create the barcode string without the checksum
-            barcode_without_checksum = f"{prefix}{last_barcode:08d}"  # 8 digits for last_barcode
+            barcode_without_checksum = f"{prefix}{last_barcode_str}"  # Combine prefix and last_barcode_str
             
+            # Log the barcode without checksum and its length
+            print(f"Barcode without checksum: {barcode_without_checksum} (Length: {len(barcode_without_checksum)})")
+
             # Ensure that barcode_without_checksum is 12 digits long
-            print(barcode_without_checksum)
             if len(barcode_without_checksum) != 12:
-                raise ValueError("The combination of prefix and last_barcode must result in a 12-digit number.")
+                print(f"Error: The combination of prefix '{prefix}' and last_barcode '{last_barcode_str}' results in an invalid length.")
+                return []  # Handle this case appropriately
             
             # Convert barcode string into a list of digits
             digits = [int(d) for d in barcode_without_checksum]
