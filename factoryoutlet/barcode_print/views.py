@@ -17,7 +17,7 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
         print_status=False,               # Boolean flag
         dog=timezone.now(),               # Date of generation (timestamp)
         print_slot='Y',                   # Slot for printing
-        gen_slot='Y'                      # Slot for generation
+        gen_slot='Y',                      # Slot for generation
         Approval='R'
     )
 
