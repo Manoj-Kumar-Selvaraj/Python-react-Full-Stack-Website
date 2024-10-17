@@ -1,7 +1,7 @@
 from django.db import models
 
 class BarcodeT(models.Model):
-    number_of_barcodes = models.IntField()
+    number_of_barcodes = models.IntegerField()
     start_barcode = models.BigIntegerField()  # Use BigIntegerField for large integers
     last_barcode = models.BigIntegerField()   # Use BigIntegerField for large integers
     print_status=models.BooleanField(default=False)
