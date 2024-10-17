@@ -6,9 +6,9 @@ class BarcodeT(models.Model):
     last_barcode = models.BigIntegerField()   # Use BigIntegerField for large integers
     print_status=models.BooleanField(default=False)
     dog = models.DateField(null=True, blank=True)
-    print_slot = models.CharField(null=True, default='Y')
-    gen_slot = models.CharField(null=True, default='Y')
-    Approval = models.CharField(null=True, default='R')
+    print_slot = models.CharField(null=True, default='Y',max_length=1)
+    gen_slot = models.CharField(null=True, default='Y',max_length=1)
+    Approval = models.CharField(null=True, default='R',max_length=1)
 
     class Meta:
         db_table = 'BARCODE_T'  # Custom table name
