@@ -66,7 +66,7 @@ class GenerateBarcodeView(APIView):
         
         for _ in range(number):
             # Increment the last barcode number
-            last_barcode += 10
+            last_barcode += 1
             
             # Convert last_barcode to string
             last_barcode_str = str(last_barcode)
