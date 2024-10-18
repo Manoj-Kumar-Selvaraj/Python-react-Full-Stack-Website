@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('factoryoutlet/auth/', include('custom_auth.urls')),
     path('factoryoutlet/barcode/', include('barcode.urls')),  # Use 'factoryoutlet' as the base path
+    path('factoryoutlet/employee/',include('emp_add.urls')),
 ]
+
