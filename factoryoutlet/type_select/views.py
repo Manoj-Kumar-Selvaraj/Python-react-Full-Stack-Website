@@ -17,7 +17,9 @@ def select_type(request):
         # Serialize the records
         serializer = TypeTSerializer(type_records, many=True)
         # Return the serialized data as JSON
+        print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
+        
 
 
 # Create your views here.
