@@ -88,8 +88,8 @@ const Admin = () => {
           <label>Product Size:</label>
           <select value={psize} onChange={(e) => setPsize(e.target.value)} required>
             <option value="" disabled>Select Product Size</option>
-            {typeRecords.map((record) => (
-              <option key={record.id} value={record.size}> {/* Assuming size property exists */}
+            {typeRecords.map(record => (
+              <option key={record.id} value={record.size}>
                 {record.size}
               </option>
             ))}
@@ -99,8 +99,8 @@ const Admin = () => {
           <label>Product Name:</label>
           <select value={pname} onChange={(e) => setPname(e.target.value)} required>
             <option value="" disabled>Select Product Name</option>
-            {typeRecords.map((record) => (
-              <option key={record.id} value={record.name}> {/* Assuming name property exists */}
+            {typeRecords.map(record => (
+              <option key={record.id} value={record.name}>
                 {record.name}
               </option>
             ))}
@@ -110,8 +110,8 @@ const Admin = () => {
           <label>Product Type:</label>
           <select value={ptype} onChange={(e) => setPtype(e.target.value)} required>
             <option value="" disabled>Select Product Type</option>
-            {typeRecords.map((record) => (
-              <option key={record.id} value={record.type}> {/* Assuming type property exists */}
+            {typeRecords.map(record => (
+              <option key={record.id} value={record.type}>
                 {record.type}
               </option>
             ))}
@@ -121,8 +121,8 @@ const Admin = () => {
           <label>Seller:</label>
           <select value={pseller} onChange={(e) => setPseller(e.target.value)} required>
             <option value="" disabled>Select Seller</option>
-            {typeRecords.map((record) => (
-              <option key={record.id} value={record.seller}> {/* Assuming seller property exists */}
+            {typeRecords.map(record => (
+              <option key={record.id} value={record.seller}>
                 {record.seller}
               </option>
             ))}
@@ -132,7 +132,7 @@ const Admin = () => {
           <label>Type Re:</label>
           <select value={barcodeValue} onChange={(e) => setBarcodeValue(e.target.value)} required>
             <option value="" disabled>Select Type Record</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.id}>
                 {record.amount} {/* Adjust according to your data structure */}
               </option>
@@ -193,7 +193,7 @@ const Admin = () => {
           <label>Product Size:</label>
           <select value={psize} onChange={(e) => setPsize(e.target.value)} required>
             <option value="" disabled>Select Product Size</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.size}>
                 {record.size}
               </option>
@@ -204,7 +204,7 @@ const Admin = () => {
           <label>Product Name:</label>
           <select value={pname} onChange={(e) => setPname(e.target.value)} required>
             <option value="" disabled>Select Product Name</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.name}>
                 {record.name}
               </option>
@@ -215,7 +215,7 @@ const Admin = () => {
           <label>Product Type:</label>
           <select value={ptype} onChange={(e) => setPtype(e.target.value)} required>
             <option value="" disabled>Select Product Type</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.type}>
                 {record.type}
               </option>
@@ -226,7 +226,7 @@ const Admin = () => {
           <label>Seller:</label>
           <select value={pseller} onChange={(e) => setPseller(e.target.value)} required>
             <option value="" disabled>Select Seller</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.seller}>
                 {record.seller}
               </option>
@@ -237,7 +237,7 @@ const Admin = () => {
           <label>Barcode Type:</label>
           <select value={bType} onChange={(e) => setBType(e.target.value)} required>
             <option value="" disabled>Select Barcode Type</option>
-            {typeRecords.map((record) => (
+            {typeRecords.map(record => (
               <option key={record.id} value={record.barcodeType}>
                 {record.barcodeType}
               </option>
