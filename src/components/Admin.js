@@ -394,4 +394,3 @@ const Admin = ({ token }) => {
 
 export default Admin;
 
-https://api.manoj-techworks.site/factoryoutlet/type-select/type-records
