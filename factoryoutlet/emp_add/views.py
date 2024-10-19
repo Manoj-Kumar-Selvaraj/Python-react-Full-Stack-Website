@@ -9,8 +9,6 @@ from rest_framework.permissions import IsAuthenticated
 class EmployeeTCreateView(View):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
-    authentication_classes = [CustomTokenAuthentication]
-    permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):
         try:
             # Parse the JSON request body
