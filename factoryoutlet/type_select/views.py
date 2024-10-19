@@ -6,6 +6,7 @@ from rest_framework import status
 from type_add.serializers import TypeTSerializer
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET'])
 def select_type(request):

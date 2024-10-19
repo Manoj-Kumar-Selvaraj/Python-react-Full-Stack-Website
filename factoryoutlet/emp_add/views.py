@@ -5,6 +5,7 @@ from barcode.models import EmployeeT
 from django.utils import timezone
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 class EmployeeTCreateView(View):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]

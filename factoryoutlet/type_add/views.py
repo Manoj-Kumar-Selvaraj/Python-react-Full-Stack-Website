@@ -5,6 +5,7 @@ from barcode.models import TypeT
 from .serializers import TypeTSerializer
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['POST'])
 def create_type(request):
