@@ -149,7 +149,7 @@ const Admin = ({ token }) => {
     };
 
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employees/access/', {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employee/access/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
