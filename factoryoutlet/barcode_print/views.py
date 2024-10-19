@@ -4,8 +4,6 @@ from django.utils import timezone
 from .utils import return_400_if_object_found
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
-from barcode_print.views import barcode_print_init
-
 
 def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller, pamount):
     authentication_classes = [CustomTokenAuthentication]
