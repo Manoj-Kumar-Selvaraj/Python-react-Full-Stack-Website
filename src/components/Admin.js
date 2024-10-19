@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DOMPurify from 'dompurify';
+import './BarcodeForm.css'; // Import your CSS file
 
-const Admin = () => {
-  // State variables
-  const [barcodeValue, setBarcodeValue] = useState('');
-  const [employeeName, setEname] = useState('');
+const Admin = ({ token }) => {
+  // State for barcode form
+  const [number_of_barcodes, setNumberOfBarcodes] = useState('');
+  const [productName, setProductName] = useState('');
+  const [productSize, setProductSize] = useState('');
+  const [productType, setProductType] = useState('');
+  const [seller, setSeller] = useState('');
+  const [amount, setAmount] = useState('');
+
+  // State for employee form
+  const [eid, setEid] = useState('');
+  const [ename, setEname] = useState('');
   const [lastLogin, setLastLogin] = useState('');
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [isSuperuser, setIsSuperuser] = useState(false);
+
+  // State for TypeT form
   const [psize, setPsize] = useState('');
   const [pname, setPname] = useState('');
   const [ptype, setPtype] = useState('');
@@ -17,37 +28,27 @@ const Admin = () => {
   const [lastBarcode, setLastBarcode] = useState('');
   const [latPid, setLatPid] = useState('');
   const [pamount, setPamount] = useState('');
-  
-  // State for fetched dropdown options
-  const [typeRecords, setTypeRecords] = useState([]);
-  
-  useEffect(() => {
-    // Fetch type records from the API
-    const fetchTypeRecords = async () => {
-      try {
-        const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records');
-        const data = await response.json();
-        setTypeRecords(data); // Assuming data is an array of objects
-      } catch (error) {
-        console.error('Error fetching type records:', error);
-      }
-    };
-    
-    fetchTypeRecords();
-  }, []); // Empty dependency array to run only once when the component mounts
 
-  // Reset forms
+  // Function to reset Barcode form
   const resetBarcodeForm = () => {
-    setBarcodeValue('');
+    setNumberOfBarcodes('');
+    setProductName('');
+    setProductSize('');
+    setProductType('');
+    setSeller('');
+    setAmount('');
   };
 
+  // Function to reset Employee form
   const resetEmployeeForm = () => {
+    setEid('');
     setEname('');
     setLastLogin('');
-    setIsActive(false);
+    setIsActive(true);
     setIsSuperuser(false);
   };
 
+  // Function to reset TypeT form
   const resetTypeTForm = () => {
     setPsize('');
     setPname('');
@@ -60,97 +61,206 @@ const Admin = () => {
     setPamount('');
   };
 
-  // Submit handlers
-  const handleBarcodeSubmit = (e) => {
+  // Function to handle TypeT form submission
+  const handleTypeTSubmit = async (e) => {
     e.preventDefault();
-    // Handle barcode submission logic here
-    resetBarcodeForm();
+
+    const typeTData = {
+      psize: DOMPurify.sanitize(psize),
+      pname: DOMPurify.sanitize(pname),
+      ptype: DOMPurify.sanitize(ptype),
+      pseller: DOMPurify.sanitize(pseller),
+      b_type: DOMPurify.sanitize(bType),
+      last_processed_date: lastProcessedDate ? DOMPurify.sanitize(lastProcessedDate) : null,  // Optional field
+      last_barcode: lastBarcode ? parseInt(DOMPurify.sanitize(lastBarcode)) : 0,  // Optional field
+      lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null,  // Optional field
+      pamount: parseFloat(DOMPurify.sanitize(pamount)) 
+    };
+
+    try {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type/create-type/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+        body: JSON.stringify(typeTData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('TypeT entry successful');
+        resetTypeTForm(); // Reset TypeT form after successful submission
+      } else {
+        alert('Error: ' + JSON.stringify(data));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred');
+    }
   };
 
-  const handleEmployeeSubmit = (e) => {
+  // Function to handle barcode form submission
+  const handleBarcodeSubmit = async (e) => {
     e.preventDefault();
-    // Handle employee submission logic here
-    resetEmployeeForm();
+
+    const barcodeData = {
+      number_of_barcodes: parseInt(DOMPurify.sanitize(number_of_barcodes)),  // Sanitize and convert to int
+      'Product Name': DOMPurify.sanitize(productName),
+      'Product Size': DOMPurify.sanitize(productSize),
+      'Product Type': DOMPurify.sanitize(productType),
+      Seller: DOMPurify.sanitize(seller),
+      Amount: parseFloat(DOMPurify.sanitize(amount)),  // Sanitize and convert to float
+    };
+
+    try {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/generate-barcode/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+        body: JSON.stringify(barcodeData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Barcode generation successful');
+        resetBarcodeForm(); // Reset Barcode form after successful submission
+      } else {
+        alert('Error: ' + JSON.stringify(data));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred');
+    }
   };
 
-  const handleTypeTSubmit = (e) => {
+  // Function to handle employee form submission
+  const handleEmployeeSubmit = async (e) => {
     e.preventDefault();
-    // Handle TypeT submission logic here
-    resetTypeTForm();
+
+    const employeeData = {
+      eid: DOMPurify.sanitize(eid),
+      ename: DOMPurify.sanitize(ename),
+      last_login: lastLogin ? DOMPurify.sanitize(lastLogin) : null,  // Optional field
+      is_active: isActive,
+      is_superuser: isSuperuser,
+    };
+
+    try {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employees/access/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+        body: JSON.stringify(employeeData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Employee creation successful');
+        resetEmployeeForm(); // Reset Employee form after successful submission
+      } else {
+        alert('Error: ' + JSON.stringify(data));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred');
+    }
   };
 
   return (
     <div>
+      <h1>Admin Panel</h1>
+
       {/* Barcode Generation Form */}
       <form onSubmit={handleBarcodeSubmit} className="barcode-form">
-        <h2>Barcode Generation</h2>
+        <h2>Generate Barcodes</h2>
         <div className="form-group">
-          <label>Product Size:</label>
-          <select value={psize} onChange={(e) => setPsize(e.target.value)} required>
-            <option value="" disabled>Select Product Size</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.size}>
-                {record.size}
-              </option>
-            ))}
-          </select>
+          <label>Number of Barcodes (integer):</label>
+          <input
+            type="number"
+            placeholder="Enter number of barcodes"
+            value={number_of_barcodes}
+            onChange={(e) => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Product Name:</label>
-          <select value={pname} onChange={(e) => setPname(e.target.value)} required>
-            <option value="" disabled>Select Product Name</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.name}>
-                {record.name}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter product name"
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Product Size:</label>
+          <input
+            type="text"
+            placeholder="Enter product size"
+            value={productSize}
+            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Product Type:</label>
-          <select value={ptype} onChange={(e) => setPtype(e.target.value)} required>
-            <option value="" disabled>Select Product Type</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.type}>
-                {record.type}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter product type"
+            value={productType}
+            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Seller:</label>
-          <select value={pseller} onChange={(e) => setPseller(e.target.value)} required>
-            <option value="" disabled>Select Seller</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.seller}>
-                {record.seller}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter seller name"
+            value={seller}
+            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>Type Re:</label>
-          <select value={barcodeValue} onChange={(e) => setBarcodeValue(e.target.value)} required>
-            <option value="" disabled>Select Type Record</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.id}>
-                {record.amount} {/* Adjust according to your data structure */}
-              </option>
-            ))}
-          </select>
+          <label>Amount (float):</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Enter amount"
+            value={amount}
+            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
-        <button type="submit" className="btn">Generate Barcode</button>
+        <button type="submit" className="btn">Generate Barcodes</button>
       </form>
 
-      {/* Employee Form */}
+      {/* Employee Creation Form */}
       <form onSubmit={handleEmployeeSubmit} className="employee-form">
         <h2>Create Employee</h2>
+        <div className="form-group">
+          <label>Employee ID:</label>
+          <input
+            type="text"
+            placeholder="Enter Employee ID"
+            value={eid}
+            onChange={(e) => setEid(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
         <div className="form-group">
           <label>Employee Name:</label>
           <input
             type="text"
             placeholder="Enter Employee Name"
-            value={employeeName}
+            value={ename}
             onChange={(e) => setEname(DOMPurify.sanitize(e.target.value))}
             required
           />
@@ -191,58 +301,90 @@ const Admin = () => {
         <h2>Create TypeT</h2>
         <div className="form-group">
           <label>Product Size:</label>
-          <select value={psize} onChange={(e) => setPsize(e.target.value)} required>
-            <option value="" disabled>Select Product Size</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.size}>
-                {record.size}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter product size"
+            value={psize}
+            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Product Name:</label>
-          <select value={pname} onChange={(e) => setPname(e.target.value)} required>
-            <option value="" disabled>Select Product Name</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.name}>
-                {record.name}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter product name"
+            value={pname}
+            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Product Type:</label>
-          <select value={ptype} onChange={(e) => setPtype(e.target.value)} required>
-            <option value="" disabled>Select Product Type</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.type}>
-                {record.type}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter product type"
+            value={ptype}
+            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Seller:</label>
-          <select value={pseller} onChange={(e) => setPseller(e.target.value)} required>
-            <option value="" disabled>Select Seller</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.seller}>
-                {record.seller}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter seller name"
+            value={pseller}
+            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Barcode Type:</label>
-          <select value={bType} onChange={(e) => setBType(e.target.value)} required>
-            <option value="" disabled>Select Barcode Type</option>
-            {typeRecords.map(record => (
-              <option key={record.id} value={record.barcodeType}>
-                {record.barcodeType}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            placeholder="Enter barcode type"
+            value={bType}
+            onChange={(e) => setBType(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Processed Date:</label>
+          <input
+            type="datetime-local"
+            value={lastProcessedDate}
+            onChange={(e) => setLastProcessedDate(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Barcode:</label>
+          <input
+            type="number"
+            placeholder="Enter last barcode"
+            value={lastBarcode}
+            onChange={(e) => setLastBarcode(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Product ID:</label>
+          <input
+            type="number"
+            placeholder="Enter last product ID"
+            value={latPid}
+            onChange={(e) => setLatPid(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Product Amount:</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Enter product amount"
+            value={pamount}
+            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
+            required
+          />
         </div>
         <button type="submit" className="btn">Create TypeT</button>
       </form>
@@ -251,3 +393,5 @@ const Admin = () => {
 };
 
 export default Admin;
+
+https://api.manoj-techworks.site/factoryoutlet/type-select/type-records
