@@ -49,6 +49,8 @@ INSTALLED_APPS = ['django.contrib.admin',
     'custom_auth',
     'barcode_print',
     'emp_add',
+    'type_add',
+    'type_select'
 ]
 
 REST_FRAMEWORK = {

@@ -4,8 +4,10 @@ from django.views import View
 from barcode.models import EmployeeT
 from django.utils import timezone
 from custom_auth.views import CustomAuthView
-from barocde.authentication import CustomTokenAuthentication
+from barcode.authentication import CustomTokenAuthentication
 class EmployeeTCreateView(View):
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsAuthenticated]
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):

@@ -2,8 +2,14 @@ from django.shortcuts import render
 from .models import BarcodeT
 from django.utils import timezone
 from .utils import return_400_if_object_found
+from custom_auth.views import CustomAuthView
+from barcode.authentication import CustomTokenAuthentication
+from barcode_print.views import barcode_print_init
+
 
 def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller, pamount):
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsAuthenticated]
     # Check if a record already exists, and return a 400 error if found
     error_response = return_400_if_object_found(BarcodeT, number_of_barcodes=number_of_barcodes, pname=pname, psize=psize, ptype=ptype, seller=seller, pamount=pamount)
     if error_response and error_response.gen_slot=='Y':
