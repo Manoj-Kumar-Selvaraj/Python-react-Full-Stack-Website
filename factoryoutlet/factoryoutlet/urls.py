@@ -23,6 +23,6 @@ urlpatterns = [
     path('factoryoutlet/barcode/', include('barcode.urls')),  # Use 'factoryoutlet' as the base path
     path('factoryoutlet/employee/',include('emp_add.urls')),
     path('factoryoutlet/type/',include('type_add.urls')),
-    path('factoryoutlet/type-select',include('type_select.urls')),
+    path('factoryoutlet/type-select/',include('type_select.urls')),
 ]
 
