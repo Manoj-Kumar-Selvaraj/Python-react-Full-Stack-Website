@@ -10,7 +10,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
 
 @api_view(['GET'])
-@permission_classes([AllowAny])  
+@authentication_classes([CustomTokenAuthentication])
+@permission_classes([IsAuthenticated])  
 def select_type(request):
     # authentication_classes = [CustomTokenAuthentication]
     # permission_classes = [IsAuthenticated]
