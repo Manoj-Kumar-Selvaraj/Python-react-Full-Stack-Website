@@ -1,0 +1,936 @@
+ERROR 2024-10-22 14:52:54,424 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:52:54,428 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:52:56,373 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:52:56,376 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:53:05,832 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:53:05,836 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:53:06,932 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:53:06,935 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:53:08,187 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:53:08,189 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:53:09,719 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:53:09,721 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:54:06,380 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:54:06,382 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:54:10,823 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:54:10,826 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:54:20,047 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:54:20,051 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:54:21,824 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:54:21,829 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:18,804 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:18,808 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:20,071 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:20,074 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:21,406 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:21,411 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:22,489 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:22,493 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:23,607 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:23,610 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:39,713 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:39,717 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:40,955 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:40,958 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:42,272 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:42,281 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:55:53,647 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:55:53,650 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:56:01,139 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:56:01,144 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:57:51,734 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:57:51,738 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:57:57,154 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:57:57,157 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:58:02,822 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:58:02,826 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:58:03,987 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:58:03,990 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 14:58:05,351 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 14:58:05,354 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108495
+ERROR 2024-10-22 15:02:26,152 log Internal Server Error: /factoryoutlet/type-select/type-records/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 324, in perform_authentication
+    request.user
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 231, in user
+    self._authenticate()
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/authentication.py", line 8, in authenticate
+    print(f'Token received from Client: {token}')
+OSError: [Errno 5] Input/output error
+ERROR 2024-10-22 15:02:26,155 basehttp "GET /factoryoutlet/type-select/type-records/ HTTP/1.0" 500 108517
