@@ -7,11 +7,13 @@ from type_add.serializers import TypeTSerializer
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 
 @api_view(['GET'])
 def select_type(request):
-    authentication_classes = [CustomTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [CustomTokenAuthentication]
+    # permission_classes = [IsAuthenticated]
+    permission_class = AllowAny
     if request.method == 'GET':
         type_records = TypeT.objects.all()
         # Serialize the records
