@@ -246,8 +246,12 @@ const Admin = ({ token }) => {
             onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
           >
-              <option value="">Select a product name</option> 
-              <options>{FilteredName}</options>
+                <option value="">Select a product name</option>
+                  {FilteredName.map((option) => (
+                    <option key={option.key} value={option.value}>
+                      {option.key}: {option.value}
+                    </option>
+                  ))}
           </select>
         </div>
         <div className="form-group">
