@@ -34,8 +34,8 @@ const Admin = ({ token }) => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await fetch(/api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
-          method: 'GET','https:/
+        const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Token ${token}`,
