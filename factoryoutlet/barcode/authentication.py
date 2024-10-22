@@ -5,7 +5,7 @@ from .models import CustomToken
 class CustomTokenAuthentication(BaseAuthentication):
     def authenticate(self, request):
         token = request.headers.get('Authorization')
-        print(f'Token received from Client: {token}')
+        # print(f'Token received from Client: {token}')
         if not token:
             return None
         # Strip "Token " prefix if present
