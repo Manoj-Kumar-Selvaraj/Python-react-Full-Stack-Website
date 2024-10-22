@@ -61,7 +61,7 @@ const Admin = ({ token }) => {
 
   // Prepare options based on fetched data
   const optionArray = [];
-  data.forEach((item, index) => {
+  options.forEach((item, index) => {
     // Loop through each key in the object
     Object.keys(item).forEach((key) => {
       const value = item[key];
