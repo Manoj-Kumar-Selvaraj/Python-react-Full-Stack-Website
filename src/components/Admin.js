@@ -45,7 +45,6 @@ const Admin = ({ token }) => {
         const data = await response.json();
         if (response.ok) {
           setOptions(data); // Set the fetched options
-          console.log(data)
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
@@ -59,6 +58,34 @@ const Admin = ({ token }) => {
 
     fetchOptions();
   }, [token]);
+
+  // Prepare options based on fetched data
+  const optionArray = [];
+  data.forEach((item, index) => {
+    // Loop through each key in the object
+    Object.keys(item).forEach((key) => {
+      const value = item[key];
+      optionArray.push(
+        <option key={`${index}-${key}`} value={value}>
+          {key}: {value}
+        </option>
+      );
+    });
+  });
+
+    // Prepare options based on fetched data
+    const optionArray = [];
+    data.forEach((item, index) => {
+      // Loop through each key in the object
+      Object.keys(item).forEach((key) => {
+        const value = item[key];
+        optionArray.push(
+          <option key={`${index}-${key}`} value={value}>
+            {key}: {value}
+          </option>
+        );
+      });
+    });
 
   // Function to reset Barcode form
   const resetBarcodeForm = () => {
