@@ -28,6 +28,37 @@ const Admin = ({ token }) => {
   const [lastBarcode, setLastBarcode] = useState('');
   const [latPid, setLatPid] = useState('');
   const [pamount, setPamount] = useState('');
+  const [options, setOptions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+      try {
+        const response = await fetch(/api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
+          method: 'GET','https:/
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          setOptions(data); // Set the fetched options
+          console.log(setOptions)
+        } else {
+          alert('Error fetching options: ' + JSON.stringify(data));
+        }
+      } catch (error) {
+        console.error('Error fetching options:', error);
+        alert('An error occurred while fetching options');
+      } finally {
+        setLoading(false); // Set loading to false once data is fetched
+      }
+    };
+
+    fetchOptions();
+  }, [token]);
 
   // Function to reset Barcode form
   const resetBarcodeForm = () => {
