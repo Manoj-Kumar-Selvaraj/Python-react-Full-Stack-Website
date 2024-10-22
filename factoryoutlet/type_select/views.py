@@ -10,10 +10,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
 
 @api_view(['GET'])
+@permission_classes([AllowAny])  
 def select_type(request):
     # authentication_classes = [CustomTokenAuthentication]
     # permission_classes = [IsAuthenticated]
-    permission_classes = AllowAny
+    # permission_classes = AllowAny
     if request.method == 'GET':
         type_records = TypeT.objects.all()
         # Serialize the records
