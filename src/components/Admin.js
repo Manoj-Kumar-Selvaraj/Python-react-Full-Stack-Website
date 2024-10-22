@@ -73,6 +73,12 @@ const Admin = ({ token }) => {
     });
   });
 
+  const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname'));
+  const FilteredSize = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('psize'));
+  const FilteredType = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('ptype'));
+  const FilteredSeller = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pseller'));
+  const FilteredAmount = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pamount'));
+
 
   // Function to reset Barcode form
   const resetBarcodeForm = () => {
@@ -235,13 +241,14 @@ const Admin = ({ token }) => {
         </div>
         <div className="form-group">
           <label>Product Name:</label>
-          <input
-            type="text"
-            placeholder="Enter product name"
+          <select
             value={productName}
             onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+              <option value="">Select a product name</option> 
+              <options>{FilteredName}</options>
+          </select>
         </div>
         <div className="form-group">
           <label>Product Size:</label>
