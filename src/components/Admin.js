@@ -45,7 +45,7 @@ const Admin = ({ token }) => {
         const data = await response.json();
         if (response.ok) {
           setOptions(data); // Set the fetched options
-          console.log(options)
+          console.log(data)
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
