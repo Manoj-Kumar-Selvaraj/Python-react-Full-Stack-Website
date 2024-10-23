@@ -38,7 +38,7 @@ class GenerateBarcodeView(APIView):
                 # Generate new barcodes
                 barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
                 # Calling the Function
-                barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+                barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,pseller,pamount)
 
                 # Update last barcode and other fields
                 valid_type_instance.last_barcode = barcodes[-1]  # Last generated barcode
