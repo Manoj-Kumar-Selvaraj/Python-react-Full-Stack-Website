@@ -37,5 +37,5 @@ def check_balanced_symbols(file_path):
 
 
 # Provide the path to your React code file
-file_path = 'your_react_file.js'
+file_path = '/factoryoutlet/factoryoutlet/react.js'
 check_balanced_symbols(file_path)
