@@ -244,11 +244,14 @@ const Admin = ({ token }) => {
             required
           >
                 <option value="">Select a product name</option>
-                  {FilteredName.map((option) => (
-                    <option key={option.key} value={option.value}>
-                      {option.key}: {option.value}
+                {options
+                  .filter(item => item.pname) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pname}>
+                      {item.pname}
                     </option>
-                  ))}
+                    ))
+                }
           </select>
         </div>
         <div className="form-group">
