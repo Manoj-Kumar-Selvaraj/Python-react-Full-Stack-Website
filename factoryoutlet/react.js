@@ -74,10 +74,6 @@ const Admin = ({ token }) => {
 
 
   const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname'));
-  const FilteredSize = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('psize'));
-  const FilteredType = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('ptype'));
-  const FilteredSeller = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pseller'));
-  const FilteredAmount = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pamount'));
 
 
   // Function to reset Barcode form
