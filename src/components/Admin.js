@@ -47,6 +47,7 @@ const Admin = ({ token }) => {
           setOptions(data); // Set the fetched options
           // Prepare options based on fetched data
           const optionArray = [];
+          const FilteredName = [];
           options.forEach((item, index) => {
             // Loop through each key in the object
             Object.keys(item).forEach((key) => {
@@ -58,7 +59,7 @@ const Admin = ({ token }) => {
                 );
               });
             });
-          const FilteredName = []
+          
           FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname')); 
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
