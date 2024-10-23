@@ -50,7 +50,8 @@ INSTALLED_APPS = ['django.contrib.admin',
     'barcode_print',
     'emp_add',
     'type_add',
-    'type_select'
+    'type_select',
+    'type-rem'
 ]
 
 REST_FRAMEWORK = {
