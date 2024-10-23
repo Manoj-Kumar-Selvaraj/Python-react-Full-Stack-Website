@@ -60,7 +60,6 @@ const Admin = ({ token }) => {
               });
             });
           
-          FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname')); 
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
@@ -255,45 +254,94 @@ const Admin = ({ token }) => {
           </select>
         </div>
         <div className="form-group">
-          <label>Product Size:</label>
-          <input
-            type="text"
-            placeholder="Enter product size"
-            value={productSize}
-            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
+          <label>Product Name:</label>
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product name</option>
+                {options
+                  .filter(item => item.pname) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pname}>
+                      {item.pname}
+                    </option>
+                    ))
+                }
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Product Size:</label>
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            required
+          >
+                <option value="">Select a product size</option>
+                {options
+                  .filter(item => item.psize) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.size}>
+                      {item.size}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
           <label>Product Type:</label>
-          <input
-            type="text"
-            placeholder="Enter product type"
-            value={productType}
-            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product type</option>
+                {options
+                  .filter(item => item.ptype) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.ptype}>
+                      {item.ptype}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
-          <label>Seller:</label>
-          <input
-            type="text"
-            placeholder="Enter seller name"
-            value={seller}
-            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
+          <label>Product Seller:</label>
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product seller</option>
+                {options
+                  .filter(item => item.pseller) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pseller}>
+                      {item.pseller}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
-          <label>Amount (float):</label>
-          <input
-            type="number"
-            step="0.01"
-            placeholder="Enter amount"
-            value={amount}
-            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
+          <label>Product Amount:</label>
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product amount</option>
+                {options
+                  .filter(item => item.pamount) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pamount}>
+                      {item.pamount}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <button type="submit" className="btn">Generate Barcodes</button>
       </form>
