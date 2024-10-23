@@ -256,16 +256,16 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Size:</label>
           <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            value={productSize}
+            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product size</option>
                 {options
                   .filter(item => item.psize) // Assuming you want to filter by pname
                   .map((item, index) => (
-                    <option key={index} value={item.size}>
-                      {item.size}
+                    <option key={index} value={item.psize}>
+                      {item.psize}
                     </option>
                     ))
                 }
@@ -274,8 +274,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Type:</label>
           <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            value={productType}
+            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product type</option>
@@ -292,8 +292,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Seller:</label>
           <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            value={seller}
+            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product seller</option>
@@ -310,8 +310,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Amount:</label>
           <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            value={amount}
+            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product amount</option>
