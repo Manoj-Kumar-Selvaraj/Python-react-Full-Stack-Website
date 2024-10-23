@@ -58,7 +58,8 @@ const Admin = ({ token }) => {
                 );
               });
             });
-          const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname')); 
+          const FilteredName = []
+          FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname')); 
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
