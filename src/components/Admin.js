@@ -254,24 +254,6 @@ const Admin = ({ token }) => {
           </select>
         </div>
         <div className="form-group">
-          <label>Product Name:</label>
-          <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product name</option>
-                {options
-                  .filter(item => item.pname) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pname}>
-                      {item.pname}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
           <label>Product Size:</label>
           <select
             value={productName}
