@@ -1,6 +1,8 @@
 from django.db import models
+from barcode.models import TypeT
 
 class BarcodeT(models.Model):
+    btype = models.ForeignKey(TypeT, models.DO_NOTHING, db_column='btype',primary_key=True,)
     number_of_barcodes = models.IntegerField()
     start_barcode = models.BigIntegerField()  # Use BigIntegerField for large integers
     last_barcode = models.BigIntegerField()   # Use BigIntegerField for large integers
