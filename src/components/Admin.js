@@ -45,6 +45,20 @@ const Admin = ({ token }) => {
         const data = await response.json();
         if (response.ok) {
           setOptions(data); // Set the fetched options
+          // Prepare options based on fetched data
+          const optionArray = [];
+          options.forEach((item, index) => {
+            // Loop through each key in the object
+            Object.keys(item).forEach((key) => {
+              const value = item[key];
+              optionArray.push(
+                <option key={`${key}-${index}`} value={value}>
+                {key}: {value}
+                </option>
+                );
+              });
+            });
+          const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname')); 
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
@@ -59,25 +73,6 @@ const Admin = ({ token }) => {
     fetchOptions();
   }, [token]);
 
-  // Prepare options based on fetched data
-  const optionArray = [];
-  options.forEach((item, index) => {
-    // Loop through each key in the object
-    Object.keys(item).forEach((key) => {
-      const value = item[key];
-      optionArray.push(
-        <option key={`${index}-${key}`} value={value}>
-          {key}: {value}
-        </option>
-      );
-    });
-  });
-
-  const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname'));
-  const FilteredSize = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('psize'));
-  const FilteredType = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('ptype'));
-  const FilteredSeller = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pseller'));
-  const FilteredAmount = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pamount'));
 
 
   // Function to reset Barcode form
