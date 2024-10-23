@@ -4,8 +4,8 @@ from barcode.models import TypeT
 class BarcodeT(models.Model):
     b_type = models.ForeignKey(TypeT, models.DO_NOTHING, db_column='b_type',primary_key=True,)
     number_of_barcodes = models.IntegerField()
-    start_barcode = models.BigIntegerField()  # Use BigIntegerField for large integers
-    last_barcode = models.BigIntegerField()   # Use BigIntegerField for large integers
+    start_barcode = models.BigIntegerField(default=0)  # Use BigIntegerField for large integers
+    last_barcode = models.BigIntegerField(default=0)   # Use BigIntegerField for large integers
     print_status=models.BooleanField(default=False)
     dog = models.DateField(null=True, blank=True)
     print_slot = models.CharField(null=True, default='Y',max_length=1)
