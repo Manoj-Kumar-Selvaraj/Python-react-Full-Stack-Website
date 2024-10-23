@@ -71,7 +71,7 @@ const Admin = ({ token }) => {
         </option>
       );
     });
-
+  });
 
   const FilteredName = Object.entries(optionArray).filter(myKey => myKey.key.startsWith('pname'));
 
@@ -442,7 +442,7 @@ const Admin = ({ token }) => {
       </form>
     </div>
   );
-)};
+};
 
 export default Admin;
 
