@@ -11,7 +11,7 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
     # Check if a record already exists, and return a 400 error if found
-    error_response = return_400_if_object_found(TypeT, number_of_barcodes=number_of_barcodes, pname=pname, psize=psize, ptype=ptype, seller=seller, pamount=pamount)
+    error_response = return_400_if_object_found(TypeT, number_of_barcodes,pname=pname, psize=psize, ptype=ptype, seller=seller, pamount=pamount)
     if error_response and error_response.gen_slot=='Y':
         return error_response  # Return the 400 response if object is found
 
