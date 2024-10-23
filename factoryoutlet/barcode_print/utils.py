@@ -13,8 +13,7 @@ def return_400_if_object_found(model1, model2, number_of_barcodes, **filters):
     
     # If no object is found in model2, handle the error (return None or an appropriate response)
     if not obj1:
-        return JsonResponse({'error': 'No matching barcode type found'}, status=404)
-
+        print("NULL")
     # Calculate the number of barcodes
     no_of_barcode_calculation = (obj1.last_barcode - obj1.start_barcode)
     
