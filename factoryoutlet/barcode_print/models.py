@@ -2,7 +2,7 @@ from django.db import models
 from barcode.models import TypeT
 
 class BarcodeT(models.Model):
-    b_type = models.ForeignKey(TypeT, models.DO_NOTHING, db_column='b_type',primary_key=True,)
+    b_type = models.ForeignKey(TypeT, models.DO_NOTHING, db_column='b_type',primary_key=True,on_delete=models.CASCADE)
     number_of_barcodes = models.IntegerField()
     start_barcode = models.BigIntegerField(default=0)  # Use BigIntegerField for large integers
     last_barcode = models.BigIntegerField(default=0)   # Use BigIntegerField for large integers
