@@ -124,7 +124,7 @@ const Admin = ({ token }) => {
   
     // Define the URL based on the action
     let url = '';
-    let typeTData;
+    let typeTData = {};
     
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
