@@ -124,6 +124,7 @@ const Admin = ({ token }) => {
   
     // Define the URL based on the action
     let url = '';
+    let typeTData = {}
     
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
@@ -166,7 +167,7 @@ const Admin = ({ token }) => {
           resetTypeTForm(); // Reset form only if it's an Add operation
         }
         else {
-          resetTypeTDeleteForm();
+          resetTypeTDeletetionForm();
         }
       } else {
         alert('Error: ' + JSON.stringify(data));
