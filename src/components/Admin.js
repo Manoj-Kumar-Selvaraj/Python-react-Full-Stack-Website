@@ -588,7 +588,7 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Type:</label>
           <select
-            value={setPtype}
+            value={ptype}
             onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
             required
           >
