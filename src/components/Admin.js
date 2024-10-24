@@ -196,31 +196,51 @@ const Admin = ({ token }) => {
   };
 
   // Function to handle employee form submission
-  const handleEmployeeSubmit = async (e) => {
-    e.preventDefault();
-
-    const employeeData = {
-      eid: DOMPurify.sanitize(eid),
-      ename: DOMPurify.sanitize(ename),
-      last_login: lastLogin ? DOMPurify.sanitize(lastLogin) : null,  // Optional field
-      is_active: isActive,
-      is_superuser: isSuperuser,
-    };
-
+  const handleEmployeeSubmit = async (e, action) => {
+    e.preventDefault(); // Prevent default form submission
+  
+    // Prepare employee data for the request
+    let employeeData;
+  
+    if (action === 'Add') {
+      employeeData = {
+        eid: DOMPurify.sanitize(eid),
+        ename: DOMPurify.sanitize(ename),
+        last_login: lastLogin ? DOMPurify.sanitize(lastLogin) : null,  // Optional field
+        is_active: isActive,
+        is_superuser: isSuperuser,
+      };
+    } else if (action === 'Deactivate') {
+      employeeData = {
+        eid: DOMPurify.sanitize(eid), // Only use eid for deactivation
+        is_active: false, // Explicitly setting this, though it might be unnecessary for deactivation
+      };
+    }
+  
+    // Define the URL based on the action
+    let url;
+    if (action === 'Add') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/employee/access/'; // URL for adding an employee
+    } else if (action === 'Deactivate') {
+      url = `https://api.manoj-techworks.site/factoryoutlet/employee/deactivate/`; // URL for deactivating an employee
+    }
+  
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employee/access/', {
-        method: 'POST',
+      const response = await fetch(url, {
+        method: 'POST', // Use POST for both actions
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Token ${token}`,
         },
-        body: JSON.stringify(employeeData),
+        body: JSON.stringify(employeeData), // Send employeeData for both actions
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        alert('Employee creation successful');
-        resetEmployeeForm(); // Reset Employee form after successful submission
+        alert(action === 'Deactivate' ? 'Employee deactivated successfully' : 'Employee creation successful');
+        if (action === 'Add') {
+          resetEmployeeForm(); // Reset Employee form after successful submission for Add action
+        }
       } else {
         alert('Error: ' + JSON.stringify(data));
       }
@@ -229,6 +249,7 @@ const Admin = ({ token }) => {
       alert('An error occurred');
     }
   };
+  
 
   return (
     <div>
@@ -341,7 +362,7 @@ const Admin = ({ token }) => {
       </form>
 
       {/* Employee Creation Form */}
-      <form onSubmit={handleEmployeeSubmit} className="employee-form">
+      <form onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
         <h2>Create Employee</h2>
         <div className="form-group">
           <label>Employee ID:</label>
@@ -393,9 +414,25 @@ const Admin = ({ token }) => {
         </div>
         <button type="submit" className="btn">Create Employee</button>
       </form>
+      {/* Employee Deletion Form */}
+      <form onSubmit={(event) => handleEmployeeSubmit(event,"Deactivate")} className="employee-Deactivate">
+        <h2>Create Employee</h2>
+        <div className="form-group">
+          <label>Employee ID:</label>
+          <input
+            type="text"
+            placeholder="Enter Employee ID"
+            value={eid}
+            onChange={(e) => setEid(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn">Create Employee</button>
+      </form>
 
       {/* TypeT Form */}
-      <form onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-form">
+      <form onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-delete">
         <h2>Create TypeT</h2>
         <div className="form-group">
           <label>Product Size:</label>
