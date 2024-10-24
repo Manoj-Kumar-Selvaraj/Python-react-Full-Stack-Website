@@ -119,29 +119,16 @@ const Admin = ({ token }) => {
     setPamount('');
   };
   // Function to handle TypeT form submission
-<<<<<<< HEAD
 const handleTypeTSubmit = async (e, action) => {
   e.preventDefault(); // Prevent the default form submission behavior
 
   // Define the URL based on the action
   let url = '';
   let typeTData = {};
-
-  if (action === 'Add') {
-    url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
-    typeTData = {
-=======
-  const handleTypeTSubmit = async (e, action) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-  
-    // Define the URL based on the action
-    let url = '';
-    let typeTData = {};
     
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
       typeTData = {
->>>>>>> parent of 053804a (Update Admin.js)
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
@@ -161,7 +148,6 @@ const handleTypeTSubmit = async (e, action) => {
       pseller: DOMPurify.sanitize(pseller),
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-<<<<<<< HEAD
   }
 
   try {
@@ -206,7 +192,6 @@ const handleTypeTSubmit = async (e, action) => {
   }
 };
 
-=======
     }
   
     try {
@@ -236,8 +221,6 @@ const handleTypeTSubmit = async (e, action) => {
       alert('An error occurred');
     }
   };
-  
->>>>>>> parent of 053804a (Update Admin.js)
 
   // Function to handle barcode form submission
   const handleBarcodeSubmit = async (e) => {
