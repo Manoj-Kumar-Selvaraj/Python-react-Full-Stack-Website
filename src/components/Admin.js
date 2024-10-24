@@ -119,6 +119,7 @@ const Admin = ({ token }) => {
     setPamount('');
   };
   // Function to handle TypeT form submission
+<<<<<<< HEAD
 const handleTypeTSubmit = async (e, action) => {
   e.preventDefault(); // Prevent the default form submission behavior
 
@@ -129,6 +130,18 @@ const handleTypeTSubmit = async (e, action) => {
   if (action === 'Add') {
     url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
     typeTData = {
+=======
+  const handleTypeTSubmit = async (e, action) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  
+    // Define the URL based on the action
+    let url = '';
+    let typeTData = {};
+    
+    if (action === 'Add') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
+      typeTData = {
+>>>>>>> parent of 053804a (Update Admin.js)
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
@@ -139,15 +152,16 @@ const handleTypeTSubmit = async (e, action) => {
       lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null, // Optional field
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-  } else if (action === 'Delete') {
-    url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
-    typeTData = {
+    } else if (action === 'Delete') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
+      typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
       pseller: DOMPurify.sanitize(pseller),
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
+<<<<<<< HEAD
   }
 
   try {
@@ -192,6 +206,38 @@ const handleTypeTSubmit = async (e, action) => {
   }
 };
 
+=======
+    }
+  
+    try {
+      const response = await fetch(url, {
+        method: 'POST', // Use POST for both operations
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`, // Include your token if required
+        },
+        body: JSON.stringify(typeTData) // Send the body data
+      });
+      console.log(typeTData);
+      const data = await response.json();
+      if (response.ok) {
+        alert(`${action} operation successful`);
+        if (action === 'Add') {
+          resetTypeTForm(); // Reset form only if it's an Add operation
+        }
+        else {
+          resetTypeTDeletionForm();
+        }
+      } else {
+        alert('Error: ' + JSON.stringify(data));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred');
+    }
+  };
+  
+>>>>>>> parent of 053804a (Update Admin.js)
 
   // Function to handle barcode form submission
   const handleBarcodeSubmit = async (e) => {
