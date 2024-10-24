@@ -148,6 +148,7 @@ const Admin = ({ token }) => {
       pseller: DOMPurify.sanitize(pseller),
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
+      console.log(psize)
       console.log(typeTData)
     }
   
