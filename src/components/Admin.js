@@ -125,21 +125,6 @@ const handleTypeTSubmit = async (e, action) => {
   // Define the URL based on the action
   let url = '';
   let typeTData = {};
-<<<<<<< HEAD
-=======
-  
-  if (action === 'Add') {
-    url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
-    typeTData = {
-=======
-  const handleTypeTSubmit = async (e, action) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-  
-    // Define the URL based on the action
-    let url = '';
-    let typeTData = {};
->>>>>>> e63375a (Revert "Update Admin.js")
-    
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
       typeTData = {
