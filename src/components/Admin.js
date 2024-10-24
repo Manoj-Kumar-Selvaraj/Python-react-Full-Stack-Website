@@ -125,6 +125,20 @@ const handleTypeTSubmit = async (e, action) => {
   // Define the URL based on the action
   let url = '';
   let typeTData = {};
+<<<<<<< HEAD
+=======
+  
+  if (action === 'Add') {
+    url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
+    typeTData = {
+=======
+  const handleTypeTSubmit = async (e, action) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  
+    // Define the URL based on the action
+    let url = '';
+    let typeTData = {};
+>>>>>>> e63375a (Revert "Update Admin.js")
     
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
@@ -159,27 +173,21 @@ const handleTypeTSubmit = async (e, action) => {
       },
       body: JSON.stringify(typeTData) // Send the body data
     });
-
+    
     console.log(typeTData); // Log the data being sent
 
     if (!response.ok) {
-      let errorData;
-      try {
-        errorData = await response.json(); // Try to parse the error response
-      } catch (err) {
-        console.error('Failed to parse error response as JSON:', err);
-        errorData = { message: 'Failed to parse error response.' }; // Default message
-      }
-
+      // Attempt to read error response
+      const errorData = await response.json();
       console.error('Error code:', response.status); // Log the status code
       console.error('Error message:', errorData); // Log the error response
       alert(`Error: ${response.status} - ${errorData.message || 'An error occurred'}`);
       return; // Exit if an error occurs
     }
-
+    
     const data = await response.json(); // Parse the response JSON
     alert(`${action} operation successful`);
-
+    
     // Reset forms based on the action
     if (action === 'Add') {
       resetTypeTForm(); // Reset form only if it's an Add operation
@@ -187,8 +195,8 @@ const handleTypeTSubmit = async (e, action) => {
       resetTypeTDeletionForm();
     }
   } catch (error) {
-    console.error('Error occurred:', error); // Log the full error object
-    alert('An error occurred: ' + (error.message || 'Unknown error')); // Display the error message to the user
+    console.error('Error:', error); // Log the error
+    alert('An error occurred: ' + error.message); // Display the error message to the user
   }
 };
 
