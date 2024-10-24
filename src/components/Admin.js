@@ -119,16 +119,16 @@ const Admin = ({ token }) => {
     setPamount('');
   };
   // Function to handle TypeT form submission
-  const handleTypeTSubmit = async (e, action) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+const handleTypeTSubmit = async (e, action) => {
+  e.preventDefault(); // Prevent the default form submission behavior
+
+  // Define the URL based on the action
+  let url = '';
+  let typeTData = {};
   
-    // Define the URL based on the action
-    let url = '';
-    let typeTData = {};
-    
-    if (action === 'Add') {
-      url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
-      typeTData = {
+  if (action === 'Add') {
+    url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
+    typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
@@ -139,45 +139,53 @@ const Admin = ({ token }) => {
       lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null, // Optional field
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-    } else if (action === 'Delete') {
-      url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
-      typeTData = {
+  } else if (action === 'Delete') {
+    url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
+    typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
       pseller: DOMPurify.sanitize(pseller),
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST', // Use POST for both operations
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`, // Include your token if required
+      },
+      body: JSON.stringify(typeTData) // Send the body data
+    });
+    
+    console.log(typeTData); // Log the data being sent
+
+    if (!response.ok) {
+      // Attempt to read error response
+      const errorData = await response.json();
+      console.error('Error code:', response.status); // Log the status code
+      console.error('Error message:', errorData); // Log the error response
+      alert(`Error: ${response.status} - ${errorData.message || 'An error occurred'}`);
+      return; // Exit if an error occurs
     }
-  
-    try {
-      const response = await fetch(url, {
-        method: 'POST', // Use POST for both operations
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${token}`, // Include your token if required
-        },
-        body: JSON.stringify(typeTData) // Send the body data
-      });
-      console.log(typeTData);
-      const data = await response.json();
-      if (response.ok) {
-        alert(`${action} operation successful`);
-        if (action === 'Add') {
-          resetTypeTForm(); // Reset form only if it's an Add operation
-        }
-        else {
-          resetTypeTDeletionForm();
-        }
-      } else {
-        alert('Error: ' + JSON.stringify(data));
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred');
+    
+    const data = await response.json(); // Parse the response JSON
+    alert(`${action} operation successful`);
+    
+    // Reset forms based on the action
+    if (action === 'Add') {
+      resetTypeTForm(); // Reset form only if it's an Add operation
+    } else {
+      resetTypeTDeletionForm();
     }
-  };
-  
+  } catch (error) {
+    console.error('Error:', error); // Log the error
+    alert('An error occurred: ' + error.message); // Display the error message to the user
+  }
+};
+
 
   // Function to handle barcode form submission
   const handleBarcodeSubmit = async (e) => {
