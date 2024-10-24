@@ -451,7 +451,7 @@ const Admin = ({ token }) => {
           />
         </div>
 
-        <button type="submit" className="btn">Create Employee</button>
+        <button type="submit" className="btn">Deactivate Employee</button>
       </form>
 
       {/* TypeT Form */}
@@ -639,7 +639,7 @@ const Admin = ({ token }) => {
                 }
           </select>
         </div>
-        <button type="submit" className="btn">DELETE TYPE</button>
+        <button type="submit" className="btn">Delete Type</button>
       </form>
     </div>
   );
