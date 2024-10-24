@@ -167,7 +167,7 @@ const Admin = ({ token }) => {
           resetTypeTForm(); // Reset form only if it's an Add operation
         }
         else {
-          resetTypeTDeletetionForm();
+          resetTypeTDeletionForm();
         }
       } else {
         alert('Error: ' + JSON.stringify(data));
