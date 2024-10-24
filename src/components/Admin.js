@@ -185,37 +185,7 @@ const handleTypeTSubmit = async (e, action) => {
   }
 };
 
-    }
-  
-    try {
-      const response = await fetch(url, {
-        method: 'POST', // Use POST for both operations
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${token}`, // Include your token if required
-        },
-        body: JSON.stringify(typeTData) // Send the body data
-      });
-      console.log(typeTData);
-      const data = await response.json();
-      if (response.ok) {
-        alert(`${action} operation successful`);
-        if (action === 'Add') {
-          resetTypeTForm(); // Reset form only if it's an Add operation
-        }
-        else {
-          resetTypeTDeletionForm();
-        }
-      } else {
-        alert('Error: ' + JSON.stringify(data));
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred');
-    }
-  };
-
-  // Function to handle barcode form submission
+// Function to handle barcode form submission
   const handleBarcodeSubmit = async (e) => {
     e.preventDefault();
 
