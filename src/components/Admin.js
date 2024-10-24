@@ -148,8 +148,6 @@ const Admin = ({ token }) => {
       pseller: DOMPurify.sanitize(pseller),
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-      console.log(psize)
-      console.log(typeTData)
     }
   
     try {
@@ -554,8 +552,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Name:</label>
           <select
-            value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            value={pname}
+            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product name</option>
@@ -572,8 +570,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Size:</label>
           <select
-            value={productSize}
-            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
+            value={psize}
+            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product size</option>
@@ -590,8 +588,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Type:</label>
           <select
-            value={productType}
-            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
+            value={setPtype}
+            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product type</option>
@@ -608,8 +606,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Seller:</label>
           <select
-            value={seller}
-            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
+            value={pseller}
+            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product seller</option>
@@ -626,8 +624,8 @@ const Admin = ({ token }) => {
         <div className="form-group">
           <label>Product Amount:</label>
           <select
-            value={amount}
-            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
+            value={pamount}
+            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product amount</option>
