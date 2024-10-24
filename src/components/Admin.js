@@ -128,7 +128,7 @@ const Admin = ({ token }) => {
     
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
-      const typeTData = {
+      typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
@@ -141,7 +141,7 @@ const Admin = ({ token }) => {
     };
     } else if (action === 'Delete') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
-      const typeTData = {
+      typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
