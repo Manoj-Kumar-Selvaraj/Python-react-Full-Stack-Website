@@ -86,7 +86,7 @@ const Admin = ({ token }) => {
     setAmount('');
   };
 
-  // Function to reset Employee form
+  // Function to reset Employee forms
   const resetEmployeeForm = () => {
     setEid('');
     setEname('');
