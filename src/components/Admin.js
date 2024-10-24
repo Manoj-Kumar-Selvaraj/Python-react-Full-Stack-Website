@@ -159,7 +159,7 @@ const Admin = ({ token }) => {
         },
         body: JSON.stringify(typeTData) // Send the body data
       });
-  
+      console.log(typeTData);
       const data = await response.json();
       if (response.ok) {
         alert(`${action} operation successful`);
