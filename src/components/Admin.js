@@ -109,35 +109,46 @@ const Admin = ({ token }) => {
   };
 
   // Function to handle TypeT form submission
-  const handleTypeTSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleTypeTSubmit = async (e, action) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  
     const typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
       pseller: DOMPurify.sanitize(pseller),
       b_type: DOMPurify.sanitize(bType),
-      last_processed_date: lastProcessedDate ? DOMPurify.sanitize(lastProcessedDate) : null,  // Optional field
-      last_barcode: lastBarcode ? parseInt(DOMPurify.sanitize(lastBarcode)) : 0,  // Optional field
-      lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null,  // Optional field
+      last_processed_date: lastProcessedDate ? DOMPurify.sanitize(lastProcessedDate) : null, // Optional field
+      last_barcode: lastBarcode ? parseInt(DOMPurify.sanitize(lastBarcode)) : 0, // Optional field
+      lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null, // Optional field
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-
+  
+    // Define the URL based on the action
+    let url = '';
+    
+    if (action === 'Add') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
+    } else if (action === 'Delete') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
+    }
+  
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type/create-type/', {
-        method: 'POST',
+      const response = await fetch(url, {
+        method: 'POST', // Use POST for both operations
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Token ${token}`,
+          'Authorization': `Token ${token}`, // Include your token if required
         },
-        body: JSON.stringify(typeTData),
+        body: JSON.stringify(typeTData) // Send the body data
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        alert('TypeT entry successful');
-        resetTypeTForm(); // Reset TypeT form after successful submission
+        alert(`${action} operation successful`);
+        if (action === 'Add') {
+          resetTypeTForm(); // Reset form only if it's an Add operation
+        }
       } else {
         alert('Error: ' + JSON.stringify(data));
       }
@@ -146,6 +157,7 @@ const Admin = ({ token }) => {
       alert('An error occurred');
     }
   };
+  
 
   // Function to handle barcode form submission
   const handleBarcodeSubmit = async (e) => {
@@ -383,7 +395,99 @@ const Admin = ({ token }) => {
       </form>
 
       {/* TypeT Form */}
-      <form onSubmit={handleTypeTSubmit} className="typeT-form">
+      <form onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-form">
+        <h2>Create TypeT</h2>
+        <div className="form-group">
+          <label>Product Size:</label>
+          <input
+            type="text"
+            placeholder="Enter product size"
+            value={psize}
+            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Product Name:</label>
+          <input
+            type="text"
+            placeholder="Enter product name"
+            value={pname}
+            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Product Type:</label>
+          <input
+            type="text"
+            placeholder="Enter product type"
+            value={ptype}
+            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Seller:</label>
+          <input
+            type="text"
+            placeholder="Enter seller name"
+            value={pseller}
+            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Barcode Type:</label>
+          <input
+            type="text"
+            placeholder="Enter barcode type"
+            value={bType}
+            onChange={(e) => setBType(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Processed Date:</label>
+          <input
+            type="datetime-local"
+            value={lastProcessedDate}
+            onChange={(e) => setLastProcessedDate(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Barcode:</label>
+          <input
+            type="number"
+            placeholder="Enter last barcode"
+            value={lastBarcode}
+            onChange={(e) => setLastBarcode(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Last Product ID:</label>
+          <input
+            type="number"
+            placeholder="Enter last product ID"
+            value={latPid}
+            onChange={(e) => setLatPid(DOMPurify.sanitize(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Product Amount:</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Enter product amount"
+            value={pamount}
+            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
+            required
+          />
+        </div>
+        <button type="submit" className="btn">Create TypeT</button>
+      </form>
+      {/* TypeT Deletion Form */}
+      <form onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
         <h2>Create TypeT</h2>
         <div className="form-group">
           <label>Product Size:</label>
