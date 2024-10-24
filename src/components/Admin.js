@@ -94,6 +94,9 @@ const Admin = ({ token }) => {
     setIsActive(true);
     setIsSuperuser(false);
   };
+  const resetEmployeeDeleteForm = () => {
+    setEid('');
+  };
 
   // Function to reset TypeT form
   const resetTypeTForm = () => {
@@ -108,11 +111,23 @@ const Admin = ({ token }) => {
     setPamount('');
   };
 
+  const resetTypeTDeletionForm = () => {
+    setPsize('');
+    setPname('');
+    setPtype('');
+    setPseller('');
+    setPamount('');
+  };
   // Function to handle TypeT form submission
   const handleTypeTSubmit = async (e, action) => {
     e.preventDefault(); // Prevent the default form submission behavior
   
-    const typeTData = {
+    // Define the URL based on the action
+    let url = '';
+    
+    if (action === 'Add') {
+      url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
+      const typeTData = {
       psize: DOMPurify.sanitize(psize),
       pname: DOMPurify.sanitize(pname),
       ptype: DOMPurify.sanitize(ptype),
@@ -123,14 +138,15 @@ const Admin = ({ token }) => {
       lat_pid: latPid ? parseInt(DOMPurify.sanitize(latPid)) : null, // Optional field
       pamount: parseFloat(DOMPurify.sanitize(pamount)) 
     };
-  
-    // Define the URL based on the action
-    let url = '';
-    
-    if (action === 'Add') {
-      url = 'https://api.manoj-techworks.site/factoryoutlet/type/create-type/';
     } else if (action === 'Delete') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
+      const typeTData = {
+      psize: DOMPurify.sanitize(psize),
+      pname: DOMPurify.sanitize(pname),
+      ptype: DOMPurify.sanitize(ptype),
+      pseller: DOMPurify.sanitize(pseller),
+      pamount: parseFloat(DOMPurify.sanitize(pamount)) 
+    };
     }
   
     try {
@@ -148,6 +164,9 @@ const Admin = ({ token }) => {
         alert(`${action} operation successful`);
         if (action === 'Add') {
           resetTypeTForm(); // Reset form only if it's an Add operation
+        }
+        else {
+          resetTypeTDeleteForm();
         }
       } else {
         alert('Error: ' + JSON.stringify(data));
@@ -241,6 +260,9 @@ const Admin = ({ token }) => {
         if (action === 'Add') {
           resetEmployeeForm(); // Reset Employee form after successful submission for Add action
         }
+        else {
+          resetEmployeeDeleteForm();
+        }
       } else {
         alert('Error: ' + JSON.stringify(data));
       }
@@ -257,7 +279,7 @@ const Admin = ({ token }) => {
 
       {/* Barcode Generation Form */}
       <form onSubmit={handleBarcodeSubmit} className="barcode-form">
-        <h2>Generate Barcodes</h2>
+        <h2 className="Heading">Generate Barcodes</h2>
         <div className="form-group">
           <label>Number of Barcodes (integer):</label>
           <input
@@ -363,7 +385,7 @@ const Admin = ({ token }) => {
 
       {/* Employee Creation Form */}
       <form onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
-        <h2>Create Employee</h2>
+        <h2 className="Heading">Create Employee</h2>
         <div className="form-group">
           <label>Employee ID:</label>
           <input
@@ -416,7 +438,7 @@ const Admin = ({ token }) => {
       </form>
       {/* Employee Deletion Form */}
       <form onSubmit={(event) => handleEmployeeSubmit(event,"Deactivate")} className="employee-Deactivate">
-        <h2>Create Employee</h2>
+        <h2 className="Heading">Deactivate Employee</h2>
         <div className="form-group">
           <label>Employee ID:</label>
           <input
@@ -433,7 +455,7 @@ const Admin = ({ token }) => {
 
       {/* TypeT Form */}
       <form onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-delete">
-        <h2>Create TypeT</h2>
+        <h2 className="Heading">Add Product Type</h2>
         <div className="form-group">
           <label>Product Size:</label>
           <input
@@ -525,95 +547,98 @@ const Admin = ({ token }) => {
       </form>
       {/* TypeT Deletion Form */}
       <form onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
-        <h2>Create TypeT</h2>
-        <div className="form-group">
-          <label>Product Size:</label>
-          <input
-            type="text"
-            placeholder="Enter product size"
-            value={psize}
-            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
+        <h2 className="Heading">Delete Product Type</h2>
         <div className="form-group">
           <label>Product Name:</label>
-          <input
-            type="text"
-            placeholder="Enter product name"
-            value={pname}
-            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
+          <select
+            value={productName}
+            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product name</option>
+                {options
+                  .filter(item => item.pname) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pname}>
+                      {item.pname}
+                    </option>
+                    ))
+                }
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Product Size:</label>
+          <select
+            value={productSize}
+            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
+            required
+          >
+                <option value="">Select a product size</option>
+                {options
+                  .filter(item => item.psize) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.psize}>
+                      {item.psize}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
           <label>Product Type:</label>
-          <input
-            type="text"
-            placeholder="Enter product type"
-            value={ptype}
-            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
+          <select
+            value={productType}
+            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product type</option>
+                {options
+                  .filter(item => item.ptype) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.ptype}>
+                      {item.ptype}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
-          <label>Seller:</label>
-          <input
-            type="text"
-            placeholder="Enter seller name"
-            value={pseller}
-            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
+          <label>Product Seller:</label>
+          <select
+            value={seller}
+            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
             required
-          />
-        </div>
-        <div className="form-group">
-          <label>Barcode Type:</label>
-          <input
-            type="text"
-            placeholder="Enter barcode type"
-            value={bType}
-            onChange={(e) => setBType(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Processed Date:</label>
-          <input
-            type="datetime-local"
-            value={lastProcessedDate}
-            onChange={(e) => setLastProcessedDate(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Barcode:</label>
-          <input
-            type="number"
-            placeholder="Enter last barcode"
-            value={lastBarcode}
-            onChange={(e) => setLastBarcode(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Product ID:</label>
-          <input
-            type="number"
-            placeholder="Enter last product ID"
-            value={latPid}
-            onChange={(e) => setLatPid(DOMPurify.sanitize(e.target.value))}
-          />
+          >
+                <option value="">Select a product seller</option>
+                {options
+                  .filter(item => item.pseller) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pseller}>
+                      {item.pseller}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
         <div className="form-group">
           <label>Product Amount:</label>
-          <input
-            type="number"
-            step="0.01"
-            placeholder="Enter product amount"
-            value={pamount}
-            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
+          <select
+            value={amount}
+            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
             required
-          />
+          >
+                <option value="">Select a product amount</option>
+                {options
+                  .filter(item => item.pamount) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pamount}>
+                      {item.pamount}
+                    </option>
+                    ))
+                }
+          </select>
         </div>
-        <button type="submit" className="btn">Create TypeT</button>
+        <button type="submit" className="btn">DELETE TYPE</button>
       </form>
     </div>
   );
