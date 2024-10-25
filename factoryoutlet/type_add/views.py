@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from barcode.models import TypeT
+from barcode_print.models import BarcodeT
 from .serializers import TypeTSerializer
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
