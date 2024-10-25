@@ -18,6 +18,13 @@ def create_type(request):
         # Check if the data is valid
         if serializer.is_valid():
             serializer.save()
+            Barcodes=BarcodeT.objects.all()
+            if Barcodes is None:
+                for i in range(5):
+                    BarT=BarcodT(b_type=serializer.b_type)
+                    BarT.save()
+            else:
+                pass
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
