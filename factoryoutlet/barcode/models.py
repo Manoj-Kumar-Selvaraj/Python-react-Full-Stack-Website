@@ -71,6 +71,7 @@ class TypeT(models.Model):
     class Meta:
         managed = False
         db_table = 'TYPE_T'
+        unique_together = (('psize', 'pname', 'ptype', 'pseller',),)  # Composite unique constraint
 
 
 class AuthGroup(models.Model):
