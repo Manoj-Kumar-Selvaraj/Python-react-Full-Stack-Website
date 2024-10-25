@@ -12,9 +12,12 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
     permission_classes = [IsAuthenticated]
     # Check if a record already exists, and return a 400 error if found
     error_response = return_400_if_object_found(TypeT, BarcodeT, number_of_barcodes,pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
-    if error_response and error_response.gen_slot=='Y':
+    GenT_filter=BarcodeT.objects.filter(gen_slot='Y')
+    Print_filter=BarcodeT.objects.filter(print_status=False)
+    Approval_filter=BarcodeT.objects.filter(Approval='R')
+    if error_response and (GenT_filter or Print_filter or Approval_filter):
         return error_response  # Return the 400 response if object is found
-
+    
     # Insert a new barcode record
     BarcodeT.objects.create(
         b_type=TypeT.objects.filter(pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount).first().b_type,
@@ -27,6 +30,7 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
         gen_slot='Y',                      # Slot for generation
         Approval='R'
     )
+
 
 
     # Retrieve all barcode records, ordered by 'start_barcode' (oldest first)
