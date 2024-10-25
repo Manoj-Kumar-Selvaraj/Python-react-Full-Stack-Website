@@ -260,7 +260,7 @@ const handleTypeTSubmit = async (e, action) => {
     if (action === 'Add') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/employee/access/'; // URL for adding an employee
     } else if (action === 'Deactivate') {
-      url = `https://api.manoj-techworks.site/factoryoutlet/emp-dea/activate/`; // URL for deactivating an employee
+      url = `https://api.manoj-techworks.site/factoryoutlet/emp-dea/access/`; // URL for deactivating an employee
     }
   
     try {
