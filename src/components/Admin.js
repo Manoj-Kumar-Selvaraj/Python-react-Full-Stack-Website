@@ -31,6 +31,18 @@ const Admin = ({ token }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // State for Type Delete
+
+  const [psized, setPsized] = useState('');
+  const [pnamed, setPnamed] = useState('');
+  const [ptyped, setPtyped] = useState('');
+  const [psellerd, setPsellerd] = useState('');
+  const [pamountd, setPamountd] = useState('');
+
+  // State for Employee Deactivate
+  const [eidd, setEidd] = useState('');
+  
+
   useEffect(() => {
     const fetchOptions = async () => {
       try {
@@ -95,7 +107,7 @@ const Admin = ({ token }) => {
     setIsSuperuser(false);
   };
   const resetEmployeeDeleteForm = () => {
-    setEid('');
+    setEidd('');
   };
 
   // Function to reset TypeT form
@@ -112,11 +124,11 @@ const Admin = ({ token }) => {
   };
 
   const resetTypeTDeletionForm = () => {
-    setPsize('');
-    setPname('');
-    setPtype('');
-    setPseller('');
-    setPamount('');
+    setPsized('');
+    setPnamed('');
+    setPtyped('');
+    setPsellerd('');
+    setPamountd('');
   };
   // Function to handle TypeT form submission
 const handleTypeTSubmit = async (e, action) => {
@@ -141,11 +153,11 @@ const handleTypeTSubmit = async (e, action) => {
     } else if (action === 'Delete') {
       url = 'https://api.manoj-techworks.site/factoryoutlet/type-delete/delete-type/';
       typeTData = {
-      psize: DOMPurify.sanitize(psize),
-      pname: DOMPurify.sanitize(pname),
-      ptype: DOMPurify.sanitize(ptype),
-      pseller: DOMPurify.sanitize(pseller),
-      pamount: parseFloat(DOMPurify.sanitize(pamount)) 
+      psize: DOMPurify.sanitize(psized),
+      pname: DOMPurify.sanitize(pnamed),
+      ptype: DOMPurify.sanitize(ptyped),
+      pseller: DOMPurify.sanitize(psellerd),
+      pamount: parseFloat(DOMPurify.sanitize(pamountd)) 
     };
   }
 
@@ -238,7 +250,7 @@ const handleTypeTSubmit = async (e, action) => {
       };
     } else if (action === 'Deactivate') {
       employeeData = {
-        eid: DOMPurify.sanitize(eid), // Only use eid for deactivation
+        eid: DOMPurify.sanitize(eidd), // Only use eid for deactivation
         is_active: false, // Explicitly setting this, though it might be unnecessary for deactivation
       };
     }
@@ -451,8 +463,8 @@ const handleTypeTSubmit = async (e, action) => {
           <input
             type="text"
             placeholder="Enter Employee ID"
-            value={eid}
-            onChange={(e) => setEid(DOMPurify.sanitize(e.target.value))}
+            value={eidd}
+            onChange={(e) => setEidd(DOMPurify.sanitize(e.target.value))}
             required
           />
         </div>
@@ -558,8 +570,8 @@ const handleTypeTSubmit = async (e, action) => {
         <div className="form-group">
           <label>Product Name:</label>
           <select
-            value={pname}
-            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
+            value={pnamed}
+            onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product name</option>
@@ -576,8 +588,8 @@ const handleTypeTSubmit = async (e, action) => {
         <div className="form-group">
           <label>Product Size:</label>
           <select
-            value={psize}
-            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
+            value={psized}
+            onChange={(e) => setPsized(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product size</option>
@@ -594,8 +606,8 @@ const handleTypeTSubmit = async (e, action) => {
         <div className="form-group">
           <label>Product Type:</label>
           <select
-            value={ptype}
-            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
+            value={ptyped}
+            onChange={(e) => setPtyped(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product type</option>
@@ -612,8 +624,8 @@ const handleTypeTSubmit = async (e, action) => {
         <div className="form-group">
           <label>Product Seller:</label>
           <select
-            value={pseller}
-            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
+            value={psellerd}
+            onChange={(e) => setPsellerd(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product seller</option>
@@ -630,8 +642,8 @@ const handleTypeTSubmit = async (e, action) => {
         <div className="form-group">
           <label>Product Amount:</label>
           <select
-            value={pamount}
-            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
+            value={pamountd}
+            onChange={(e) => setPamountd(DOMPurify.sanitize(e.target.value))}
             required
           >
                 <option value="">Select a product amount</option>
