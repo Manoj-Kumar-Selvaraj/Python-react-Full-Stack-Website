@@ -51,7 +51,8 @@ INSTALLED_APPS = ['django.contrib.admin',
     'emp_add',
     'type_add',
     'type_select',
-    'type_rem'
+    'type_rem',
+    'emp_rem'
 ]
 
 REST_FRAMEWORK = {

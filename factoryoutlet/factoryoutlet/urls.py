@@ -25,5 +25,6 @@ urlpatterns = [
     path('factoryoutlet/type/',include('type_add.urls')),
     path('factoryoutlet/type-select/',include('type_select.urls')),
     path('factoryoutlet/type-delete/',include('type_rem.urls')),
+    path('factoryoutlet/emp-dea/',include('emp_rem.urls')),
 ]
 
