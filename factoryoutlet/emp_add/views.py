@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from barcode.models import EmployeeT
 from django.utils import timezone
+from barcode.serializers import EmployeeTSerializer
 from barcode.authentication import CustomTokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -50,4 +51,5 @@ class EmployeeTSelectView(APIView):
 
     def get(self, request, *args, **kwargs):
         Employees=EmployeeT.objects.all()
-        return Resonse({"data":Employees},status=status.HTTP_200_OK)
+        serializer = EmployeeTSerializer(barcode_types, many=True)
+        return Response({"message": "GET SUCCESSFUL", "data": serializer.data}, status=status.HTTP_200_OK)
