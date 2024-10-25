@@ -8,8 +8,8 @@ class BarcodeT(models.Model):
     last_barcode = models.BigIntegerField(default=0)   # Use BigIntegerField for large integers
     print_status=models.BooleanField(default=True)
     dog = models.DateField(default=01/01/0001)
-    print_slot = models.CharField(null=True, default='Y',max_length=1)
-    gen_slot = models.CharField(null=True, default='Y',max_length=1)
+    print_slot = models.CharField(null=True, default='N',max_length=1)
+    gen_slot = models.CharField(null=True, default='N',max_length=1)
     Approval = models.CharField(null=True, default='A',max_length=1)
 
     class Meta:
