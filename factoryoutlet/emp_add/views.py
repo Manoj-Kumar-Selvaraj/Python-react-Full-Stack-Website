@@ -43,3 +43,11 @@ class EmployeeTCreateView(APIView):
 
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class EmployeeTSelectView(APIView):
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        Employees=EmployeeT.objects.all()
+        return Resonse({"data":Employees},status=status.HTTP_200_OK)
