@@ -605,8 +605,8 @@ const handleTypeTSubmit = async (e, action) => {
           onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
           required
         >
-                <option value="">Select a product name</option>
-                {optionsArray
+          <option value="">Select a product name</option>
+          {optionsArray
                   .filter(item => item.pname) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.pname}>
