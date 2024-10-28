@@ -384,7 +384,7 @@ const handleTypeTSubmit = async (e, action) => {
             required
           >
                 <option value="">Select a product type</option>
-                {options
+                {option
                   .filter(item => item.ptype) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.ptype}>
@@ -605,10 +605,13 @@ const handleTypeTSubmit = async (e, action) => {
           onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
           required
         >
-          <option value="">Select a product name</option>
-          {filteredNames.map((name, index) => (
-            <option key={index} value={name}>{name}</option>
-          ))}
+                <option value="">Select a product name</option>
+                {optionsArray
+                  .filter(item => item.pname) // Assuming you want to filter by pname
+                  .map((item, index) => (
+                    <option key={index} value={item.pname}>
+                      {item.pname}
+                    </option>
         </select>
       </div>
 
