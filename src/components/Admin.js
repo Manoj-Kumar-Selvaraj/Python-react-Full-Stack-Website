@@ -61,7 +61,7 @@ const Admin = ({ token }) => {
   const [notificationd, setNotificationd] = useState('');
   const [firstSelectiond, setFirstSelectiond] = useState('');
   const [ProductNameb,setProductNameb] = useState('')
-  const [Pnamed, setPnamed] = useState('')
+  const [Pnamed, setpnamed] = useState('')
   
   useEffect(() => {
     const fetchOptions = async () => {
@@ -202,7 +202,7 @@ const Admin = ({ token }) => {
 
   const handleFlowd = (e) => {
     setpnamed(DOMPurify.sanitize(e.target.value));
-    setPnamed(pnamed)
+    setPnamed(Pnamed)
     if (!setPnamed) {
       setNotificationd('Please select the Product Name.');
       return;
