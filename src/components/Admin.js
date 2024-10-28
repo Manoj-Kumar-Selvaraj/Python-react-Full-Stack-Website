@@ -115,9 +115,6 @@ const Admin = ({ token }) => {
 
 
 useEffect(() => {
-if (loading) {
-  
-
     if (productName) {
       // Filter and set unique values for each attribute based on productName
       const sizeOptions = [...new Set(optionsb.filter(option => option.pname === productName).map(option => option.psize))];
@@ -135,7 +132,6 @@ if (loading) {
       setFilteredSellersb([]);
       setFilteredAmountsb([]);
       }
-    }
   }, [productName, optionsb]);
 
   // Function to filter all dropdowns based on selected values
