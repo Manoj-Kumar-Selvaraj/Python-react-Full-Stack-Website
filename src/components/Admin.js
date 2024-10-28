@@ -88,36 +88,29 @@ const Admin = ({ token }) => {
     };
 
     fetchOptions();
-  }, [token]);
+  }, []);
 
   // Function to filter all dropdowns based on selected values
-  const filterOptions = () => {
-    let nameOptions = options;
-    let sizeOptions = options;
-    let typeOptions = options;
-    let sellerOptions = options;
-    let amountOptions = options;
-
-    if (pnamed) nameOptions = nameOptions.filter(option => option.pname === pnamed);
-    if (psized) sizeOptions = sizeOptions.filter(option => option.psize === psized);
-    if (ptyped) typeOptions = typeOptions.filter(option => option.ptype === ptyped);
-    if (psellerd) sellerOptions = sellerOptions.filter(option => option.pseller === psellerd);
-    if (pamountd) amountOptions = amountOptions.filter(option => option.pamount === pamountd);
-
-    // Update dropdowns with unique filtered values
-    setFilteredNames([...new Set(nameOptions.map(option => option.pname))]);
-    setFilteredSizes([...new Set(sizeOptions.map(option => option.psize))]);
-    setFilteredTypes([...new Set(typeOptions.map(option => option.ptype))]);
-    setFilteredSellers([...new Set(sellerOptions.map(option => option.pseller))]);
-    setFilteredAmounts([...new Set(amountOptions.map(option => option.pamount))]);
-  };
-
-  // Run the filterOptions function whenever any dropdown value changes
   useEffect(() => {
-    filterOptions();
-  }, [pnamed, psized, ptyped, psellerd, pamountd, options]);
+    if (pnamed) {
+      const sizeOptions = options.filter(option => option.pname === pnamed).map(option => option.psize);
+      setFilteredSizes([...new Set(sizeOptions)]); // Unique sizes
 
+      const typeOptions = options.filter(option => option.pname === pnamed).map(option => option.ptype);
+      setFilteredTypes([...new Set(typeOptions)]);
 
+      const sellerOptions = options.filter(option => option.pname === pnamed).map(option => option.pseller);
+      setFilteredSellers([...new Set(sellerOptions)]);
+
+      const amountOptions = options.filter(option => option.pname === pnamed).map(option => option.pamount);
+      setFilteredAmounts([...new Set(amountOptions)]);
+    } else {
+      setFilteredSizes([]);
+      setFilteredTypes([]);
+      setFilteredSellers([]);
+      setFilteredAmounts([]);
+    }
+  }, [pnamed, options]);
   // Function to reset Barcode form
   const resetBarcodeForm = () => {
     setNumberOfBarcodes('');
