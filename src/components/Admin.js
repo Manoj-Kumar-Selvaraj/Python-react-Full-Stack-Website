@@ -386,7 +386,7 @@ const handleTypeTSubmit = async (e, action) => {
     <div>
     <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
     {loading && <div className="spinner"></div>}
-    <form className="barcode-form">
+    <form onSubmit={handleBarcodeSubmit} className="barcode-form">
       <h2 className="Heading">Generate Barcodes</h2>
 
       {/* Number of Barcodes Input */}
