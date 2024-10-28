@@ -108,16 +108,16 @@ const Admin = ({ token }) => {
 
   useEffect(() => {
     if (productName) {
-      const sizeOptionsb = options.filter(option => option.pname === productName).map(option => option.psize);
+      const sizeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.psize);
       setFilteredSizesb([...new Set(sizeOptionsb)]); // Unique sizes
 
-      const typeOptionsb = options.filter(option => option.pname === productName).map(option => option.ptype);
+      const typeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.ptype);
       setFilteredTypesb([...new Set(typeOptionsb)]);
 
-      const sellerOptionsb = options.filter(option => option.pname === productName).map(option => option.pseller);
+      const sellerOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.pseller);
       setFilteredSellersb([...new Set(sellerOptionsb)]);
 
-      const amountOptionsb = options.filter(option => option.pname === productName).map(option => option.pamount);
+      const amountOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.pamount);
       setFilteredAmountsb([...new Set(amountOptionsb)]);
     } else {
       setFilteredSizesb([]);
