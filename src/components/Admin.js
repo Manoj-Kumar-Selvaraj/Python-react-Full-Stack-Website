@@ -107,6 +107,11 @@ const Admin = ({ token }) => {
     fetchOptions();
   }, []);
 
+  const handleRefresh = () => {
+    fetchOptions();
+  };
+
+
 useEffect(() => {
 if (loading) {
   
