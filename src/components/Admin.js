@@ -397,7 +397,7 @@ const handleTypeTSubmit = async (e, action) => {
     <label>Product Name:</label>
     <select
       value={productName}
-      onChange={handleFlowb} // Ensure handleFlowb is defined properly
+      onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}// Ensure handleFlowb is defined properly
       required
     >
       <option value="">Select a product name</option>
