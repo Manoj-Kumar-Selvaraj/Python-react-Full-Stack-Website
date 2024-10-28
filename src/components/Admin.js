@@ -565,7 +565,7 @@ const handleTypeTSubmit = async (e, action) => {
             type="text"
             placeholder="Enter product size"
             value={psize}
-            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value))}
+            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value.toUpperCase()))}
             required
           />
         </div>
@@ -575,7 +575,7 @@ const handleTypeTSubmit = async (e, action) => {
             type="text"
             placeholder="Enter product name"
             value={pname}
-            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value))}
+            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value.toUpperCase()))}
             required
           />
         </div>
@@ -585,7 +585,7 @@ const handleTypeTSubmit = async (e, action) => {
             type="text"
             placeholder="Enter product type"
             value={ptype}
-            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value))}
+            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value.toUpperCase()))}
             required
           />
         </div>
@@ -595,7 +595,7 @@ const handleTypeTSubmit = async (e, action) => {
             type="text"
             placeholder="Enter seller name"
             value={pseller}
-            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value))}
+            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value.toUpperCase()))}
             required
           />
         </div>
