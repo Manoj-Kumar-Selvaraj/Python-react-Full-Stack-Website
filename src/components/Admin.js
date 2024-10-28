@@ -76,7 +76,6 @@ const Admin = ({ token }) => {
                 );
               });
             });
-            setOptions(optionArray)
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
@@ -606,7 +605,7 @@ const handleTypeTSubmit = async (e, action) => {
       required
     >
       <option value="">Select a product name</option>
-      {optionsArray
+      {options
         .filter(item => item.pname) // Assuming you want to filter by pname
         .map((item, index) => (
           <option key={index} value={item.pname}>
