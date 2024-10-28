@@ -125,7 +125,7 @@ const Admin = ({ token }) => {
       setFilteredSellersb([]);
       setFilteredAmountsb([]);
     }
-  }, [pname, optionsb]);
+  }, [productName, optionsb]);
 
   // Function to filter all dropdowns based on selected values
   useEffect(() => {
