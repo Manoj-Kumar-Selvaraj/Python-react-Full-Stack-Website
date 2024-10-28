@@ -108,8 +108,13 @@ const Admin = ({ token }) => {
     fetchOptions(); // Call fetchOptions on component mount
   }, []);
 
-  const handleRefresh = () => {
-    fetchOptions(); // Call fetchOptions to refresh data
+  const handleRefresh = async () => {
+    await fetchOptions(); // Call fetchOptions to refresh data
+    await resetEmployeeForm();
+    await resetBarcodeForm();
+    await resetEmployeeDeleteForm();
+    await resetTypeTForm();
+    await resetTypeTDeletionForm();
   };
 
 
