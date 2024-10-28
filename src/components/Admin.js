@@ -372,119 +372,129 @@ const handleTypeTSubmit = async (e, action) => {
     <div>
       <h1>Admin Panel</h1>
 
-      {/* Barcode Generation Form */}
-      <form onSubmit={handleBarcodeSubmit} className="barcode-form">
-        <h2 className="Heading">Generate Barcodes</h2>
-        <div className="form-group">
-          <label>Number of Barcodes (integer):</label>
-          <input
-            type="number"
-            placeholder="Enter number of barcodes"
-            value={number_of_barcodes}
-            onChange={(e) => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        <div className="form-group">
-        <label>Product Name:</label>
-        <select
-          value={productName}
-          onChange={handleFlowb} // Ensure handleFlowb is defined properly
-          required
-        >
-          <option value="">Select a product name</option>
-          {Array.from(new Set(
-            options
-              .filter(item => item.pname) // Filter items to ensure pname exists
-              .map(item => item.pname)    // Map to get pname values
-          )).map((uniqueName, index) => ( // Remove duplicates using Set
-            <option key={index} value={uniqueName}>
-              {uniqueName}
-            </option>
-          ))}
-        </select>
-      </div>
+{/* Barcode Generation Form */}
+<form onSubmit={handleBarcodeSubmit} className="barcode-form">
+  <h2 className="Heading">Generate Barcodes</h2>
 
-      {notificationb && (
-        <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
-          {notificationb}
-        </div>
-      )}
+  {/* Number of Barcodes Input */}
+  <div className="form-group">
+    <label>Number of Barcodes (integer):</label>
+    <input
+      type="number"
+      placeholder="Enter number of barcodes"
+      value={number_of_barcodes}
+      onChange={(e) => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
+      required
+    />
+  </div>
 
-        
-        <div className="form-group">
-          <label>Product Size:</label>
-          <select
-            value={productSize}
-            onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product size</option>
-                {options
-                  .filter(item => item.psize) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.psize}>
-                      {item.psize}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Type:</label>
-          <select
-            value={productType}
-            onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product type</option>
-                {filteredTypesb
-                  .filter(item => item.ptype) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.ptype}>
-                      {item.ptype}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Seller:</label>
-          <select
-            value={seller}
-            onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product seller</option>
-                {filteredSellers
-                  .filter(item => item.pseller) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pseller}>
-                      {item.pseller}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Amount:</label>
-          <select
-            value={amount}
-            onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product amount</option>
-                {filteredAmounts
-                  .filter(item => item.pamount) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pamount}>
-                      {item.pamount}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <button type="submit" className="btn">Generate Barcodes</button>
-      </form>
+  {/* Product Name Selection */}
+  <div className="form-group">
+    <label>Product Name:</label>
+    <select
+      value={productName}
+      onChange={handleFlowb} // Ensure handleFlowb is defined properly
+      required
+    >
+      <option value="">Select a product name</option>
+      {Array.from(new Set(
+        options
+          .filter(item => item.pname) // Filter items to ensure pname exists
+          .map(item => item.pname)    // Map to get pname values
+      )).map((uniqueName, index) => (
+        <option key={index} value={uniqueName}>
+          {uniqueName}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* Notification for any issue */}
+  {notificationb && (
+    <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
+      {notificationb}
+    </div>
+  )}
+
+  {/* Product Size Selection */}
+  <div className="form-group">
+    <label>Product Size:</label>
+    <select
+      value={productSize}
+      onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
+      required
+    >
+      <option value="">Select a product size</option>
+      {options
+        .filter(item => item.psize) // Assuming you want to filter by psize
+        .map((item, index) => (
+          <option key={index} value={item.psize}>
+            {item.psize}
+          </option>
+        ))}
+    </select>
+  </div>
+
+  {/* Product Type Selection */}
+  <div className="form-group">
+    <label>Product Type:</label>
+    <select
+      value={productType}
+      onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
+      required
+    >
+      <option value="">Select a product type</option>
+      {filteredTypesb
+        .filter(item => item.ptype) // Assuming you want to filter by ptype
+        .map((item, index) => (
+          <option key={index} value={item.ptype}>
+            {item.ptype}
+          </option>
+        ))}
+    </select>
+  </div>
+
+  {/* Product Seller Selection */}
+  <div className="form-group">
+    <label>Product Seller:</label>
+    <select
+      value={seller}
+      onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
+      required
+    >
+      <option value="">Select a product seller</option>
+      {filteredSellers
+        .filter(item => item.pseller) // Assuming you want to filter by pseller
+        .map((item, index) => (
+          <option key={index} value={item.pseller}>
+            {item.pseller}
+          </option>
+        ))}
+    </select>
+  </div>
+
+  {/* Product Amount Selection */}
+  <div className="form-group">
+    <label>Product Amount:</label>
+    <select
+      value={amount}
+      onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
+      required
+    >
+      <option value="">Select a product amount</option>
+      {filteredAmounts
+        .filter(item => item.pamount) // Assuming you want to filter by pamount
+        .map((item, index) => (
+          <option key={index} value={item.pamount}>
+            {item.pamount}
+          </option>
+        ))}
+    </select>
+  </div>
+
+  {/* Submit Button */}
+  <button type="submit" className="btn">Generate Barcodes</button>
+</form>
 
       {/* Employee Creation Form */}
       <form onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
