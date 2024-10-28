@@ -63,53 +63,55 @@ const Admin = ({ token }) => {
   const [ProductNameb,setProductNameb] = useState('')
   const [Pnamed, setpnamed] = useState('')
   
-  useEffect(() => {
-    const fetchOptions = async () => {
-      try {
-        const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${token}`,
-          },
-        });
+  // Define fetchOptions outside useEffect
+  const fetchOptions = async () => {
+    setLoading(true); // Set loading to true before the fetch
+    try {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+      });
 
-        const data = await response.json();
-        if (response.ok) {
-          setLoading(true)
-          setOptions(data); // Set the fetched options
-          setOptionsb(data); 
-          // Prepare options based on fetched data
-          const optionArray = [];
-          const FilteredName = [];
-          options.forEach((item, index) => {
-            // Loop through each key in the object
-            Object.keys(item).forEach((key) => {
-              const value = item[key];
-              optionArray.push(
-                <option key={`${key}-${index}`} value={value}>
+      const data = await response.json();
+      if (response.ok) {
+        setOptions(data); // Set the fetched options
+        setOptionsb(data); // Set the second state with the same data
+
+        // Prepare options based on fetched data
+        const optionArray = [];
+        data.forEach((item, index) => { // Use fetched data here
+          Object.keys(item).forEach((key) => {
+            const value = item[key];
+            optionArray.push(
+              <option key={`${key}-${index}`} value={value}>
                 {key}: {value}
-                </option>
-                );
-              });
-            });
-        } else {
-          alert('Error fetching options: ' + JSON.stringify(data));
-        }
-      } catch (error) {
-        console.error('Error fetching options:', error);
-        alert('An error occurred while fetching options');
-      } finally {
-        setLoading(false); // Set loading to false once data is fetched
+              </option>
+            );
+          });
+        });
+        // Here you may want to set this optionArray somewhere if needed
+      } else {
+        alert('Error fetching options: ' + JSON.stringify(data));
       }
-    };
+    } catch (error) {
+      console.error('Error fetching options:', error);
+      alert('An error occurred while fetching options');
+    } finally {
+      setLoading(false); // Set loading to false once data is fetched
+    }
+  };
 
-    fetchOptions();
+  useEffect(() => {
+    fetchOptions(); // Call fetchOptions on component mount
   }, []);
 
   const handleRefresh = () => {
-    fetchOptions();
+    fetchOptions(); // Call fetchOptions to refresh data
   };
+
 
 
 useEffect(() => {
