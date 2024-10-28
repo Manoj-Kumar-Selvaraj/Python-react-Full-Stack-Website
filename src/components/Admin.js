@@ -384,25 +384,25 @@ const handleTypeTSubmit = async (e, action) => {
             onChange={(e) => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
             required
           />
-        </div>
         <div className="form-group">
-          <label>Product Name:</label>
-          <select
-            value={productName}
-            onChange={handleFlowb}
-            required
-          >
-                <option value="">Select a product name</option>
-                {Array.form(new Set(options
-                  .filter(item => item.pname)) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pname}>
-                      {item.pname}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
+        <label>Product Name:</label>
+        <select
+          value={productName}
+          onChange={handleFlowb} // Ensure handleFlowb is defined properly
+          required
+        >
+          <option value="">Select a product name</option>
+          {Array.from(new Set(
+            options
+              .filter(item => item.pname) // Filter items to ensure pname exists
+              .map(item => item.pname)    // Map to get pname values
+          )).map((uniqueName, index) => ( // Remove duplicates using Set
+            <option key={index} value={uniqueName}>
+              {uniqueName}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {notificationb && (
         <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
