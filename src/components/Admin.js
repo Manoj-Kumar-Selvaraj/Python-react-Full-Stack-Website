@@ -107,7 +107,7 @@ const Admin = ({ token }) => {
   }, []);
 
   useEffect(() => {
-    if (pname) {
+    if (productName) {
       const sizeOptionsb = options.filter(option => option.pname === productName).map(option => option.psize);
       setFilteredSizesb([...new Set(sizeOptionsb)]); // Unique sizes
 
