@@ -406,7 +406,7 @@ const handleTypeTSubmit = async (e, action) => {
     >
       <option value="">Select a product name</option>
       {Array.from(new Set(
-        options
+        optionsb
           .filter(item => item.pname) // Filter items to ensure pname exists
           .map(item => item.pname)    // Map to get pname values
       )).map((uniqueName, index) => (
