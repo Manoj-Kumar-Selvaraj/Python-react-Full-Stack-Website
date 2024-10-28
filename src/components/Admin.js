@@ -411,13 +411,6 @@ const handleTypeTSubmit = async (e, action) => {
     </select>
   </div>
 
-  {/* Notification for any issue */}
-  {notificationb && (
-    <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
-      {notificationb}
-    </div>
-  )}
-
   {/* Product Size Selection */}
   <div className="form-group">
     <label>Product Size:</label>
@@ -427,7 +420,7 @@ const handleTypeTSubmit = async (e, action) => {
       required
     >
       <option value="">Select a product size</option>
-      {options
+      {filteredTypesb
         .filter(item => item.psize) // Assuming you want to filter by psize
         .map((item, index) => (
           <option key={index} value={item.psize}>
