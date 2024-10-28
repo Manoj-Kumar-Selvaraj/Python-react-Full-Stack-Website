@@ -107,12 +107,12 @@ const Admin = ({ token }) => {
   }, []);
 
   useEffect(() => {
-    console.log("yes")
+    console.log(optionsb)
     if (productName) {
-      console.log("yes")
+      console.log(productName)
       const sizeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.psize);
       setFilteredSizesb([...new Set(sizeOptionsb)]); // Unique sizes
-      console.log(filteredSizesb)
+      console.log(filteredsizeb)
       const typeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.ptype);
       setFilteredTypesb([...new Set(typeOptionsb)]);
 
@@ -134,7 +134,7 @@ const Admin = ({ token }) => {
     if (pnamed) {
       const sizeOptions = options.filter(option => option.pname === pnamed).map(option => option.psize);
       setFilteredSizes([...new Set(sizeOptions)]); // Unique sizes
-
+      
       const typeOptions = options.filter(option => option.pname === pnamed).map(option => option.ptype);
       setFilteredTypes([...new Set(typeOptions)]);
 
