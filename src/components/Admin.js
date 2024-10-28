@@ -32,7 +32,6 @@ const Admin = ({ token }) => {
   const [loading, setLoading] = useState(true);
 
   // State for Type Delete
-  const [options, setOptions] = useState([]);
   const [psized, setPsized] = useState('');
   const [pnamed, setPnamed] = useState('');
   const [ptyped, setPtyped] = useState('');
