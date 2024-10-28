@@ -127,6 +127,7 @@ if (loading) {
       setFilteredTypesb([]);
       setFilteredSellersb([]);
       setFilteredAmountsb([]);
+      }
     }
   }, [productName, optionsb]);
 
