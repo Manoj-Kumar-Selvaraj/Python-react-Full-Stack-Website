@@ -89,7 +89,7 @@ const Admin = ({ token }) => {
     };
 
     fetchOptions();
-  }, []);
+  }, [token]);
 
   // Function to filter all dropdowns based on selected values
   const filterOptions = () => {
