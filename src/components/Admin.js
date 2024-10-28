@@ -76,7 +76,7 @@ const Admin = ({ token }) => {
                 );
               });
             });
-          
+            setOptions(optionArray)
         } else {
           alert('Error fetching options: ' + JSON.stringify(data));
         }
@@ -92,7 +92,6 @@ const Admin = ({ token }) => {
   }, []);
 
   // Function to filter all dropdowns based on selected values
-  setOptions(optionArray)
   const filterOptions = () => {
     let nameOptions = options;
     let sizeOptions = options;
