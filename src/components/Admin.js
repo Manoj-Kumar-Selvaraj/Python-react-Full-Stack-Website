@@ -110,7 +110,11 @@ const Admin = ({ token }) => {
     console.log(optionsb)
     if (productName) {
       console.log(productName)
-      const sizeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.psize);
+      const sizeOptionsb = optionsb.filter(option => {
+         console.log(option.pname); // Log the pname for debugging
+        return option.pname === productName; // Return true/false to filter correctly
+      }).map(option => option.psize); // Then map to get psize
+
       setFilteredSizesb([...new Set(sizeOptionsb)]); // Unique sizes
       console.log(filteredSizesb)
       const typeOptionsb = optionsb.filter(option => option.pname === productName).map(option => option.ptype);
