@@ -383,7 +383,7 @@ const handleTypeTSubmit = async (e, action) => {
             required
           >
                 <option value="">Select a product type</option>
-                {option
+                {options
                   .filter(item => item.ptype) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.ptype}>
