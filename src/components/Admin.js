@@ -29,6 +29,7 @@ const Admin = ({ token }) => {
   const [latPid, setLatPid] = useState('');
   const [pamount, setPamount] = useState('');
   const [options, setOptions] = useState([]);
+  const [optionsb, setOptionsb] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // State for Type Delete
@@ -44,10 +45,22 @@ const Admin = ({ token }) => {
   const [filteredSellers, setFilteredSellers] = useState([]);
   const [filteredAmounts, setFilteredAmounts] = useState([]);
 
+  const [filteredNamesb, setFilteredNamesb] = useState([]);
+  const [filteredSizesb, setFilteredSizesb] = useState([]);
+  const [filteredTypesb, setFilteredTypesb] = useState([]);
+  const [filteredSellersb, setFilteredSellersb] = useState([]);
+  const [filteredAmountsb, setFilteredAmountsb] = useState([]);
+
   // State for Employee Deactivate
   const [eidd, setEidd] = useState('');
   
+  // State for dropdown selection flow control
 
+  const [notificationb, setNotificationb] = useState('');
+  const [firstSelectionb, setFirstSelectionb] = useState('');
+  const [notificationd, setNotificationd] = useState('');
+  const [firstSelectiond, setFirstSelectionb] = useState('');
+  
   useEffect(() => {
     const fetchOptions = async () => {
       try {
@@ -62,6 +75,7 @@ const Admin = ({ token }) => {
         const data = await response.json();
         if (response.ok) {
           setOptions(data); // Set the fetched options
+          setOptionsb(data); 
           // Prepare options based on fetched data
           const optionArray = [];
           const FilteredName = [];
@@ -89,6 +103,27 @@ const Admin = ({ token }) => {
 
     fetchOptions();
   }, []);
+
+  useEffect(() => {
+    if (pname) {
+      const sizeOptionsb = options.filter(option => option.pname === pname).map(option => option.psize);
+      setFilteredSizesb([...new Set(sizeOptionsb)]); // Unique sizes
+
+      const typeOptionsb = options.filter(option => option.pname === pname).map(option => option.ptype);
+      setFilteredTypesb([...new Set(typeOptionsb)]);
+
+      const sellerOptionsb = options.filter(option => option.pname === pname).map(option => option.pseller);
+      setFilteredSellersb([...new Set(sellerOptionsb)]);
+
+      const amountOptionsb = options.filter(option => option.pname === pname).map(option => option.pamount);
+      setFilteredAmountsb([...new Set(amountOptionsb)]);
+    } else {
+      setFilteredSizesb([]);
+      setFilteredTypesb([]);
+      setFilteredSellersb([]);
+      setFilteredAmountsb([]);
+    }
+  }, [pname, optionsb]);
 
   // Function to filter all dropdowns based on selected values
   useEffect(() => {
@@ -152,6 +187,24 @@ const Admin = ({ token }) => {
     setPtyped('');
     setPsellerd('');
     setPamountd('');
+  };
+
+  const handleFlowb = (e) => {
+    setProductNameb = DOMPurify.sanitize(e.target.value);
+    setProductName(setProductNameb)
+    if (!productName) {
+      setNotificationb('Please select the Product Name.');
+      return;
+    }
+  };
+
+  const handleFlowd = (e) => {
+    setpnamed = DOMPurify.sanitize(e.target.value);
+    setPnamed(setpnamed)
+    if (!setPnamed) {
+      setNotificationd('Please select the Product Name.');
+      return;
+    }
   };
   // Function to handle TypeT form submission
 const handleTypeTSubmit = async (e, action) => {
@@ -336,12 +389,12 @@ const handleTypeTSubmit = async (e, action) => {
           <label>Product Name:</label>
           <select
             value={productName}
-            onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
+            onChange={handleFlowb}
             required
           >
                 <option value="">Select a product name</option>
-                {options
-                  .filter(item => item.pname) // Assuming you want to filter by pname
+                {Array.form(new Set(options
+                  .filter(item => item.pname)) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.pname}>
                       {item.pname}
@@ -350,6 +403,14 @@ const handleTypeTSubmit = async (e, action) => {
                 }
           </select>
         </div>
+
+      {notificationb && (
+        <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
+          {notificationb}
+        </div>
+      )}
+
+        
         <div className="form-group">
           <label>Product Size:</label>
           <select
@@ -376,7 +437,7 @@ const handleTypeTSubmit = async (e, action) => {
             required
           >
                 <option value="">Select a product type</option>
-                {options
+                {filteredTypesb
                   .filter(item => item.ptype) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.ptype}>
@@ -394,7 +455,7 @@ const handleTypeTSubmit = async (e, action) => {
             required
           >
                 <option value="">Select a product seller</option>
-                {options
+                {filteredSellers
                   .filter(item => item.pseller) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.pseller}>
@@ -412,7 +473,7 @@ const handleTypeTSubmit = async (e, action) => {
             required
           >
                 <option value="">Select a product amount</option>
-                {options
+                {filteredAmounts
                   .filter(item => item.pamount) // Assuming you want to filter by pname
                   .map((item, index) => (
                     <option key={index} value={item.pamount}>
@@ -589,24 +650,32 @@ const handleTypeTSubmit = async (e, action) => {
       </form>
       {/* TypeT Deletion Form */}
       <form onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
-        <h2 className="Heading">Delete Product Type</h2>
+  <h2 className="Heading">Delete Product Type</h2>
   <div className="form-group">
     <label>Product Name:</label>
     <select
       value={pnamed}
-      onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
+      onChange={handleFlowd}
       required
     >
       <option value="">Select a product name</option>
-      {options
-        .filter(item => item.pname) // Assuming you want to filter by pname
-        .map((item, index) => (
-          <option key={index} value={item.pname}>
-            {item.pname}
-          </option>
-        ))}
+      {Array.from(new Set(
+        options
+          .filter(item => item.pname) // Ensure pname exists
+          .map(item => item.pname)    // Get pname values
+      )).map((uniqueName, index) => ( // Remove duplicates using Set
+        <option key={index} value={uniqueName}>
+          {uniqueName}
+        </option>
+      ))}
     </select>
   </div>
+
+      {notificationd && (
+        <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
+          {notificationd}
+        </div>
+      )}
 
       <div className="form-group">
         <label>Product Size:</label>
