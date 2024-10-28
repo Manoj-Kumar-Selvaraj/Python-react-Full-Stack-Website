@@ -32,12 +32,18 @@ const Admin = ({ token }) => {
   const [loading, setLoading] = useState(true);
 
   // State for Type Delete
-
+  const [options, setOptions] = useState([]);
   const [psized, setPsized] = useState('');
   const [pnamed, setPnamed] = useState('');
   const [ptyped, setPtyped] = useState('');
   const [psellerd, setPsellerd] = useState('');
   const [pamountd, setPamountd] = useState('');
+
+  const [filteredNames, setFilteredNames] = useState([]);
+  const [filteredSizes, setFilteredSizes] = useState([]);
+  const [filteredTypes, setFilteredTypes] = useState([]);
+  const [filteredSellers, setFilteredSellers] = useState([]);
+  const [filteredAmounts, setFilteredAmounts] = useState([]);
 
   // State for Employee Deactivate
   const [eidd, setEidd] = useState('');
@@ -84,8 +90,34 @@ const Admin = ({ token }) => {
     };
 
     fetchOptions();
-  }, [token]);
+  }, []);
 
+  // Function to filter all dropdowns based on selected values
+  const filterOptions = () => {
+    let nameOptions = options;
+    let sizeOptions = options;
+    let typeOptions = options;
+    let sellerOptions = options;
+    let amountOptions = options;
+
+    if (pnamed) nameOptions = nameOptions.filter(option => option.pname === pnamed);
+    if (psized) sizeOptions = sizeOptions.filter(option => option.psize === psized);
+    if (ptyped) typeOptions = typeOptions.filter(option => option.ptype === ptyped);
+    if (psellerd) sellerOptions = sellerOptions.filter(option => option.pseller === psellerd);
+    if (pamountd) amountOptions = amountOptions.filter(option => option.pamount === pamountd);
+
+    // Update dropdowns with unique filtered values
+    setFilteredNames([...new Set(nameOptions.map(option => option.pname))]);
+    setFilteredSizes([...new Set(sizeOptions.map(option => option.psize))]);
+    setFilteredTypes([...new Set(typeOptions.map(option => option.ptype))]);
+    setFilteredSellers([...new Set(sellerOptions.map(option => option.pseller))]);
+    setFilteredAmounts([...new Set(amountOptions.map(option => option.pamount))]);
+  };
+
+  // Run the filterOptions function whenever any dropdown value changes
+  useEffect(() => {
+    filterOptions();
+  }, [pnamed, psized, ptyped, psellerd, pamountd, options]);
 
 
   // Function to reset Barcode form
@@ -567,98 +599,78 @@ const handleTypeTSubmit = async (e, action) => {
       {/* TypeT Deletion Form */}
       <form onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
         <h2 className="Heading">Delete Product Type</h2>
-        <div className="form-group">
-          <label>Product Name:</label>
-          <select
-            value={pnamed}
-            onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product name</option>
-                {options
-                  .filter(item => item.pname) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pname}>
-                      {item.pname}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Size:</label>
-          <select
-            value={psized}
-            onChange={(e) => setPsized(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product size</option>
-                {options
-                  .filter(item => item.psize) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.psize}>
-                      {item.psize}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Type:</label>
-          <select
-            value={ptyped}
-            onChange={(e) => setPtyped(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product type</option>
-                {options
-                  .filter(item => item.ptype) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.ptype}>
-                      {item.ptype}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Seller:</label>
-          <select
-            value={psellerd}
-            onChange={(e) => setPsellerd(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product seller</option>
-                {options
-                  .filter(item => item.pseller) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pseller}>
-                      {item.pseller}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Product Amount:</label>
-          <select
-            value={pamountd}
-            onChange={(e) => setPamountd(DOMPurify.sanitize(e.target.value))}
-            required
-          >
-                <option value="">Select a product amount</option>
-                {options
-                  .filter(item => item.pamount) // Assuming you want to filter by pname
-                  .map((item, index) => (
-                    <option key={index} value={item.pamount}>
-                      {item.pamount}
-                    </option>
-                    ))
-                }
-          </select>
-        </div>
-        <button type="submit" className="btn">Delete Type</button>
-      </form>
+      <div className="form-group">
+        <label>Product Name:</label>
+        <select
+          value={pnamed}
+          onChange={(e) => setPnamed(DOMPurify.sanitize(e.target.value))}
+          required
+        >
+          <option value="">Select a product name</option>
+          {filteredNames.map((name, index) => (
+            <option key={index} value={name}>{name}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-group">
+        <label>Product Size:</label>
+        <select
+          value={psized}
+          onChange={(e) => setPsized(DOMPurify.sanitize(e.target.value))}
+          required
+        >
+          <option value="">Select a product size</option>
+          {filteredSizes.map((size, index) => (
+            <option key={index} value={size}>{size}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-group">
+        <label>Product Type:</label>
+        <select
+          value={ptyped}
+          onChange={(e) => setPtyped(DOMPurify.sanitize(e.target.value))}
+          required
+        >
+          <option value="">Select a product type</option>
+          {filteredTypes.map((type, index) => (
+            <option key={index} value={type}>{type}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-group">
+        <label>Product Seller:</label>
+        <select
+          value={psellerd}
+          onChange={(e) => setPsellerd(DOMPurify.sanitize(e.target.value))}
+          required
+        >
+          <option value="">Select a product seller</option>
+          {filteredSellers.map((seller, index) => (
+            <option key={index} value={seller}>{seller}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-group">
+        <label>Product Amount:</label>
+        <select
+          value={pamountd}
+          onChange={(e) => setPamountd(DOMPurify.sanitize(e.target.value))}
+          required
+        >
+          <option value="">Select a product amount</option>
+          {filteredAmounts.map((amount, index) => (
+            <option key={index} value={amount}>{amount}</option>
+          ))}
+        </select>
+      </div>
+
+      <button type="submit" className="btn">Delete Type</button>
+    </form>
     </div>
   );
 };
