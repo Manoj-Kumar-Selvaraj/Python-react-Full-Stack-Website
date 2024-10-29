@@ -47,7 +47,7 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
         print("success")
         
         # Delete older records, keeping only the latest 5 for the same b_type
-        old_records = BarcodeT.objects.filter(b_type=new_record.b_type).order_by('-dog')[5:]  # Get records older than the latest 5
+        old_records = BarcodeT.objects.filter(b_type=new_record.b_type).order_by('id')[:5]  # Get records older than the latest 5
         deleted_count = old_records.delete()  # Delete older records
         
         print(f"Deleted {deleted_count} old records from BarcodeT")
