@@ -34,7 +34,7 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
 
         # Insert a new barcode record
         new_record = BarcodeT.objects.create(
-            b_type=b_type_instance.b_type,
+            b_type=b_type_instance,  # Assign the instance of TypeT here
             number_of_barcodes=number_of_barcodes,
             start_barcode=barcodes[0],  # First barcode in the list
             last_barcode=barcodes[-1],   # Last barcode in the list
