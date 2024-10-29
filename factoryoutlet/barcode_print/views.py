@@ -6,20 +6,23 @@ from .utils import return_400_if_object_found
 from custom_auth.views import CustomAuthView
 from barcode.authentication import CustomTokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.core.exceptions import ValidationError
 
 def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller, pamount):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
+    
     # Check if a record already exists, and return a 400 error if found
-    error_response = return_400_if_object_found(TypeT, BarcodeT, number_of_barcodes,pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
+    error_response = return_400_if_object_found(TypeT, BarcodeT, number_of_barcodes, pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
     GenT_filter=BarcodeT.objects.filter(gen_slot='Y')
     Print_filter=BarcodeT.objects.filter(print_status=False)
     Approval_filter=BarcodeT.objects.filter(Approval='R')
     if error_response and (GenT_filter or Print_filter or Approval_filter):
-        return error_response  # Return the 400 response if object is found
+        return error_response  # Return the 400 response if object is found    
+    print("BarcodeT Insert Initiated")
     
     # Insert a new barcode record
-    BarcodeT.objects.create(
+    new_record = BarcodeT.objects.create(
         b_type=TypeT.objects.filter(pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount).first().b_type,
         number_of_barcodes=number_of_barcodes,
         start_barcode=barcodes[0],        # First barcode in the list
@@ -27,16 +30,14 @@ def barcode_print_init(barcodes, number_of_barcodes, pname, psize, ptype, seller
         print_status=False,               # Boolean flag
         dog=timezone.now(),               # Date of generation (timestamp)
         print_slot='Y',                   # Slot for printing
-        gen_slot='Y',                      # Slot for generation
+        gen_slot='Y',                     # Slot for generation
         Approval='R'
     )
-
-
-
-    # Retrieve all barcode records, ordered by 'start_barcode' (oldest first)
-    records = BarcodeT.objects.all().order_by('start_barcode')
+    print("success")    
+    # Delete older records, keeping only the latest 5 for the same b_type
+    old_records = BarcodeT.objects.filter(b_type=new_record.b_type).order_by('-dog')[5:]  # Get records older than the latest 5
+    deleted_count = old_records.delete()  # Delete older records
     
-    # If there are more than 5 records, delete the excess ones
-    if records.count() > 5:
-        excess_records = records[:records.count() - 5]  # Slice to get the oldest records
-        excess_records.delete()  # Delete the oldest excess records
+    print(f"Deleted {deleted_count} old records from BarcodeT")
+
+    print("BarcodeT Insert Success")

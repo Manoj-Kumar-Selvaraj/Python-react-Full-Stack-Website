@@ -10,7 +10,7 @@ def return_400_if_object_found(model1, model2, number_of_barcodes, **filters):
     
     # Query model2 using b_type from obj
     obj1 = model2.objects.filter(b_type=obj.b_type).first()
-    
+    print(obj.b_type)
     # If no object is found in model2, handle the error (return None or an appropriate response)
     if not obj1:
         print("NULL")

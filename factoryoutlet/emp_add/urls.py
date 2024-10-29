@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import EmployeeTCreateView,EmployeeSelectView
+from .views import EmployeeTCreateView,EmployeeTSelectView
 
 urlpatterns = [
     path('access/', EmployeeTCreateView.as_view(), name='create_employee'),
