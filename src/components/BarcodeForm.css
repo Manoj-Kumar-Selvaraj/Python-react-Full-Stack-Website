@@ -10,12 +10,36 @@ h2.Heading {
   text-align: center;
 }
 
-form {
+/* Container for horizontal layout */
+.horizontal-layout-container {
+  display: flex; /* Enable flexbox */
+  flex-wrap: wrap; /* Allow wrapping of items */
+  gap: 20px; /* Space between columns */
+  justify-content: center; /* Center the items */
+}
+
+/* Style for individual forms in the horizontal layout */
+.horizontal-layout-container > div {
   background-color: #ffffff; /* White background for forms */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin-bottom: 20px; /* Space between forms */
   padding: 20px; /* Inner padding */
+  flex: 1; /* Allow items to grow and fill space */
+  min-width: 250px; /* Minimum width for smaller screens */
+  max-width: 300px; /* Maximum width to maintain form size */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .horizontal-layout-container > div {
+    flex: 1 1 calc(50% - 20px); /* Half-width on medium screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .horizontal-layout-container > div {
+    flex: 1 1 100%; /* Full-width on small screens */
+  }
 }
 
 .form-group {
@@ -98,5 +122,3 @@ select:focus {
 .Refresh:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
-
-
