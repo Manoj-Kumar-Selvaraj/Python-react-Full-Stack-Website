@@ -1,58 +1,65 @@
 .widget-container {
-  background-color: #f8f9fa; /* Light background for the widget */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 16px; /* Padding inside the widget */
-  margin: 20px; /* Margin around the widget */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for widget effect */
+  padding: 20px;
+  margin: 20px 0;
 }
 
 .widget-title {
-  font-size: 1.5em; /* Larger title */
-  margin-bottom: 12px; /* Space below the title */
-}
-
-.toggle-button {
-  background-color: #007bff; /* Button color */
-  color: white; /* Button text color */
-  border: none; /* Remove default border */
-  padding: 8px 16px; /* Padding inside button */
-  border-radius: 4px; /* Rounded corners for button */
-  cursor: pointer; /* Pointer on hover */
-  margin-bottom: 12px; /* Space below the button */
-}
-
-.toggle-button:hover {
-  background-color: #0056b3; /* Darker button on hover */
+  margin: 0;
+  font-size: 24px;
+  color: #333; /* Title color */
 }
 
 .table-container {
-  overflow-x: auto; /* Allow horizontal scroll for the table if necessary */
+  margin-top: 20px; /* Spacing for table */
 }
 
 .data-table {
-  width: 100%; /* Full width for the table */
-  border-collapse: collapse; /* Remove space between table cells */
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.data-table th, .data-table td {
-  border: 1px solid #dee2e6; /* Light border for cells */
-  padding: 8px; /* Padding inside cells */
-  text-align: left; /* Align text to the left */
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc; /* Add borders to table cells */
+  padding: 10px;
+  text-align: left;
 }
 
 .data-table th {
-  background-color: #e9ecef; /* Light background for headers */
+  background-color: #f2f2f2; /* Header background color */
+  font-weight: bold;
 }
 
 .header-container {
-  display: flex; /* Use flexbox for header container */
-  flex-direction: column; /* Stack header text and select */
-  align-items: flex-start; /* Align items to the left */
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: stretch; /* Align items to stretch full width */
 }
 
 .filter-select {
-  margin-top: 4px; /* Space above the select dropdown */
-  padding: 4px; /* Padding inside the select */
-  width: 100%; /* Full width for the dropdown */
-  box-sizing: border-box; /* Include padding in width calculation */
+  margin-top: 5px; /* Space above the dropdown */
+  background: transparent; /* Remove white background */
+  border: 1px solid #007BFF; /* Border color for dropdown */
+  padding: 5px;
+  width: 100%; /* Make dropdown fill the width of the header */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  border-radius: 4px; /* Rounded corners for dropdown */
+}
+
+.toggle-button {
+  margin: 10px 0; /* Spacing for the toggle button */
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.toggle-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
