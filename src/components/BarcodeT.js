@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useTable, useFilters } from 'react-table';
-import './BarcodeFetch.css';
+import './YourModelTable.css'; // Make sure to style accordingly
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  console.log(token)
+  const [loading, setLoading] = useState(false); // Set to false initially
+  const [tableVisible, setTableVisible] = useState(false); // Control table visibility
+  const [filters, setFilters] = useState({}); // For dropdown filters
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -13,13 +13,11 @@ const BarcodeTTable = ({ token }) => {
       const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
         method: 'GET',
         headers: {
-          Authorization: `Token ${token}`,
+          'Authorization': `Token ${token}`,
         },
       });
-      
-      if (!response.ok) throw new Error("Network response was not ok");
-      const responseData = await response.json();
-      setData(responseData);
+      const fetchedData = await response.json();
+      setData(fetchedData);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
     } finally {
@@ -27,89 +25,106 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  useEffect(() => {
-    BarcodeTFetch();
-  }, []);
+  // Toggle table display and load data on first click
+  const handleToggleTable = () => {
+    setTableVisible(!tableVisible);
+    if (!tableVisible && data.length === 0) {
+      BarcodeTFetch();
+    }
+  };
 
-  function DefaultColumnFilter({
-    column: { filterValue, setFilter, Header },
-  }) {
-    return (
-      <input
-        value={filterValue || ''}
-        onChange={(e) => setFilter(e.target.value || undefined)}
-        placeholder={`Filter ${Header}`}
-        className="filter-input"
-      />
-    );
-  }
+  // Unique values for dropdown filters
+  const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
-  const columns = React.useMemo(
-    () => [
-      { Header: 'ID', accessor: 'id', Filter: DefaultColumnFilter },
-      { Header: 'Number of Barcodes', accessor: 'number_of_barcodes', Filter: DefaultColumnFilter },
-      { Header: 'Start Barcode', accessor: 'start_barcode', Filter: DefaultColumnFilter },
-      { Header: 'Last Barcode', accessor: 'last_barcode', Filter: DefaultColumnFilter },
-      { Header: 'Print Status', accessor: 'print_status', Filter: DefaultColumnFilter },
-      { Header: 'Date of Generation (DOG)', accessor: 'dog', Filter: DefaultColumnFilter },
-      { Header: 'Print Slot', accessor: 'print_slot', Filter: DefaultColumnFilter },
-      { Header: 'Generation Slot', accessor: 'gen_slot', Filter: DefaultColumnFilter },
-      { Header: 'Approval', accessor: 'Approval', Filter: DefaultColumnFilter },
-      { Header: 'Barcode Type', accessor: 'b_type', Filter: DefaultColumnFilter },
-      { Header: 'Employee ID', accessor: 'eid', Filter: DefaultColumnFilter },
-    ],
-    []
+  // Handle filter changes
+  const handleFilterChange = (e, column) => {
+    setFilters({
+      ...filters,
+      [column]: e.target.value,
+    });
+  };
+
+  // Apply filters to data
+  const filteredData = data.filter((item) =>
+    Object.entries(filters).every(
+      ([column, value]) => !value || item[column].toString() === value
+    )
   );
-
-  const defaultColumn = React.useMemo(
-    () => ({
-      Filter: DefaultColumnFilter,
-    }),
-    []
-  );
-
-  const tableInstance = useTable({ columns, data, defaultColumn }, useFilters);
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = tableInstance;
 
   return (
     <div>
-      <h1>Barcode Data Table</h1>
-      {loading ? (
-        <p>Loading data...</p>
-      ) : (
-        <table {...getTableProps()} className="data-table">
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render('Header')}
-                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+      <h1>Data Table</h1>
+      <button className="toggle-button" onClick={handleToggleTable}>
+        {tableVisible ? 'Hide Table' : 'Show Table'}
+      </button>
+
+      {tableVisible && (
+        <div>
+          {loading ? (
+            <p>Loading data...</p> // Loading message while fetching data
+          ) : (
+            <table className="data-table">
+              <thead>
+                <tr>
+                  {/* Render filter dropdowns in the header */}
+                  <th>
+                    ID
+                    <select
+                      onChange={(e) => handleFilterChange(e, 'id')}
+                      value={filters['id'] || ''}
+                    >
+                      <option value="">All</option>
+                      {getUniqueValues('id').map((val) => (
+                        <option key={val} value={val}>
+                          {val}
+                        </option>
+                      ))}
+                    </select>
                   </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  ))}
+                  <th>
+                    Number of Barcodes
+                    <select
+                      onChange={(e) => handleFilterChange(e, 'number_of_barcodes')}
+                      value={filters['number_of_barcodes'] || ''}
+                    >
+                      <option value="">All</option>
+                      {getUniqueValues('number_of_barcodes').map((val) => (
+                        <option key={val} value={val}>
+                          {val}
+                        </option>
+                      ))}
+                    </select>
+                  </th>
+                  <th>
+                    Start Barcode
+                    <select
+                      onChange={(e) => handleFilterChange(e, 'start_barcode')}
+                      value={filters['start_barcode'] || ''}
+                    >
+                      <option value="">All</option>
+                      {getUniqueValues('start_barcode').map((val) => (
+                        <option key={val} value={val}>
+                          {val}
+                        </option>
+                      ))}
+                    </select>
+                  </th>
+                  {/* Add other columns similarly */}
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {filteredData.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>{item.number_of_barcodes}</td>
+                    <td>{item.start_barcode}</td>
+                    {/* Render other columns similarly */}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       )}
     </div>
   );
