@@ -26,6 +26,7 @@
   border: 1px solid #ccc; /* Add borders to table cells */
   padding: 10px;
   text-align: left;
+  white-space: nowrap; /* Prevent wrapping of text in table cells */
 }
 
 .data-table th {
@@ -36,7 +37,7 @@
 .header-container {
   display: flex;
   flex-direction: column; /* Align items vertically */
-  align-items: stretch; /* Align items to stretch full width */
+  align-items: flex-start; /* Align items to the left */
 }
 
 .filter-select {
@@ -57,7 +58,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .toggle-button:hover {
