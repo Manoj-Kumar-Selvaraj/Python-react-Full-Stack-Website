@@ -1,28 +1,51 @@
+/* Button styling */
 .toggle-button {
   background-color: #007BFF;
-  color: white;
+  color: #ffffff;
   padding: 10px 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .toggle-button:hover {
   background-color: #0056b3;
 }
 
-.data-table select {
-  margin-top: 5px;
+/* Table styling */
+.data-table {
   width: 100%;
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  border-collapse: collapse; /* Ensures borders are merged */
+  margin-top: 20px;
 }
 
 .data-table th,
 .data-table td {
-  padding: 8px;
+  border: 1px solid #dddddd; /* Adds borders to cells */
+  padding: 10px;
   text-align: left;
+}
+
+.data-table th {
+  background-color: #007BFF; /* Header background color */
+  color: white; /* Header text color */
+  font-weight: bold; /* Make header text bold */
+  position: sticky; /* Makes the header stick on scroll */
+  top: 0; /* Position it at the top */
+  z-index: 1; /* Ensure it stays above the other content */
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra striping for even rows */
+}
+
+.data-table tr:hover {
+  background-color: #e0e0e0; /* Highlight row on hover */
+}
+
+.data-table select {
+  margin-left: 10px; /* Spacing between header text and dropdown */
 }
