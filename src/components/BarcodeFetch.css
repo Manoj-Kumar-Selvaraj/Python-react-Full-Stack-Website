@@ -13,6 +13,7 @@
 .data-table th {
   background-color: #f2f2f2; /* Header background color */
   font-weight: bold;
+  white-space: nowrap; /* Prevent header text from wrapping */
 }
 
 .filter-info {
@@ -33,6 +34,7 @@
   background: transparent; /* Remove white background */
   border: 1px solid #007BFF; /* Border color for dropdown */
   padding: 5px;
+  width: 100%; /* Make dropdown fill the width of the header */
 }
 
 .toggle-button {
