@@ -1,8 +1,8 @@
 import React from 'react';
-import BarcodeT from './BarcodeT'
-function Dashboard(token) {
+import BarcodeTTable from './BarcodeT'
+function Dashboard({ token }) {
   return (
-    <BarcodeT token={token}/>
+    <BarcodeTTable token={token}/>
   );
 }
 
