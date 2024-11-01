@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './BarcodeFetch.css'; // Ensure this file contains the CSS for styling
+import './BarcodeFetch.css';
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
@@ -59,38 +59,29 @@ const BarcodeTTable = ({ token }) => {
           {loading ? (
             <p>Loading data...</p>
           ) : (
-            <div>
-              <div className="filter-info">
-                {Object.entries(filters).map(([column, value]) => 
-                  value && (
-                    <span key={column} className="filter-badge">
-                      {column.replace('_', ' ').toUpperCase()}: {value}
-                    </span>
-                  )
-                )}
-              </div>
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    {[
-                      'id',
-                      'number_of_barcodes',
-                      'start_barcode',
-                      'last_barcode',
-                      'print_status',
-                      'dog',
-                      'print_slot',
-                      'gen_slot',
-                      'Approval',
-                      'b_type',
-                      'eid',
-                    ].map((column) => (
-                      <th key={column}>
-                        {column.replace('_', ' ').toUpperCase()} {/* Adjusted for single line */}
+            <table className="data-table">
+              <thead>
+                <tr>
+                  {[
+                    'id',
+                    'number_of_barcodes',
+                    'start_barcode',
+                    'last_barcode',
+                    'print_status',
+                    'dog',
+                    'print_slot',
+                    'gen_slot',
+                    'Approval',
+                    'b_type',
+                    'eid',
+                  ].map((column) => (
+                    <th key={column}>
+                      <div className="header-container">
+                        {column.replace('_', ' ').toUpperCase()}
                         <select
+                          className="filter-select"
                           onChange={(e) => handleFilterChange(e, column)}
                           value={filters[column] || ''}
-                          className="filter-select"
                         >
                           <option value="">All</option>
                           {getUniqueValues(column).map((val) => (
@@ -99,29 +90,29 @@ const BarcodeTTable = ({ token }) => {
                             </option>
                           ))}
                         </select>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData.map((item) => (
-                    <tr key={item.id}>
-                      <td>{item.id}</td>
-                      <td>{item.number_of_barcodes}</td>
-                      <td>{item.start_barcode}</td>
-                      <td>{item.last_barcode}</td>
-                      <td>{item.print_status}</td>
-                      <td>{item.dog}</td>
-                      <td>{item.print_slot}</td>
-                      <td>{item.gen_slot}</td>
-                      <td>{item.Approval}</td>
-                      <td>{item.b_type}</td>
-                      <td>{item.eid}</td>
-                    </tr>
+                      </div>
+                    </th>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>{item.number_of_barcodes}</td>
+                    <td>{item.start_barcode}</td>
+                    <td>{item.last_barcode}</td>
+                    <td>{item.print_status}</td>
+                    <td>{item.dog}</td>
+                    <td>{item.print_slot}</td>
+                    <td>{item.gen_slot}</td>
+                    <td>{item.Approval}</td>
+                    <td>{item.b_type}</td>
+                    <td>{item.eid}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           )}
         </div>
       )}
