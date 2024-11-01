@@ -15,11 +15,18 @@
   font-weight: bold;
   white-space: nowrap; /* Prevent header text from wrapping */
   position: relative; /* Allow for absolute positioning of the select */
+  padding-bottom: 5px; /* Add space below header text */
+}
+
+/* Use flexbox to align header text and dropdown */
+.header-container {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: flex-start; /* Align items to the left */
 }
 
 .filter-select {
   margin-top: 5px; /* Space above the dropdown */
-  margin-left: 0; /* No left margin */
   background: transparent; /* Remove white background */
   border: 1px solid #007BFF; /* Border color for dropdown */
   padding: 5px;
