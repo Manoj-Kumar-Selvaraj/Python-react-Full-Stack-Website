@@ -86,7 +86,7 @@ const BarcodeTTable = ({ token }) => {
                       'eid',
                     ].map((column) => (
                       <th key={column}>
-                        {column.replace('_', ' ').toUpperCase()}
+                        {column.replace('_', ' ').toUpperCase()} {/* Adjusted for single line */}
                         <select
                           onChange={(e) => handleFilterChange(e, column)}
                           value={filters[column] || ''}
