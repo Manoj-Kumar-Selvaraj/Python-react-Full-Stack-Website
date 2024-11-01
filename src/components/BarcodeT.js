@@ -6,8 +6,8 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
-  const [columnWidths, setColumnWidths] = useState({}); // State for column widths
-  const tableRef = useRef(null); // Reference to the table
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -55,7 +55,7 @@ const BarcodeTTable = ({ token }) => {
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
     const doDrag = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
+      const newWidth = Math.max(startWidth + (e.clientX - startX), 50); // Prevent width from becoming too small
       setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
     };
 
