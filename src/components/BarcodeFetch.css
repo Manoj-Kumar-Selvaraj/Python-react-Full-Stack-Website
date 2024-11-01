@@ -1,58 +1,50 @@
-/* Button styling */
-.toggle-button {
-  background-color: #007BFF;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.toggle-button:hover {
-  background-color: #0056b3;
-}
-
-/* Table styling */
 .data-table {
+  border-collapse: collapse;
   width: 100%;
-  border-collapse: collapse; /* Ensures borders are merged */
   margin-top: 20px;
 }
 
-.data-table th,
-.data-table td {
-  border: 1px solid #dddddd; /* Adds borders to cells */
+.data-table th, .data-table td {
+  border: 1px solid #ccc; /* Add borders to table cells */
   padding: 10px;
   text-align: left;
 }
 
 .data-table th {
-  background-color: #007BFF; /* Header background color */
-  color: white; /* Header text color */
-  font-weight: bold; /* Make header text bold */
-  position: sticky; /* Makes the header stick on scroll */
-  top: 0; /* Position it at the top */
-  z-index: 1; /* Ensure it stays above the other content */
+  background-color: #f2f2f2; /* Header background color */
+  font-weight: bold;
 }
 
-/* Flexbox styling for header content */
-.header-content {
-  display: flex; /* Enables flexbox */
-  align-items: center; /* Aligns items vertically centered */
-  justify-content: space-between; /* Spaces out label and dropdown */
+.filter-info {
+  margin-bottom: 10px;
 }
 
-.data-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Zebra striping for even rows */
+.filter-badge {
+  display: inline-block;
+  background-color: #007BFF; /* Badge background color */
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
 }
 
-.data-table tr:hover {
-  background-color: #e0e0e0; /* Highlight row on hover */
+.filter-select {
+  margin-left: 5px; /* Space between the header and dropdown */
+  background: transparent; /* Remove white background */
+  border: 1px solid #007BFF; /* Border color for dropdown */
+  padding: 5px;
 }
 
-.data-table select {
-  margin-left: 10px; /* Spacing between header text and dropdown */
+.toggle-button {
+  margin: 10px 0; /* Spacing for the toggle button */
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
