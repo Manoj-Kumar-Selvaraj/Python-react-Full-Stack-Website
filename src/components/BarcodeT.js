@@ -48,14 +48,14 @@ const BarcodeTTable = ({ token }) => {
   );
 
   return (
-    <div>
-      <h1>Data Table</h1>
+    <div className="widget-container">
+      <h1 className="widget-title">Data Table</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
 
       {tableVisible && (
-        <div>
+        <div className="table-container">
           {loading ? (
             <p>Loading data...</p>
           ) : (
