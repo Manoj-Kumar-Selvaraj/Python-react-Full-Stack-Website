@@ -5,6 +5,7 @@ import './BarcodeFetch.css';
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  console.log(token)
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -15,7 +16,7 @@ const BarcodeTTable = ({ token }) => {
           Authorization: `Token ${token}`,
         },
       });
-
+      
       if (!response.ok) throw new Error("Network response was not ok");
       const responseData = await response.json();
       setData(responseData);
