@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useTable } from 'react-table';
-import '.BarcodeTFetch.css'; // Basic CSS for styling
+import { useTable, useFilters } from 'react-table';
+import './YourModelTable.css';
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Asynchronous function to fetch data from the API using fetch
   const BarcodeTFetch = async () => {
-    setLoading(true); // Set loading to true before the fetch
+    setLoading(true);
     try {
       const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
         method: 'GET',
@@ -17,15 +16,13 @@ const BarcodeTTable = ({ token }) => {
         },
       });
 
-      // Check if response is OK, then parse JSON
       if (!response.ok) throw new Error("Network response was not ok");
-
       const responseData = await response.json();
-      setData(responseData); // Update data state with the fetched data
+      setData(responseData);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
     } finally {
-      setLoading(false); // Set loading to false after fetch is complete
+      setLoading(false);
     }
   };
 
@@ -33,30 +30,45 @@ const BarcodeTTable = ({ token }) => {
     BarcodeTFetch();
   }, []);
 
-  // Define columns for react-table
+  function DefaultColumnFilter({
+    column: { filterValue, setFilter, Header },
+  }) {
+    return (
+      <input
+        value={filterValue || ''}
+        onChange={(e) => setFilter(e.target.value || undefined)}
+        placeholder={`Filter ${Header}`}
+        className="filter-input"
+      />
+    );
+  }
+
   const columns = React.useMemo(
     () => [
-      {
-        Header: 'ID',   // Replace with actual field names
-        accessor: 'id', // Must match the JSON field name from Django
-      },
-      {
-        Header: 'Name', // Replace with actual field name
-        accessor: 'name',
-      },
-      {
-        Header: 'Created Date', // Example field
-        accessor: 'created_at',
-      },
-      // Add more columns as needed
+      { Header: 'ID', accessor: 'id', Filter: DefaultColumnFilter },
+      { Header: 'Number of Barcodes', accessor: 'number_of_barcodes', Filter: DefaultColumnFilter },
+      { Header: 'Start Barcode', accessor: 'start_barcode', Filter: DefaultColumnFilter },
+      { Header: 'Last Barcode', accessor: 'last_barcode', Filter: DefaultColumnFilter },
+      { Header: 'Print Status', accessor: 'print_status', Filter: DefaultColumnFilter },
+      { Header: 'Date of Generation (DOG)', accessor: 'dog', Filter: DefaultColumnFilter },
+      { Header: 'Print Slot', accessor: 'print_slot', Filter: DefaultColumnFilter },
+      { Header: 'Generation Slot', accessor: 'gen_slot', Filter: DefaultColumnFilter },
+      { Header: 'Approval', accessor: 'Approval', Filter: DefaultColumnFilter },
+      { Header: 'Barcode Type', accessor: 'b_type', Filter: DefaultColumnFilter },
+      { Header: 'Employee ID', accessor: 'eid', Filter: DefaultColumnFilter },
     ],
     []
   );
 
-  // Use react-table hook to manage table instance
-  const tableInstance = useTable({ columns, data });
+  const defaultColumn = React.useMemo(
+    () => ({
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  );
 
-  // Destructure the table instance for easy access
+  const tableInstance = useTable({ columns, data, defaultColumn }, useFilters);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -67,7 +79,7 @@ const BarcodeTTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Data Table</h1>
+      <h1>Barcode Data Table</h1>
       {loading ? (
         <p>Loading data...</p>
       ) : (
@@ -76,7 +88,10 @@ const BarcodeTTable = ({ token }) => {
             {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                  <th {...column.getHeaderProps()}>
+                    {column.render('Header')}
+                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+                  </th>
                 ))}
               </tr>
             ))}
