@@ -312,6 +312,7 @@ const handleTypeTSubmit = async (e, action) => {
 
       const data = await response.json();
       if (response.ok) {
+        console.log(response)
         alert('Barcode generation successful');
         resetBarcodeForm(); // Reset Barcode form after successful submission
       } else {
