@@ -9,6 +9,7 @@
   border: 1px solid #ccc; /* Add borders to table cells */
   padding: 10px;
   text-align: left;
+  position: relative; /* Required for resizer positioning */
 }
 
 .data-table th {
@@ -50,4 +51,19 @@
 .table-container {
   margin-top: 20px; /* Spacing for table */
   overflow-x: auto; /* Allows horizontal scrolling for the table */
+}
+
+/* Resizer styling */
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5px; /* Width of the resizer */
+  cursor: col-resize; /* Change cursor to indicate resizable */
+  z-index: 1; /* Make sure it's on top */
+}
+
+.resizer:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Highlight resizer on hover */
 }
