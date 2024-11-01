@@ -26,7 +26,7 @@ function App() {
       case 'billing':
         return <Billing />;
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard token={token}/>;
       case 'admin':
         return <Admin token={token} />;
       default:
