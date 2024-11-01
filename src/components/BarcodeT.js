@@ -48,8 +48,8 @@ const BarcodeTTable = ({ token }) => {
   );
 
   return (
-    <div className="widget-container">
-      <h1 className="widget-title">Data Table</h1>
+    <div>
+      <h1>Barcode History</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
@@ -77,11 +77,11 @@ const BarcodeTTable = ({ token }) => {
                   ].map((column) => (
                     <th key={column}>
                       <div className="header-container">
-                        <span>{column.replace('_', ' ').toUpperCase()}</span>
+                        {column.replace('_', ' ').toUpperCase()}
                         <select
+                          className="filter-select"
                           onChange={(e) => handleFilterChange(e, column)}
                           value={filters[column] || ''}
-                          className="filter-select"
                         >
                           <option value="">All</option>
                           {getUniqueValues(column).map((val) => (
