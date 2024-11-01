@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './BarcodeFetch.css';
 
 const BarcodeTTable = ({ token }) => {
@@ -6,6 +6,8 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
+  const [columnWidths, setColumnWidths] = useState({}); // State for column widths
+  const tableRef = useRef(null); // Reference to the table
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -47,6 +49,25 @@ const BarcodeTTable = ({ token }) => {
     )
   );
 
+  // Resizable columns functionality
+  const startResize = (e, column) => {
+    const startX = e.clientX;
+    const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
+
+    const doDrag = (e) => {
+      const newWidth = startWidth + (e.clientX - startX);
+      setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
+    };
+
+    const stopResize = () => {
+      document.removeEventListener('mousemove', doDrag);
+      document.removeEventListener('mouseup', stopResize);
+    };
+
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopResize);
+  };
+
   return (
     <div>
       <h1>Barcode History</h1>
@@ -59,7 +80,7 @@ const BarcodeTTable = ({ token }) => {
           {loading ? (
             <p>Loading data...</p>
           ) : (
-            <table className="data-table">
+            <table ref={tableRef} className="data-table">
               <thead>
                 <tr>
                   {[
@@ -75,7 +96,11 @@ const BarcodeTTable = ({ token }) => {
                     'b_type',
                     'eid',
                   ].map((column) => (
-                    <th key={column}>
+                    <th
+                      key={column}
+                      data-column={column}
+                      style={{ width: columnWidths[column] || 'auto' }} // Apply custom width
+                    >
                       <div className="header-container">
                         {column.replace('_', ' ').toUpperCase()}
                         <select
@@ -91,6 +116,10 @@ const BarcodeTTable = ({ token }) => {
                           ))}
                         </select>
                       </div>
+                      <div
+                        className="resizer"
+                        onMouseDown={(e) => startResize(e, column)} // Start resizing
+                      />
                     </th>
                   ))}
                 </tr>
