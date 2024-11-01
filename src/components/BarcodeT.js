@@ -77,11 +77,11 @@ const BarcodeTTable = ({ token }) => {
                   ].map((column) => (
                     <th key={column}>
                       <div className="header-container">
-                        <span>{column.replace('_', ' ').toUpperCase()}</span>
+                        {column.replace('_', ' ').toUpperCase()}
                         <select
-                          className="filter-select"
                           onChange={(e) => handleFilterChange(e, column)}
                           value={filters[column] || ''}
+                          className="filter-select"
                         >
                           <option value="">All</option>
                           {getUniqueValues(column).map((val) => (
