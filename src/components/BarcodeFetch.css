@@ -42,15 +42,17 @@
 
 .data-table th {
   background-color: #e9ecef; /* Light background for headers */
-  position: relative; /* Position relative for dropdown alignment */
 }
 
 .header-container {
   display: flex; /* Use flexbox for header container */
   flex-direction: column; /* Stack header text and select */
+  align-items: flex-start; /* Align items to the left */
 }
 
 .filter-select {
   margin-top: 4px; /* Space above the select dropdown */
   padding: 4px; /* Padding inside the select */
+  width: 100%; /* Full width for the dropdown */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
