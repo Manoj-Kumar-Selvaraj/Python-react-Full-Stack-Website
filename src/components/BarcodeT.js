@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './BarcodeFetch.css'; // Make sure to style accordingly
+import './YourModelTable.css';
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false); // Set to false initially
-  const [tableVisible, setTableVisible] = useState(false); // Control table visibility
-  const [filters, setFilters] = useState({}); // For dropdown filters
+  const [loading, setLoading] = useState(false);
+  const [tableVisible, setTableVisible] = useState(false);
+  const [filters, setFilters] = useState({});
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -25,7 +25,6 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  // Toggle table display and load data on first click
   const handleToggleTable = () => {
     setTableVisible(!tableVisible);
     if (!tableVisible && data.length === 0) {
@@ -33,10 +32,8 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  // Unique values for dropdown filters
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
-  // Handle filter changes
   const handleFilterChange = (e, column) => {
     setFilters({
       ...filters,
@@ -44,7 +41,6 @@ const BarcodeTTable = ({ token }) => {
     });
   };
 
-  // Apply filters to data
   const filteredData = data.filter((item) =>
     Object.entries(filters).every(
       ([column, value]) => !value || item[column].toString() === value
@@ -61,55 +57,39 @@ const BarcodeTTable = ({ token }) => {
       {tableVisible && (
         <div>
           {loading ? (
-            <p>Loading data...</p> // Loading message while fetching data
+            <p>Loading data...</p>
           ) : (
             <table className="data-table">
               <thead>
                 <tr>
-                  {/* Render filter dropdowns in the header */}
-                  <th>
-                    ID
-                    <select
-                      onChange={(e) => handleFilterChange(e, 'id')}
-                      value={filters['id'] || ''}
-                    >
-                      <option value="">All</option>
-                      {getUniqueValues('id').map((val) => (
-                        <option key={val} value={val}>
-                          {val}
-                        </option>
-                      ))}
-                    </select>
-                  </th>
-                  <th>
-                    Number of Barcodes
-                    <select
-                      onChange={(e) => handleFilterChange(e, 'number_of_barcodes')}
-                      value={filters['number_of_barcodes'] || ''}
-                    >
-                      <option value="">All</option>
-                      {getUniqueValues('number_of_barcodes').map((val) => (
-                        <option key={val} value={val}>
-                          {val}
-                        </option>
-                      ))}
-                    </select>
-                  </th>
-                  <th>
-                    Start Barcode
-                    <select
-                      onChange={(e) => handleFilterChange(e, 'start_barcode')}
-                      value={filters['start_barcode'] || ''}
-                    >
-                      <option value="">All</option>
-                      {getUniqueValues('start_barcode').map((val) => (
-                        <option key={val} value={val}>
-                          {val}
-                        </option>
-                      ))}
-                    </select>
-                  </th>
-                  {/* Add other columns similarly */}
+                  {[
+                    'id',
+                    'number_of_barcodes',
+                    'start_barcode',
+                    'last_barcode',
+                    'print_status',
+                    'dog',
+                    'print_slot',
+                    'gen_slot',
+                    'Approval',
+                    'b_type',
+                    'eid',
+                  ].map((column) => (
+                    <th key={column}>
+                      {column.replace('_', ' ').toUpperCase()}
+                      <select
+                        onChange={(e) => handleFilterChange(e, column)}
+                        value={filters[column] || ''}
+                      >
+                        <option value="">All</option>
+                        {getUniqueValues(column).map((val) => (
+                          <option key={val} value={val}>
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -118,7 +98,14 @@ const BarcodeTTable = ({ token }) => {
                     <td>{item.id}</td>
                     <td>{item.number_of_barcodes}</td>
                     <td>{item.start_barcode}</td>
-                    {/* Render other columns similarly */}
+                    <td>{item.last_barcode}</td>
+                    <td>{item.print_status}</td>
+                    <td>{item.dog}</td>
+                    <td>{item.print_slot}</td>
+                    <td>{item.gen_slot}</td>
+                    <td>{item.Approval}</td>
+                    <td>{item.b_type}</td>
+                    <td>{item.eid}</td>
                   </tr>
                 ))}
               </tbody>
