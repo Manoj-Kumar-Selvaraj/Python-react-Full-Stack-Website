@@ -9,14 +9,12 @@ from django.utils import timezone
 from custom_auth.views import CustomAuthView
 from .authentication import CustomTokenAuthentication
 from barcode_print.views import barcode_print_init
-from barcode_print.models import BarcodeT
-from barcode_print.serializers import BarcodeTSerializer
 
 class GenerateBarcodeView(APIView):
     authentication_classes = [CustomTokenAuthentication]
     permission_classes = [IsAuthenticated]
-    # user=request.user.id 
-    # print(user)
+    user=request.user.id
+    print(id) 
     # user_id=EmployeeT.objects.filter(eid=user)
     def get(self, request):
         barcode_types = TypeT.objects.all()
@@ -32,31 +30,29 @@ class GenerateBarcodeView(APIView):
             ptype = request.data.get('Product Type')
             seller = request.data.get('Seller')
             pamount = request.data.get('Amount')
-            user=request.user.eid
-            Employee_instance=EmployeeT.objects.get(eid=user)
+            user_id=request.user.eid
+
             valid_type_instance = get_object_or_404(TypeT, pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
             
             if valid_type_instance:
-                last_barcode = valid_type_instance.last_barcode+1
-                prefix = valid_type_instance.b_type 
+                last_barcode = valid_type_instance.last_barcode
+                prefix = valid_type_instance.b_type
                 
                 # Generate new barcodes
                 barcodes = self.new_barcode(prefix, number_of_barcodes, last_barcode)
                 # Calling the Function
-                barcode_duplicate=barcode_print_init(request,barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
-                if barcode_duplicate:
-                    return Response({"error":"Duplicate Barcode Generation Alert, If you wish to generate again please change the slot to N"}, status=status.HTTP_400_BAD_REQUEST)
+                barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
 
                 # Update last barcode and other fields
                 valid_type_instance.last_barcode = barcodes[-1]  # Last generated barcode
                 valid_type_instance.last_processed_date = timezone.now()
-                valid_type_instance.eid=Employee_instance
+                valid_type_instance.eid=user_id
                 valid_type_instance.save()
 
                 # Create ProductsT instances
                 for barcode in barcodes:
                     ProductsT.objects.create(
-                        eid=Employee_instance,
+                        eid=user_id,
                         pname=valid_type_instance.pname,
                         pseller=valid_type_instance.pseller,
                         psize=valid_type_instance.psize,
@@ -120,10 +116,3 @@ class GenerateBarcodeView(APIView):
             barcodes.append(barcode)
 
         return barcodes
-class BarcodeTSlotView(APIView):
-    authentication_classes = [CustomTokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    def get(self, request):
-         Barcode_Log=BarcodeT.objects.all()
-         serializer=BarcodeTSerializer(Barcode_log,many=True)
-         return Response(serializer.data) 

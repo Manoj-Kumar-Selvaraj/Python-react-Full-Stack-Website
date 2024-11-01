@@ -2,7 +2,13 @@ from django.db import models
 from barcode.models import TypeT
 from datetime import date
 
+from django.db import models
+from django.utils import timezone
+from django.conf import settings
+from barcode.models import TypeT,EmployeeT
+
 class BarcodeT(models.Model):
+    eid = models.ForeignKey(EmployeeT, models.DO_NOTHING, db_column='eid')
     id = models.AutoField(primary_key=True)
     b_type = models.ForeignKey(TypeT, models.DO_NOTHING, db_column='b_type')
     number_of_barcodes = models.IntegerField(default=0)

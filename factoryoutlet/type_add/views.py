@@ -27,11 +27,10 @@ def create_type(request):
             except TypeT.DoesNotExist:
                 return Response({"error": "TypeT instance not found."}, status=status.HTTP_400_BAD_REQUEST)
 
-            for i in range(5):
-                BarT = BarcodeT(
+            BarT = BarcodeT(
                     b_type=b_type_instance,  # Assign the instance of TypeT
                 )
-                BarT.save()
+            BarT.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response({"message": "Barcodes already exist."}, status=status.HTTP_400_BAD_REQUEST)
