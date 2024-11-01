@@ -8,6 +8,7 @@ const BarcodeTTable = ({ token }) => {
   const [filters, setFilters] = useState({});
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
+  const resizingRef = useRef(null); // To track which column is resizing
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -51,9 +52,9 @@ const BarcodeTTable = ({ token }) => {
 
   // Resizable columns functionality
   const startResize = (e, column) => {
-    if (e.button !== 2) return; // Ensure it's a right-click (button === 2)
+    if (e.button !== 2) return; // Ensure it's a right-click
     e.preventDefault();
-
+    resizingRef.current = column; // Track current column being resized
     const startX = e.clientX;
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
@@ -63,6 +64,7 @@ const BarcodeTTable = ({ token }) => {
     };
 
     const stopResize = () => {
+      resizingRef.current = null; // Reset the ref
       document.removeEventListener('mousemove', doDrag);
       document.removeEventListener('mouseup', stopResize);
       document.removeEventListener('contextmenu', preventContextMenu);
