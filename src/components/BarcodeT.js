@@ -51,21 +51,28 @@ const BarcodeTTable = ({ token }) => {
 
   // Resizable columns functionality
   const startResize = (e, column) => {
+    if (e.button !== 2) return; // Ensure it's a right-click (button === 2)
+    e.preventDefault();
+
     const startX = e.clientX;
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
     const doDrag = (e) => {
-      const newWidth = Math.max(startWidth + (e.clientX - startX), 50); // Prevent width from becoming too small
+      const newWidth = Math.max(startWidth + (e.clientX - startX), 50);
       setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
     };
 
     const stopResize = () => {
       document.removeEventListener('mousemove', doDrag);
       document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('contextmenu', preventContextMenu);
     };
+
+    const preventContextMenu = (e) => e.preventDefault();
 
     document.addEventListener('mousemove', doDrag);
     document.addEventListener('mouseup', stopResize);
+    document.addEventListener('contextmenu', preventContextMenu);
   };
 
   return (
@@ -99,7 +106,7 @@ const BarcodeTTable = ({ token }) => {
                     <th
                       key={column}
                       data-column={column}
-                      style={{ width: columnWidths[column] || 'auto' }} // Apply custom width
+                      style={{ width: columnWidths[column] || 'auto' }}
                     >
                       <div className="header-container">
                         {column.replace('_', ' ').toUpperCase()}
@@ -119,6 +126,7 @@ const BarcodeTTable = ({ token }) => {
                       <div
                         className="resizer"
                         onMouseDown={(e) => startResize(e, column)} // Start resizing
+                        onContextMenu={(e) => e.preventDefault()} // Prevent right-click menu
                       />
                     </th>
                   ))}
