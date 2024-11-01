@@ -18,34 +18,56 @@
 /* Table styling */
 .data-table {
   width: 100%;
-  border-collapse: collapse; /* Ensures borders are merged */
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
 .data-table th,
 .data-table td {
-  border: 1px solid #dddddd; /* Adds borders to cells */
-  padding: 10px;
-  text-align: left;
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center; /* Center-align text */
 }
 
 .data-table th {
-  background-color: #007BFF; /* Header background color */
-  color: white; /* Header text color */
-  font-weight: bold; /* Make header text bold */
-  position: sticky; /* Makes the header stick on scroll */
-  top: 0; /* Position it at the top */
-  z-index: 1; /* Ensure it stays above the other content */
+  background-color: #007BFF;
+  color: white;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .data-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Zebra striping for even rows */
+  background-color: #f9f9f9;
 }
 
 .data-table tr:hover {
-  background-color: #e0e0e0; /* Highlight row on hover */
+  background-color: #e0e0e0;
 }
 
 .data-table select {
-  margin-left: 10px; /* Spacing between header text and dropdown */
+  width: 90%; /* Make dropdown width consistent */
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  font-size: 14px;
+  color: #333;
+}
+
+/* For column headers with a dropdown */
+.data-table th > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.data-table th select {
+  margin-left: 5px;
+  background-color: #fff;
+}
+
+/* Adjust spacing between filters */
+.data-table th .filter-select {
+  margin-left: 5px;
 }
