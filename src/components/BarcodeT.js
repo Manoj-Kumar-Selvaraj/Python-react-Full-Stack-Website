@@ -52,9 +52,9 @@ const BarcodeTTable = ({ token }) => {
 
   // Resizable columns functionality
   const startResize = (e, column) => {
-    if (e.button !== 2) return; // Ensure it's a right-click
-    e.preventDefault();
-    resizingRef.current = column; // Track current column being resized
+    e.preventDefault(); // Prevents default behavior
+
+    resizingRef.current = column;
     const startX = e.clientX;
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
@@ -64,17 +64,13 @@ const BarcodeTTable = ({ token }) => {
     };
 
     const stopResize = () => {
-      resizingRef.current = null; // Reset the ref
+      resizingRef.current = null;
       document.removeEventListener('mousemove', doDrag);
       document.removeEventListener('mouseup', stopResize);
-      document.removeEventListener('contextmenu', preventContextMenu);
     };
-
-    const preventContextMenu = (e) => e.preventDefault();
 
     document.addEventListener('mousemove', doDrag);
     document.addEventListener('mouseup', stopResize);
-    document.addEventListener('contextmenu', preventContextMenu);
   };
 
   return (
@@ -128,7 +124,6 @@ const BarcodeTTable = ({ token }) => {
                       <div
                         className="resizer"
                         onMouseDown={(e) => startResize(e, column)} // Start resizing
-                        onContextMenu={(e) => e.preventDefault()} // Prevent right-click menu
                       />
                     </th>
                   ))}
