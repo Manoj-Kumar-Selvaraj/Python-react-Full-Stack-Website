@@ -116,7 +116,7 @@ const BarcodeTTable = ({ token }) => {
                     <th
                       key={column}
                       data-column={column}
-                      style={{ width: columnWidths[column] || 'auto' }}
+                      style={{ width: columnWidths[column] }} // Set width based on state
                     >
                       <div className="header-container">
                         {column.replace('_', ' ').toUpperCase()}
@@ -144,17 +144,17 @@ const BarcodeTTable = ({ token }) => {
               <tbody>
                 {filteredData.map((item) => (
                   <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.number_of_barcodes}</td>
-                    <td>{item.start_barcode}</td>
-                    <td>{item.last_barcode}</td>
-                    <td>{item.print_status}</td>
-                    <td>{item.dog}</td>
-                    <td>{item.print_slot}</td>
-                    <td>{item.gen_slot}</td>
-                    <td>{item.Approval}</td>
-                    <td>{item.b_type}</td>
-                    <td>{item.eid}</td>
+                    <td style={{ width: columnWidths.id }}>{item.id}</td>
+                    <td style={{ width: columnWidths.number_of_barcodes }}>{item.number_of_barcodes}</td>
+                    <td style={{ width: columnWidths.start_barcode }}>{item.start_barcode}</td>
+                    <td style={{ width: columnWidths.last_barcode }}>{item.last_barcode}</td>
+                    <td style={{ width: columnWidths.print_status }}>{item.print_status}</td>
+                    <td style={{ width: columnWidths.dog }}>{item.dog}</td>
+                    <td style={{ width: columnWidths.print_slot }}>{item.print_slot}</td>
+                    <td style={{ width: columnWidths.gen_slot }}>{item.gen_slot}</td>
+                    <td style={{ width: columnWidths.Approval }}>{item.Approval}</td>
+                    <td style={{ width: columnWidths.b_type }}>{item.b_type}</td>
+                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
                   </tr>
                 ))}
               </tbody>
