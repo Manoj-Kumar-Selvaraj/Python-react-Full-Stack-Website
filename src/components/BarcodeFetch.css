@@ -1,3 +1,13 @@
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em; /* Increase font size */
+    font-weight: bold; /* Make font bold */
+    padding: 10px; /* Add some padding */
+    border-bottom: 2px solid #007bff; /* Underline with a border */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
 /* Container for the entire table and filter elements */
 .table-container {
   margin-top: 20px; /* Space above the table */
@@ -48,7 +58,7 @@
   margin-bottom: 6px; /* Space below each select box */
   background: #ffffff; /* White background for select boxes */
   border: 1px solid #007BFF; /* Blue border */
-  padding-top: 15px; /* Padding for select boxes */
+  padding: 6px; /* Padding for select boxes */
   width: 100%; /* Full width for select boxes */
   box-sizing: border-box; /* Include padding and border in width */
   border-radius: 4px; /* Rounded corners */
