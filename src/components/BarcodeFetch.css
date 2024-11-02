@@ -9,7 +9,6 @@
   border-collapse: separate; /* Enables individual cell border control */
   width: 100%; /* Full width for responsiveness */
   border-spacing: 0; /* No space between borders */
-  table-layout: auto; /* Important for responsive resizing */
 }
 
 /* Styling for table headers and cells */
@@ -18,9 +17,6 @@
   border: 1px solid #e0e0e0; /* Light gray border for cells */
   padding: 12px 15px; /* Padding for cells */
   text-align: left; /* Left-align text */
-  position: relative; /* Necessary for positioning the resizer */
-  overflow: hidden; /* Prevents overflow of content */
-  white-space: nowrap; /* Prevents text wrapping */
 }
 
 /* Header specific styles */
@@ -28,14 +24,14 @@
   background-color: #f7f9fc; /* Light background for header */
   font-weight: 600; /* Bold header text */
   color: #333; /* Dark text color */
+  position: relative; 
 }
 
 /* Header container for aligning select boxes and table header */
 .header-container {
-  display: flex; /* Flexbox for alignment */
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start; /* Align items to the start */
-  margin-bottom: 10px; /* Space below header for select boxes */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Space between header text and resizer */
+  align-items: center; /* Center items vertically */
 }
 
 /* Styling for the select boxes */
