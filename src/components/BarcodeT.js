@@ -73,16 +73,19 @@ const BarcodeTTable = ({ token }) => {
     const doDrag = (e) => {
       const newWidth = Math.max(startWidth + (e.clientX - startX), 50);
       setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
+      console.log(`Resizing ${column}: ${newWidth}px`); // Debugging log
     };
 
     const stopResize = () => {
       resizingRef.current = null;
       document.removeEventListener('mousemove', doDrag);
       document.removeEventListener('mouseup', stopResize);
+      console.log(`Stopped resizing ${column}`); // Debugging log
     };
 
     document.addEventListener('mousemove', doDrag);
     document.addEventListener('mouseup', stopResize);
+    console.log(`Started resizing ${column}`); // Debugging log
   };
 
   return (
@@ -167,5 +170,3 @@ const BarcodeTTable = ({ token }) => {
 };
 
 export default BarcodeTTable;
-
-
