@@ -167,3 +167,5 @@ const BarcodeTTable = ({ token }) => {
 };
 
 export default BarcodeTTable;
+
+
