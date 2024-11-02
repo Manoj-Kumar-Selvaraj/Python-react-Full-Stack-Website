@@ -1,95 +1,101 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: left;
-    color: #333;
-}
-
-.toggle-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
-}
-
+/* Container for the entire table and filter elements */
 .table-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    overflow: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background: white;
+  margin-top: 20px; /* Space above the table */
+  overflow-x: auto; /* Allows horizontal scrolling for the table */
 }
 
+/* Main table styling */
 .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+  border-collapse: collapse; /* Enables individual cell border control */
+  width: 100%; /* Full width for responsiveness */
+  table-layout: fixed; /* Important for consistent column widths */
 }
 
+/* Styling for table headers and cells */
 .data-table th,
 .data-table td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
+  border: 1px solid #e0e0e0; /* Light gray border for cells */
+  padding: 12px 15px; /* Padding for cells */
+  text-align: left; /* Left-align text */
+  position: relative; /* Necessary for positioning the resizer */
+  overflow: hidden; /* Prevents overflow of content */
 }
 
+/* Header specific styles */
 .data-table th {
-    background-color: #f2f2f2;
-    position: relative; /* For resizer */
+  background-color: #f7f9fc; /* Light background for header */
+  font-weight: 600; /* Bold header text */
+  color: #333; /* Dark text color */
 }
 
-.data-table th .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Header container for aligning table header */
+.header-container {
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between table headers */
+  align-items: center; /* Align items to the center */
+  margin-bottom: 10px; /* Space below header for select boxes */
 }
 
+/* Styling for the select boxes */
+.select-container {
+  display: flex; /* Flexbox for alignment of select boxes */
+  flex-direction: column; /* Stack select boxes vertically */
+  margin-top: 10px; /* Space above select boxes */
+}
+
+/* Styling for individual select boxes */
 .filter-select {
-    margin-left: 10px;
+  margin-bottom: 6px; /* Space below each select box */
+  background: #ffffff; /* White background for select boxes */
+  border: 1px solid #007BFF; /* Blue border */
+  padding: 6px; /* Padding for select boxes */
+  width: 100%; /* Full width for select boxes */
+  box-sizing: border-box; /* Include padding and border in width */
+  border-radius: 4px; /* Rounded corners */
+  color: #007BFF; /* Blue text color */
 }
 
+/* Focus state for select boxes */
+.filter-select:focus {
+  border-color: #0056b3; /* Darker blue on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Button styling */
+.toggle-button {
+  margin: 12px 0; /* Margin around button */
+  padding: 10px 18px; /* Padding for button */
+  background-color: #007BFF; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+.toggle-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Resizer handle for table columns */
 .resizer {
-    width: 5px;
-    cursor: col-resize;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    z-index: 1;
+  width: 5px; /* Width of the resizer handle */
+  cursor: col-resize; /* Change cursor to indicate resizing */
+  background-color: transparent; /* Transparent background */
+  position: absolute; /* Position absolutely to overlay the header */
+  top: 0; /* Align to the top of the header */
+  right: 0; /* Align to the right of the header */
+  height: 100%; /* Full height of the header */
 }
 
+/* Resizer hover effect */
 .resizer:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 123, 255, 0.3); /* Change color on hover */
 }
 
-.data-table tr {
-    transition: background-color 0.3s;
-}
-
-.data-table tr:hover {
-    background-color: #f5f5f5; /* Highlight row on hover */
-}
-
-.selected {
-    background-color: #007bff; /* Background color for the selected row */
-    color: white; /* Text color for the selected row */
-}
-
-.selected:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+/* Row hover effect */
+.data-table tbody tr:hover {
+  background-color: #f1f7ff; /* Light blue background on row hover */
 }
