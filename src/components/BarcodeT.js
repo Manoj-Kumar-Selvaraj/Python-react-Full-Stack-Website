@@ -6,6 +6,7 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
+  const [selectedRowId, setSelectedRowId] = useState(null); // Add state for selected row
   const [columnWidths, setColumnWidths] = useState({
     id: 100,
     number_of_barcodes: 150,
@@ -19,7 +20,7 @@ const BarcodeTTable = ({ token }) => {
     b_type: 100,
     eid: 100,
   });
-  
+
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
 
@@ -64,7 +65,7 @@ const BarcodeTTable = ({ token }) => {
   );
 
   const startResize = (e, column) => {
-    e.preventDefault(); // Prevent default behavior
+    e.preventDefault();
     resizingRef.current.column = column;
     resizingRef.current.startX = e.clientX;
     resizingRef.current.startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
@@ -77,11 +78,10 @@ const BarcodeTTable = ({ token }) => {
     if (resizingRef.current.column) {
       const newWidth = Math.max(resizingRef.current.startWidth + (e.clientX - resizingRef.current.startX), 50);
       const column = resizingRef.current.column;
-      
-      // Directly setting the width of the column
+
       const header = tableRef.current.querySelector(`th[data-column="${column}"]`);
       header.style.width = `${newWidth}px`;
-      
+
       const cells = tableRef.current.querySelectorAll(`td:nth-child(${Array.from(header.parentNode.children).indexOf(header) + 1})`);
       cells.forEach(cell => {
         cell.style.width = `${newWidth}px`;
@@ -93,6 +93,10 @@ const BarcodeTTable = ({ token }) => {
     resizingRef.current.column = null;
     document.removeEventListener('mousemove', doDrag);
     document.removeEventListener('mouseup', stopResize);
+  };
+
+  const handleRowClick = (id) => {
+    setSelectedRowId(id === selectedRowId ? null : id); // Toggle selection
   };
 
   return (
@@ -153,7 +157,11 @@ const BarcodeTTable = ({ token }) => {
               </thead>
               <tbody>
                 {filteredData.map((item) => (
-                  <tr key={item.id}>
+                  <tr
+                    key={item.id}
+                    onClick={() => handleRowClick(item.id)} // Add onClick handler to each row
+                    className={selectedRowId === item.id ? 'selected' : ''} // Apply selected class
+                  >
                     <td style={{ width: columnWidths.id }}>{item.id}</td>
                     <td style={{ width: columnWidths.number_of_barcodes }}>{item.number_of_barcodes}</td>
                     <td style={{ width: columnWidths.start_barcode }}>{item.start_barcode}</td>
