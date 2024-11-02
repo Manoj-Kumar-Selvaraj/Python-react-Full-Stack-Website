@@ -105,7 +105,7 @@ const BarcodeTTable = ({ token }) => {
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
-
+      <div className="divider"></div> {/* Visual divider */}
       {tableVisible && (
         <div className="table-container">
           {loading ? (
