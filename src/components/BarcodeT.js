@@ -6,7 +6,19 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
-  const [columnWidths, setColumnWidths] = useState({});
+  const [columnWidths, setColumnWidths] = useState({
+    id: 100,
+    number_of_barcodes: 150,
+    start_barcode: 120,
+    last_barcode: 120,
+    print_status: 100,
+    dog: 80,
+    print_slot: 100,
+    gen_slot: 100,
+    Approval: 100,
+    b_type: 100,
+    eid: 100,
+  });
   const tableRef = useRef(null);
   const resizingRef = useRef(null); // To track which column is resizing
 
@@ -59,7 +71,6 @@ const BarcodeTTable = ({ token }) => {
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
     const doDrag = (e) => {
-      console.log("dragging..")
       const newWidth = Math.max(startWidth + (e.clientX - startX), 50);
       setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
     };
