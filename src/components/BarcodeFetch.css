@@ -1,16 +1,18 @@
+/* Container for the entire table and filter elements */
 .table-container {
   margin-top: 20px; /* Space above the table */
   overflow-x: auto; /* Allows horizontal scrolling for the table */
 }
 
+/* Main table styling */
 .data-table {
-  border-collapse: separate; /* Use separate borders for better control */
+  border-collapse: separate; /* Enables individual cell border control */
   width: 100%; /* Full width for responsiveness */
-  margin-top: 20px; /* Margin for spacing */
   border-spacing: 0; /* No space between borders */
   table-layout: auto; /* Important for responsive resizing */
 }
 
+/* Styling for table headers and cells */
 .data-table th,
 .data-table td {
   border: 1px solid #e0e0e0; /* Light gray border for cells */
@@ -18,38 +20,43 @@
   text-align: left; /* Left-align text */
   position: relative; /* Necessary for positioning the resizer */
   overflow: hidden; /* Prevents overflow of content */
+  white-space: nowrap; /* Prevents text wrapping */
 }
 
+/* Header specific styles */
 .data-table th {
   background-color: #f7f9fc; /* Light background for header */
   font-weight: 600; /* Bold header text */
   color: #333; /* Dark text color */
-  white-space: nowrap; /* Prevent text wrapping */
 }
 
+/* Header container for aligning select boxes and table header */
 .header-container {
   display: flex; /* Flexbox for alignment */
   flex-direction: column; /* Stack items vertically */
   align-items: flex-start; /* Align items to the start */
-  position: relative; /* Added for resizer positioning */
+  margin-bottom: 10px; /* Space below header for select boxes */
 }
 
+/* Styling for the select boxes */
 .filter-select {
   margin-top: 6px; /* Margin above select boxes */
   background: #ffffff; /* White background for select boxes */
   border: 1px solid #007BFF; /* Blue border */
   padding: 6px; /* Padding for select boxes */
-  width: 100%; /* Full width for select boxes */
+  width: calc(100% - 12px); /* Full width minus padding/border */
   box-sizing: border-box; /* Include padding and border in width */
   border-radius: 4px; /* Rounded corners */
   color: #007BFF; /* Blue text color */
 }
 
+/* Focus state for select boxes */
 .filter-select:focus {
   border-color: #0056b3; /* Darker blue on focus */
   outline: none; /* Remove default outline */
 }
 
+/* Button styling */
 .toggle-button {
   margin: 12px 0; /* Margin around button */
   padding: 10px 18px; /* Padding for button */
@@ -62,25 +69,29 @@
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
+/* Button hover effect */
 .toggle-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* Resizer handle for table columns */
 .resizer {
   position: absolute; /* Positioning to overlay header */
   right: 0; /* Align to the right */
   top: 0; /* Align to the top */
   height: 100%; /* Full height of header */
-  width: 8px; /* Width of resizer handle */
+  width: 10px; /* Width of resizer handle */
   cursor: col-resize; /* Change cursor on hover */
   z-index: 1; /* Ensure it's above other elements */
   background-color: transparent; /* Make it transparent */
 }
 
+/* Resizer hover effect */
 .resizer:hover {
   background-color: rgba(0, 123, 255, 0.3); /* Change color on hover */
 }
 
+/* Row hover effect */
 .data-table tbody tr:hover {
   background-color: #f1f7ff; /* Light blue background on row hover */
 }
