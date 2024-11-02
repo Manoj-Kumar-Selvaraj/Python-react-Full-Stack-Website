@@ -28,16 +28,23 @@
   color: #333; /* Dark text color */
 }
 
-/* Header container for aligning select boxes and table header */
+/* Header container for aligning table header */
 .header-container {
   display: flex; /* Flexbox for alignment */
   flex-direction: row; /* Align items in a row */
-  justify-content: space-between; /* Space between select boxes */
-  align-items: flex-start; /* Align items to the start */
+  justify-content: space-between; /* Space between table headers */
+  align-items: center; /* Align items to the center */
   margin-bottom: 10px; /* Space below header for select boxes */
 }
 
 /* Styling for the select boxes */
+.select-container {
+  display: flex; /* Flexbox for alignment of select boxes */
+  justify-content: space-between; /* Space between select boxes */
+  margin-top: 10px; /* Space above select boxes */
+}
+
+/* Styling for individual select boxes */
 .filter-select {
   margin: 0 6px; /* Margin around select boxes */
   background: #ffffff; /* White background for select boxes */
