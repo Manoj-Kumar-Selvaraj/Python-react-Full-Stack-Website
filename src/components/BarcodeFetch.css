@@ -5,22 +5,9 @@ body {
     padding: 20px;
 }
 
-.barcode-history-container {
-    padding: 20px; /* Add padding around the container */
-    background-color: #f8f9fa; /* Light background for contrast */
-}
-
-.heading {
-    font-size: 2em; /* Larger font size for the heading */
-    color: #343a40; /* Dark color for better contrast */
-    margin-bottom: 10px; /* Space below the heading */
-    text-align: center; /* Center the heading */
-}
-
-.divider {
-    height: 2px; /* Thickness of the line */
-    background-color: #007bff; /* Color of the line */
-    margin: 20px 0; /* Space above and below */
+h1 {
+    text-align: left;
+    color: #333;
 }
 
 .toggle-button {
