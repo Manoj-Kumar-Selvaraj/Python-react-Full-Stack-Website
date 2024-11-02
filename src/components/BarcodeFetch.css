@@ -110,3 +110,9 @@ h1 {
 .data-table tbody tr:hover {
   background-color: #f1f7ff; /* Light blue background on row hover */
 }
+
+
+/* Selected row styling */
+.data-table tbody tr.selected {
+  background-color: #e7f1ff; /* Light blue background for selected row */
+}
