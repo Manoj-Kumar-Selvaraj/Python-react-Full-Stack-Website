@@ -3,6 +3,7 @@
   width: 100%;
   margin-top: 20px;
   border-spacing: 0;
+  table-layout: auto; /* Important for responsive resizing */
 }
 
 .data-table th,
@@ -11,13 +12,14 @@
   padding: 12px 15px;
   text-align: left;
   position: relative;
+  overflow: hidden; /* Prevents content overflow */
 }
 
 .data-table th {
   background-color: #f7f9fc;
   font-weight: 600;
   color: #333;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevents text wrapping */
 }
 
 .header-container {
