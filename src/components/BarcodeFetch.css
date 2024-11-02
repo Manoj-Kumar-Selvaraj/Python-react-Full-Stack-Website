@@ -31,7 +31,6 @@
 /* Header container for aligning table header */
 .header-container {
   display: flex; /* Flexbox for alignment */
-  flex-direction: row; /* Align items in a row */
   justify-content: space-between; /* Space between table headers */
   align-items: center; /* Align items to the center */
   margin-bottom: 10px; /* Space below header for select boxes */
@@ -40,18 +39,17 @@
 /* Styling for the select boxes */
 .select-container {
   display: flex; /* Flexbox for alignment of select boxes */
-  justify-content: space-between; /* Space between select boxes */
+  flex-direction: column; /* Stack select boxes vertically */
   margin-top: 10px; /* Space above select boxes */
 }
 
 /* Styling for individual select boxes */
 .filter-select {
-  margin: 0 6px; /* Margin around select boxes */
+  margin-bottom: 6px; /* Space below each select box */
   background: #ffffff; /* White background for select boxes */
   border: 1px solid #007BFF; /* Blue border */
   padding: 6px; /* Padding for select boxes */
-  width: auto; /* Width can be auto to fill the space */
-  flex: 1; /* Flex item to grow and fill space equally */
+  width: 100%; /* Full width for select boxes */
   box-sizing: border-box; /* Include padding and border in width */
   border-radius: 4px; /* Rounded corners */
   color: #007BFF; /* Blue text color */
