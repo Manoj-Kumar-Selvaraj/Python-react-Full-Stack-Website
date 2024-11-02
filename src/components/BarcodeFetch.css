@@ -8,7 +8,7 @@
 .data-table {
   border-collapse: collapse; /* Enables individual cell border control */
   width: 100%; /* Full width for responsiveness */
-  table-layout: auto; /* Important for responsive resizing */
+  table-layout: fixed; /* Important for consistent column widths */
 }
 
 /* Styling for table headers and cells */
@@ -26,24 +26,25 @@
   background-color: #f7f9fc; /* Light background for header */
   font-weight: 600; /* Bold header text */
   color: #333; /* Dark text color */
-  position: relative; 
 }
 
 /* Header container for aligning select boxes and table header */
 .header-container {
   display: flex; /* Flexbox for alignment */
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: row; /* Align items in a row */
+  justify-content: space-between; /* Space between select boxes */
   align-items: flex-start; /* Align items to the start */
   margin-bottom: 10px; /* Space below header for select boxes */
 }
 
 /* Styling for the select boxes */
 .filter-select {
-  margin-top: 6px; /* Margin above select boxes */
+  margin: 0 6px; /* Margin around select boxes */
   background: #ffffff; /* White background for select boxes */
   border: 1px solid #007BFF; /* Blue border */
   padding: 6px; /* Padding for select boxes */
-  width: calc(100% - 12px); /* Full width minus padding/border */
+  width: auto; /* Width can be auto to fill the space */
+  flex: 1; /* Flex item to grow and fill space equally */
   box-sizing: border-box; /* Include padding and border in width */
   border-radius: 4px; /* Rounded corners */
   color: #007BFF; /* Blue text color */
