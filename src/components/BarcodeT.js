@@ -19,8 +19,9 @@ const BarcodeTTable = ({ token }) => {
     b_type: 100,
     eid: 100,
   });
+  
   const tableRef = useRef(null);
-  const resizingRef = useRef(null); // To track which column is resizing
+  const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -62,30 +63,36 @@ const BarcodeTTable = ({ token }) => {
     )
   );
 
-  // Resizable columns functionality
   const startResize = (e, column) => {
-    e.preventDefault(); // Prevents default behavior
-
-    resizingRef.current = column;
-    const startX = e.clientX;
-    const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
-
-    const doDrag = (e) => {
-      const newWidth = Math.max(startWidth + (e.clientX - startX), 50);
-      setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
-      console.log(`Resizing ${column}: ${newWidth}px`); // Debugging log
-    };
-
-    const stopResize = () => {
-      resizingRef.current = null;
-      document.removeEventListener('mousemove', doDrag);
-      document.removeEventListener('mouseup', stopResize);
-      console.log(`Stopped resizing ${column}`); // Debugging log
-    };
+    e.preventDefault(); // Prevent default behavior
+    resizingRef.current.column = column;
+    resizingRef.current.startX = e.clientX;
+    resizingRef.current.startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
     document.addEventListener('mousemove', doDrag);
     document.addEventListener('mouseup', stopResize);
-    console.log(`Started resizing ${column}`); // Debugging log
+  };
+
+  const doDrag = (e) => {
+    if (resizingRef.current.column) {
+      const newWidth = Math.max(resizingRef.current.startWidth + (e.clientX - resizingRef.current.startX), 50);
+      const column = resizingRef.current.column;
+      
+      // Directly setting the width of the column
+      const header = tableRef.current.querySelector(`th[data-column="${column}"]`);
+      header.style.width = `${newWidth}px`;
+      
+      const cells = tableRef.current.querySelectorAll(`td:nth-child(${Array.from(header.parentNode.children).indexOf(header) + 1})`);
+      cells.forEach(cell => {
+        cell.style.width = `${newWidth}px`;
+      });
+    }
+  };
+
+  const stopResize = () => {
+    resizingRef.current.column = null;
+    document.removeEventListener('mousemove', doDrag);
+    document.removeEventListener('mouseup', stopResize);
   };
 
   return (
@@ -119,7 +126,7 @@ const BarcodeTTable = ({ token }) => {
                     <th
                       key={column}
                       data-column={column}
-                      style={{ width: columnWidths[column] }} // Set width based on state
+                      style={{ width: columnWidths[column] }} // Initial width
                     >
                       <div className="header-container">
                         {column.replace('_', ' ').toUpperCase()}
