@@ -1,3 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
 .barcode-history-container {
     padding: 20px; /* Add padding around the container */
     background-color: #f8f9fa; /* Light background for contrast */
@@ -8,25 +15,6 @@
     color: #343a40; /* Dark color for better contrast */
     margin-bottom: 10px; /* Space below the heading */
     text-align: center; /* Center the heading */
-    border-bottom: 2px solid #007bff; /* Underline the heading with a color */
-}
-
-.toggle-button {
-    display: block; /* Make button block level */
-    width: 200px; /* Set width */
-    margin: 10px auto; /* Center button with margin */
-    padding: 10px; /* Add padding */
-    font-size: 1.1em; /* Slightly larger font */
-    background-color: #007bff; /* Primary button color */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Transition for background color */
-}
-
-.toggle-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
 }
 
 .divider {
@@ -35,55 +23,86 @@
     margin: 20px 0; /* Space above and below */
 }
 
-.loading-text {
-    text-align: center; /* Center loading text */
-    font-size: 1.2em; /* Slightly larger font size */
-    color: #6c757d; /* Grey color */
+.toggle-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
 }
 
 .table-container {
-    overflow-x: auto; /* Enable horizontal scroll */
-    margin-top: 20px; /* Space above table */
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
 .data-table {
-    width: 100%; /* Full width */
-    border-collapse: collapse; /* Remove gaps between borders */
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
 .data-table th,
 .data-table td {
-    border: 1px solid #dee2e6; /* Light grey border */
-    padding: 8px; /* Padding for cells */
-    text-align: left; /* Left align text */
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
 .data-table th {
-    background-color: #f1f1f1; /* Light grey background for header */
-    color: #343a40; /* Dark text color */
-    position: relative; /* Position for resizer */
+    background-color: #f2f2f2;
+    position: relative; /* For resizer */
 }
 
-.data-table tr:hover {
-    background-color: #e9ecef; /* Highlight row on hover */
-}
-
-.header-container {
-    display: flex; /* Use flexbox for header content */
-    justify-content: space-between; /* Space out header content */
-    align-items: center; /* Center vertically */
+.data-table th .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .filter-select {
-    margin-left: 10px; /* Space between header text and filter */
+    margin-left: 10px;
 }
 
 .resizer {
-    cursor: col-resize; /* Cursor for resizing */
-    width: 5px; /* Width of resizer */
-    height: 100%; /* Full height */
-    position: absolute; /* Absolute positioning */
-    right: 0; /* Align to the right */
-    top: 0; /* Align to the top */
-    z-index: 1; /* Ensure it's above other elements */
+    width: 5px;
+    cursor: col-resize;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+}
+
+.resizer:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.data-table tr {
+    transition: background-color 0.3s;
+}
+
+.data-table tr:hover {
+    background-color: #f5f5f5; /* Highlight row on hover */
+}
+
+.selected {
+    background-color: #007bff; /* Background color for the selected row */
+    color: white; /* Text color for the selected row */
+}
+
+.selected:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
