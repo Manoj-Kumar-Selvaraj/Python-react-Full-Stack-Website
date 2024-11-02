@@ -68,13 +68,14 @@
   right: 0;
   top: 0;
   height: 100%;
-  width: 4px;
+  width: 8px; /* Increased width for better interaction */
   cursor: col-resize;
   z-index: 1;
+  background-color: transparent; /* Make it transparent */
 }
 
 .resizer:hover {
-  background-color: rgba(0, 123, 255, 0.2);
+  background-color: rgba(0, 123, 255, 0.3); /* Change color on hover */
 }
 
 .data-table tbody tr:hover {
