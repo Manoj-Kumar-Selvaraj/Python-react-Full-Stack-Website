@@ -48,7 +48,7 @@
   margin-bottom: 6px; /* Space below each select box */
   background: #ffffff; /* White background for select boxes */
   border: 1px solid #007BFF; /* Blue border */
-  padding: 6px; /* Padding for select boxes */
+  padding-top: 15px; /* Padding for select boxes */
   width: 100%; /* Full width for select boxes */
   box-sizing: border-box; /* Include padding and border in width */
   border-radius: 4px; /* Rounded corners */
@@ -72,6 +72,7 @@
   font-size: 14px; /* Font size */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth transition */
+  text-align: center;
 }
 
 /* Button hover effect */
