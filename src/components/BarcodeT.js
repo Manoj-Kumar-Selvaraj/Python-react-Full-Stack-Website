@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './BarcodeFetch.css';
+// import './BarcodeFetch.css';
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
