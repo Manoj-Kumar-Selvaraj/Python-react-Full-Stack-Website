@@ -6,7 +6,7 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
-  const [selectedRowId, setSelectedRowId] = useState(null); // Add state for selected row
+  const [selectedRowId, setSelectedRowId] = useState(null); // State for selected row
   const [columnWidths, setColumnWidths] = useState({
     id: 100,
     number_of_barcodes: 150,
