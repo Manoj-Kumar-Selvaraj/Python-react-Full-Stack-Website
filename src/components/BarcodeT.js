@@ -59,6 +59,7 @@ const BarcodeTTable = ({ token }) => {
     const startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
 
     const doDrag = (e) => {
+      console.log("dragging..")
       const newWidth = Math.max(startWidth + (e.clientX - startX), 50);
       setColumnWidths((prev) => ({ ...prev, [column]: newWidth }));
     };
