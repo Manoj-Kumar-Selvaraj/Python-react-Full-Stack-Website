@@ -6,7 +6,7 @@ const BarcodeTTable = ({ token }) => {
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
-  const [selectedRowId, setSelectedRowId] = useState(null); // State for selected row
+  const [selectedRowId, setSelectedRowId] = useState(null);
   const [columnWidths, setColumnWidths] = useState({
     id: 100,
     number_of_barcodes: 150,
@@ -23,6 +23,7 @@ const BarcodeTTable = ({ token }) => {
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
+  const tableContainerRef = useRef(null); // Ref for the table container
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -99,6 +100,19 @@ const BarcodeTTable = ({ token }) => {
     setSelectedRowId(id === selectedRowId ? null : id); // Toggle selection
   };
 
+  const handleClickOutside = (event) => {
+    if (tableContainerRef.current && !tableContainerRef.current.contains(event.target)) {
+      setSelectedRowId(null); // Deselect if clicking outside the table
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside); // Add event listener for click outside
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside); // Clean up event listener
+    };
+  }, []);
+
   return (
     <div>
       <h1>Barcode History</h1>
@@ -107,7 +121,7 @@ const BarcodeTTable = ({ token }) => {
       </button>
 
       {tableVisible && (
-        <div className="table-container">
+        <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
           ) : (
