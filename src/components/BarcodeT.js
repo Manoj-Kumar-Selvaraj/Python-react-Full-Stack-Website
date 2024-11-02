@@ -101,7 +101,7 @@ const BarcodeTTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Barcode History</h1>
+      <h1 className="heading">Barcode History</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
