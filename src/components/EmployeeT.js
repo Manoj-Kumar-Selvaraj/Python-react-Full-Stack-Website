@@ -31,7 +31,10 @@ const EmployeeTable = ({ token }) => {
         },
       });
       const fetchedData = await response.json();
-      setData(fetchedData);
+      console.log(fetchedData);  // Debugging: Check response structure
+
+      // Check if fetchedData is an array or contains an array as a property
+      setData(Array.isArray(fetchedData) ? fetchedData : fetchedData.employees || []);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
     } finally {
@@ -55,11 +58,13 @@ const EmployeeTable = ({ token }) => {
     });
   };
 
-  const filteredData = data.filter((item) =>
-    Object.entries(filters).every(
-      ([column, value]) => !value || item[column].toString() === value
-    )
-  );
+  const filteredData = Array.isArray(data)
+    ? data.filter((item) =>
+        Object.entries(filters).every(
+          ([column, value]) => !value || item[column].toString() === value
+        )
+      )
+    : [];
 
   const startResize = (e, column) => {
     e.preventDefault();
@@ -117,73 +122,4 @@ const EmployeeTable = ({ token }) => {
       </button>
 
       {tableVisible && (
-        <div className="table-container" ref={tableContainerRef}>
-          {loading ? (
-            <p>Loading data...</p>
-          ) : (
-            <table ref={tableRef} className="data-table">
-              <thead>
-                <tr>
-                  {[
-                    'eid',
-                    'ename',
-                    'last_login',
-                    'is_active',
-                    'is_superuser',
-                    'created_at',
-                    'updated_at',
-                  ].map((column) => (
-                    <th
-                      key={column}
-                      data-column={column}
-                      style={{ width: columnWidths[column] }}
-                    >
-                      <div className="header-container">
-                        {column.replace('_', ' ').toUpperCase()}
-                        <select
-                          className="filter-select"
-                          onChange={(e) => handleFilterChange(e, column)}
-                          value={filters[column] || ''}
-                        >
-                          <option value="">All</option>
-                          {getUniqueValues(column).map((val) => (
-                            <option key={val} value={val}>
-                              {val}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div
-                        className="resizer"
-                        onMouseDown={(e) => startResize(e, column)}
-                      />
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item) => (
-                  <tr
-                    key={item.eid}
-                    onClick={() => handleRowClick(item.eid)}
-                    className={selectedRowId === item.eid ? 'selected' : ''}
-                  >
-                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
-                    <td style={{ width: columnWidths.ename }}>{item.ename}</td>
-                    <td style={{ width: columnWidths.last_login }}>{item.last_login}</td>
-                    <td style={{ width: columnWidths.is_active }}>{item.is_active}</td>
-                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser}</td>
-                    <td style={{ width: columnWidths.created_at }}>{item.created_at}</td>
-                    <td style={{ width: columnWidths.updated_at }}>{item.updated_at}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default EmployeeTable;
+        <div className="table-container
