@@ -155,6 +155,25 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
+  const handleKeyDown = (e, id, column) => {
+    // Allow only backspace and delete in the specified columns
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+      const value = editedData[id]?.[column] || '';
+      const newValue = value.slice(0, -1); // Remove the last character
+
+      setEditedData(prev => ({
+        ...prev,
+        [id]: {
+          ...prev[id],
+          [column]: newValue // Update value on keydown
+        },
+      }));
+
+      // Prevent the default behavior of the input
+      e.preventDefault();
+    }
+  };
+
   return (
     <div>
       <h1>Barcode History</h1>
@@ -189,6 +208,7 @@ const BarcodeTTable = ({ token }) => {
                           value={editedData[item.id]?.print_slot || item.print_slot}
                           onChange={(e) => handleChange(e, item.id, 'print_slot')}
                           onBlur={() => handleBlur(item.id, 'print_slot', item.print_slot)} // Handle blur event
+                          onKeyDown={(e) => handleKeyDown(e, item.id, 'print_slot')} // Key down event
                           placeholder={item.print_slot} // Show placeholder when input is empty
                         />
                       </td>
@@ -198,6 +218,7 @@ const BarcodeTTable = ({ token }) => {
                           value={editedData[item.id]?.gen_slot || item.gen_slot}
                           onChange={(e) => handleChange(e, item.id, 'gen_slot')}
                           onBlur={() => handleBlur(item.id, 'gen_slot', item.gen_slot)} // Handle blur event
+                          onKeyDown={(e) => handleKeyDown(e, item.id, 'gen_slot')} // Key down event
                           placeholder={item.gen_slot} // Show placeholder when input is empty
                         />
                       </td>
@@ -207,6 +228,7 @@ const BarcodeTTable = ({ token }) => {
                           value={editedData[item.id]?.Approval || item.Approval}
                           onChange={(e) => handleChange(e, item.id, 'Approval')}
                           onBlur={() => handleBlur(item.id, 'Approval', item.Approval)} // Handle blur event
+                          onKeyDown={(e) => handleKeyDown(e, item.id, 'Approval')} // Key down event
                           placeholder={item.Approval} // Show placeholder when input is empty
                         />
                       </td>
