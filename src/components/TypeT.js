@@ -199,4 +199,4 @@ const TypeTable = ({ token }) => {
   );
 };
 
-export default ProductsTable;
+export default TypeTable;
