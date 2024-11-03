@@ -1,44 +1,46 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './BarcodeFetch.css';
+import './BarcodeFetch.css'; // Ensure this contains styles for loading spinner and table
 
-const TypeTable = ({ token }) => {
+const TypeDataTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [columnWidths, setColumnWidths] = useState({
     b_type: 100,
-    pname: 150,
-    ptype: 150,
-    pseller: 150,
     psize: 100,
+    pname: 150,
+    ptype: 100,
+    pseller: 150,
     last_processed_date: 120,
-    last_barcode: 120,
-    eid: 100,
-    lat_pid: 100,
+    last_barcode: 150,
     pamount: 100,
+    eid: 100,
   });
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
 
-  const fetchProductsData = async () => {
+  const fetchTypeData = async () => {
     setLoading(true);
+    setError(null);
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/products/select-products/', {
         method: 'GET',
         headers: {
           'Authorization': `Token ${token}`,
         },
       });
+      if (!response.ok) throw new Error('Network response was not ok');
       const fetchedData = await response.json();
       console.log(fetchedData);  // Debugging: Check response structure
-
-      setData(Array.isArray(fetchedData.data) ? fetchedData.data : []);
+      setData(Array.isArray(fetchedData) ? fetchedData : []);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
+      setError("Failed to fetch data. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -47,7 +49,7 @@ const TypeTable = ({ token }) => {
   const handleToggleTable = () => {
     setTableVisible(!tableVisible);
     if (!tableVisible && data.length === 0) {
-      fetchProductsData();
+      fetchTypeData();
     }
   };
 
@@ -60,13 +62,11 @@ const TypeTable = ({ token }) => {
     });
   };
 
-  const filteredData = Array.isArray(data)
-    ? data.filter((item) =>
-        Object.entries(filters).every(
-          ([column, value]) => !value || item[column].toString() === value
-        )
-      )
-    : [];
+  const filteredData = data.filter((item) =>
+    Object.entries(filters).every(
+      ([column, value]) => !value || item[column].toString() === value
+    )
+  );
 
   const startResize = (e, column) => {
     e.preventDefault();
@@ -118,7 +118,7 @@ const TypeTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Products Data</h1>
+      <h1>Type Data Table</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
@@ -127,21 +127,22 @@ const TypeTable = ({ token }) => {
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
+          ) : error ? (
+            <p>{error}</p>
           ) : (
             <table ref={tableRef} className="data-table">
               <thead>
                 <tr>
                   {[
                     'b_type',
+                    'psize',
                     'pname',
                     'ptype',
                     'pseller',
-                    'psize',
                     'last_processed_date',
                     'last_barcode',
-                    'eid',
-                    'lat_pid',
                     'pamount',
+                    'eid',
                   ].map((column) => (
                     <th
                       key={column}
@@ -174,20 +175,19 @@ const TypeTable = ({ token }) => {
               <tbody>
                 {filteredData.map((item) => (
                   <tr
-                    key={item.b_type} // Changed from item.pid to item.b_type
-                    onClick={() => handleRowClick(item.b_type)} // Changed from item.pid to item.b_type
-                    className={selectedRowId === item.b_type ? 'selected' : ''}
+                    key={item.last_barcode} // Ensure this is unique across the dataset
+                    onClick={() => handleRowClick(item.last_barcode)}
+                    className={selectedRowId === item.last_barcode ? 'selected' : ''}
                   >
                     <td style={{ width: columnWidths.b_type }}>{item.b_type}</td>
+                    <td style={{ width: columnWidths.psize }}>{item.psize}</td>
                     <td style={{ width: columnWidths.pname }}>{item.pname}</td>
                     <td style={{ width: columnWidths.ptype }}>{item.ptype}</td>
                     <td style={{ width: columnWidths.pseller }}>{item.pseller}</td>
-                    <td style={{ width: columnWidths.psize }}>{item.psize}</td>
                     <td style={{ width: columnWidths.last_processed_date }}>{item.last_processed_date}</td>
                     <td style={{ width: columnWidths.last_barcode }}>{item.last_barcode}</td>
-                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
-                    <td style={{ width: columnWidths.lat_pid }}>{item.lat_pid}</td>
                     <td style={{ width: columnWidths.pamount }}>{item.pamount}</td>
+                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
                   </tr>
                 ))}
               </tbody>
@@ -199,4 +199,4 @@ const TypeTable = ({ token }) => {
   );
 };
 
-export default TypeTable;
+export default TypeDataTable;
