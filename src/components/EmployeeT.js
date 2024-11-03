@@ -24,7 +24,7 @@ const EmployeeTable = ({ token }) => {
   const fetchEmployeeData = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employee/access/', {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/employee/select/', {
         method: 'GET',
         headers: {
           'Authorization': `Token ${token}`,
