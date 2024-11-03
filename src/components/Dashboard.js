@@ -10,6 +10,7 @@ const Dashboard = ({ token }) => {
       <BarcodeTTable token={token} />
       <EmployeeTTable token={token} />
       <ProductsTable token={token} />
+      <TypeTable token={token} />
     </>
   );
 };
