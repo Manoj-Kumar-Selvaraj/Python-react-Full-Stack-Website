@@ -7,23 +7,12 @@ const BarcodeTTable = ({ token }) => {
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
-  const [columnWidths, setColumnWidths] = useState({
-    id: 100,
-    number_of_barcodes: 150,
-    start_barcode: 120,
-    last_barcode: 120,
-    print_status: 100,
-    dog: 80,
-    print_slot: 100,
-    gen_slot: 100,
-    Approval: 100,
-    b_type: 100,
-    eid: 100,
-  });
+  const [editableRowData, setEditableRowData] = useState({});
+  const [originalRowData, setOriginalRowData] = useState({}); // To keep track of original values
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
-  const tableContainerRef = useRef(null); // Ref for the table container
+  const tableContainerRef = useRef(null);
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -97,7 +86,16 @@ const BarcodeTTable = ({ token }) => {
   };
 
   const handleRowClick = (id) => {
-    setSelectedRowId(id === selectedRowId ? null : id); // Toggle selection
+    if (selectedRowId === id) {
+      setSelectedRowId(null);
+      setEditableRowData({});
+      setOriginalRowData({});
+    } else {
+      setSelectedRowId(id);
+      const rowData = data.find(item => item.id === id);
+      setEditableRowData(rowData); // Load row data for editing
+      setOriginalRowData(rowData); // Keep track of original values
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -107,11 +105,49 @@ const BarcodeTTable = ({ token }) => {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside); // Add event listener for click outside
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside); // Clean up event listener
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditableRowData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleBlur = () => {
+    // If no change made, revert to original data
+    setEditableRowData(originalRowData);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/${selectedRowId}/`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Token ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editableRowData),
+      });
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        setData((prev) => prev.map(item => (item.id === selectedRowId ? updatedData : item)));
+        setSelectedRowId(null); // Deselect after submission
+        setEditableRowData({}); // Clear editable data
+        setOriginalRowData({}); // Clear original data
+      } else {
+        console.error('Failed to update the data', response);
+      }
+    } catch (error) {
+      console.error('There was an error updating the data!', error);
+    }
+  };
 
   return (
     <div>
@@ -144,7 +180,6 @@ const BarcodeTTable = ({ token }) => {
                     <th
                       key={column}
                       data-column={column}
-                      style={{ width: columnWidths[column] }} // Initial width
                     >
                       <div className="header-container">
                         {column.replace('_', ' ').toUpperCase()}
@@ -173,24 +208,129 @@ const BarcodeTTable = ({ token }) => {
                 {filteredData.map((item) => (
                   <tr
                     key={item.id}
-                    onClick={() => handleRowClick(item.id)} // Add onClick handler to each row
-                    className={selectedRowId === item.id ? 'selected' : ''} // Apply selected class
+                    onClick={() => handleRowClick(item.id)}
+                    className={selectedRowId === item.id ? 'selected' : ''}
                   >
-                    <td style={{ width: columnWidths.id }}>{item.id}</td>
-                    <td style={{ width: columnWidths.number_of_barcodes }}>{item.number_of_barcodes}</td>
-                    <td style={{ width: columnWidths.start_barcode }}>{item.start_barcode}</td>
-                    <td style={{ width: columnWidths.last_barcode }}>{item.last_barcode}</td>
-                    <td style={{ width: columnWidths.print_status }}>{item.print_status}</td>
-                    <td style={{ width: columnWidths.dog }}>{item.dog}</td>
-                    <td style={{ width: columnWidths.print_slot }}>{item.print_slot}</td>
-                    <td style={{ width: columnWidths.gen_slot }}>{item.gen_slot}</td>
-                    <td style={{ width: columnWidths.Approval }}>{item.Approval}</td>
-                    <td style={{ width: columnWidths.b_type }}>{item.b_type}</td>
-                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
+                    {selectedRowId === item.id ? (
+                      <>
+                        <td>
+                          <input type="text" name="id" value={editableRowData.id || ''} readOnly />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="number_of_barcodes"
+                            value={editableRowData.number_of_barcodes || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="start_barcode"
+                            value={editableRowData.start_barcode || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="last_barcode"
+                            value={editableRowData.last_barcode || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="print_status"
+                            value={editableRowData.print_status || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="dog"
+                            value={editableRowData.dog || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="print_slot"
+                            value={editableRowData.print_slot || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="gen_slot"
+                            value={editableRowData.gen_slot || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="Approval"
+                            value={editableRowData.Approval || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="b_type"
+                            value={editableRowData.b_type || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            name="eid"
+                            value={editableRowData.eid || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur} // Revert on blur
+                          />
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        <td>{item.id}</td>
+                        <td>{item.number_of_barcodes}</td>
+                        <td>{item.start_barcode}</td>
+                        <td>{item.last_barcode}</td>
+                        <td>{item.print_status}</td>
+                        <td>{item.dog}</td>
+                        <td>{item.print_slot}</td>
+                        <td>{item.gen_slot}</td>
+                        <td>{item.Approval}</td>
+                        <td>{item.b_type}</td>
+                        <td>{item.eid}</td>
+                      </>
+                    )}
                   </tr>
                 ))}
               </tbody>
             </table>
+          )}
+          {selectedRowId && (
+            <button onClick={handleSubmit} className="submit-button">
+              Submit Changes
+            </button>
           )}
         </div>
       )}
