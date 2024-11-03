@@ -28,7 +28,7 @@ const ProductsTable = ({ token }) => {
   const fetchProductsData = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/products/', {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/products/select-products/', {
         method: 'GET',
         headers: {
           'Authorization': `Token ${token}`,
