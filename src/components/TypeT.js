@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './BarcodeFetch.css';
 
-const ProductsTable = ({ token }) => {
+const TypeTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
