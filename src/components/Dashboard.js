@@ -1,6 +1,6 @@
 import React from 'react';
-import BarcodeTTable from './BarcodeTTable';
-import EmployeeTTable from './EmployeeTTable';
+import BarcodeTTable from './BarcodeT';
+import EmployeeTTable from './EmployeeT';
 
 const Dashboard = ({ token }) => {
   return (
