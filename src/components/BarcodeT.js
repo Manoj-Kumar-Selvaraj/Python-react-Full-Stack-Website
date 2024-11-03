@@ -7,25 +7,11 @@ const BarcodeTTable = ({ token }) => {
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
-  const [columnWidths, setColumnWidths] = useState({
-    id: 100,
-    number_of_barcodes: 150,
-    start_barcode: 120,
-    last_barcode: 120,
-    print_status: 100,
-    dog: 80,
-    print_slot: 100,
-    gen_slot: 100,
-    Approval: 100,
-    b_type: 100,
-    eid: 100,
-  });
+  const [editedData, setEditedData] = useState({});
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
-
-  const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -121,9 +107,22 @@ const BarcodeTTable = ({ token }) => {
       ...prev,
       [id]: {
         ...prev[id],
-        [column]: value || data.find(item => item.id === id)[column], // If empty, revert to fetched value
+        [column]: value // Allow empty input to set fresh value
       },
     }));
+  };
+
+  const handleBlur = (id, column, value) => {
+    // If no value entered, revert to original value
+    if (!editedData[id] || !editedData[id][column]) {
+      setEditedData(prev => ({
+        ...prev,
+        [id]: {
+          ...prev[id],
+          [column]: value // Restore original value
+        },
+      }));
+    }
   };
 
   const handleSubmit = async () => {
@@ -172,45 +171,9 @@ const BarcodeTTable = ({ token }) => {
               <table ref={tableRef} className="data-table">
                 <thead>
                   <tr>
-                    {[
-                      'id',
-                      'number_of_barcodes',
-                      'start_barcode',
-                      'last_barcode',
-                      'print_status',
-                      'dog',
-                      'print_slot',
-                      'gen_slot',
-                      'Approval',
-                      'b_type',
-                      'eid',
-                    ].map((column) => (
-                      <th
-                        key={column}
-                        data-column={column}
-                        style={{ width: columnWidths[column] }}
-                      >
-                        <div className="header-container">
-                          {column.replace('_', ' ').toUpperCase()}
-                          <select
-                            className="filter-select"
-                            onChange={(e) => handleFilterChange(e, column)}
-                            value={filters[column] || ''}
-                          >
-                            <option value="">All</option>
-                            {getUniqueValues(column).map((val) => (
-                              <option key={val} value={val}>
-                                {val}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div
-                          className="resizer"
-                          onMouseDown={(e) => startResize(e, column)}
-                        />
-                      </th>
-                    ))}
+                    <th data-column="print_slot">PRINT SLOT</th>
+                    <th data-column="gen_slot">GEN SLOT</th>
+                    <th data-column="Approval">APPROVAL</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -220,17 +183,33 @@ const BarcodeTTable = ({ token }) => {
                       onClick={() => handleRowClick(item.id)}
                       className={selectedRowId === item.id ? 'selected' : ''}
                     >
-                      <td style={{ width: columnWidths.id }}>{item.id}</td>
-                      {Object.keys(columnWidths).slice(1).map(column => (
-                        <td key={column} style={{ width: columnWidths[column] }}>
-                          <input
-                            type="text"
-                            value={editedData[item.id]?.[column] || item[column]}
-                            onChange={(e) => handleChange(e, item.id, column)}
-                            placeholder={item[column]} // Show placeholder when input is empty
-                          />
-                        </td>
-                      ))}
+                      <td>
+                        <input
+                          type="text"
+                          value={editedData[item.id]?.print_slot || item.print_slot}
+                          onChange={(e) => handleChange(e, item.id, 'print_slot')}
+                          onBlur={() => handleBlur(item.id, 'print_slot', item.print_slot)} // Handle blur event
+                          placeholder={item.print_slot} // Show placeholder when input is empty
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={editedData[item.id]?.gen_slot || item.gen_slot}
+                          onChange={(e) => handleChange(e, item.id, 'gen_slot')}
+                          onBlur={() => handleBlur(item.id, 'gen_slot', item.gen_slot)} // Handle blur event
+                          placeholder={item.gen_slot} // Show placeholder when input is empty
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          value={editedData[item.id]?.Approval || item.Approval}
+                          onChange={(e) => handleChange(e, item.id, 'Approval')}
+                          onBlur={() => handleBlur(item.id, 'Approval', item.Approval)} // Handle blur event
+                          placeholder={item.Approval} // Show placeholder when input is empty
+                        />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
