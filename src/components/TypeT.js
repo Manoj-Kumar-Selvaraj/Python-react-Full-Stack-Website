@@ -28,7 +28,7 @@ const TypeDataTable = ({ token }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/products/select-products/', {
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/type-select/type-records/', {
         method: 'GET',
         headers: {
           'Authorization': `Token ${token}`,
