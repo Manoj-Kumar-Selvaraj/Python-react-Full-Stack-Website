@@ -7,11 +7,25 @@ const BarcodeTTable = ({ token }) => {
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
-  const [editedData, setEditedData] = useState({});
+  const [columnWidths, setColumnWidths] = useState({
+    id: 100,
+    number_of_barcodes: 150,
+    start_barcode: 120,
+    last_barcode: 120,
+    print_status: 100,
+    dog: 80,
+    print_slot: 100,
+    gen_slot: 100,
+    Approval: 100,
+    b_type: 100,
+    eid: 100,
+  });
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
+  const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -96,6 +110,8 @@ const BarcodeTTable = ({ token }) => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', ("Backspace"));
+    document.addEventListener('keydown', ("Delete"));
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -107,22 +123,9 @@ const BarcodeTTable = ({ token }) => {
       ...prev,
       [id]: {
         ...prev[id],
-        [column]: value // Allow empty input to set fresh value
+        [column]: value || data.find(item => item.id === id)[column], // If empty, revert to fetched value
       },
     }));
-  };
-
-  const handleBlur = (id, column, value) => {
-    // If no value entered, revert to original value
-    if (!editedData[id] || !editedData[id][column]) {
-      setEditedData(prev => ({
-        ...prev,
-        [id]: {
-          ...prev[id],
-          [column]: value // Restore original value
-        },
-      }));
-    }
   };
 
   const handleSubmit = async () => {
@@ -155,25 +158,6 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  const handleKeyDown = (e, id, column) => {
-    // Allow only backspace and delete in the specified columns
-    if (e.key === 'Backspace' || e.key === 'Delete') {
-      const value = editedData[id]?.[column] || '';
-      const newValue = value.slice(0, -1); // Remove the last character
-
-      setEditedData(prev => ({
-        ...prev,
-        [id]: {
-          ...prev[id],
-          [column]: newValue // Update value on keydown
-        },
-      }));
-
-      // Prevent the default behavior of the input
-      e.preventDefault();
-    }
-  };
-
   return (
     <div>
       <h1>Barcode History</h1>
@@ -190,9 +174,45 @@ const BarcodeTTable = ({ token }) => {
               <table ref={tableRef} className="data-table">
                 <thead>
                   <tr>
-                    <th data-column="print_slot">PRINT SLOT</th>
-                    <th data-column="gen_slot">GEN SLOT</th>
-                    <th data-column="Approval">APPROVAL</th>
+                    {[
+                      'id',
+                      'number_of_barcodes',
+                      'start_barcode',
+                      'last_barcode',
+                      'print_status',
+                      'dog',
+                      'print_slot',
+                      'gen_slot',
+                      'Approval',
+                      'b_type',
+                      'eid',
+                    ].map((column) => (
+                      <th
+                        key={column}
+                        data-column={column}
+                        style={{ width: columnWidths[column] }}
+                      >
+                        <div className="header-container">
+                          {column.replace('_', ' ').toUpperCase()}
+                          <select
+                            className="filter-select"
+                            onChange={(e) => handleFilterChange(e, column)}
+                            value={filters[column] || ''}
+                          >
+                            <option value="">All</option>
+                            {getUniqueValues(column).map((val) => (
+                              <option key={val} value={val}>
+                                {val}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div
+                          className="resizer"
+                          onMouseDown={(e) => startResize(e, column)}
+                        />
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -202,36 +222,17 @@ const BarcodeTTable = ({ token }) => {
                       onClick={() => handleRowClick(item.id)}
                       className={selectedRowId === item.id ? 'selected' : ''}
                     >
-                      <td>
-                        <input
-                          type="text"
-                          value={editedData[item.id]?.print_slot || item.print_slot}
-                          onChange={(e) => handleChange(e, item.id, 'print_slot')}
-                          onBlur={() => handleBlur(item.id, 'print_slot', item.print_slot)} // Handle blur event
-                          onKeyDown={(e) => handleKeyDown(e, item.id, 'print_slot')} // Key down event
-                          placeholder={item.print_slot} // Show placeholder when input is empty
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          value={editedData[item.id]?.gen_slot || item.gen_slot}
-                          onChange={(e) => handleChange(e, item.id, 'gen_slot')}
-                          onBlur={() => handleBlur(item.id, 'gen_slot', item.gen_slot)} // Handle blur event
-                          onKeyDown={(e) => handleKeyDown(e, item.id, 'gen_slot')} // Key down event
-                          placeholder={item.gen_slot} // Show placeholder when input is empty
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          value={editedData[item.id]?.Approval || item.Approval}
-                          onChange={(e) => handleChange(e, item.id, 'Approval')}
-                          onBlur={() => handleBlur(item.id, 'Approval', item.Approval)} // Handle blur event
-                          onKeyDown={(e) => handleKeyDown(e, item.id, 'Approval')} // Key down event
-                          placeholder={item.Approval} // Show placeholder when input is empty
-                        />
-                      </td>
+                      <td style={{ width: columnWidths.id }}>{item.id}</td>
+                      {Object.keys(columnWidths).slice(1).map(column => (
+                        <td key={column} style={{ width: columnWidths[column] }}>
+                          <input
+                            type="text"
+                            value={editedData[item.id]?.[column] || item[column]}
+                            onChange={(e) => handleChange(e, item.id, column)}
+                            placeholder={item[column]} // Show placeholder when input is empty
+                          />
+                        </td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>
