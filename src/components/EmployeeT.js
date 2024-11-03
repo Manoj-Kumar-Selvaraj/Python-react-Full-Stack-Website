@@ -33,8 +33,7 @@ const EmployeeTable = ({ token }) => {
       const fetchedData = await response.json();
       console.log(fetchedData);  // Debugging: Check response structure
 
-      // Check if fetchedData is an array or contains an array as a property
-      setData(Array.isArray(fetchedData) ? fetchedData : fetchedData.employees || []);
+      setData(Array.isArray(fetchedData.data) ? fetchedData.data : []);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
     } finally {
