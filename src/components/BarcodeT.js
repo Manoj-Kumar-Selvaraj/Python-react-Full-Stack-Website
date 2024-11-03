@@ -7,12 +7,25 @@ const BarcodeTTable = ({ token }) => {
   const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
-  const [editableRowData, setEditableRowData] = useState({});
-  const [originalRowData, setOriginalRowData] = useState({}); // To keep track of original values
+  const [columnWidths, setColumnWidths] = useState({
+    id: 100,
+    number_of_barcodes: 150,
+    start_barcode: 120,
+    last_barcode: 120,
+    print_status: 100,
+    dog: 80,
+    print_slot: 100,
+    gen_slot: 100,
+    Approval: 100,
+    b_type: 100,
+    eid: 100,
+  });
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
+  const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
     setLoading(true);
@@ -86,21 +99,12 @@ const BarcodeTTable = ({ token }) => {
   };
 
   const handleRowClick = (id) => {
-    if (selectedRowId === id) {
-      setSelectedRowId(null);
-      setEditableRowData({});
-      setOriginalRowData({});
-    } else {
-      setSelectedRowId(id);
-      const rowData = data.find(item => item.id === id);
-      setEditableRowData(rowData); // Load row data for editing
-      setOriginalRowData(rowData); // Keep track of original values
-    }
+    setSelectedRowId(id === selectedRowId ? null : id);
   };
 
   const handleClickOutside = (event) => {
     if (tableContainerRef.current && !tableContainerRef.current.contains(event.target)) {
-      setSelectedRowId(null); // Deselect if clicking outside the table
+      setSelectedRowId(null);
     }
   };
 
@@ -111,41 +115,44 @@ const BarcodeTTable = ({ token }) => {
     };
   }, []);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditableRowData((prev) => ({
+  const handleChange = (e, id, column) => {
+    const value = e.target.value;
+    setEditedData(prev => ({
       ...prev,
-      [name]: value,
+      [id]: {
+        ...prev[id],
+        [column]: value || data.find(item => item.id === id)[column], // If empty, revert to fetched value
+      },
     }));
   };
 
-  const handleBlur = () => {
-    // If no change made, revert to original data
-    setEditableRowData(originalRowData);
-  };
-
   const handleSubmit = async () => {
+    const updatedData = Object.entries(editedData).map(([id, values]) => ({
+      id: Number(id), // Ensure ID is a number
+      ...values,
+    }));
+
     try {
-      const response = await fetch(`https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/${selectedRowId}/`, {
-        method: 'PUT',
+      const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
+        method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(editableRowData),
+        body: JSON.stringify(updatedData),
       });
 
-      if (response.ok) {
-        const updatedData = await response.json();
-        setData((prev) => prev.map(item => (item.id === selectedRowId ? updatedData : item)));
-        setSelectedRowId(null); // Deselect after submission
-        setEditableRowData({}); // Clear editable data
-        setOriginalRowData({}); // Clear original data
-      } else {
-        console.error('Failed to update the data', response);
+      if (!response.ok) {
+        throw new Error('Failed to update data');
       }
+
+      const result = await response.json();
+      console.log('Updated Records:', result);
+      // Optionally, refresh your data
+      BarcodeTFetch();
+      setEditedData({}); // Clear edited data after submission
     } catch (error) {
-      console.error('There was an error updating the data!', error);
+      console.error("Error updating data:", error);
     }
   };
 
@@ -161,176 +168,75 @@ const BarcodeTTable = ({ token }) => {
           {loading ? (
             <p>Loading data...</p>
           ) : (
-            <table ref={tableRef} className="data-table">
-              <thead>
-                <tr>
-                  {[
-                    'id',
-                    'number_of_barcodes',
-                    'start_barcode',
-                    'last_barcode',
-                    'print_status',
-                    'dog',
-                    'print_slot',
-                    'gen_slot',
-                    'Approval',
-                    'b_type',
-                    'eid',
-                  ].map((column) => (
-                    <th
-                      key={column}
-                      data-column={column}
-                    >
-                      <div className="header-container">
-                        {column.replace('_', ' ').toUpperCase()}
-                        <select
-                          className="filter-select"
-                          onChange={(e) => handleFilterChange(e, column)}
-                          value={filters[column] || ''}
-                        >
-                          <option value="">All</option>
-                          {getUniqueValues(column).map((val) => (
-                            <option key={val} value={val}>
-                              {val}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div
-                        className="resizer"
-                        onMouseDown={(e) => startResize(e, column)} // Start resizing
-                      />
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item) => (
-                  <tr
-                    key={item.id}
-                    onClick={() => handleRowClick(item.id)}
-                    className={selectedRowId === item.id ? 'selected' : ''}
-                  >
-                    {selectedRowId === item.id ? (
-                      <>
-                        <td>
-                          <input type="text" name="id" value={editableRowData.id || ''} readOnly />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="number_of_barcodes"
-                            value={editableRowData.number_of_barcodes || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="start_barcode"
-                            value={editableRowData.start_barcode || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="last_barcode"
-                            value={editableRowData.last_barcode || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="print_status"
-                            value={editableRowData.print_status || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="dog"
-                            value={editableRowData.dog || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="print_slot"
-                            value={editableRowData.print_slot || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="gen_slot"
-                            value={editableRowData.gen_slot || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="Approval"
-                            value={editableRowData.Approval || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="b_type"
-                            value={editableRowData.b_type || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            name="eid"
-                            value={editableRowData.eid || ''}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur} // Revert on blur
-                          />
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td>{item.id}</td>
-                        <td>{item.number_of_barcodes}</td>
-                        <td>{item.start_barcode}</td>
-                        <td>{item.last_barcode}</td>
-                        <td>{item.print_status}</td>
-                        <td>{item.dog}</td>
-                        <td>{item.print_slot}</td>
-                        <td>{item.gen_slot}</td>
-                        <td>{item.Approval}</td>
-                        <td>{item.b_type}</td>
-                        <td>{item.eid}</td>
-                      </>
-                    )}
+            <>
+              <table ref={tableRef} className="data-table">
+                <thead>
+                  <tr>
+                    {[
+                      'id',
+                      'number_of_barcodes',
+                      'start_barcode',
+                      'last_barcode',
+                      'print_status',
+                      'dog',
+                      'print_slot',
+                      'gen_slot',
+                      'Approval',
+                      'b_type',
+                      'eid',
+                    ].map((column) => (
+                      <th
+                        key={column}
+                        data-column={column}
+                        style={{ width: columnWidths[column] }}
+                      >
+                        <div className="header-container">
+                          {column.replace('_', ' ').toUpperCase()}
+                          <select
+                            className="filter-select"
+                            onChange={(e) => handleFilterChange(e, column)}
+                            value={filters[column] || ''}
+                          >
+                            <option value="">All</option>
+                            {getUniqueValues(column).map((val) => (
+                              <option key={val} value={val}>
+                                {val}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div
+                          className="resizer"
+                          onMouseDown={(e) => startResize(e, column)}
+                        />
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-          {selectedRowId && (
-            <button onClick={handleSubmit} className="submit-button">
-              Submit Changes
-            </button>
+                </thead>
+                <tbody>
+                  {filteredData.map((item) => (
+                    <tr
+                      key={item.id}
+                      onClick={() => handleRowClick(item.id)}
+                      className={selectedRowId === item.id ? 'selected' : ''}
+                    >
+                      <td style={{ width: columnWidths.id }}>{item.id}</td>
+                      {Object.keys(columnWidths).slice(1).map(column => (
+                        <td key={column} style={{ width: columnWidths[column] }}>
+                          <input
+                            type="text"
+                            value={editedData[item.id]?.[column] || item[column]}
+                            onChange={(e) => handleChange(e, item.id, column)}
+                            placeholder={item[column]} // Show placeholder when input is empty
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <button onClick={handleSubmit}>Submit Changes</button>
+            </>
           )}
         </div>
       )}
