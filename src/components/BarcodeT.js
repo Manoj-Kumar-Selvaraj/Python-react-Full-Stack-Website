@@ -110,8 +110,6 @@ const BarcodeTTable = ({ token }) => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', ("Backspace"));
-    document.addEventListener('keydown', ("Delete"));
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
