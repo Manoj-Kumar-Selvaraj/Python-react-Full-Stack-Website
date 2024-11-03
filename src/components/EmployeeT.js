@@ -122,4 +122,73 @@ const EmployeeTable = ({ token }) => {
       </button>
 
       {tableVisible && (
-        <div className="table-container
+        <div className="table-container" ref={tableContainerRef}>
+          {loading ? (
+            <p>Loading data...</p>
+          ) : (
+            <table ref={tableRef} className="data-table">
+              <thead>
+                <tr>
+                  {[
+                    'eid',
+                    'ename',
+                    'last_login',
+                    'is_active',
+                    'is_superuser',
+                    'created_at',
+                    'updated_at',
+                  ].map((column) => (
+                    <th
+                      key={column}
+                      data-column={column}
+                      style={{ width: columnWidths[column] }}
+                    >
+                      <div className="header-container">
+                        {column.replace('_', ' ').toUpperCase()}
+                        <select
+                          className="filter-select"
+                          onChange={(e) => handleFilterChange(e, column)}
+                          value={filters[column] || ''}
+                        >
+                          <option value="">All</option>
+                          {getUniqueValues(column).map((val) => (
+                            <option key={val} value={val}>
+                              {val}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div
+                        className="resizer"
+                        onMouseDown={(e) => startResize(e, column)}
+                      />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData.map((item) => (
+                  <tr
+                    key={item.eid}
+                    onClick={() => handleRowClick(item.eid)}
+                    className={selectedRowId === item.eid ? 'selected' : ''}
+                  >
+                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
+                    <td style={{ width: columnWidths.ename }}>{item.ename}</td>
+                    <td style={{ width: columnWidths.last_login }}>{item.last_login}</td>
+                    <td style={{ width: columnWidths.is_active }}>{item.is_active}</td>
+                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser}</td>
+                    <td style={{ width: columnWidths.created_at }}>{item.created_at}</td>
+                    <td style={{ width: columnWidths.updated_at }}>{item.updated_at}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default EmployeeTable;
