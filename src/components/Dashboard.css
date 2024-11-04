@@ -1,7 +1,7 @@
 /* Dashboard.css */
 
 .tabs {
-  flex-direction: row; /* Arrange tabs vertically */
+  display: block
   margin-bottom: 20px; /* Space below the tabs */
 }
 
