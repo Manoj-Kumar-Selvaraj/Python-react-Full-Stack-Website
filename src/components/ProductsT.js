@@ -45,7 +45,7 @@ const ProductsTable = ({ token }) => {
     }
   };
 
-  const useEffect(() => {
+  useEffect(() => {
       fetchProductsData();
     }, [ ])
 
