@@ -41,7 +41,7 @@ const EmployeeTable = ({ token }) => {
     }
   };
 
-  useEffect() => {
+  useEffect(() => {
       fetchEmployeeData();
     },[ ])
 
