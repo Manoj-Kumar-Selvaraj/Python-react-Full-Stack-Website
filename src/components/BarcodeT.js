@@ -49,12 +49,9 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  const handleToggleTable = () => {
-    setTableVisible(!tableVisible);
-    if (!tableVisible && data.length === 0) {
+  useEffect(() => {
       BarcodeTFetch();
-    }
-  };
+    },[ ]);
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
