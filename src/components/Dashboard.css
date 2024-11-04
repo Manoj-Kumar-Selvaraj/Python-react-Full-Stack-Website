@@ -2,7 +2,7 @@
 
 .tabs {
   display: flex;
-  flex-direction: column; /* Arrange tabs vertically */
+  flex-direction: row; /* Arrange tabs vertically */
   margin-bottom: 20px; /* Space below the tabs */
 }
 
