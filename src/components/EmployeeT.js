@@ -43,7 +43,7 @@ const EmployeeTable = ({ token }) => {
 
   useEffect(() => {
       fetchEmployeeData();
-    },[ ])
+    },[token])
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
