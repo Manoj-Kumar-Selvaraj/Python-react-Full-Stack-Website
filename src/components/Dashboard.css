@@ -1,0 +1,32 @@
+/* Dashboard.css */
+
+.tabs {
+  display: flex;
+  flex-direction: column; /* Arrange tabs vertically */
+  margin-bottom: 20px; /* Space below the tabs */
+}
+
+.tabs button {
+  padding: 10px 20px; /* Padding for the buttons */
+  margin: 5px 0; /* Space between buttons */
+  border: none; /* Remove default border */
+  background-color: #f0f0f0; /* Background color for buttons */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.tabs button:hover {
+  background-color: #e0e0e0; /* Change background on hover */
+}
+
+.tabs button.active {
+  background-color: #007bff; /* Highlight active tab */
+  color: white; /* Change text color for active tab */
+}
+
+.tab-content {
+  padding: 20px; /* Padding around the content area */
+  border: 1px solid #ddd; /* Light border around the content */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #ffffff; /* White background for content */
+}
