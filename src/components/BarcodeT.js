@@ -24,7 +24,6 @@ const BarcodeTTable = ({ token }) => {
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
-
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -127,10 +126,17 @@ const BarcodeTTable = ({ token }) => {
   };
 
   const handleSubmit = async () => {
-    const updatedData = Object.entries(editedData).map(([id, values]) => ({
-      id: Number(id), // Ensure ID is a number
-      ...values,
-    }));
+    // Create an array to hold the updated records
+    const updatedData = Object.entries(editedData).map(([id, values]) => {
+      // Find the original record based on the ID
+      const originalRecord = data.find(item => item.id === Number(id));
+      
+      // Merge original data with updated values
+      return {
+        ...originalRecord, // Spread the original record
+        ...values,         // Override with edited values
+      };
+    });
 
     try {
       const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
@@ -139,7 +145,7 @@ const BarcodeTTable = ({ token }) => {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedData),
+        body: JSON.stringify(updatedData), // Send merged data
       });
 
       if (!response.ok) {
