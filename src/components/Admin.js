@@ -551,7 +551,7 @@ const handleTypeTSubmit = async (e, action) => {
       </form>
                 </div>
        )}
-      {/* Employee Deletion Form */}\
+      {/* Employee Deletion Form */}
       {activeTab=='EmployeeDelete' &&(
       <div className="container">
       {loading && <div className="spinner"></div>}
