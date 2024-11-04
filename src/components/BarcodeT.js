@@ -19,13 +19,12 @@ const BarcodeTTable = ({ token }) => {
     Approval: 100,
     b_type: 100,
     eid: 100,
-    created_at: 150, // Assuming you have a date field
   });
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -71,24 +70,6 @@ const BarcodeTTable = ({ token }) => {
       ([column, value]) => !value || item[column].toString() === value
     )
   );
-
-  const sortData = (data, config) => {
-    if (!config.key) return data;
-
-    const sortedData = [...data].sort((a, b) => {
-      if (typeof a[config.key] === 'string') {
-        return a[config.key].localeCompare(b[config.key]) * (config.direction === 'ascending' ? 1 : -1);
-      } else if (a[config.key] instanceof Date) {
-        return (a[config.key] - b[config.key]) * (config.direction === 'ascending' ? 1 : -1);
-      } else {
-        return (a[config.key] - b[config.key]) * (config.direction === 'ascending' ? 1 : -1);
-      }
-    });
-
-    return sortedData;
-  };
-
-  const sortedData = sortData(filteredData, sortConfig);
 
   const startResize = (e, column) => {
     e.preventDefault();
@@ -179,14 +160,6 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
-  const handleSort = (column) => {
-    let direction = 'ascending';
-    if (sortConfig.key === column && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key: column, direction });
-  };
-
   return (
     <div>
       <h1>Barcode History</h1>
@@ -208,7 +181,6 @@ const BarcodeTTable = ({ token }) => {
                         key={column}
                         data-column={column}
                         style={{ width: columnWidths[column] }}
-                        onClick={() => handleSort(column)} // Handle column click for sorting
                       >
                         <div className="header-container">
                           {column.replace('_', ' ').toUpperCase()}
@@ -234,7 +206,7 @@ const BarcodeTTable = ({ token }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedData.map((item) => (
+                  {filteredData.map((item) => (
                     <tr
                       key={item.id}
                       onClick={() => handleRowClick(item.id)}
@@ -248,14 +220,25 @@ const BarcodeTTable = ({ token }) => {
                               value={editedData[item.id]?.[column] ?? item[column]}
                               onChange={(e) => handleChange(e, item.id, column)}
                             >
-                              {/* Replace with your options */}
-                              <option value="Option1">Option 1</option>
-                              <option value="Option2">Option 2</option>
+                              <option value="Y">Y</option>
+                              <option value="N">N</option>
+                            </select>
+                          ) : column === 'Approval' ? (
+                            <select
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                            >
+                              <option value="A">A</option>
+                              <option value="R">R</option>
+                              <option value="C">C</option>
                             </select>
                           ) : (
-                            column === 'created_at' ? 
-                              new Date(item[column]).toLocaleDateString() : // Date formatting
-                              item[column]
+                            <input
+                              type="text"
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                              readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
+                            />
                           )}
                         </td>
                       ))}
