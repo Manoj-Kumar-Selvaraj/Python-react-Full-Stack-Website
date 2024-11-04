@@ -1,7 +1,7 @@
 .tabs {
     display: flex; /* Use flexbox for layout */
     max-width:100%;
-    overflow-x: auto;
+    overflow-x: hidden;
     justify-content: space-between; /* Distribute space evenly between buttons */
     align-items: center; /* Center items vertically */
     height: 70px; /* Set a fixed height for the tabs */
