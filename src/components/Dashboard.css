@@ -1,12 +1,12 @@
 /* Dashboard.css */
 
 .tabs {
-  display: block
+  display: flex;
+  flex-direction: column; /* Arrange tabs vertically */
   margin-bottom: 20px; /* Space below the tabs */
 }
 
 .tabs button {
-  padding: 10px 20px; /* Padding for the buttons */
   margin: 5px 0; /* Space between buttons */
   border: none; /* Remove default border */
   background-color: #f0f0f0; /* Background color for buttons */
