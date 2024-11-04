@@ -6,7 +6,6 @@ const TypeDataTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [columnWidths, setColumnWidths] = useState({
@@ -48,10 +47,7 @@ const TypeDataTable = ({ token }) => {
   };
 
   const handleToggleTable = () => {
-    setTableVisible(!tableVisible);
-    if (!tableVisible && data.length === 0) {
       fetchTypeData();
-    }
   };
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
@@ -130,11 +126,6 @@ const TypeDataTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Type Data Table</h1>
-      <button className="toggle-button" onClick={handleToggleTable}>
-        {tableVisible ? 'Hide Table' : 'Show Table'}
-      </button>
-      {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
@@ -210,7 +201,6 @@ const TypeDataTable = ({ token }) => {
             </div>
           )}
         </div>
-      )}
     </div>
   );
 };
