@@ -141,9 +141,7 @@ const TypeDataTable = ({ token }) => {
           ) : error ? (
             <p>{error}</p>
           ) : (
-          <button className="download-button" onClick={handleDownload}>
-          Download as Excel
-          </button>
+            <button className="download-button" onClick={handleDownload}>Download as Excel</button>
             <table ref={tableRef} className="data-table">
               <thead>
                 <tr>
