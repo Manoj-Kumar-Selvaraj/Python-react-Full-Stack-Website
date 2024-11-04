@@ -215,13 +215,31 @@ const BarcodeTTable = ({ token }) => {
                       <td style={{ width: columnWidths.id }}>{item.id}</td>
                       {Object.keys(columnWidths).slice(1).map(column => (
                         <td key={column} style={{ width: columnWidths[column] }}>
-                          <input
-                            type="text"
-                            value={editedData[item.id]?.[column] ?? item[column]}  // Display edited value or fetched data
-                            onChange={(e) => handleChange(e, item.id, column)}
-                            placeholder={item[column]} // Show placeholder when input is empty
-                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
-                          />
+                          {['print_slot', 'gen_slot'].includes(column) ? (
+                            <select
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                            >
+                              <option value="Y">Y</option>
+                              <option value="N">N</option>
+                            </select>
+                          ) : column === 'Approval' ? (
+                            <select
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                            >
+                              <option value="A">A</option>
+                              <option value="R">R</option>
+                              <option value="C">C</option>
+                            </select>
+                          ) : (
+                            <input
+                              type="text"
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                              readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
+                            />
+                          )}
                         </td>
                       ))}
                     </tr>
