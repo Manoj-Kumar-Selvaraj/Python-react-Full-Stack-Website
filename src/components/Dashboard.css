@@ -36,7 +36,6 @@
 
 .tab-content {
   padding: 20px; /* Padding around the content area */
-  flex: 1; /* Allow this to take the remaining space */
   border-left: 1px solid #ddd; /* Light border between sidebar and content */
   background-color: #ffffff; /* White background for content */
   flex-shrink: 0;
