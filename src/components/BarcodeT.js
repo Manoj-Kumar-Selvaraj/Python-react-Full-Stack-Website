@@ -20,17 +20,15 @@ const BarcodeTTable = ({ token }) => {
     b_type: 100,
     eid: 100,
   });
-  const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'ascending' });
-  const [error, setError] = useState(null);
 
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
     setLoading(true);
-    setError(null); // Reset error state on fetch
     try {
       const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
         method: 'GET',
@@ -44,7 +42,7 @@ const BarcodeTTable = ({ token }) => {
       const fetchedData = await response.json();
       setData(fetchedData);
     } catch (error) {
-      setError("There was an error fetching the data!");
+      alert("There was an error fetching the data!");
       console.error("Fetch error:", error);
     } finally {
       setLoading(false);
@@ -73,32 +71,36 @@ const BarcodeTTable = ({ token }) => {
     )
   );
 
-  // Sorting Functionality
-  const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
+  const startResize = (e, column) => {
+    e.preventDefault();
+    resizingRef.current.column = column;
+    resizingRef.current.startX = e.clientX;
+    resizingRef.current.startWidth = tableRef.current.querySelector(`th[data-column="${column}"]`).offsetWidth;
+
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopResize);
   };
 
-  const sortedData = React.useMemo(() => {
-    let sortableItems = [...filteredData];
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
+  const doDrag = (e) => {
+    if (resizingRef.current.column) {
+      const newWidth = Math.max(resizingRef.current.startWidth + (e.clientX - resizingRef.current.startX), 50);
+      const column = resizingRef.current.column;
+
+      const header = tableRef.current.querySelector(`th[data-column="${column}"]`);
+      header.style.width = `${newWidth}px`;
+
+      const cells = tableRef.current.querySelectorAll(`td:nth-child(${Array.from(header.parentNode.children).indexOf(header) + 1})`);
+      cells.forEach(cell => {
+        cell.style.width = `${newWidth}px`;
       });
     }
-    return sortableItems;
-  }, [filteredData, sortConfig]);
+  };
 
-  // Column resizing logic remains unchanged...
+  const stopResize = () => {
+    resizingRef.current.column = null;
+    document.removeEventListener('mousemove', doDrag);
+    document.removeEventListener('mouseup', stopResize);
+  };
 
   const handleRowClick = (id) => {
     setSelectedRowId(id === selectedRowId ? null : id);
@@ -153,7 +155,7 @@ const BarcodeTTable = ({ token }) => {
       BarcodeTFetch(); // Refresh the data
       setEditedData({});
     } catch (error) {
-      setError("Error updating data. Please try again.");
+      alert("Error updating data. Please try again.");
       console.error("Update error:", error);
     }
   };
@@ -161,7 +163,6 @@ const BarcodeTTable = ({ token }) => {
   return (
     <div>
       <h1>Barcode History</h1>
-      {error && <div className="error-message">{error}</div>}
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
@@ -180,7 +181,6 @@ const BarcodeTTable = ({ token }) => {
                         key={column}
                         data-column={column}
                         style={{ width: columnWidths[column] }}
-                        onClick={() => requestSort(column)} // Sort on header click
                       >
                         <div className="header-container">
                           {column.replace('_', ' ').toUpperCase()}
@@ -197,11 +197,6 @@ const BarcodeTTable = ({ token }) => {
                             ))}
                           </select>
                         </div>
-                        {sortConfig.key === column && (
-                          <span className="sort-indicator">
-                            {sortConfig.direction === 'ascending' ? ' ↑' : ' ↓'}
-                          </span>
-                        )}
                         <div
                           className="resizer"
                           onMouseDown={(e) => startResize(e, column)}
@@ -211,7 +206,7 @@ const BarcodeTTable = ({ token }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedData.map((item) => (
+                  {filteredData.map((item) => (
                     <tr
                       key={item.id}
                       onClick={() => handleRowClick(item.id)}
@@ -235,10 +230,15 @@ const BarcodeTTable = ({ token }) => {
                             >
                               <option value="A">A</option>
                               <option value="R">R</option>
-                              <option value="C">R</option>
+                              <option value="C">C</option>
                             </select>
                           ) : (
-                            item[column]
+                            <input
+                              type="text"
+                              value={editedData[item.id]?.[column] ?? item[column]}
+                              onChange={(e) => handleChange(e, item.id, column)}
+                              readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
+                            />
                           )}
                         </td>
                       ))}
@@ -246,7 +246,7 @@ const BarcodeTTable = ({ token }) => {
                   ))}
                 </tbody>
               </table>
-              <button onClick={handleSubmit}>Save Changes</button>
+              <button onClick={handleSubmit}>Submit Changes</button>
             </>
           )}
         </div>
