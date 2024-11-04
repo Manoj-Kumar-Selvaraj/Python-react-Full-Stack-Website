@@ -115,23 +115,19 @@ const BarcodeTTable = ({ token }) => {
   }, []);
 
   const handleChange = (e, id, column) => {
-    const value = e.target.value;
+    const value = e.target.value !== "" ? e.target.value : undefined; // Set value to undefined if input is empty
     setEditedData((prev) => ({
       ...prev,
       [id]: {
         ...prev[id],
-        [column]: value,  // Always update to the latest entered value, including empty strings
+        [column]: value,  // Update the latest entered value or set as undefined
       },
     }));
   };
 
   const handleSubmit = async () => {
-    // Create an array to hold the updated records
     const updatedData = Object.entries(editedData).map(([id, values]) => {
-      // Find the original record based on the ID
       const originalRecord = data.find(item => item.id === Number(id));
-      
-      // Merge original data with updated values
       return {
         ...originalRecord, // Spread the original record
         ...values,         // Override with edited values
@@ -154,7 +150,6 @@ const BarcodeTTable = ({ token }) => {
 
       const result = await response.json();
       console.log('Updated Records:', result);
-      // Optionally, refresh your data
       BarcodeTFetch();
       setEditedData({}); // Clear edited data after submission
     } catch (error) {
@@ -217,13 +212,34 @@ const BarcodeTTable = ({ token }) => {
                       <td style={{ width: columnWidths.id }}>{item.id}</td>
                       {Object.keys(columnWidths).slice(1).map(column => (
                         <td key={column} style={{ width: columnWidths[column] }}>
-                          <input
-                            type="text"
-                            value={editedData[item.id]?.[column] ?? item[column]}  // Display edited value or fallback to fetched data
-                            onChange={(e) => handleChange(e, item.id, column)}
-                            placeholder={item[column]} // Show placeholder when input is empty
-                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
-                          />
+                          {['print_slot', 'gen_slot', 'Approval'].includes(column) ? (
+                            <select
+                              value={editedData[item.id]?.[column] ?? item[column]} // Use edited value or fetched data
+                              onChange={(e) => handleChange(e, item.id, column)}
+                            >
+                              <option value="">Select</option>
+                              {column === 'print_slot' || column === 'gen_slot' ? (
+                                <>
+                                  <option value="Y">Y</option>
+                                  <option value="N">N</option>
+                                </>
+                              ) : column === 'Approval' ? (
+                                <>
+                                  <option value="A">A</option>
+                                  <option value="R">R</option>
+                                  <option value="C">C</option>
+                                </>
+                              ) : null}
+                            </select>
+                          ) : (
+                            <input
+                              type="text"
+                              value={editedData[item.id]?.[column] ?? item[column]} // Display edited value or fallback to fetched data
+                              onChange={(e) => handleChange(e, item.id, column)}
+                              placeholder={item[column]} // Show placeholder when input is empty
+                              readOnly
+                            />
+                          )}
                         </td>
                       ))}
                     </tr>
