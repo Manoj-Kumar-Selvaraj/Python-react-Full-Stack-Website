@@ -223,7 +223,8 @@ const BarcodeTTable = ({ token }) => {
                         <td key={column} style={{ width: columnWidths[column] }}>
                           <input
                             type="text"
-                            value={editedData[item.id]?.[column] || item[column]}
+                            value={editedData[item.id]?.[column] ?? ''}
+                            // value={editedData[item.id]?.[column] || item[column]}
                             onChange={(e) => handleChange(e, item.id, column)}
                             placeholder={item[column]} 
                             readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)} 
