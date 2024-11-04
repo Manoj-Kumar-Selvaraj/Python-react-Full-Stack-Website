@@ -46,9 +46,9 @@ const TypeDataTable = ({ token }) => {
     }
   };
 
-  const handleToggleTable = () => {
+  useEffect(() => {
       fetchTypeData();
-  };
+  }, [ ]);
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
