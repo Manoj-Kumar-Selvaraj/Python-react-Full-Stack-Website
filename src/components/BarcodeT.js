@@ -170,12 +170,6 @@ const BarcodeTTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Barcode History</h1>
-      <button className="toggle-button" onClick={handleToggleTable}>
-        {tableVisible ? 'Hide Table' : 'Show Table'}
-      </button>
-
-      {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
@@ -258,7 +252,6 @@ const BarcodeTTable = ({ token }) => {
             </>
           )}
         </div>
-      )}
     </div>
   );
 };
