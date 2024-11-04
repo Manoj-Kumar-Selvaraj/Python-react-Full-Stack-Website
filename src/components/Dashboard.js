@@ -14,7 +14,7 @@ const Dashboard = ({ token }) => {
         return <BarcodeTTable token={token} />;
       case 'employees':
         return <EmployeeTTable token={token} />;
-      case 'admin':
+      case 'types':
         return <TypeTable token={token} />;
       default:
         return <ProductsTable token={token} />;
@@ -23,6 +23,20 @@ const Dashboard = ({ token }) => {
 
   return (
     <>      
+            <nav className="tabs">
+          <button onClick={() => setActiveTab('products')} className={activeTab === 'products' ? 'active' : ''}>
+            Sales
+          </button>
+          <button onClick={() => setActiveTab('barcodes')} className={activeTab === 'barcodes' ? 'active' : ''}>
+            Barcodes
+          </button>
+          <button onClick={() => setActiveTab('employees')} className={activeTab === 'employees' ? 'active' : ''}>
+            Employees
+          </button>
+          <button onClick={() => setActiveTab('types')} className={activeTab === 'types' ? 'active' : ''}>
+            Products
+          </button>
+    </nav>
     </>
   );
 };
