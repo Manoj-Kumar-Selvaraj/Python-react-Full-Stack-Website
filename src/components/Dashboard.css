@@ -38,4 +38,6 @@
   padding: 20px; /* Padding around the content area */
   border-left: 1px solid #ddd; /* Light border between sidebar and content */
   background-color: #ffffff; /* White background for content */
+  overflow-x: auto;
+  overflow-y: auto;
 }
