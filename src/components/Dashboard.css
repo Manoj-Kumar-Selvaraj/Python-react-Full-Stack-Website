@@ -1,31 +1,40 @@
 /* Dashboard.css */
 
-.tabs {
+.dashboard {
   display: flex;
-  flex-direction: column; /* Arrange tabs vertically */
-  margin-bottom: 20px; /* Space below the tabs */
 }
 
-.tabs button {
+.sidebar {
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  width: 200px; /* Fixed width for the sidebar */
+  background-color: #f8f9fa; /* Light background for sidebar */
+  padding: 10px; /* Padding inside sidebar */
+}
+
+.sidebar button {
   margin: 5px 0; /* Space between buttons */
   border: none; /* Remove default border */
-  background-color: #f0f0f0; /* Background color for buttons */
+  background-color: transparent; /* Transparent background */
   cursor: pointer; /* Change cursor to pointer on hover */
   transition: background-color 0.3s ease; /* Smooth background color transition */
+  text-align: left; /* Align text to the left */
+  padding: 10px; /* Padding inside the button */
+  width: 100%; /* Make buttons take full width */
 }
 
-.tabs button:hover {
+.sidebar button:hover {
   background-color: #e0e0e0; /* Change background on hover */
 }
 
-.tabs button.active {
+.sidebar button.active {
   background-color: #007bff; /* Highlight active tab */
   color: white; /* Change text color for active tab */
 }
 
 .tab-content {
   padding: 20px; /* Padding around the content area */
-  border: 1px solid #ddd; /* Light border around the content */
-  border-radius: 5px; /* Slightly rounded corners */
+  flex: 1; /* Allow this to take the remaining space */
+  border-left: 1px solid #ddd; /* Light border between sidebar and content */
   background-color: #ffffff; /* White background for content */
 }
