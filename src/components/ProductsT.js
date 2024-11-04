@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import * as XLSX from 'xlsx';  // Import the xlsx library
 import './BarcodeFetch.css';
 
 const ProductsTable = ({ token }) => {
@@ -117,84 +118,96 @@ const ProductsTable = ({ token }) => {
     };
   }, []);
 
+  // Function to handle Excel download
+  const handleDownloadExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredData); // Convert JSON data to a worksheet
+    const wb = XLSX.utils.book_new(); // Create a new workbook
+    XLSX.utils.book_append_sheet(wb, ws, 'Products'); // Append the worksheet to the workbook
+    XLSX.writeFile(wb, 'products_data.xlsx'); // Trigger download
+  };
+
   return (
     <div>
       <h1>Products Data</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
-
       {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
           ) : (
-            <table ref={tableRef} className="data-table">
-              <thead>
-                <tr>
-                  {[
-                    'pid',
-                    'pname',
-                    'pseller',
-                    'psize',
-                    'dop',
-                    'dos',
-                    'pamount',
-                    'eid',
-                    'bar_code',
-                    'bamount',
-                    'status',
-                  ].map((column) => (
-                    <th
-                      key={column}
-                      data-column={column}
-                      style={{ width: columnWidths[column] }}
-                    >
-                      <div className="header-container">
-                        {column.replace('_', ' ').toUpperCase()}
-                        <select
-                          className="filter-select"
-                          onChange={(e) => handleFilterChange(e, column)}
-                          value={filters[column] || ''}
-                        >
-                          <option value="">All</option>
-                          {getUniqueValues(column).map((val) => (
-                            <option key={val} value={val}>
-                              {val}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div
-                        className="resizer"
-                        onMouseDown={(e) => startResize(e, column)}
-                      />
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item) => (
-                  <tr
-                    key={item.pid}
-                    onClick={() => handleRowClick(item.pid)}
-                    className={selectedRowId === item.pid ? 'selected' : ''}
-                  >
-                    <td style={{ width: columnWidths.pid }}>{item.pid}</td>
-                    <td style={{ width: columnWidths.pname }}>{item.pname}</td>
-                    <td style={{ width: columnWidths.pseller }}>{item.pseller}</td>
-                    <td style={{ width: columnWidths.psize }}>{item.psize}</td>
-                    <td style={{ width: columnWidths.dop }}>{item.dop}</td>
-                    <td style={{ width: columnWidths.dos }}>{item.dos}</td>
-                    <td style={{ width: columnWidths.pamount }}>{item.pamount}</td>
-                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
-                    <td style={{ width: columnWidths.bar_code }}>{item.bar_code}</td>
-                    <td style={{ width: columnWidths.bamount }}>{item.bamount}</td>
-                    <td style={{ width: columnWidths.status }}>{item.status}</td>
+            <div>
+              <button className="download-button" onClick={handleDownloadExcel}>
+                Download Excel
+              </button>
+              <table ref={tableRef} className="data-table">
+                <thead>
+                  <tr>
+                    {[
+                      'pid',
+                      'pname',
+                      'pseller',
+                      'psize',
+                      'dop',
+                      'dos',
+                      'pamount',
+                      'eid',
+                      'bar_code',
+                      'bamount',
+                      'status',
+                    ].map((column) => (
+                      <th
+                        key={column}
+                        data-column={column}
+                        style={{ width: columnWidths[column] }}
+                      >
+                        <div className="header-container">
+                          {column.replace('_', ' ').toUpperCase()}
+                          <select
+                            className="filter-select"
+                            onChange={(e) => handleFilterChange(e, column)}
+                            value={filters[column] || ''}
+                          >
+                            <option value="">All</option>
+                            {getUniqueValues(column).map((val) => (
+                              <option key={val} value={val}>
+                                {val}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div
+                          className="resizer"
+                          onMouseDown={(e) => startResize(e, column)}
+                        />
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filteredData.map((item) => (
+                    <tr
+                      key={item.pid}
+                      onClick={() => handleRowClick(item.pid)}
+                      className={selectedRowId === item.pid ? 'selected' : ''}
+                    >
+                      <td style={{ width: columnWidths.pid }}>{item.pid}</td>
+                      <td style={{ width: columnWidths.pname }}>{item.pname}</td>
+                      <td style={{ width: columnWidths.pseller }}>{item.pseller}</td>
+                      <td style={{ width: columnWidths.psize }}>{item.psize}</td>
+                      <td style={{ width: columnWidths.dop }}>{item.dop}</td>
+                      <td style={{ width: columnWidths.dos }}>{item.dos}</td>
+                      <td style={{ width: columnWidths.pamount }}>{item.pamount}</td>
+                      <td style={{ width: columnWidths.eid }}>{item.eid}</td>
+                      <td style={{ width: columnWidths.bar_code }}>{item.bar_code}</td>
+                      <td style={{ width: columnWidths.bamount }}>{item.bamount}</td>
+                      <td style={{ width: columnWidths.status }}>{item.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       )}
