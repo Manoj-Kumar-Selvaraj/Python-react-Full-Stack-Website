@@ -27,25 +27,25 @@ const Dashboard = ({ token }) => {
       <nav className="tabs">
         <button
           onClick={() => setActiveTab('products')}
-          className={activeTab === 'products' ? 'active' : ''}
+          className={activeTab === 'products' ? 'active' : 'inactive'}
         >
           Products
         </button>
         <button
           onClick={() => setActiveTab('barcodes')}
-          className={activeTab === 'barcodes' ? 'active' : ''}
+          className={activeTab === 'barcodes' ? 'active' : 'inactive'}
         >
           Barcodes
         </button>
         <button
           onClick={() => setActiveTab('employees')}
-          className={activeTab === 'employees' ? 'active' : ''}
+          className={activeTab === 'employees' ? 'active' : 'inactive'}
         >
           Employees
         </button>
         <button
           onClick={() => setActiveTab('types')}
-          className={activeTab === 'types' ? 'active' : ''}
+          className={activeTab === 'types' ? 'active' : 'inactive'}
         >
           Types
         </button>
