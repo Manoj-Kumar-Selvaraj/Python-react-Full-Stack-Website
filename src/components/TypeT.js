@@ -141,70 +141,73 @@ const TypeDataTable = ({ token }) => {
           ) : error ? (
             <p>{error}</p>
           ) : (
-          <div>  
-            <button className="download-button" onClick={handleDownload}>Download as Excel</button>
-            <table ref={tableRef} className="data-table">
-              <thead>
-                <tr>
-                  {[
-                    'b_type',
-                    'psize',
-                    'pname',
-                    'ptype',
-                    'pseller',
-                    'last_processed_date',
-                    'last_barcode',
-                    'pamount',
-                    'eid',
-                  ].map((column) => (
-                    <th
-                      key={column}
-                      data-column={column}
-                      style={{ width: columnWidths[column] }}
-                    >
-                      <div className="header-container">
-                        {column.replace('_', ' ').toUpperCase()}
-                        <select
-                          className="filter-select"
-                          onChange={(e) => handleFilterChange(e, column)}
-                          value={filters[column] || ''}
-                        >
-                          <option value="">All</option>
-                          {getUniqueValues(column).map((val) => (
-                            <option key={val} value={val}>
-                              {val}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div
-                        className="resizer"
-                        onMouseDown={(e) => startResize(e, column)}
-                      />
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item) => (
-                  <tr
-                    key={item.last_barcode} // Ensure this is unique across the dataset
-                    onClick={() => handleRowClick(item.last_barcode)}
-                    className={selectedRowId === item.last_barcode ? 'selected' : ''}
-                  >
-                    <td style={{ width: columnWidths.b_type }}>{item.b_type}</td>
-                    <td style={{ width: columnWidths.psize }}>{item.psize}</td>
-                    <td style={{ width: columnWidths.pname }}>{item.pname}</td>
-                    <td style={{ width: columnWidths.ptype }}>{item.ptype}</td>
-                    <td style={{ width: columnWidths.pseller }}>{item.pseller}</td>
-                    <td style={{ width: columnWidths.last_processed_date }}>{item.last_processed_date}</td>
-                    <td style={{ width: columnWidths.last_barcode }}>{item.last_barcode}</td>
-                    <td style={{ width: columnWidths.pamount }}>{item.pamount}</td>
-                    <td style={{ width: columnWidths.eid }}>{item.eid}</td>
+            <div>
+              <button className="download-button" onClick={handleDownload}>
+                Download as Excel
+              </button>
+              <table ref={tableRef} className="data-table">
+                <thead>
+                  <tr>
+                    {[
+                      'b_type',
+                      'psize',
+                      'pname',
+                      'ptype',
+                      'pseller',
+                      'last_processed_date',
+                      'last_barcode',
+                      'pamount',
+                      'eid',
+                    ].map((column) => (
+                      <th
+                        key={column}
+                        data-column={column}
+                        style={{ width: columnWidths[column] }}
+                      >
+                        <div className="header-container">
+                          {column.replace('_', ' ').toUpperCase()}
+                          <select
+                            className="filter-select"
+                            onChange={(e) => handleFilterChange(e, column)}
+                            value={filters[column] || ''}
+                          >
+                            <option value="">All</option>
+                            {getUniqueValues(column).map((val) => (
+                              <option key={val} value={val}>
+                                {val}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div
+                          className="resizer"
+                          onMouseDown={(e) => startResize(e, column)}
+                        />
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filteredData.map((item) => (
+                    <tr
+                      key={item.last_barcode} // Ensure this is unique across the dataset
+                      onClick={() => handleRowClick(item.last_barcode)}
+                      className={selectedRowId === item.last_barcode ? 'selected' : ''}
+                    >
+                      <td style={{ width: columnWidths.b_type }}>{item.b_type}</td>
+                      <td style={{ width: columnWidths.psize }}>{item.psize}</td>
+                      <td style={{ width: columnWidths.pname }}>{item.pname}</td>
+                      <td style={{ width: columnWidths.ptype }}>{item.ptype}</td>
+                      <td style={{ width: columnWidths.pseller }}>{item.pseller}</td>
+                      <td style={{ width: columnWidths.last_processed_date }}>{item.last_processed_date}</td>
+                      <td style={{ width: columnWidths.last_barcode }}>{item.last_barcode}</td>
+                      <td style={{ width: columnWidths.pamount }}>{item.pamount}</td>
+                      <td style={{ width: columnWidths.eid }}>{item.eid}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       )}
