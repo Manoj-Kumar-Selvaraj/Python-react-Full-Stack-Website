@@ -45,9 +45,9 @@ const ProductsTable = ({ token }) => {
     }
   };
 
-  const handleToggleTable = () => {
+  const useEffect(() => {
       fetchProductsData();
-    }
+    }, [ ])
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
