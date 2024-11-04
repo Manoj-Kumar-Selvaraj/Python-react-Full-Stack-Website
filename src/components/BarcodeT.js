@@ -24,6 +24,7 @@ const BarcodeTTable = ({ token }) => {
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -116,11 +117,11 @@ const BarcodeTTable = ({ token }) => {
 
   const handleChange = (e, id, column) => {
     const value = e.target.value;
-    setEditedData(prev => ({
+    setEditedData((prev) => ({
       ...prev,
       [id]: {
         ...prev[id],
-        [column]: value || data.find(item => item.id === id)[column], // If empty, revert to fetched value
+        [column]: value,  // Always update to the latest entered value, including empty strings
       },
     }));
   };
@@ -147,6 +148,7 @@ const BarcodeTTable = ({ token }) => {
 
       const result = await response.json();
       console.log('Updated Records:', result);
+      // Optionally, refresh your data
       BarcodeTFetch();
       setEditedData({}); // Clear edited data after submission
     } catch (error) {
@@ -170,19 +172,7 @@ const BarcodeTTable = ({ token }) => {
               <table ref={tableRef} className="data-table">
                 <thead>
                   <tr>
-                    {[
-                      'id',
-                      'number_of_barcodes',
-                      'start_barcode',
-                      'last_barcode',
-                      'print_status',
-                      'dog',
-                      'print_slot',
-                      'gen_slot',
-                      'Approval',
-                      'b_type',
-                      'eid',
-                    ].map((column) => (
+                    {Object.keys(columnWidths).map((column) => (
                       <th
                         key={column}
                         data-column={column}
@@ -223,15 +213,10 @@ const BarcodeTTable = ({ token }) => {
                         <td key={column} style={{ width: columnWidths[column] }}>
                           <input
                             type="text"
-                            value={editedData[item.id]?.[column] ?? ''}
-                            // value={editedData[item.id]?.[column] || item[column]}
+                            value={editedData[item.id]?.[column] ?? item[column]}  // Display edited value or fallback to fetched data
                             onChange={(e) => handleChange(e, item.id, column)}
-                            placeholder={item[column]} 
-                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)} 
-                            style={{
-                              backgroundColor: ['print_slot', 'gen_slot', 'Approval'].includes(column) ? 'white' : '#f0f0f0',
-                              pointerEvents: ['print_slot', 'gen_slot', 'Approval'].includes(column) ? 'auto' : 'none'
-                            }}
+                            placeholder={item[column]} // Show placeholder when input is empty
+                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
                           />
                         </td>
                       ))}
