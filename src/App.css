@@ -1,9 +1,10 @@
 .tabs {
     display: flex; /* Use flexbox for layout */
+    max-width:300px;
+    overflow-x: auto;
     justify-content: space-between; /* Distribute space evenly between buttons */
     align-items: center; /* Center items vertically */
     height: 70px; /* Set a fixed height for the tabs */
-    flex-shrink: 0;
 }
 
 .tabs button {
