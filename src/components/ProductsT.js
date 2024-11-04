@@ -5,7 +5,6 @@ import './BarcodeFetch.css';
 const ProductsTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [columnWidths, setColumnWidths] = useState({
@@ -47,11 +46,8 @@ const ProductsTable = ({ token }) => {
   };
 
   const handleToggleTable = () => {
-    setTableVisible(!tableVisible);
-    if (!tableVisible && data.length === 0) {
       fetchProductsData();
     }
-  };
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
@@ -128,11 +124,6 @@ const ProductsTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Products Data</h1>
-      <button className="toggle-button" onClick={handleToggleTable}>
-        {tableVisible ? 'Hide Table' : 'Show Table'}
-      </button>
-      {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
             <p>Loading data...</p>
@@ -210,7 +201,6 @@ const ProductsTable = ({ token }) => {
             </div>
           )}
         </div>
-      )}
     </div>
   );
 };
