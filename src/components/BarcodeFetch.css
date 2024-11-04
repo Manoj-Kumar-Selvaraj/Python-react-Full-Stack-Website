@@ -1,14 +1,3 @@
-/* Style for the main heading */
-h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5em; /* Increase font size */
-    font-weight: bold; /* Make font bold */
-    padding: 10px; /* Add some padding */
-    border-bottom: 2px solid #007bff; /* Underline with a border */
-    margin-bottom: 20px; /* Space below the heading */
-}
-
 /* Container for the entire table and filter elements */
 .table-container {
     margin-top: 20px; /* Space above the table */
