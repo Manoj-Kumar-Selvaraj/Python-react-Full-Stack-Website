@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import * as XLSX from 'xlsx'; // Import the xlsx library
 import './BarcodeFetch.css'; // Ensure this contains styles for loading spinner and table
 
 const TypeDataTable = ({ token }) => {
@@ -109,6 +110,17 @@ const TypeDataTable = ({ token }) => {
     }
   };
 
+  const handleDownload = () => {
+    // Create a new workbook
+    const wb = XLSX.utils.book_new();
+    // Convert filtered data into a worksheet
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    // Append the worksheet to the workbook
+    XLSX.utils.book_append_sheet(wb, ws, "Type Data");
+    // Trigger the download
+    XLSX.writeFile(wb, "TypeData.xlsx");
+  };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -121,6 +133,9 @@ const TypeDataTable = ({ token }) => {
       <h1>Type Data Table</h1>
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
+      </button>
+      <button className="download-button" onClick={handleDownload} disabled={loading || error || !tableVisible}>
+        Download as Excel
       </button>
 
       {tableVisible && (
