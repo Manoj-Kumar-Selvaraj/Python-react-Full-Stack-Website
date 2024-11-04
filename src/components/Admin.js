@@ -755,7 +755,7 @@ const handleTypeTSubmit = async (e, action) => {
 
       <button type="submit" className="btn">Delete Type</button>
     </form>
-          <div>
+          </div>
           )}
     </div>
   );
