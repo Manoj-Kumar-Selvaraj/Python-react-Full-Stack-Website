@@ -24,7 +24,6 @@ const BarcodeTTable = ({ token }) => {
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
-
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -148,7 +147,6 @@ const BarcodeTTable = ({ token }) => {
 
       const result = await response.json();
       console.log('Updated Records:', result);
-      // Optionally, refresh your data
       BarcodeTFetch();
       setEditedData({}); // Clear edited data after submission
     } catch (error) {
@@ -227,7 +225,12 @@ const BarcodeTTable = ({ token }) => {
                             type="text"
                             value={editedData[item.id]?.[column] || item[column]}
                             onChange={(e) => handleChange(e, item.id, column)}
-                            placeholder={item[column]} // Show placeholder when input is empty
+                            placeholder={item[column]} 
+                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)} 
+                            style={{
+                              backgroundColor: ['print_slot', 'gen_slot', 'Approval'].includes(column) ? 'white' : '#f0f0f0',
+                              pointerEvents: ['print_slot', 'gen_slot', 'Approval'].includes(column) ? 'auto' : 'none'
+                            }}
                           />
                         </td>
                       ))}
