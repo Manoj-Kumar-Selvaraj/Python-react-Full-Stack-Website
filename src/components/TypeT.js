@@ -48,7 +48,7 @@ const TypeDataTable = ({ token }) => {
 
   useEffect(() => {
       fetchTypeData();
-  }, [ ]);
+  }, [token]);
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
