@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './BarcodeFetch.css';
+import * as XLSX from 'xlsx'; // Import the xlsx library
 
 const BarcodeTTable = ({ token }) => {
   const [data, setData] = useState([]);
@@ -24,7 +25,6 @@ const BarcodeTTable = ({ token }) => {
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
-
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -160,6 +160,14 @@ const BarcodeTTable = ({ token }) => {
     }
   };
 
+  // Function to download table as Excel
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredData); // Convert filtered data to a worksheet
+    const wb = XLSX.utils.book_new(); // Create a new workbook
+    XLSX.utils.book_append_sheet(wb, ws, 'Barcode Data'); // Append worksheet to the workbook
+    XLSX.writeFile(wb, 'barcode_data.xlsx'); // Download the workbook
+  };
+
   return (
     <div>
       <h1>Barcode History</h1>
@@ -173,6 +181,7 @@ const BarcodeTTable = ({ token }) => {
             <p>Loading data...</p>
           ) : (
             <>
+              <button onClick={exportToExcel}>Download as Excel</button> {/* Button to download Excel */}
               <table ref={tableRef} className="data-table">
                 <thead>
                   <tr>
@@ -237,7 +246,6 @@ const BarcodeTTable = ({ token }) => {
                               type="text"
                               value={editedData[item.id]?.[column] ?? item[column]}
                               onChange={(e) => handleChange(e, item.id, column)}
-                              readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
                             />
                           )}
                         </td>
@@ -246,7 +254,7 @@ const BarcodeTTable = ({ token }) => {
                   ))}
                 </tbody>
               </table>
-              <button onClick={handleSubmit}>Submit Changes</button>
+              <button onClick={handleSubmit}>Update</button>
             </>
           )}
         </div>
