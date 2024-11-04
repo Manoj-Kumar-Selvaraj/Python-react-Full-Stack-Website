@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import * as XLSX from 'xlsx'; // Import the xlsx library
 import './BarcodeFetch.css';
 
 const EmployeeTable = ({ token }) => {
@@ -31,7 +32,7 @@ const EmployeeTable = ({ token }) => {
         },
       });
       const fetchedData = await response.json();
-      console.log(fetchedData);  // Debugging: Check response structure
+      console.log(fetchedData); // Debugging: Check response structure
 
       setData(Array.isArray(fetchedData.data) ? fetchedData.data : []);
     } catch (error) {
@@ -113,6 +114,15 @@ const EmployeeTable = ({ token }) => {
     };
   }, []);
 
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(filteredData); // Convert filtered data to a worksheet
+    const workbook = XLSX.utils.book_new(); // Create a new workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Employees"); // Append the worksheet to the workbook
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "employee_data.xlsx");
+  };
+
   return (
     <div>
       <h1>Employee Data</h1>
@@ -122,6 +132,9 @@ const EmployeeTable = ({ token }) => {
 
       {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
+          <button className="export-button" onClick={exportToExcel}>
+            Download as Excel
+          </button>
           {loading ? (
             <p>Loading data...</p>
           ) : (
@@ -175,8 +188,8 @@ const EmployeeTable = ({ token }) => {
                     <td style={{ width: columnWidths.eid }}>{item.eid}</td>
                     <td style={{ width: columnWidths.ename }}>{item.ename}</td>
                     <td style={{ width: columnWidths.last_login }}>{item.last_login}</td>
-                    <td style={{ width: columnWidths.is_active }}>{item.is_active? 'Yes':'No'}</td>
-                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser? 'Yes':'No'}</td>
+                    <td style={{ width: columnWidths.is_active }}>{item.is_active ? 'Yes' : 'No'}</td>
+                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser ? 'Yes' : 'No'}</td>
                     <td style={{ width: columnWidths.created_at }}>{item.created_at}</td>
                     <td style={{ width: columnWidths.updated_at }}>{item.updated_at}</td>
                   </tr>
