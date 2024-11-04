@@ -134,10 +134,6 @@ const TypeDataTable = ({ token }) => {
       <button className="toggle-button" onClick={handleToggleTable}>
         {tableVisible ? 'Hide Table' : 'Show Table'}
       </button>
-      <button className="download-button" onClick={handleDownload} disabled={loading || error || !tableVisible}>
-        Download as Excel
-      </button>
-
       {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           {loading ? (
@@ -145,6 +141,9 @@ const TypeDataTable = ({ token }) => {
           ) : error ? (
             <p>{error}</p>
           ) : (
+          <button className="download-button" onClick={handleDownload}>
+          Download as Excel
+          </button>
             <table ref={tableRef} className="data-table">
               <thead>
                 <tr>
