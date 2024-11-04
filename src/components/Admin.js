@@ -666,6 +666,8 @@ const handleTypeTSubmit = async (e, action) => {
         </div>
         <button type="submit" className="btn">Create TypeT</button>
       </form>
+              </div>
+)}
       {/* TypeT Deletion Form */}
       {activeTab=='DelType' &&(
       <div className="container">
