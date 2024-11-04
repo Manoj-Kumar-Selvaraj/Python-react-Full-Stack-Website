@@ -1,4 +1,4 @@
-.sidebar {
+.slidebar {
   display: flex;
   flex-direction: column;
   width: 200px; /* Fixed width for the sidebar */
@@ -8,7 +8,7 @@
   padding: 10px;
 }
 
-.sidebar button {
+.slidebar button {
   margin: 5px 0; /* Space between buttons */
   border: none; /* Remove default border */
   background-color: transparent; /* Transparent background */
@@ -19,11 +19,11 @@
   width: 100%; /* Make buttons take full width */
 }
 
-.sidebar button:hover {
+.slidebar button:hover {
   background-color: #e0e0e0; /* Change background on hover */
 }
 
-.sidebar button.active {
+.slidebar button.active {
   background-color: #007bff; /* Highlight active tab */
   color: white; /* Change text color for active tab */
 }
