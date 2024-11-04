@@ -7,7 +7,10 @@
   background-color: #f8f9fa;
   padding: 10px;
 }
-
+.container {
+  display:flex;
+  flex:1;
+}
 .slidebar button {
   margin: 5px 0; /* Space between buttons */
   border: none; /* Remove default border */
