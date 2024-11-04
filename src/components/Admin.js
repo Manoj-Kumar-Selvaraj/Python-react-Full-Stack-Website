@@ -62,6 +62,7 @@ const Admin = ({ token }) => {
   const [firstSelectiond, setFirstSelectiond] = useState('');
   const [ProductNameb,setProductNameb] = useState('')
   const [Pnamed, setpnamed] = useState('')
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Define fetchOptions outside useEffect
   const fetchOptions = async () => {
@@ -381,13 +382,33 @@ const handleTypeTSubmit = async (e, action) => {
       alert('An error occurred');
     }
   };
-  
+
+    const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
-    <div>
+    <div className="admin-container">
+      {/* Sidebar Toggle Button */}
+      <button onClick={toggleSidebar} className="sidebar-toggle">
+        {sidebarOpen ? 'Close' : 'Menu'}
+      </button>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <h2>Navigation</h2>
+        <ul>
+          <li><a href="#generateBarcodes">Generate Barcodes</a></li>
+          <li><a href="#createEmployee">Add Employee</a></li>
+          <li><a href="#deactivateEmployee">Deactivate Employee</a></li>
+          <li><a href="#addProductType">Add Product</a></li>
+          <li><a href="#deleteProductType">Delete Product</a></li>
+        </ul>
+      </div>
+
     <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
     {loading && <div className="spinner"></div>}
-    <form onSubmit={handleBarcodeSubmit} className="barcode-form">
+    <form id="generateBarcodes" onSubmit={handleBarcodeSubmit} className="barcode-form">
       <h2 className="Heading">Generate Barcodes</h2>
 
       {/* Number of Barcodes Input */}
@@ -482,7 +503,7 @@ const handleTypeTSubmit = async (e, action) => {
     </form>
 
       {/* Employee Creation Form */}
-      <form onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
+      <form id="#createEmployee" onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
         <h2 className="Heading">Create Employee</h2>
         <div className="form-group">
           <label>Employee ID:</label>
@@ -535,7 +556,7 @@ const handleTypeTSubmit = async (e, action) => {
         <button type="submit" className="btn">Create Employee</button>
       </form>
       {/* Employee Deletion Form */}
-      <form onSubmit={(event) => handleEmployeeSubmit(event,"Deactivate")} className="employee-Deactivate">
+      <form id="deactivateEmployee" onSubmit={(event) => handleEmployeeSubmit(event,"Deactivate")} className="employee-Deactivate">
         <h2 className="Heading">Deactivate Employee</h2>
         <div className="form-group">
           <label>Employee ID:</label>
@@ -552,7 +573,7 @@ const handleTypeTSubmit = async (e, action) => {
       </form>
 
       {/* TypeT Form */}
-      <form onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-delete">
+      <form id="addProductType" onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-delete">
         <h2 className="Heading">Add Product Type</h2>
         <div className="form-group">
           <label>Product Size:</label>
@@ -644,7 +665,7 @@ const handleTypeTSubmit = async (e, action) => {
         <button type="submit" className="btn">Create TypeT</button>
       </form>
       {/* TypeT Deletion Form */}
-      <form onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
+      <form id="deleteProductType" onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
   <h2 className="Heading">Delete Product Type</h2>
   <div className="form-group">
     <label>Product Name:</label>
