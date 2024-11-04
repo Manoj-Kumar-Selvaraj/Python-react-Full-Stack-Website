@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react'; // Import useState from React
 import BarcodeTTable from './BarcodeT';
 import EmployeeTTable from './EmployeeT';
 import ProductsTable from './ProductsT';
 import TypeTable from './TypeT';
 
 const Dashboard = ({ token }) => {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('products');
 
+  const renderActiveTab = () => {
     switch (activeTab) {
       case 'products':
         return <ProductsTable token={token} />;
@@ -22,21 +23,36 @@ const Dashboard = ({ token }) => {
   };
 
   return (
-    <>      
-            <nav className="tabs">
-          <button onClick={() => setActiveTab('products')} className={activeTab === 'products' ? 'active' : ''}>
-            Sales
-          </button>
-          <button onClick={() => setActiveTab('barcodes')} className={activeTab === 'barcodes' ? 'active' : ''}>
-            Barcodes
-          </button>
-          <button onClick={() => setActiveTab('employees')} className={activeTab === 'employees' ? 'active' : ''}>
-            Employees
-          </button>
-          <button onClick={() => setActiveTab('types')} className={activeTab === 'types' ? 'active' : ''}>
-            Products
-          </button>
-    </nav>
+    <>
+      <nav className="tabs">
+        <button
+          onClick={() => setActiveTab('products')}
+          className={activeTab === 'products' ? 'active' : ''}
+        >
+          Products
+        </button>
+        <button
+          onClick={() => setActiveTab('barcodes')}
+          className={activeTab === 'barcodes' ? 'active' : ''}
+        >
+          Barcodes
+        </button>
+        <button
+          onClick={() => setActiveTab('employees')}
+          className={activeTab === 'employees' ? 'active' : ''}
+        >
+          Employees
+        </button>
+        <button
+          onClick={() => setActiveTab('types')}
+          className={activeTab === 'types' ? 'active' : ''}
+        >
+          Types
+        </button>
+      </nav>
+      <div className="tab-content">
+        {renderActiveTab()}
+      </div>
     </>
   );
 };
