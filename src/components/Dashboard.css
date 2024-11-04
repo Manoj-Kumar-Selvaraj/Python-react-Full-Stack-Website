@@ -5,7 +5,7 @@
 }
 
 .sidebar {
-  display: block;
+  display: inline-block;
   flex-direction: column; /* Arrange items vertically */
   width: 200px; /* Fixed width for the sidebar */
   background-color: #f8f9fa; /* Light background for sidebar */
