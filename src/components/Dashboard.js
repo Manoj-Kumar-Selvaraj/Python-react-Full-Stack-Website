@@ -1,13 +1,10 @@
-import React, { useState } from 'react'; // Import useState from React
-import BarcodeTTable from './BarcodeT';
-import EmployeeTTable from './EmployeeT';
-import ProductsTable from './ProductsT';
-import TypeTable from './TypeT';
+import React, { useState } from 'react';
+import './Dashboard.css'; // Assuming you have CSS for styling
 
 const Dashboard = ({ token }) => {
   const [activeTab, setActiveTab] = useState('products');
 
-  const renderActiveTab = () => {
+  const renderContent = () => {
     switch (activeTab) {
       case 'products':
         return <ProductsTable token={token} />;
@@ -23,37 +20,25 @@ const Dashboard = ({ token }) => {
   };
 
   return (
-    <>
-      <nav className="tabs">
-        <button
-          onClick={() => setActiveTab('products')}
-          className={activeTab === 'products' ? 'active' : 'inactive'}
-        >
+    <div className="dashboard">
+      <nav className="sidebar">
+        <button onClick={() => setActiveTab('products')} className={activeTab === 'products' ? 'active' : ''}>
           Products
         </button>
-        <button
-          onClick={() => setActiveTab('barcodes')}
-          className={activeTab === 'barcodes' ? 'active' : 'inactive'}
-        >
+        <button onClick={() => setActiveTab('barcodes')} className={activeTab === 'barcodes' ? 'active' : ''}>
           Barcodes
         </button>
-        <button
-          onClick={() => setActiveTab('employees')}
-          className={activeTab === 'employees' ? 'active' : 'inactive'}
-        >
+        <button onClick={() => setActiveTab('employees')} className={activeTab === 'employees' ? 'active' : ''}>
           Employees
         </button>
-        <button
-          onClick={() => setActiveTab('types')}
-          className={activeTab === 'types' ? 'active' : 'inactive'}
-        >
+        <button onClick={() => setActiveTab('types')} className={activeTab === 'types' ? 'active' : ''}>
           Types
         </button>
       </nav>
       <div className="tab-content">
-        {renderActiveTab()}
+        {renderContent()}
       </div>
-    </>
+    </div>
   );
 };
 
