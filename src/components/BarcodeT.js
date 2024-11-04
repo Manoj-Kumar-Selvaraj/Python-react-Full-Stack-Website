@@ -51,7 +51,7 @@ const BarcodeTTable = ({ token }) => {
 
   useEffect(() => {
       BarcodeTFetch();
-    },[ ]);
+    },[token]);
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
