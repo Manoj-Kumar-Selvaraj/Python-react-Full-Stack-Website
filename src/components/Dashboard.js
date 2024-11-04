@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Dashboard.css'; // Assuming you have CSS for styling
-import React, { useState } from 'react'; // Import useState from React
 import BarcodeTTable from './BarcodeT';
 import EmployeeTTable from './EmployeeT';
 import ProductsTable from './ProductsT';
