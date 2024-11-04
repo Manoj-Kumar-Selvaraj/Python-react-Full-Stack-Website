@@ -24,6 +24,7 @@ const BarcodeTTable = ({ token }) => {
   const tableRef = useRef(null);
   const resizingRef = useRef({ column: null, startX: 0, startWidth: 0 });
   const tableContainerRef = useRef(null);
+
   const [editedData, setEditedData] = useState({});
 
   const BarcodeTFetch = async () => {
@@ -35,10 +36,14 @@ const BarcodeTTable = ({ token }) => {
           'Authorization': `Token ${token}`,
         },
       });
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
       const fetchedData = await response.json();
       setData(fetchedData);
     } catch (error) {
-      console.error("There was an error fetching the data!", error);
+      alert("There was an error fetching the data!");
+      console.error("Fetch error:", error);
     } finally {
       setLoading(false);
     }
@@ -115,24 +120,21 @@ const BarcodeTTable = ({ token }) => {
   }, []);
 
   const handleChange = (e, id, column) => {
-    const value = e.target.value !== "" ? e.target.value : undefined; // Set value to undefined if input is empty
+    const value = e.target.value;
     setEditedData((prev) => ({
       ...prev,
       [id]: {
         ...prev[id],
-        [column]: value,  // Update the latest entered value or set as undefined
+        [column]: value,
       },
     }));
   };
 
   const handleSubmit = async () => {
-    const updatedData = Object.entries(editedData).map(([id, values]) => {
-      const originalRecord = data.find(item => item.id === Number(id));
-      return {
-        ...originalRecord, // Spread the original record
-        ...values,         // Override with edited values
-      };
-    });
+    const updatedData = Object.entries(editedData).map(([id, values]) => ({
+      id: Number(id),
+      ...values,
+    }));
 
     try {
       const response = await fetch('https://api.manoj-techworks.site/factoryoutlet/barcode/barcode_log/', {
@@ -141,7 +143,7 @@ const BarcodeTTable = ({ token }) => {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedData), // Send merged data
+        body: JSON.stringify(updatedData),
       });
 
       if (!response.ok) {
@@ -149,11 +151,12 @@ const BarcodeTTable = ({ token }) => {
       }
 
       const result = await response.json();
-      console.log('Updated Records:', result);
-      BarcodeTFetch();
-      setEditedData({}); // Clear edited data after submission
+      alert("Data updated successfully!");
+      BarcodeTFetch(); // Refresh the data
+      setEditedData({});
     } catch (error) {
-      console.error("Error updating data:", error);
+      alert("Error updating data. Please try again.");
+      console.error("Update error:", error);
     }
   };
 
@@ -212,34 +215,13 @@ const BarcodeTTable = ({ token }) => {
                       <td style={{ width: columnWidths.id }}>{item.id}</td>
                       {Object.keys(columnWidths).slice(1).map(column => (
                         <td key={column} style={{ width: columnWidths[column] }}>
-                          {['print_slot', 'gen_slot', 'Approval'].includes(column) ? (
-                            <select
-                              value={editedData[item.id]?.[column] ?? item[column]} // Use edited value or fetched data
-                              onChange={(e) => handleChange(e, item.id, column)}
-                            >
-                              <option value="">Select</option>
-                              {column === 'print_slot' || column === 'gen_slot' ? (
-                                <>
-                                  <option value="Y">Y</option>
-                                  <option value="N">N</option>
-                                </>
-                              ) : column === 'Approval' ? (
-                                <>
-                                  <option value="A">A</option>
-                                  <option value="R">R</option>
-                                  <option value="C">C</option>
-                                </>
-                              ) : null}
-                            </select>
-                          ) : (
-                            <input
-                              type="text"
-                              value={editedData[item.id]?.[column] ?? item[column]} // Display edited value or fallback to fetched data
-                              onChange={(e) => handleChange(e, item.id, column)}
-                              placeholder={item[column]} // Show placeholder when input is empty
-                              readOnly
-                            />
-                          )}
+                          <input
+                            type="text"
+                            value={editedData[item.id]?.[column] ?? item[column]}  // Display edited value or fetched data
+                            onChange={(e) => handleChange(e, item.id, column)}
+                            placeholder={item[column]} // Show placeholder when input is empty
+                            readOnly={!['print_slot', 'gen_slot', 'Approval'].includes(column)}
+                          />
                         </td>
                       ))}
                     </tr>
