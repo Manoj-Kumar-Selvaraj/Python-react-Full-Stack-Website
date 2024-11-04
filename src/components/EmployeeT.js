@@ -175,8 +175,8 @@ const EmployeeTable = ({ token }) => {
                     <td style={{ width: columnWidths.eid }}>{item.eid}</td>
                     <td style={{ width: columnWidths.ename }}>{item.ename}</td>
                     <td style={{ width: columnWidths.last_login }}>{item.last_login}</td>
-                    <td style={{ width: columnWidths.is_active }}>{item.is_active}</td>
-                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser}</td>
+                    <td style={{ width: columnWidths.is_active }}>{item.is_active? 'Yes':'No'}</td>
+                    <td style={{ width: columnWidths.is_superuser }}>{item.is_superuser? 'Yes':'No'}</td>
                     <td style={{ width: columnWidths.created_at }}>{item.created_at}</td>
                     <td style={{ width: columnWidths.updated_at }}>{item.updated_at}</td>
                   </tr>
