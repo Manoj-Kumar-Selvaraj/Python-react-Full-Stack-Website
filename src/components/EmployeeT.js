@@ -5,7 +5,6 @@ import './BarcodeFetch.css';
 const EmployeeTable = ({ token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [tableVisible, setTableVisible] = useState(false);
   const [filters, setFilters] = useState({});
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [columnWidths, setColumnWidths] = useState({
@@ -42,12 +41,9 @@ const EmployeeTable = ({ token }) => {
     }
   };
 
-  const handleToggleTable = () => {
-    setTableVisible(!tableVisible);
-    if (!tableVisible && data.length === 0) {
+  useEffect() => {
       fetchEmployeeData();
-    }
-  };
+    },[ ])
 
   const getUniqueValues = (column) => [...new Set(data.map((item) => item[column]))];
 
@@ -125,12 +121,6 @@ const EmployeeTable = ({ token }) => {
 
   return (
     <div>
-      <h1>Employee Data</h1>
-      <button className="toggle-button" onClick={handleToggleTable}>
-        {tableVisible ? 'Hide Table' : 'Show Table'}
-      </button>
-
-      {tableVisible && (
         <div className="table-container" ref={tableContainerRef}>
           <button className="export-button" onClick={exportToExcel}>
             Download as Excel
@@ -198,7 +188,6 @@ const EmployeeTable = ({ token }) => {
             </table>
           )}
         </div>
-      )}
     </div>
   );
 };
