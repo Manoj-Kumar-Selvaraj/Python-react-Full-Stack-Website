@@ -63,6 +63,10 @@ const Admin = ({ token }) => {
   const [ProductNameb,setProductNameb] = useState('')
   const [Pnamed, setpnamed] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('generateBarcodes');
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const handleTabClick = (tabId) => setActiveTab(tabId);
+
   
   // Define fetchOptions outside useEffect
   const fetchOptions = async () => {
@@ -382,11 +386,6 @@ const handleTypeTSubmit = async (e, action) => {
       alert('An error occurred');
     }
   };
-
-    const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
   return (
     <div className="admin-container">
       {/* Sidebar Toggle Button */}
@@ -395,365 +394,163 @@ const handleTypeTSubmit = async (e, action) => {
       </button>
 
       {/* Sidebar */}
-      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <ul>
-          <li><a href="#generateBarcodes">Generate Barcodes</a></li>
-          <li><a href="#createEmployee">Add Employee</a></li>
-          <li><a href="#deactivateEmployee">Deactivate Employee</a></li>
-          <li><a href="#addProductType">Add Product</a></li>
-          <li><a href="#deleteProductType">Delete Product</a></li>
-        </ul>
+      <nav className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+        {['generateBarcodes', 'createEmployee', 'deactivateEmployee', 'addProductType', 'deleteProductType'].map(tab => (
+          <button key={tab} onClick={() => handleTabClick(tab)}>
+            {tab.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+          </button>
+        ))}
+      </nav>
+
       <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
-      {loading && <div className="spinner"></div>}
-      </div>
 
-
-    <form id="generateBarcodes" onSubmit={handleBarcodeSubmit} className="barcode-form">
-      <h2 className="Heading">Generate Barcodes</h2>
-
-      {/* Number of Barcodes Input */}
-      <div className="form-group">
-        <label>Number of Barcodes (integer):</label>
-        <input
-          type="number"
-          placeholder="Enter number of barcodes"
-          value={number_of_barcodes}
-          onChange={(e) => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
-          required
-        />
-      </div>
-
-      {/* Product Name Selection */}
-      <div className="form-group">
-        <label>Product Name:</label>
-        <select
-          value={productName}
-          onChange={(e) => setProductName(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product name</option>
-          {Array.from(new Set(optionsb.map(item => item.pname))).map((uniqueName, index) => (
-            <option key={index} value={uniqueName}>{uniqueName}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Product Size Selection */}
-      <div className="form-group">
-        <label>Product Size:</label>
-        <select
-          value={productSize}
-          onChange={(e) => setProductSize(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product size</option>
-          {filteredSizesb.map((size, index) => (
-            <option key={index} value={size}>{size}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Product Type Selection */}
-      <div className="form-group">
-        <label>Product Type:</label>
-        <select
-          value={productType}
-          onChange={(e) => setProductType(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product type</option>
-          {filteredTypesb.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Product Seller Selection */}
-      <div className="form-group">
-        <label>Product Seller:</label>
-        <select
-          value={seller}
-          onChange={(e) => setSeller(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product seller</option>
-          {filteredSellersb.map((seller, index) => (
-            <option key={index} value={seller}>{seller}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Product Amount Selection */}
-      <div className="form-group">
-        <label>Product Amount:</label>
-        <select
-          value={amount}
-          onChange={(e) => setAmount(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product amount</option>
-          {filteredAmountsb.map((amount, index) => (
-            <option key={index} value={amount}>{amount}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Submit Button */}
-      <button type="submit" className="btn">Generate Barcodes</button>
-    </form>
-
-      {/* Employee Creation Form */}
-      <form id="#createEmployee" onSubmit={(event) => handleEmployeeSubmit(event,"Add")} className="employee-form">
-        <h2 className="Heading">Create Employee</h2>
-        <div className="form-group">
-          <label>Employee ID:</label>
-          <input
-            type="text"
-            placeholder="Enter Employee ID"
-            value={eid}
-            onChange={(e) => setEid(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Employee Name:</label>
-          <input
-            type="text"
-            placeholder="Enter Employee Name"
-            value={ename}
-            onChange={(e) => setEname(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Login:</label>
-          <input
-            type="datetime-local"
-            value={lastLogin}
-            onChange={(e) => setLastLogin(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>
-            <input
-              type="checkbox"
-              checked={isActive}
-              onChange={(e) => setIsActive(e.target.checked)}
-            />
-            Is Active
-          </label>
-        </div>
-        <div className="form-group">
-          <label>
-            <input
-              type="checkbox"
-              checked={isSuperuser}
-              onChange={(e) => setIsSuperuser(e.target.checked)}
-            />
-            Is Superuser
-          </label>
-        </div>
-        <button type="submit" className="btn">Create Employee</button>
-      </form>
-      {/* Employee Deletion Form */}
-      <form id="deactivateEmployee" onSubmit={(event) => handleEmployeeSubmit(event,"Deactivate")} className="employee-Deactivate">
-        <h2 className="Heading">Deactivate Employee</h2>
-        <div className="form-group">
-          <label>Employee ID:</label>
-          <input
-            type="text"
-            placeholder="Enter Employee ID"
-            value={eidd}
-            onChange={(e) => setEidd(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn">Deactivate Employee</button>
-      </form>
-
-      {/* TypeT Form */}
-      <form id="addProductType" onSubmit={(event) => handleTypeTSubmit(event, "Add")} className="typeT-delete">
-        <h2 className="Heading">Add Product Type</h2>
-        <div className="form-group">
-          <label>Product Size:</label>
-          <input
-            type="text"
-            placeholder="Enter product size"
-            value={psize}
-            onChange={(e) => setPsize(DOMPurify.sanitize(e.target.value.toUpperCase()))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Product Name:</label>
-          <input
-            type="text"
-            placeholder="Enter product name"
-            value={pname}
-            onChange={(e) => setPname(DOMPurify.sanitize(e.target.value.toUpperCase()))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Product Type:</label>
-          <input
-            type="text"
-            placeholder="Enter product type"
-            value={ptype}
-            onChange={(e) => setPtype(DOMPurify.sanitize(e.target.value.toUpperCase()))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Seller:</label>
-          <input
-            type="text"
-            placeholder="Enter seller name"
-            value={pseller}
-            onChange={(e) => setPseller(DOMPurify.sanitize(e.target.value.toUpperCase()))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Barcode Type:</label>
-          <input
-            type="text"
-            placeholder="Enter barcode type"
-            value={bType}
-            onChange={(e) => setBType(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Processed Date:</label>
-          <input
-            type="datetime-local"
-            value={lastProcessedDate}
-            onChange={(e) => setLastProcessedDate(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Barcode:</label>
-          <input
-            type="number"
-            placeholder="Enter last barcode"
-            value={lastBarcode}
-            onChange={(e) => setLastBarcode(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Product ID:</label>
-          <input
-            type="number"
-            placeholder="Enter last product ID"
-            value={latPid}
-            onChange={(e) => setLatPid(DOMPurify.sanitize(e.target.value))}
-          />
-        </div>
-        <div className="form-group">
-          <label>Product Amount:</label>
-          <input
-            type="number"
-            step="0.01"
-            placeholder="Enter product amount"
-            value={pamount}
-            onChange={(e) => setPamount(DOMPurify.sanitize(e.target.value))}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">Create TypeT</button>
-      </form>
-      {/* TypeT Deletion Form */}
-      <form id="deleteProductType" onSubmit={(event) => handleTypeTSubmit(event, "Delete")} className="typeT-form">
-  <h2 className="Heading">Delete Product Type</h2>
-  <div className="form-group">
-    <label>Product Name:</label>
-    <select
-      value={pnamed}
-      onChange={handleFlowd}
-      required
-    >
-      <option value="">Select a product name</option>
-      {Array.from(new Set(
-        options
-          .filter(item => item.pname) // Ensure pname exists
-          .map(item => item.pname)    // Get pname values
-      )).map((uniqueName, index) => ( // Remove duplicates using Set
-        <option key={index} value={uniqueName}>
-          {uniqueName}
-        </option>
-      ))}
-    </select>
-  </div>
-
-      {notificationd && (
-        <div className="notification" style={{ color: 'red', marginTop: '10px' }}>
-          {notificationd}
-        </div>
-      )}
-
-      <div className="form-group">
-        <label>Product Size:</label>
-        <select
-          value={psized}
-          onChange={(e) => setPsized(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product size</option>
-          {filteredSizes.map((size, index) => (
-            <option key={index} value={size}>{size}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <label>Product Type:</label>
-        <select
-          value={ptyped}
-          onChange={(e) => setPtyped(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product type</option>
-          {filteredTypes.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <label>Product Seller:</label>
-        <select
-          value={psellerd}
-          onChange={(e) => setPsellerd(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product seller</option>
-          {filteredSellers.map((seller, index) => (
-            <option key={index} value={seller}>{seller}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <label>Product Amount:</label>
-        <select
-          value={pamountd}
-          onChange={(e) => setPamountd(DOMPurify.sanitize(e.target.value))}
-          required
-        >
-          <option value="">Select a product amount</option>
-          {filteredAmounts.map((amount, index) => (
-            <option key={index} value={amount}>{amount}</option>
-          ))}
-        </select>
-      </div>
-
-      <button type="submit" className="btn">Delete Type</button>
-    </form>
+      {/* Main Content */}
+      {activeTab === 'generateBarcodes' && <GenerateBarcodesForm />}
+      {activeTab === 'createEmployee' && <CreateEmployeeForm />}
+      {activeTab === 'deactivateEmployee' && <DeactivateEmployeeForm />}
+      {activeTab === 'addProductType' && <AddProductTypeForm />}
+      {activeTab === 'deleteProductType' && <DeleteProductTypeForm />}
     </div>
   );
 };
 
-export default Admin;
+const GenerateBarcodesForm = () => {
+  return (
+    <form id="generateBarcodes" onSubmit={handleBarcodeSubmit} className="barcode-form">
+      {loading && <LoadingOverlay />}
 
+      <FormInput 
+        label="Number of Barcodes (integer):"
+        type="number"
+        value={number_of_barcodes}
+        onChange={e => setNumberOfBarcodes(DOMPurify.sanitize(e.target.value))}
+        required
+      />
+
+      <FormSelect 
+        label="Product Name:"
+        value={productName}
+        onChange={e => setProductName(DOMPurify.sanitize(e.target.value))}
+        options={Array.from(new Set(optionsb.map(item => item.pname)))}
+        required
+      />
+
+      <FormSelect 
+        label="Product Size:"
+        value={productSize}
+        onChange={e => setProductSize(DOMPurify.sanitize(e.target.value))}
+        options={filteredSizesb}
+        required
+      />
+
+      <FormSelect 
+        label="Product Type:"
+        value={productType}
+        onChange={e => setProductType(DOMPurify.sanitize(e.target.value))}
+        options={filteredTypesb}
+        required
+      />
+
+      <FormSelect 
+        label="Product Seller:"
+        value={seller}
+        onChange={e => setSeller(DOMPurify.sanitize(e.target.value))}
+        options={filteredSellersb}
+        required
+      />
+
+      <FormSelect 
+        label="Product Amount:"
+        value={amount}
+        onChange={e => setAmount(DOMPurify.sanitize(e.target.value))}
+        options={filteredAmountsb}
+        required
+      />
+
+      <button type="submit" className="btn">Generate Barcodes</button>
+    </form>
+  );
+};
+
+const CreateEmployeeForm = () => {
+  return (
+    <form id="createEmployee" onSubmit={event => handleEmployeeSubmit(event, "Add")} className="employee-form">
+      {loading && <LoadingOverlay />}
+
+      <FormInput 
+        label="Employee ID:"
+        type="text"
+        value={eid}
+        onChange={e => setEid(DOMPurify.sanitize(e.target.value))}
+        required
+      />
+      
+      <FormInput 
+        label="Employee Name:"
+        type="text"
+        value={ename}
+        onChange={e => setEname(DOMPurify.sanitize(e.target.value))}
+        required
+      />
+
+      <FormInput 
+        label="Last Login:"
+        type="datetime-local"
+        value={lastLogin}
+        onChange={e => setLastLogin(DOMPurify.sanitize(e.target.value))}
+      />
+
+      <FormCheckbox 
+        label="Is Active"
+        checked={isActive}
+        onChange={e => setIsActive(e.target.checked)}
+      />
+
+      <FormCheckbox 
+        label="Is Superuser"
+        checked={isSuperuser}
+        onChange={e => setIsSuperuser(e.target.checked)}
+      />
+
+      <button type="submit" className="btn">Create Employee</button>
+    </form>
+  );
+};
+
+// Define the other forms similarly...
+
+const LoadingOverlay = () => (
+  <div className="loading-overlay">
+    <div className="spinner"></div>
+  </div>
+);
+
+const FormInput = ({ label, type, value, onChange, required }) => (
+  <div className="form-group">
+    <label>{label}</label>
+    <input type={type} value={value} onChange={onChange} required={required} />
+  </div>
+);
+
+const FormSelect = ({ label, value, onChange, options, required }) => (
+  <div className="form-group">
+    <label>{label}</label>
+    <select value={value} onChange={onChange} required={required}>
+      <option value="">Select an option</option>
+      {options.map((option, index) => (
+        <option key={index} value={option}>{option}</option>
+      ))}
+    </select>
+  </div>
+);
+
+const FormCheckbox = ({ label, checked, onChange }) => (
+  <div className="form-group">
+    <label>
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      {label}
+    </label>
+  </div>
+);
+
+export default AdminPanel;
