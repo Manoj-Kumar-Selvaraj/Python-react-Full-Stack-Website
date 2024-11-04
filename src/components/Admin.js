@@ -396,7 +396,6 @@ const handleTypeTSubmit = async (e, action) => {
 
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <h2>Navigation</h2>
         <ul>
           <li><a href="#generateBarcodes">Generate Barcodes</a></li>
           <li><a href="#createEmployee">Add Employee</a></li>
@@ -404,10 +403,11 @@ const handleTypeTSubmit = async (e, action) => {
           <li><a href="#addProductType">Add Product</a></li>
           <li><a href="#deleteProductType">Delete Product</a></li>
         </ul>
+      <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
+      {loading && <div className="spinner"></div>}
       </div>
 
-    <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
-    {loading && <div className="spinner"></div>}
+
     <form id="generateBarcodes" onSubmit={handleBarcodeSubmit} className="barcode-form">
       <h2 className="Heading">Generate Barcodes</h2>
 
