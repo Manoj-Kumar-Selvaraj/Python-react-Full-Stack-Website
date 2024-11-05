@@ -1,3 +1,10 @@
+/* Style for the main container that holds both the sidebar and content */
+.main-wrapper {
+  display: flex; /* Enables side-by-side layout */
+  height: 100vh; /* Makes the sidebar and content take full viewport height */
+}
+
+/* Sidebar styling */
 .slidebar {
   display: flex;
   flex-direction: column;
@@ -6,10 +13,14 @@
   flex-shrink: 0; /* Prevents sidebar from resizing when content expands */
   background-color: #f8f9fa;
   padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for a subtle separation */
 }
+
+/* Content container styling */
 .container {
-  display:flex;
-  flex:1;
+  flex: 1; /* Takes up remaining space */
+  padding: 20px;
+  overflow-y: auto; /* Allows scrolling if content overflows */
 }
 .slidebar button {
   margin: 5px 0; /* Space between buttons */
