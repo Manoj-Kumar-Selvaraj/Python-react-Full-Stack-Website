@@ -385,7 +385,7 @@ const handleTypeTSubmit = async (e, action) => {
   
 
   return (
-    <div>
+    <div class="main-wrapper">
           <nav className='slidebar'>
         <button onClick={() => SetActiveTab('GenerateBarcode')}>Generate Barcodes</button>
         <button onClick={() => SetActiveTab('EmployeeCreation')}>Add Employee</button>
