@@ -22,7 +22,7 @@
   padding: 20px;
   overflow-y: auto; /* Allows scrolling if content overflows */
 }
-.slidebar button {
+.slidebar.nav {
   margin: 5px 0; /* Space between buttons */
   border: none; /* Remove default border */
   background-color: transparent; /* Transparent background */
@@ -33,7 +33,7 @@
   width: 100%; /* Make buttons take full width */
 }
 
-.slidebar button:hover {
+.slidebar.nav:hover {
   background-color: #e0e0e0; /* Change background on hover */
 }
 
