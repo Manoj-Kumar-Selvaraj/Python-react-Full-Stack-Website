@@ -387,14 +387,13 @@ const handleTypeTSubmit = async (e, action) => {
   return (
     <div class="main-wrapper">
           <nav className='slidebar'>
-        <button onClick={() => SetActiveTab('GenerateBarcode')}>Generate Barcodes</button>
-        <button onClick={() => SetActiveTab('EmployeeCreation')}>Add Employee</button>
-        <button onClick={() => SetActiveTab('EmployeeDelete')}>Deactivate Employee</button>
-        <button onClick={() => SetActiveTab('AddType')}>Add Product</button>
-        <button onClick={() => SetActiveTab('DelType')}>Delete Product</button>
+        <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
+        <button className="nav" onClick={() => SetActiveTab('GenerateBarcode')}>Generate Barcodes</button>
+        <button className="nav" onClick={() => SetActiveTab('EmployeeCreation')}>Add Employee</button>
+        <button className="nav" onClick={() => SetActiveTab('EmployeeDelete')}>Deactivate Employee</button>
+        <button className="nav" onClick={() => SetActiveTab('AddType')}>Add Product</button>
+        <button className="nav" onClick={() => SetActiveTab('DelType')}>Delete Product</button>
       </nav>
-
-    <button className="Refresh" onClick={handleRefresh}>Refresh Data</button>
     {activeTab=='GenerateBarcode' &&(
       <div className="container">
     {loading && <div className="spinner"></div>}
