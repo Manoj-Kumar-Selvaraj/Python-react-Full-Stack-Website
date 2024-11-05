@@ -492,7 +492,7 @@ const handleTypeTSubmit = async (e, action) => {
       <button type="submit" className="btn">Generate Barcodes</button>
     </form>
         </div>
-    )};
+    )}
      
       {/* Employee Creation Form */}
       {activeTab=='EmployeeCreation' &&(
