@@ -1,0 +1,110 @@
+Here are detailed notes covering your work with EC2, RDS, and the AWS services you're working with, including errors you might have encountered and their resolutions:
+
+### **1. AWS Database Migration Service (DMS) Overview**
+
+**AWS DMS (Database Migration Service)**:
+- **Use Case**: For minimal downtime database migration.
+- **Supported Sources**: MySQL, Oracle, SQL Server, PostgreSQL, etc.
+- **Supported Targets**: AWS RDS, Aurora, DynamoDB.
+- **Features**:
+  - Homogeneous migrations (same DB engine).
+  - Heterogeneous migrations (different DB engines, e.g., MySQL to Aurora).
+  - Continuous data replication (for live migrations).
+
+**Common Issues**:
+- **Error**: Inconsistent Data on Target
+  - **Resolution**: Verify source and target DB configurations match in terms of encoding, data types, etc.
+- **Error**: Network connectivity issues during migration.
+  - **Resolution**: Ensure security group rules and VPC/subnet configurations allow necessary inbound and outbound traffic for the DMS replication instance.
+
+### **2. AWS Snowball for Data Migration**
+
+**AWS Snowball**:
+- **Use Case**: Large data migrations (petabytes) when network bandwidth is insufficient.
+- **Process**: Data is transferred to a physical Snowball device, shipped to AWS, and uploaded to S3.
+
+**Common Issues**:
+- **Error**: Snowball device delays.
+  - **Resolution**: Track shipping status through the AWS Console and ensure correct device handling on-site.
+- **Error**: Data transfer interruptions.
+  - **Resolution**: Confirm local network stability and device compatibility before initiating the data transfer.
+
+### **3. Terraform Script for EC2, RDS, and VPC Setup**
+
+You used Terraform to automate infrastructure provisioning for AWS services. Below are the key sections and common issues encountered.
+
+### **EC2 and RDS Setup in Terraform**
+
+- **VPC Creation**:
+  - A VPC with a CIDR block `10.0.0.0/16` was created. DNS support and hostnames were enabled.
+  
+- **Subnets**:
+  - Two private subnets (`private_subnet_1` and `private_subnet_2`) were created in different availability zones (`us-east-1a`, `us-east-1b`).
+
+- **RDS Setup**:
+  - An RDS instance using MySQL 8.0 was created with a 20GB storage allocation. It uses the security group `rds_sg` and `rds_subnet_group`.
+  - **Security Group**: Opened port `3306` for MySQL access (note: this should be restricted to internal or trusted IPs in a production environment).
+
+#### **Common Issues and Resolutions:**
+
+1. **Error: Security Group Ingress Blockage**:
+   - **Resolution**: Ensure that the RDS instance’s security group allows inbound traffic on port `3306` from the correct IP range or security group.
+   
+2. **Error: Invalid DB Subnet Group**:
+   - **Resolution**: Ensure that the DB subnet group has the correct subnet IDs and the subnets are in different availability zones.
+
+3. **Error: RDS Instance Not Launching**:
+   - **Resolution**: Check the AWS Console for specific error messages. Common reasons include insufficient permissions, incorrect instance class, or mismatched DB engine versions.
+
+### **Terraform Configuration for EC2**
+
+1. **VPC, Subnet, and Internet Gateway**:
+   - The script sets up a VPC, a public subnet, and an Internet Gateway to allow access to the EC2 instance.
+   - **Routing**: The routing table was configured to route traffic to the Internet Gateway.
+  
+2. **Security Group for EC2**:
+   - The EC2 instance is secured by a security group that allows SSH (`22`), HTTP (`80`), and HTTPS (`443`).
+
+3. **Key Pair**:
+   - An SSH key pair was created using Terraform to secure access to the EC2 instance.
+
+4. **EC2 Instance**:
+   - **AMI**: The EC2 instance is based on the specified AMI.
+   - **Instance Type**: Defined as `t3.micro` (adjust according to your budget).
+   - **Public IP**: Associated with the instance for internet access.
+   - **Security Group**: EC2 instance uses the security group defined earlier.
+
+#### **Common Issues and Resolutions**:
+
+1. **Error: EC2 Instance Not Accessible via SSH**:
+   - **Resolution**: Ensure that the key pair is correct, the security group allows inbound SSH traffic, and that the EC2 instance has a public IP if you are connecting over the internet.
+   
+2. **Error: Instance Launch Failure (Insufficient Capacity)**:
+   - **Resolution**: Try using another availability zone or instance type if capacity is not available in the selected zone.
+   
+3. **Error: Instance Unreachable**:
+   - **Resolution**: Check if the subnet has the correct route to the Internet Gateway. Verify the public IP address and DNS settings for the instance.
+
+### **Final Notes on AWS Profiles and Access**
+
+When working with AWS resources like EC2 and RDS across multiple accounts or environments, it’s crucial to set up **AWS profiles**. These profiles are configured in the AWS CLI using the `aws configure` command, allowing you to switch between different accounts without manually changing access credentials.
+
+- **Setting AWS Profile**: You can specify the AWS profile in your Terraform or AWS CLI configuration by setting the `AWS_PROFILE` environment variable. Example:
+  ```bash
+  export AWS_PROFILE=your_profile_name
+  ```
+
+- **Common Issues with AWS Profile**:
+  - **Error**: "No credentials found for the specified profile."
+    - **Resolution**: Ensure that the correct profile is set in the environment variable and that the credentials exist in the `~/.aws/credentials` file.
+  - **Error**: "Access Denied"
+    - **Resolution**: Ensure the IAM role associated with the profile has the required permissions to interact with EC2, RDS, etc.
+
+### **Summary of Key AWS Services**
+
+- **RDS**: Managed database service for MySQL, PostgreSQL, SQL Server, etc. Terraform configuration helps automate RDS instance deployment.
+- **EC2**: Scalable compute service to run virtual machines. Setup involves selecting AMIs, configuring security groups, and attaching key pairs.
+- **VPC**: Virtual network for isolating AWS resources. Subnets, route tables, and security groups help configure network accessibility.
+  
+By following these steps, you were able to successfully deploy resources using Terraform, handle common errors, and ensure security configurations are correct.
+
