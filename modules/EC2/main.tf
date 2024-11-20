@@ -78,6 +78,13 @@ resource "aws_security_group" "backed_server_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+      ingress {
+    description = "Allow HTTP"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["172.31.0.0/16"]
+  }
   egress {  # egress is outbound and -1 indicates all protocols
     from_port   = 0
     to_port     = 0

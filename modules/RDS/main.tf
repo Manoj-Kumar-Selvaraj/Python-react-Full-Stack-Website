@@ -32,16 +32,19 @@ Using AWS Database Migration Service (DMS)
 terraform {
   required_providers {
     aws = {
-      source              = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
+
 provider "aws" {
-  alias  = "account2"
+  alias   = "account2"
+  region  = "us-east-1"  # Replace with your preferred AWS region
+  profile = "account2"    # Replace with your AWS CLI profile name, if applicable
 }
 
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"  
+  cidr_block = "172.31.0.0/16"  
   provider          = aws.account2
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -53,7 +56,7 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "private_subnet_1" {
   provider          = aws.account2
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.1.0/24"
+  cidr_block        = "172.31.1.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
@@ -64,7 +67,7 @@ resource "aws_subnet" "private_subnet_1" {
 resource "aws_subnet" "private_subnet_2" {
   provider          = aws.account2
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.2.0/24"
+  cidr_block        = "172.31.2.0/24"
   availability_zone = "us-east-1b"
   tags = {
     Name = "Private Subnet 2"
@@ -82,6 +85,31 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
     Name = "RDS Subnet Group"
   }
 }
+
+
+# Route Table for VPC 1 (EC2 module)
+resource "aws_route_table" "vpc2_route_table" {
+  provider = aws.account2
+  vpc_id   = aws_vpc.my_vpc.id
+
+  tags = {
+    Name = "VPC1 Route Table"
+  }
+}
+
+# Associate Route Table with Subnets
+resource "aws_route_table_association" "subnet1_association" {
+  provider          = aws.account2
+  subnet_id         = aws_subnet.private_subnet_1.id
+  route_table_id    = aws_route_table.vpc2_route_table.id
+}
+
+resource "aws_route_table_association" "subnet2_association" {
+  provider          = aws.account2
+  subnet_id         = aws_subnet.private_subnet_2.id
+  route_table_id    = aws_route_table.vpc2_route_table.id
+}
+
 
 resource "aws_security_group" "rds_sg" {
   provider = aws.account2
