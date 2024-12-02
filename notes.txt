@@ -93,7 +93,7 @@ When working with AWS resources like EC2 and RDS across multiple accounts or env
   ```bash
   export AWS_PROFILE=your_profile_name
   ```
-
+Or we can configure the credentials and providers in terraform
 - **Common Issues with AWS Profile**:
   - **Error**: "No credentials found for the specified profile."
     - **Resolution**: Ensure that the correct profile is set in the environment variable and that the credentials exist in the `~/.aws/credentials` file.
@@ -106,5 +106,11 @@ When working with AWS resources like EC2 and RDS across multiple accounts or env
 - **EC2**: Scalable compute service to run virtual machines. Setup involves selecting AMIs, configuring security groups, and attaching key pairs.
 - **VPC**: Virtual network for isolating AWS resources. Subnets, route tables, and security groups help configure network accessibility.
   
-By following these steps, you were able to successfully deploy resources using Terraform, handle common errors, and ensure security configurations are correct.
+*******************************************************************************************************************************************************************************************************
+
+VPC PEERING:
+          Able to connect to multiple VPCs
+          First a VPC peering is initiated by providing vpc id, peer vpc id, peer account id etc.
+          Next route is created for all the vpcs as destination is the other vpcs cidr and peer id as target.
+          Accept the peering coonection requests.
 

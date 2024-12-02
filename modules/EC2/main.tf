@@ -106,6 +106,36 @@ resource "aws_key_pair" "backend_server_key" {
   public_key = tls_private_key.ssh_local.public_key_openssh
 }
 
+# IAM Role in Account A to be assumed by Account B
+resource "aws_iam_role" "cross_account_ec2_role_account1" {
+  name     = "CrossAccountEC2Role_account1"
+
+  # Trust policy to allow Account B to assume this role
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Effect    = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::039612868338:root"  
+        }
+      }
+    ]
+  })
+}
+
+# Attach permissions to the IAM Role (e.g., AmazonEC2FullAccess)
+resource "aws_iam_role_policy_attachment" "ec2_full_access_account1" {
+  role      = aws_iam_role.cross_account_ec2_role_account1.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}
+
+resource "aws_iam_instance_profile" "ec2_instance_profile_account1" {
+  name     = "CrossAccountEC2InstanceProfile_account1"
+  role     = aws_iam_role.cross_account_ec2_role_account1.name
+}
+
 # Resource: EC2 instance
 resource "aws_instance" "ubuntu_instance" {
   ami           = var.ami_id
@@ -117,7 +147,10 @@ resource "aws_instance" "ubuntu_instance" {
   vpc_security_group_ids = [aws_security_group.backed_server_sg.id]
   subnet_id              = aws_subnet.public.id
 
+  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile_account1.name
+
   tags = {
     Name = "Backed_End_Server"
   }
 }
+

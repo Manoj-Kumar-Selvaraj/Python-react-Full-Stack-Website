@@ -23,3 +23,13 @@ output "ec2_vpc_cidr" {
   value       = aws_vpc.main.cidr_block  # Replace with actual VPC resource name
   description = "CIDR block of the VPC"
 }
+
+output "ec2_id" {
+  value = aws_instance.ubuntu_instance.id
+  description = "EC2 Id"
+}
+
+output "cross_account_role_arn" {
+  value = aws_iam_role.cross_account_ec2_role_account1.arn
+  description = "The ARN of the IAM Role in Account B for assuming the cross-account role."
+}

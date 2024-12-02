@@ -44,3 +44,30 @@ resource "aws_route" "vpc2_to_vpc1" {
   destination_cidr_block = module.EC2.ec2_vpc_cidr      # Output from EC2 module
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
 }
+
+# IAM Role in Account B to assume the role from Account A
+resource "aws_iam_role" "assume_cross_account_role" {
+  provider = aws.account2
+  name     = "AssumeCrossAccountEC2Role"
+
+  # Trust policy allowing Account B to assume the role in Account A
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Effect    = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::202533516001:role/CrossAccountEC2Role_account1"  
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_route" "nat_route" {
+  provider               = aws.account2
+  route_table_id         = module.RDS.rds_route_table_id  # Output from RDS module
+  destination_cidr_block = "0.0.0.0/0"      
+  network_interface_id    = "10.0.1.28"
+}
