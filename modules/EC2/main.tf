@@ -65,6 +65,12 @@ resource "aws_security_group" "backed_server_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
     ingress {
+    from_port   = 1194
+    to_port     = 1194
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
     description = "Allow HTTP"
     from_port   = 80
     to_port     = 80
@@ -153,4 +159,3 @@ resource "aws_instance" "ubuntu_instance" {
     Name = "Backed_End_Server"
   }
 }
-

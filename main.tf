@@ -65,9 +65,29 @@ resource "aws_iam_role" "assume_cross_account_role" {
   })
 }
 
-resource "aws_route" "nat_route" {
-  provider               = aws.account2
-  route_table_id         = module.RDS.rds_route_table_id  # Output from RDS module
-  destination_cidr_block = "0.0.0.0/0"      
-  network_interface_id    = "10.0.1.28"
+resource "aws_vpn_gateway" "onpremis_vpn_gateway" {
+  vpc_id = module.EC2.ec2_vpc_id
+}
+
+resource "aws_customer_gateway" "My_cgw" {
+  bgp_asn    = 65000
+  ip_address = "49.207.63.76"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "My_vpn_connection" {
+  customer_gateway_id = aws_customer_gateway.My_cgw.id
+  vpn_gateway_id      = aws_vpn_gateway.onpremis_vpn_gateway.id
+  type                = "ipsec.1"
+  static_routes_only = true
+}
+
+resource "aws_vpn_connection_route" "strongswan_vpn_route" {
+  vpn_connection_id = aws_vpn_connection.My_vpn_connection.id
+  destination_cidr_block = "192.168.0.0/24" # Vpn Private pool
+}
+
+# Output VPN Details
+output "vpn_connection_id" {
+  value = aws_vpn_connection.My_vpn_connection.id
 }

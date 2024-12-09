@@ -114,3 +114,926 @@ VPC PEERING:
           Next route is created for all the vpcs as destination is the other vpcs cidr and peer id as target.
           Accept the peering coonection requests.
 
+**********************************************************************************************************************************************************************************************************
+
+SITE TO SITE VPN:
+
+To create a comprehensive VPC and VPN setup that connects two VPCs across AWS (or other cloud providers) and involves connecting an on-premises server to AWS through a VPN, follow these detailed steps.
+
+Steps to Create Full VPC and VPN Setup
+1. Set Up Virtual Private Clouds (VPCs)
+You’ll need at least two VPCs: one on AWS and one for your on-premises network (or in another AWS region).
+
+Step 1.1: Create the VPC on AWS
+Log into AWS Management Console and go to the VPC Dashboard.
+
+Create a New VPC:
+
+Select Create VPC.
+Set the IPv4 CIDR block (e.g., 10.0.0.0/16).
+Choose Tenancy: Default (unless you need dedicated instances).
+Click Create.
+Create Subnets:
+
+You can create public and private subnets depending on your requirements.
+For example:
+Public subnet: 10.0.1.0/24
+Private subnet: 10.0.2.0/24
+Set up Route Tables:
+
+Public subnet route table: Direct traffic to the Internet Gateway.
+Private subnet route table: Use a NAT Gateway for internet access.
+Create Internet Gateway (IGW):
+
+In the VPC Dashboard, select Internet Gateways.
+Create an Internet Gateway, and attach it to the VPC.
+Configure Network ACLs and Security Groups:
+
+Set inbound and outbound rules to control traffic in and out of the VPC.
+For instance, allow inbound traffic on port 22 (SSH) and port 443 (HTTPS).
+Step 1.2: Set up the VPC on Your On-Premises Network
+Create the Subnet and allocate IP addresses within your on-premises network (e.g., 192.168.1.0/24).
+
+Set up Routing:
+
+Ensure that your on-premises router can route traffic to AWS IP ranges (via VPN).
+Ensure the Firewall allows VPN traffic:
+
+Open ports for IPsec VPN (UDP 500 and UDP 4500).
+Allow traffic for the VPC IP ranges.
+2. Set Up the VPN Connection
+Step 2.1: Create a Virtual Private Gateway (VGW) in AWS
+Go to the VPC Dashboard in AWS.
+
+Create a Virtual Private Gateway:
+
+Go to VPN Connections > Create VPN Connection.
+Select Virtual Private Gateway for the connection type.
+Provide the Public IP of the AWS VGW (this will be given by AWS).
+BGP ASN: Use the default AWS ASN or your custom ASN if needed.
+IPsec Settings: Define the encryption (e.g., AES128) and hashing algorithms (e.g., SHA1) matching your on-premises setup.
+Attach the VGW to Your VPC:
+
+After creation, go to the Virtual Private Gateway and Attach it to your VPC.
+Step 2.2: Set Up the Customer Gateway (CGW) on Your On-Premises Server
+Obtain the Public IP Address of your on-premises server's VPN interface.
+
+Define the Customer Gateway Configuration in AWS:
+
+Type: Static or Dynamic routing (depending on your setup).
+Public IP: The IP address of your on-premises VPN gateway.
+Set the BGP ASN if you’re using dynamic routing.
+Step 2.3: Create the VPN Tunnel
+Create VPN Connection on AWS:
+
+Go to the VPN Connections section in AWS.
+Click Create VPN Connection.
+Select the Virtual Private Gateway created earlier.
+Choose Static Routing or Dynamic Routing based on your setup.
+Download the VPN Configuration:
+
+AWS will generate a VPN configuration file for various devices (e.g., Cisco, Juniper). Download it to configure your on-premises VPN device.
+Configure the On-Premises VPN Gateway:
+
+Use the downloaded configuration to set up the VPN tunnel on your on-premises server (whether you're using IPsec or a hardware VPN device).
+Configure the IPsec Tunnel:
+
+Set the PSK and encryption parameters to match the AWS configuration.
+Ensure the Tunnel IPs from AWS match with your on-premises setup.
+Step 2.4: Update the Route Tables
+On AWS Side:
+
+Go to Route Tables and add a route to direct traffic destined for your on-premises subnet (e.g., 192.168.1.0/24) to the VGW.
+On On-Premises Side:
+
+Add routes to direct traffic destined for AWS subnets (e.g., 10.0.0.0/16) to the on-premises VPN gateway.
+3. Test the VPN Tunnel
+Bring the VPN Tunnel Up on both sides.
+
+On AWS, the connection should be shown as UP in the VPN connections dashboard.
+On your on-premises device, check the VPN status.
+Test Connectivity:
+
+Ping an internal IP address in your VPC from your on-premises server.
+If the ping is successful, the VPN tunnel is working.
+4. (Optional) Enable High Availability
+For redundancy, you can enable a second VPN tunnel between your AWS VPC and on-premises network.
+
+Create a Second Tunnel:
+Follow similar steps as before but create a second VPN tunnel with a different public IP.
+Configure the Failover:
+Update the routing configuration to handle failover, i.e., send traffic through the secondary tunnel if the primary tunnel is down.
+5. Troubleshooting
+VPN Logs: Check both AWS and on-premises logs for errors.
+
+On AWS, use the VPN Connections logs.
+On your on-premises VPN device, check the IPsec logs.
+Check Configuration Settings:
+
+Ensure PSK, encryption, and hashing algorithms match on both sides.
+Ensure the correct routes are set on both ends.
+Network ACLs and Security Groups:
+
+Ensure that the correct ports (500, 4500) are open and traffic is allowed.
+Summary of VPC and VPN Setup Process
+Set Up VPCs:
+
+Create VPCs with subnets, route tables, internet gateway, NAT gateway, etc., to define network structure.
+Create VPN Connection:
+
+Set up a Virtual Private Gateway on AWS and a Customer Gateway on your on-premises network.
+Create a VPN Tunnel using IPsec and configure the routes on both sides.
+Configure IPsec:
+
+Set the PSK, routing (static or dynamic), and IPsec settings for encryption on both AWS and your on-premises side.
+Update Route Tables:
+
+Add routes to send traffic between the on-premises network and AWS VPC subnets.
+Test the Connection:
+
+Bring up the tunnel and test connectivity.
+(Optional) Set Up High Availability:
+
+Set up a secondary tunnel for failover.
+Troubleshoot:
+
+Use VPN logs, routing, and firewall settings to resolve any connection issues.
+This process should establish a secure connection between your AWS VPC and your on-premises network, enabling seamless traffic flow between them.
+
+VPN CONFIGURATION:
+
+  Manuel to Connect:
+
+  Amazon Web Services
+Virtual Private Cloud
+
+AWS utilizes unique identifiers to manipulate the configuration of
+a VPN Connection. Each VPN Connection is assigned an identifier and in s
+associated with two other identifiers, namely the
+Customer Gateway Identifier and Virtual Private Gateway Identifier.
+
+Your VPN Connection ID                  : vpn-0eeac752691ca339c
+Your Virtual Private Gateway ID         : vgw-0d1a7dad5ef86af38
+Your Customer Gateway ID                : cgw-07ac6c08e93858b2b
+
+
+This configuration consists of two tunnels. Both tunnels must be configured on your Customer Gateway. If you are configuring your tunnels as policy-based, only a single tunnel may be up at a time. If you are configuring your tunnels as route-based, both tunnels may be up simultaneously. Please note this configuration file is intended for a route-based VPN solution.
+
+At this time this configuration has been tested for Strongswan 5.5.1 on the Ubuntu 16.04 LTS operating system, but may work with later versions as well. Due to an interoperational issue discovered with AWS VPN and earlier versions of Strongswan, it's not recommended to use a version prior to 5.5.1.
+
+
+--------------------------------------------------------------------------------------------------------------------
+IPSEC Tunnel #1
+--------------------------------------------------------------------------------------------------------------------
+#1: Enable Packet Forwarding and Configure the Tunnel
+
+This configuration assumes that you already have a default Strongswan 5.5.1+ installation in place on the Ubuntu 16.04 LTS operating system (but may work with other distros as well). It is not recommended to use a Strongswan version prior to 5.5.1. Please check which version your distro's repository has by default and install the latest stable release if necessary.
+
+1) Open /etc/sysctl.conf and uncomment the following line to enable IP packet forwarding:
+   net.ipv4.ip_forward = 1
+
+2) Apply the changes in step 1 by executing the command 'sudo sysctl -p'
+
+3) Create a new file at /etc/ipsec.conf if doesn't already exist, and then open it. Add the following under the 'config setup' section:
+	charondebug="all"
+	uniqueids=yes
+	strictcrlpolicy=no
+Append the following configuration to the end of the file:
+
+# AWS VPN will also support AES256 and SHA256 for the "ike" (Phase 1) and "esp" (Phase 2) entries below.
+# For Phase 1, AWS VPN supports DH groups 2, 14-18, 22, 23, 24. Phase 2 supports DH groups 2, 5, 14-18, 22, 23, 24
+# To see Strongswan's syntax for these different values, please refer to https://wiki.strongswan.org/projects/strongswan/wiki/IKEv1CipherSuites
+
+conn Tunnel1
+	type=tunnel
+	auto=add/start
+	keyexchange=ikev2
+	authby=psk
+	leftid=49.207.63.76
+	leftsubnet= <On-premises CIDR Range>
+	right=3.208.14.218
+	rightsubnet= <VPC CIDR range>
+	aggressive=no
+	ikelifetime=28800s
+	lifetime=3600s
+	margintime=270s
+	rekey=yes
+	rekeyfuzz=100%
+	fragmentation=yes
+	replay_window=1024
+	dpddelay=30s
+	dpdtimeout=120s
+	dpdaction=restart/clear
+	ike=aes128-sha1-modp1024
+	esp=aes128-sha1-modp1024
+	keyingtries=%forever
+
+	## Please note the following line assumes you only have two tunnels in your Strongswan configuration file. This "mark" value must be unique and may need to be changed based on other entries in your configuration file.
+	mark=100
+
+	## Uncomment the following line to utilize the script from the "Automated Tunnel Healhcheck and Failover" section. Ensure that the integer after "-m" matches the "mark" value above, and <VPC CIDR> is replaced with the CIDR of your VPC
+	## (e.g. 192.168.1.0/24)
+	#leftupdown="/etc/ipsec.d/aws-updown.sh -ln Tunnel1 -ll 169.254.188.230/30 -lr 169.254.188.229/30 -m 100 -r <VPC CIDR>"
+
+4) Create a new file at /etc/ipsec.secrets if it doesn't already exist, and append this line to the file (be mindful of the spacing!). This value authenticates the tunnel endpoints:
+49.207.63.76 3.208.14.218 : PSK "yjVfli37_mAlhLIZQVjNCbHAHFTN0HXG"
+
+5) If you would like to configure your route-based tunnels manually, please complete the following steps #2 - #5. These steps may be omitted if you decide to follow the steps in the "Automated Tunnel Healthcheck and Failover" section of the document.
+
+--------------------------------------------------------------------------------
+#2: Tunnel Interface Configuration
+
+A tunnel interface is a logical interface associated with tunnel traffic. All traffic to/from the VPC will be logically transmitted and received by the tunnel interface.
+
+1) If your device is in a VPC or behind a device performing NAT on your local network, replace <LOCAL IP> with the private IP of the device. Otherwise, use 49.207.63.76. The "key" value below MUST match the integer you placed as the "mark" value in your configuration file.
+
+sudo ip link add Tunnel1 type vti local <LOCAL IP> remote 3.208.14.218 key 100
+sudo ip addr add 169.254.188.230/30 remote 169.254.188.229/30 dev Tunnel1
+sudo ip link set Tunnel1 up mtu 1419
+
+2) Depending on how you plan to handle routing, you can optionally set up a static route pointing to your VPC for your new tunnel interface. Replace <VPC CIDR> with the CIDR of your VPC (e.g. 192.168.1.0/24):
+sudo ip route add <VPC CIDR> dev Tunnel1 metric 100
+
+3) By default, Strongswan will create a routing entry in a different route table at launch. To disable this feature and use the default route table:
+- Open the file /etc/strongswan.d/charon.conf
+- Uncomment the line "install_routes=yes"
+- Change the value of the line to "install_routes=no"
+
+--------------------------------------------------------------------------------
+#3: iptables Configuration
+
+iptables is a program designed to act as a firewall for the Linux kernel. It can be used to set up, maintain, and inspect packet filter values entered into several different tables.
+
+iptables rules must be set when using tunnel interfaces so the Linux kernel knows to forward and accept packets on the logical interface. The "--set-xmark" value MUST match the integer you placed as the "mark" value in your configuration file.
+
+sudo iptables -t mangle -A FORWARD -o Tunnel1 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+sudo iptables -t mangle -A INPUT -p esp -s 3.208.14.218 -d 49.207.63.76 -j MARK --set-xmark 100
+
+--------------------------------------------------------------------------------
+#4: sysctl Modifications
+
+In order to use your tunnel interface effectively, you will need to do some additional sysctl modifications.
+
+1) Open /etc/sysctl.conf and append the following values to the end of the file. Replace <PHYSICAL INTERFACE> with the name of the physical interface your logical tunnel interface resides on (e.g. eth0).
+net.ipv4.conf.Tunnel1.rp_filter=2 #This value allows the Linux kernel to handle asymmetric routing
+net.ipv4.conf.Tunnel1.disable_policy=1 #This value disables IPsec policy (SPD) for the interface
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_xfrm=1 #This value disables crypto transformations on the physical interface
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_policy=1 #This value disables IPsec policy (SPD) for the interface
+
+2) Apply the changes in step 1 by executing the command 'sudo sysctl -p'
+
+--------------------------------------------------------------------------------
+#5: Persistent Configuration
+
+Your tunnel interface is now ready for use, however if your device ever reboots the changes you've made will not persist. Complete the following steps so your changes will remain persistent after reboot.
+
+1) Save your running iptables configuration by executing the command 'sudo iptables-save > /etc/iptables.conf'
+
+2) Open /etc/rc.local and append the following to the end of the file, before the line 'exit 0':
+iptables-restore < /etc/iptables.conf
+
+3) Open /etc/network/interfaces and append the following to the end of the file. If your device is in a VPC or behind a device performing NAT on your local network, replace <LOCAL IP> with the private IP of the device. Otherwise, use 49.207.63.76. The "key" value below MUST match the integer you placed as the "mark" value in your configuration file.
+
+auto Tunnel1
+iface Tunnel1 inet manual
+pre-up ip link add Tunnel1 type vti local <LOCAL IP> remote 3.208.14.218 key 100
+pre-up ip addr add 169.254.188.230/30 remote 169.254.188.229/30 dev Tunnel1
+up ip link set Tunnel1 up mtu 1419
+
+
+--------------------------------------------------------------------------------------------------------------------
+IPSEC Tunnel #2
+--------------------------------------------------------------------------------------------------------------------
+#1: Enable Packet Forwarding and Configure the Tunnel
+
+This configuration assumes that you already have a default Strongswan 5.5.1+ installation in place on the Ubuntu 16.04 LTS operating system (but may work with other distros as well). It is not recommended to use a Strongswan version prior to 5.5.1. Please check which version your distro's repository has by default and install the latest stable release if necessary.
+
+1) Open /etc/sysctl.conf and uncomment the following line to enable IP packet forwarding:
+   net.ipv4.ip_forward = 1
+
+2) Apply the changes in step 1 by executing the command 'sudo sysctl -p'
+
+3) Create a new file at /etc/ipsec.conf if doesn't already exist, and then open it. Add the following under the 'config setup' section:
+	charondebug="all"
+	uniqueids=yes
+	strictcrlpolicy=no
+Append the following configuration to the end of the file:
+
+# AWS VPN will also support AES256 and SHA256 for the "ike" (Phase 1) and "esp" (Phase 2) entries below.
+# For Phase 1, AWS VPN supports DH groups 2, 14-18, 22, 23, 24. Phase 2 supports DH groups 2, 5, 14-18, 22, 23, 24
+# To see Strongswan's syntax for these different values, please refer to https://wiki.strongswan.org/projects/strongswan/wiki/IKEv1CipherSuites
+
+conn Tunnel2
+	type=tunnel
+	auto=add/start
+	keyexchange=ikev2
+	authby=psk
+	leftid=49.207.63.76
+	leftsubnet= <On-premises CIDR Range>
+	right=44.207.29.239
+	rightsubnet= <VPC CIDR range>
+	aggressive=no
+	ikelifetime=28800s
+	lifetime=3600s
+	margintime=270s
+	rekey=yes
+	rekeyfuzz=100%
+	fragmentation=yes
+	replay_window=1024
+	dpddelay=30s
+	dpdtimeout=120s
+	dpdaction=restart/clear
+	ike=aes128-sha1-modp1024
+	esp=aes128-sha1-modp1024
+	keyingtries=%forever
+
+	## Please note the following line assumes you only have two tunnels in your Strongswan configuration file. This "mark" value must be unique and may need to be changed based on other entries in your configuration file.
+	mark=100
+
+	## Uncomment the following line to utilize the script from the "Automated Tunnel Healhcheck and Failover" section. Ensure that the integer after "-m" matches the "mark" value above, and <VPC CIDR> is replaced with the CIDR of your VPC
+	## (e.g. 192.168.1.0/24)
+	#leftupdown="/etc/ipsec.d/aws-updown.sh -ln Tunnel2 -ll 169.254.97.106/30 -lr 169.254.97.105/30 -m 200 -r <VPC CIDR>"
+
+4) Create a new file at /etc/ipsec.secrets if it doesn't already exist, and append this line to the file (be mindful of the spacing!). This value authenticates the tunnel endpoints:
+49.207.63.76 44.207.29.239 : PSK "x3FIuTrIFWzhzbg4NX36B5z0lGrHA6A6"
+
+5) If you would like to configure your route-based tunnels manually, please complete the following steps #2 - #5. These steps may be omitted if you decide to follow the steps in the "Automated Tunnel Healthcheck and Failover" section of the document.
+
+--------------------------------------------------------------------------------
+#2: Tunnel Interface Configuration
+
+A tunnel interface is a logical interface associated with tunnel traffic. All traffic to/from the VPC will be logically transmitted and received by the tunnel interface.
+
+1) If your device is in a VPC or behind a device performing NAT on your local network, replace <LOCAL IP> with the private IP of the device. Otherwise, use 49.207.63.76. The "key" value below MUST match the integer you placed as the "mark" value in your configuration file.
+
+sudo ip link add Tunnel2 type vti local <LOCAL IP> remote 44.207.29.239 key 200
+sudo ip addr add 169.254.97.106/30 remote 169.254.97.105/30 dev Tunnel2
+sudo ip link set Tunnel2 up mtu 1419
+
+2) Depending on how you plan to handle routing, you can optionally set up a static route pointing to your VPC for your new tunnel interface. Replace <VPC CIDR> with the CIDR of your VPC (e.g. 192.168.1.0/24):
+sudo ip route add <VPC CIDR> dev Tunnel2 metric 200
+
+3) By default, Strongswan will create a routing entry in a different route table at launch. To disable this feature and use the default route table:
+- Open the file /etc/strongswan.d/charon.conf
+- Uncomment the line "install_routes=yes"
+- Change the value of the line to "install_routes=no"
+
+--------------------------------------------------------------------------------
+#3: iptables Configuration
+
+iptables is a program designed to act as a firewall for the Linux kernel. It can be used to set up, maintain, and inspect packet filter values entered into several different tables.
+
+iptables rules must be set when using tunnel interfaces so the Linux kernel knows to forward and accept packets on the logical interface. The "--set-xmark" value MUST match the integer you placed as the "mark" value in your configuration file.
+
+sudo iptables -t mangle -A FORWARD -o Tunnel2 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+sudo iptables -t mangle -A INPUT -p esp -s 44.207.29.239 -d 49.207.63.76 -j MARK --set-xmark 200
+
+--------------------------------------------------------------------------------
+#4: sysctl Modifications
+
+In order to use your tunnel interface effectively, you will need to do some additional sysctl modifications.
+
+1) Open /etc/sysctl.conf and append the following values to the end of the file. Replace <PHYSICAL INTERFACE> with the name of the physical interface your logical tunnel interface resides on (e.g. eth0).
+net.ipv4.conf.Tunnel2.rp_filter=2 #This value allows the Linux kernel to handle asymmetric routing
+net.ipv4.conf.Tunnel2.disable_policy=1 #This value disables IPsec policy (SPD) for the interface
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_xfrm=1 #This value disables crypto transformations on the physical interface
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_policy=1 #This value disables IPsec policy (SPD) for the interface
+
+2) Apply the changes in step 1 by executing the command 'sudo sysctl -p'
+
+--------------------------------------------------------------------------------
+#5: Persistent Configuration
+
+Your tunnel interface is now ready for use, however if your device ever reboots the changes you've made will not persist. Complete the following steps so your changes will remain persistent after reboot.
+
+1) Save your running iptables configuration by executing the command 'sudo iptables-save > /etc/iptables.conf'
+
+2) Open /etc/rc.local and append the following to the end of the file, before the line 'exit 0':
+iptables-restore < /etc/iptables.conf
+
+3) Open /etc/network/interfaces and append the following to the end of the file. If your device is in a VPC or behind a device performing NAT on your local network, replace <LOCAL IP> with the private IP of the device. Otherwise, use 49.207.63.76. The "key" value below MUST match the integer you placed as the "mark" value in your configuration file.
+
+auto Tunnel2
+iface Tunnel2 inet manual
+pre-up ip link add Tunnel2 type vti local <LOCAL IP> remote 44.207.29.239 key 200
+pre-up ip addr add 169.254.97.106/30 remote 169.254.97.105/30 dev Tunnel2
+up ip link set Tunnel2 up mtu 1419
+
+
+--------------------------------------------------------------------------------------------------------------------
+Tunnel Heartbeat
+--------------------------------------------------------------------------------------------------------------------
+
+AWS VPN's Dead Peer Detection (DPD) function might tear down your tunnel if there is no interesting traffic detected on it. For this reason, it's recommended to have a heartbeat that periodically pings the remote endpoint's inside IP to keep the tunnel active. You can accomplish this with a simple bash script, for example:
+
+1) Create a file heartbeat.sh and append the following to it:
+
+#!/bin/bash
+
+while true; do
+	ping -c 1 $1 &> /dev/null
+	ping -c 1 $2 &> /dev/null
+	sleep 5
+done
+
+2) To make the file executable, run the command 'sudo chmod 744 heartbeat.sh'
+
+3) When running the script, use your remote inside tunnel IP addresses (169.254.x) as inputs and keep it continuously running in the background. For example, you could run the below command replacing the values in <BRACKETS>:
+
+./heartbeat.sh <REMOTE_INSIDE_IP_1> <REMOTE_INSIDE_IP_2> &
+
+--------------------------------------------------------------------------------------------------------------------
+Automated Tunnel Healthcheck and Failover
+--------------------------------------------------------------------------------------------------------------------
+
+Strongswan provides a built-in tunnel failover functionality known as the updown plugin. It allows you to define custom values when bringing the tunnels up and tearing them down. It also monitors the tunnel health and performs automatic failover in case of a failure. In the following example, you will create a script file that takes in parameters from your IPsec configuration file, parses them, and automates the processes listed in the IPsec tunnel configuration steps #2 - #5 above.
+
+Please keep in mind this solution is intended for Strongswan implementations set up as ROUTE-BASED only. This will not work for POLICY-BASED implementations. To better understand the differences, please refer to
+http://packetlife.net/blog/2011/aug/15/policy-based-vs-route-based-vpns-part-1/
+
+=== DISCLAIMER ===
+Please be aware that AWS is in no way responsible for any of the use, management, maintenance, or potential issues you may encounter with the following tunnel failover workaround. It is strongly recommended that you thoroughly test any failover solution prior to implementing it into your production environment.
+
+This failover mechanism has been tested using Strongswan 5.5.1 and Ubuntu 16.04 LTS.
+
+=== HOW-TO ===
+1) Create a new file at /etc/ipsec.d/aws-updown.sh if it doesn't already exist, and append the following script to the file:
+
+#!/bin/bash
+
+while [[ $# > 1 ]]; do
+	case ${1} in
+		-ln|--link-name)
+			TUNNEL_NAME="${2}"
+			TUNNEL_PHY_INTERFACE="${PLUTO_INTERFACE}"
+			shift
+			;;
+		-ll|--link-local)
+			TUNNEL_LOCAL_ADDRESS="${2}"
+			TUNNEL_LOCAL_ENDPOINT="${PLUTO_ME}"
+			shift
+			;;
+		-lr|--link-remote)
+			TUNNEL_REMOTE_ADDRESS="${2}"
+			TUNNEL_REMOTE_ENDPOINT="${PLUTO_PEER}"
+			shift
+			;;
+		-m|--mark)
+			TUNNEL_MARK="${2}"
+			shift
+			;;
+		-r|--static-route)
+			TUNNEL_STATIC_ROUTE="${2}"
+			shift
+			;;
+		*)
+			echo "${0}: Unknown argument \"${1}\"" >&2
+			;;
+	esac
+	shift
+done
+
+command_exists() {
+	type "$1" >&2 2>&2
+}
+
+create_interface() {
+	ip link add ${TUNNEL_NAME} type vti local ${TUNNEL_LOCAL_ENDPOINT} remote ${TUNNEL_REMOTE_ENDPOINT} key ${TUNNEL_MARK}
+	ip addr add ${TUNNEL_LOCAL_ADDRESS} remote ${TUNNEL_REMOTE_ADDRESS} dev ${TUNNEL_NAME}
+	ip link set ${TUNNEL_NAME} up mtu 1419
+}
+
+configure_sysctl() {
+	sysctl -w net.ipv4.ip_forward=1
+	sysctl -w net.ipv4.conf.${TUNNEL_NAME}.rp_filter=2
+	sysctl -w net.ipv4.conf.${TUNNEL_NAME}.disable_policy=1
+	sysctl -w net.ipv4.conf.${TUNNEL_PHY_INTERFACE}.disable_xfrm=1
+	sysctl -w net.ipv4.conf.${TUNNEL_PHY_INTERFACE}.disable_policy=1
+}
+
+add_route() {
+	IFS=',' read -ra route <<< "${TUNNEL_STATIC_ROUTE}"
+    	for i in "${route[@]}"; do
+	    ip route add ${i} dev ${TUNNEL_NAME} metric ${TUNNEL_MARK}
+	done
+	iptables -t mangle -A FORWARD -o ${TUNNEL_NAME} -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+	iptables -t mangle -A INPUT -p esp -s ${TUNNEL_REMOTE_ENDPOINT} -d ${TUNNEL_LOCAL_ENDPOINT} -j MARK --set-xmark ${TUNNEL_MARK}
+	ip route flush table 220
+}
+
+cleanup() {
+        IFS=',' read -ra route <<< "${TUNNEL_STATIC_ROUTE}"
+        for i in "${route[@]}"; do
+            ip route del ${i} dev ${TUNNEL_NAME} metric ${TUNNEL_MARK}
+        done
+	iptables -t mangle -D FORWARD -o ${TUNNEL_NAME} -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+	iptables -t mangle -D INPUT -p esp -s ${TUNNEL_REMOTE_ENDPOINT} -d ${TUNNEL_LOCAL_ENDPOINT} -j MARK --set-xmark ${TUNNEL_MARK}
+	ip route flush cache
+}
+
+delete_interface() {
+	ip link set ${TUNNEL_NAME} down
+	ip link del ${TUNNEL_NAME}
+}
+
+# main execution starts here
+
+command_exists ip || echo "ERROR: ip command is required to execute the script, check if you are running as root, mostly to do with path, /sbin/" >&2 2>&2
+command_exists iptables || echo "ERROR: iptables command is required to execute the script, check if you are running as root, mostly to do with path, /sbin/" >&2 2>&2
+command_exists sysctl || echo "ERROR: sysctl command is required to execute the script, check if you are running as root, mostly to do with path, /sbin/" >&2 2>&2
+
+case "${PLUTO_VERB}" in
+	up-client)
+		create_interface
+		configure_sysctl
+		add_route
+		;;
+	down-client)
+		cleanup
+		delete_interface
+		;;
+esac
+
+2) To make the file executable, run the command 'sudo chmod 744 /etc/ipsec.d/aws-updown.sh'
+
+3) Open the file /etc/ipsec.conf and ensure the "leftupdown" parameter at the end of each of your 'conn' entries is uncommented. You will need to modify <VPC CIDR> to match the CIDR of your VPC (e.g. 192.168.1.0/24). Please also verify the integer value after the "-m" option matches the "mark" parameter of your configuration if you have made changes to the default values of this configuration file.
+
+4) Restart the Strongswan daemon by executing the command 'sudo ipsec restart'
+
+5) Check if your updown script worked properly. You can use the following commands to test if there are entries created for each of your tunnels:
+- Execute 'sudo ipsec status' to ensure both of your tunnels are ESTABLISHED
+- Execute 'sudo ip route' to ensure route table entires were created for each of your tunnel interfaces, and the destination is the remote VPC CIDR
+- Execute 'sudo iptables -t mangle -L -n' to ensure entries were made for both of your tunnels in both the INPUT and FORWARD chains
+- Execute 'ifconfig' to ensure the correct 169.254.x addresses were assigned to each end of your peer-to-peer virtual tunnel interfaces
+- Attempt to ping a destination in the remote VPC from a host within your local network. If there is no response, check to see if your instance's security groups are allowing traffic and verify your settings entered above are correct once again
+
+6) Verify failover is working properly. You can test this by blocking traffic from the remote virtual private gateway (VGW) public IPs. For example:
+sudo iptables -A INPUT -s <VGW PUBLIC IP> -j DROP
+
+
+  Additional Notes and Questions
+  - Amazon Virtual Private Cloud Getting Started Guide:
+        http://docs.amazonwebservices.com/AmazonVPC/latest/GettingStartedGuide
+  - Amazon Virtual Private Cloud Network Administrator Guide:
+        http://docs.amazonwebservices.com/AmazonVPC/latest/NetworkAdminGuide
+
+
+CHATGPT EXPLANATION OF MANUEL:
+
+To configure the second VPN tunnel using Strongswan on Ubuntu, follow these steps:
+
+1. Enable IP Packet Forwarding
+Open the /etc/sysctl.conf file:
+
+bash
+Copy code
+sudo nano /etc/sysctl.conf
+Uncomment the line:
+
+bash
+Copy code
+net.ipv4.ip_forward = 1
+Apply the changes:
+
+bash
+Copy code
+sudo sysctl -p
+2. Configure the IPsec Tunnel
+Create or edit the /etc/ipsec.conf file:
+
+bash
+Copy code
+sudo nano /etc/ipsec.conf
+Under the config setup section, add:
+
+bash
+Copy code
+charondebug="all"
+uniqueids=yes
+strictcrlpolicy=no
+Append the following configuration for Tunnel 2:
+
+bash
+Copy code
+conn Tunnel2
+  type=tunnel
+  auto=add/start
+  keyexchange=ikev2
+  authby=psk
+  leftid=49.207.63.76
+  leftsubnet=<On-premises CIDR Range>
+  right=44.207.29.239
+  rightsubnet=<VPC CIDR range>
+  aggressive=no
+  ikelifetime=28800s
+  lifetime=3600s
+  margintime=270s
+  rekey=yes
+  rekeyfuzz=100%
+  fragmentation=yes
+  replay_window=1024
+  dpddelay=30s
+  dpdtimeout=120s
+  dpdaction=restart/clear
+  ike=aes128-sha1-modp1024
+  esp=aes128-sha1-modp1024
+  keyingtries=%forever
+  mark=200
+Save the file and exit the editor.
+
+3. Add Pre-shared Key (PSK)
+Open the /etc/ipsec.secrets file:
+
+bash
+Copy code
+sudo nano /etc/ipsec.secrets
+Add the following line to authenticate the tunnel endpoints:
+
+bash
+Copy code
+49.207.63.76 44.207.29.239 : PSK "yjVfli37_mAlhLIZQVjNCbHAHFTN0HXG"
+Save the file and exit the editor.
+
+4. Configure Tunnel Interface
+Create the tunnel interface:
+
+bash
+Copy code
+sudo ip link add Tunnel2 type vti local <LOCAL IP> remote 44.207.29.239 key 200
+sudo ip addr add 169.254.97.106/30 remote 169.254.97.105/30 dev Tunnel2
+sudo ip link set Tunnel2 up mtu 1419
+Set up a static route for the new tunnel interface:
+
+bash
+Copy code
+sudo ip route add <VPC CIDR> dev Tunnel2 metric 100
+If you want to disable Strongswan's automatic route installation, modify the /etc/strongswan.d/charon.conf file:
+
+bash
+Copy code
+sudo nano /etc/strongswan.d/charon.conf
+Find the line install_routes=yes and change it to:
+
+bash
+Copy code
+install_routes=no
+5. Configure iptables for the Tunnel
+Set iptables rules to forward packets through the tunnel interface:
+bash
+Copy code
+sudo iptables -t mangle -A FORWARD -o Tunnel2 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+sudo iptables -t mangle -A INPUT -p esp -s 44.207.29.239 -d 49.207.63.76 -j MARK --set-xmark 200
+6. Modify sysctl Configuration
+Open /etc/sysctl.conf and append the following:
+
+bash
+Copy code
+net.ipv4.conf.Tunnel2.rp_filter=2
+net.ipv4.conf.Tunnel2.disable_policy=1
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_xfrm=1
+net.ipv4.conf.<PHYSICAL INTERFACE>.disable_policy=1
+Replace <PHYSICAL INTERFACE> with the name of your physical interface (e.g., eth0).
+
+Apply the sysctl changes:
+
+bash
+Copy code
+sudo sysctl -p
+7. Persistent Configuration
+To make the configuration persistent after a reboot:
+
+Save iptables configuration:
+
+bash
+Copy code
+sudo iptables-save > /etc/iptables.conf
+Edit /etc/rc.local:
+
+bash
+Copy code
+sudo nano /etc/rc.local
+Before the exit 0 line, add:
+
+bash
+Copy code
+iptables-restore < /etc/iptables.conf
+Edit /etc/network/interfaces:
+
+bash
+Copy code
+sudo nano /etc/network/interfaces
+Add the following for Tunnel2:
+
+bash
+Copy code
+auto Tunnel2
+iface Tunnel2 inet manual
+  pre-up ip link add Tunnel2 type vti local <LOCAL IP> remote 44.207.29.239 key 200
+  pre-up ip addr add 169.254.97.106/30 remote 169.254.97.105/30 dev Tunnel2
+  up ip link set Tunnel2 up mtu 1419
+Final Steps
+Verify VPN Connection: Check the tunnel status using Strongswan:
+
+bash
+Copy code
+sudo ipsec status
+Monitor Logs: For troubleshooting, check the logs:
+
+bash
+Copy code
+sudo journalctl -u strongswan
+By following these steps, you should be able to configure the second IPsec VPN tunnel. Adjust the <On-premises CIDR Range> and <VPC CIDR range> placeholders with the correct IP ranges for your setup.
+
+***************************************************************************************************************************************************************************************************
+
+To set up the VPN connection on your on-premises server, it’s essential to configure the necessary software, network settings, and files that will help you establish a secure IPsec tunnel between your on-premises server and AWS.
+
+Step-by-Step Process for Setting Up VPN on Your On-Premises Server
+For this explanation, I'll assume you're using a Linux server (e.g., Ubuntu or CentOS) to configure the VPN tunnel using strongSwan or Openswan, which are popular VPN solutions for IPsec. If you’re using a different platform, the general steps will still apply, but the tools and configuration files may differ.
+
+1. Install the Required Software
+On your on-premises server, you will need to install the IPsec VPN software. strongSwan is a commonly used solution.
+
+Install strongSwan
+Update your system:
+
+bash
+Copy code
+sudo apt-get update
+sudo apt-get upgrade
+Install strongSwan:
+
+bash
+Copy code
+sudo apt-get install strongswan
+Install additional packages (if necessary):
+
+bash
+Copy code
+sudo apt-get install strongswan-pki libcharon-extra-plugins
+This command installs additional plugins for IPsec and certificates (if you are using certificates for authentication).
+
+2. Configure IPsec VPN Tunnel
+Now, you will configure the VPN tunnel using strongSwan. There are several key files that need to be modified to set up the tunnel properly:
+
+File 1: /etc/ipsec.conf
+This file contains the configuration for the IPsec tunnel, including the VPN parameters, remote and local network subnets, and tunnel settings.
+
+Edit the ipsec.conf file:
+
+bash
+Copy code
+sudo nano /etc/ipsec.conf
+Configure the file with the following details (this is an example):
+
+ini
+Copy code
+config setup
+    charondebug="ike 2, knl 2, net 2, esp 2, dmn 2,  mgr 2"
+
+conn %default
+    ikelifetime=60m
+    keylife=20m
+    rekeymargin=3m
+    keyingtries=1
+
+conn aws-vpn
+    authby=secret
+    keyexchange=ikev2
+    left=YOUR_ONPREMISES_IP
+    leftsubnet=192.168.0.0/24
+    right=AWS_VPN_PUBLIC_IP
+    rightsubnet=10.0.0.0/16
+    auto=start
+left: Your on-premises server's public IP address.
+leftsubnet: The local subnet of your on-premises network.
+right: The AWS VPN Gateway's public IP address (you get this from the AWS VPN configuration).
+rightsubnet: The AWS subnet that you want to connect to.
+authby: Authentication method (using a shared secret in this example).
+keyexchange: The type of key exchange (IKEv2 here).
+Save and exit.
+
+File 2: /etc/ipsec.secrets
+This file holds the shared secret used for authenticating the tunnel.
+
+Edit the ipsec.secrets file:
+
+bash
+Copy code
+sudo nano /etc/ipsec.secrets
+Add the shared secret:
+
+ini
+Copy code
+YOUR_ONPREMISES_IP AWS_VPN_PUBLIC_IP : PSK "your_shared_secret"
+Replace YOUR_ONPREMISES_IP with your on-premises VPN gateway’s public IP.
+Replace AWS_VPN_PUBLIC_IP with the AWS VPN Gateway’s public IP.
+Replace your_shared_secret with the Pre-Shared Key (PSK) that you have configured on the AWS side.
+Save and exit.
+
+File 3: /etc/sysctl.conf
+This file ensures that your system allows IP forwarding, which is necessary for routing traffic between the local network and AWS VPC.
+
+Edit the sysctl.conf file:
+
+bash
+Copy code
+sudo nano /etc/sysctl.conf
+Enable IP forwarding:
+
+ini
+Copy code
+net.ipv4.ip_forward=1
+Apply the changes:
+
+bash
+Copy code
+sudo sysctl -p
+File 4: /etc/network/interfaces (For static IP configurations)
+If you are manually configuring your network interface, make sure to set a static IP for your VPN interface (if applicable). Here's an example:
+
+ini
+Copy code
+iface eth0 inet static
+    address 192.168.0.100
+    netmask 255.255.255.0
+    gateway 192.168.0.1
+3. Set Up the Firewall Rules
+On the on-premises server, you’ll need to allow traffic on certain ports and protocols to establish the VPN tunnel.
+
+Open required ports:
+
+UDP port 500: for ISAKMP (Internet Security Association and Key Management Protocol).
+UDP port 4500: for IPsec NAT-T (Network Address Translation Traversal).
+ESP protocol (IP protocol 50): for IPsec encrypted traffic.
+Allow the necessary traffic (using iptables as an example):
+
+bash
+Copy code
+sudo iptables -A INPUT -p udp --dport 500 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 4500 -j ACCEPT
+sudo iptables -A INPUT -p esp -j ACCEPT
+Enable NAT (if using NAT gateway for internet access):
+
+bash
+Copy code
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+Save the firewall rules:
+
+On Ubuntu/Debian:
+
+bash
+Copy code
+sudo iptables-save > /etc/iptables/rules.v4
+On CentOS/RedHat:
+
+bash
+Copy code
+sudo service iptables save
+4. Bring Up the VPN Tunnel
+Restart the IPsec service:
+
+bash
+Copy code
+sudo systemctl restart strongswan
+Check the status of the tunnel:
+
+bash
+Copy code
+sudo ipsec status
+You should see information like:
+
+The IPsec tunnel name (e.g., aws-vpn).
+The IP addresses of the local and remote VPN endpoints.
+The encryption and hashing algorithms.
+Verify connectivity:
+
+Ping the remote AWS VPC subnet (e.g., 10.0.0.0/16) from your on-premises server.
+If the tunnel is up, the ping should succeed.
+5. Troubleshooting
+Logs: If the VPN tunnel isn't connecting, check the logs for more details.
+
+bash
+Copy code
+sudo journalctl -u strongswan
+Check the status of the VPN:
+
+bash
+Copy code
+sudo ipsec status
+Check firewall settings: Make sure UDP ports 500 and 4500, and ESP (protocol 50) are allowed on both the AWS and on-premises firewalls.
+
+PSK Mismatch: Ensure that the Pre-Shared Key (PSK) configured on both AWS and on-premises match exactly.
+
+Routing Issues: Verify that the correct routes are set up on both the AWS and on-premises networks.
+
+Conclusion
+By following the steps outlined above, you will have configured the on-premises VPN device (using strongSwan) to connect to an AWS VPC through a secure IPsec tunnel. Here's a summary of key tasks:
+
+Install the VPN software (strongSwan).
+Configure the VPN connection with ipsec.conf and ipsec.secrets.
+Enable IP forwarding.
+Set firewall rules for VPN traffic.
+Bring up the VPN tunnel and test the connectivity.
+Once the VPN is established successfully, you’ll be able to route traffic between your on-premises network and the AWS VPC seamlessly.
+
