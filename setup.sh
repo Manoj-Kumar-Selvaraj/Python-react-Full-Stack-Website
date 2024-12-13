@@ -1,5 +1,27 @@
 #!/bin/bash
-chmod +x setup.sh
+echo "Installing dependencies..."
+if command -v terraform &> /dev/null
+then
+    echo "Terraform is already installed. Version: $(terraform -v | head -n 1)"
+else
+    echo "Terraform is not installed. Installing now..."
+    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+    wget -O- https://apt.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    gpg --no-default-keyring \
+    --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+    --fingerprint
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update
+    sudo apt-get install terraform
+    echo "Terraform version $(terraform -v | head -n 1) installed."
+fi
+
+echo "Terraform installation completed!"
+
 if [ -d "/workspaces/Python-react-Full-Stack-Website/aws" ]; then    :
 else
     cd /workspaces/Python-react-Full-Stack-Website/
@@ -19,5 +41,4 @@ check_aws_cli() {
     fi
 };
 sudo apt update
-sudo apt install open-cobol -y
-# check_aws_cli
+check_aws_cli
