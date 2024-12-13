@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.terraform/
-aws/
+workspaces/Python-react-Full-Stack-Website/terraform/aws/
+workspaces/Python-react-Full-Stack-Website/terraform/.terraform/
