@@ -1,0 +1,462 @@
+ERROR 2024-10-29 13:11:26,781 log Internal Server Error: /factoryoutlet/auth/auth-token/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/custom_auth/views.py", line 31, in post
+    return Response({'token': new_token, 'eid': user_id.id}, status=status.HTTP_200_OK)
+                                                ^^^^^^^
+NameError: name 'user_id' is not defined
+ERROR 2024-10-29 13:11:26,789 basehttp "POST /factoryoutlet/auth/auth-token/ HTTP/1.0" 500 93142
+ERROR 2024-10-29 13:11:49,205 log Internal Server Error: /factoryoutlet/auth/auth-token/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/custom_auth/views.py", line 31, in post
+    return Response({'token': new_token, 'eid': user_id.id}, status=status.HTTP_200_OK)
+                                                ^^^^^^^
+NameError: name 'user_id' is not defined
+ERROR 2024-10-29 13:11:49,216 basehttp "POST /factoryoutlet/auth/auth-token/ HTTP/1.0" 500 93142
+ERROR 2024-10-29 13:17:33,164 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 43, in post
+    barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+  File "/factoryoutlet/factoryoutlet/barcode_print/views.py", line 14, in barcode_print_init
+    user=request.user.eid
+         ^^^^^^^
+NameError: name 'request' is not defined
+ERROR 2024-10-29 13:17:33,172 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 100362
+ERROR 2024-10-29 16:39:02,123 log Internal Server Error: /factoryoutlet/auth/auth-token/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/custom_auth/views.py", line 28, in post
+    user_id =request.user.eid  # Accessing the employee's primary key (eid)
+             ^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'eid'. Did you mean: 'id'?
+ERROR 2024-10-29 16:39:02,128 basehttp "POST /factoryoutlet/auth/auth-token/ HTTP/1.0" 500 93411
+ERROR 2024-10-29 17:05:21,117 log Internal Server Error: /factoryoutlet/auth/auth-token/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type EmployeeT is not JSON serializable
+ERROR 2024-10-29 17:05:21,121 basehttp "POST /factoryoutlet/auth/auth-token/ HTTP/1.0" 500 101734
+ERROR 2024-10-29 17:08:17,824 log Internal Server Error: /factoryoutlet/auth/auth-token/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type EmployeeT is not JSON serializable
+ERROR 2024-10-29 17:08:17,828 basehttp "POST /factoryoutlet/auth/auth-token/ HTTP/1.0" 500 101734
+ERROR 2024-10-29 17:12:22,229 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 33, in post
+    user=request.user.id
+        ^^^^^^^^^^^^^^^
+AttributeError: 'EmployeeT' object has no attribute 'id'
+ERROR 2024-10-29 17:12:22,237 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 94015
+ERROR 2024-10-29 17:15:02,511 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 44, in post
+    barcode_print_init(barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+  File "/factoryoutlet/factoryoutlet/barcode_print/views.py", line 14, in barcode_print_init
+    user=request.user.eid
+         ^^^^^^^
+NameError: name 'request' is not defined
+ERROR 2024-10-29 17:15:02,522 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 100254
+ERROR 2024-10-29 17:31:07,985 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 44, in post
+    barcode_print_init(request,barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+  File "/factoryoutlet/factoryoutlet/barcode_print/views.py", line 15, in barcode_print_init
+    user_id=EmployeeT.objects.filter(eid=user)
+            ^^^^^^^^^
+NameError: name 'EmployeeT' is not defined
+ERROR 2024-10-29 17:31:07,995 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 101058
+ERROR 2024-10-29 17:32:37,667 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 49, in post
+    valid_instance_type.eid=Employee_instance
+    ^^^^^^^^^^^^^^^^^^^
+NameError: name 'valid_instance_type' is not defined
+ERROR 2024-10-29 17:32:37,682 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 95012
+ERROR 2024-10-29 17:36:23,831 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 49, in post
+    valid_type_instance.eid=Employee_instance
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 287, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<QuerySet [<EmployeeT: EmployeeT object (dummy123)>]>": "TypeT.eid" must be a "EmployeeT" instance.
+ERROR 2024-10-29 17:36:23,836 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 100091
+ERROR 2024-11-01 06:40:15,567 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 44, in post
+    barcode_print_init(request,barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+  File "/factoryoutlet/factoryoutlet/barcode_print/views.py", line 17, in barcode_print_init
+    error_response = return_400_if_object_found(TypeT, BarcodeT, number_of_barcodes, pname=pname, psize=psize, ptype=ptype, pseller=seller, pamount=pamount)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode_print/utils.py", line 18, in return_400_if_object_found
+    no_of_barcode_calculation = (obj1.last_barcode//10 - obj1.start_barcode//10)
+                                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'last_barcode'
+ERROR 2024-11-01 06:40:15,573 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 106892
+ERROR 2024-11-01 07:11:14,099 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 45, in post
+    if barcode_print_int:
+       ^^^^^^^^^^^^^^^^^
+NameError: name 'barcode_print_int' is not defined. Did you mean: 'barcode_print_init'?
+ERROR 2024-11-01 07:11:14,109 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 95140
+ERROR 2024-11-01 07:18:32,529 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 44, in post
+    barcode_duplicate=self.barcode_print_init(request,barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GenerateBarcodeView' object has no attribute 'barcode_print_init'
+ERROR 2024-11-01 07:18:32,544 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 95511
+ERROR 2024-11-01 07:18:54,697 log Internal Server Error: /factoryoutlet/barcode/generate-barcode/
+Traceback (most recent call last):
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/factoryoutlet/factoryoutlet/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/factoryoutlet/factoryoutlet/barcode/views.py", line 44, in post
+    barcode_duplicate=self.barcode_print_init(request,barcodes,number_of_barcodes,pname,psize,ptype,seller,pamount)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GenerateBarcodeView' object has no attribute 'barcode_print_init'
+ERROR 2024-11-01 07:18:54,711 basehttp "POST /factoryoutlet/barcode/generate-barcode/ HTTP/1.0" 500 95538
