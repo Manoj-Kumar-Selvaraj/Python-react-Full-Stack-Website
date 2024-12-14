@@ -29,6 +29,13 @@ yarn-error.log*
 /workspaces/Python-react-Full-Stack-Website/terraform/.terraform.lock.hcl
 /workspaces/Python-react-Full-Stack-Website/terraform/crash.log
 
+# AWS-specific files and directories
+/workspaces/Python-react-Full-Stack-Website/aws/.aws
+/workspaces/Python-react-Full-Stack-Website/aws/credentials
+/workspaces/Python-react-Full-Stack-Website/aws/config
+/workspaces/Python-react-Full-Stack-Website/aws/*.log
+/workspaces/Python-react-Full-Stack-Website/aws/.terraform.lock.hcl
+
 # IDE/editor files
 .vscode/
 .idea/
