@@ -22,5 +22,18 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-workspaces/Python-react-Full-Stack-Website/terraform/aws/
-workspaces/Python-react-Full-Stack-Website/terraform/.terraform/
+# Terraform-specific files and directories
+/workspaces/Python-react-Full-Stack-Website/terraform/.terraform/
+/workspaces/Python-react-Full-Stack-Website/terraform/*.tfstate
+/workspaces/Python-react-Full-Stack-Website/terraform/*.tfstate.backup
+/workspaces/Python-react-Full-Stack-Website/terraform/.terraform.lock.hcl
+/workspaces/Python-react-Full-Stack-Website/terraform/crash.log
+
+# IDE/editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# Codespaces-specific files (optional, depending on usage)
+*.log
+*.tmp
