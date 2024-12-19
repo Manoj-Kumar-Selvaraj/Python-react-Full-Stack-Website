@@ -1,0 +1,20 @@
+Acquiring state lock. This may take a few moments...
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mArgument is deprecated[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  with aws_s3_bucket.FactoryOuletFrontEnd,
+[33m│[0m [0m  on main.tf line 2, in resource "aws_s3_bucket" "FactoryOuletFrontEnd":
+[33m│[0m [0m   2: resource "aws_s3_bucket" "FactoryOuletFrontEnd" [4m{[0m[0m
+[33m│[0m [0m
+[33m│[0m [0mUse the aws_s3_bucket_website_configuration resource instead
+[33m│[0m [0m
+[33m│[0m [0m(and one more similar warning elsewhere)
+[33m╵[0m[0m
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mDeprecated attribute[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  on main.tf line 60, in output "website_url":
+[33m│[0m [0m  60:   value       = aws_s3_bucket.FactoryOuletFrontEnd[4m.website_endpoint[0m[0m
+[33m│[0m [0m
+[33m│[0m [0mThe attribute "website_endpoint" is deprecated. Refer to the provider documentation for details.
+[33m╵[0m[0m

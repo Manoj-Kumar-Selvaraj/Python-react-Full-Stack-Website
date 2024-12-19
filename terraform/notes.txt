@@ -1,0 +1,8 @@
+The Terraform lock table (typically implemented in DynamoDB) is used to ensure that only one instance of Terraform 
+can modify the infrastructure at any given time, preventing race conditions and state file corruption when 
+running multiple Terraform processes concurrently.
+
+This feature is especially important when multiple team members are working with the same infrastructure and 
+running terraform apply at the same time. 
+The lock table prevents two processes from applying changes simultaneously, 
+which could lead to inconsistent or corrupt state files.
