@@ -170,7 +170,7 @@ resource "aws_secretsmanager_secret" "github_oauth_token" {
   name        = "github_oauth_token_secret_name"
   description = "GitHub OAuth Token for AWS CodePipeline"
 }
-
+ 
 # Store OAuth Token in Secrets Manager
 resource "aws_secretsmanager_secret_version" "github_oauth_token_version" {
   secret_id     = aws_secretsmanager_secret.github_oauth_token.id
@@ -189,7 +189,7 @@ resource "aws_codepipeline" "react_app_pipeline" {
     location = aws_s3_bucket.FactoryOuletFrontEnd.bucket
   }
  
- 
+
   stage {
     name = "Source"
     action {
