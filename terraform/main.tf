@@ -188,7 +188,8 @@ resource "aws_codepipeline" "react_app_pipeline" {
     type     = "S3"
     location = aws_s3_bucket.FactoryOuletFrontEnd.bucket
   }
-
+ 
+ 
   stage {
     name = "Source"
     action {
