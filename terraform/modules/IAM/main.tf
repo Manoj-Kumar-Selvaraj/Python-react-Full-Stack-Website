@@ -2,11 +2,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0" # Ensure compatibility with your desired AWS provider version
+      version = "~> 5.81.0" # Ensure compatibility with your desired AWS provider version
     }
   }
 
-  required_version = ">= 1.3.0" # Ensure compatibility with your Terraform version
+  required_version = ">= 1.10.2" # Ensure compatibility with your Terraform version
 }
 
 
@@ -15,11 +15,10 @@ resource "aws_iam_policy" "Secrets_Full_Access" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      {Sid = "Full access"
+      {Sid = "Fullaccess",
       Effect = "Allow",
       Action = "secretsmanager:*",
       Resource = "*"
-      Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -39,7 +38,6 @@ resource "aws_iam_policy" "UserCloudWatchFullAccess" {
           "logs:*"
         ],
         Resource = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -74,7 +72,7 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineAccess" {
           "codebuild:StopBuild",
           "codebuild:ListProjects"
         ],
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
+        Resource = "*"
       }
     ]
   })
@@ -88,8 +86,8 @@ resource "aws_iam_policy" "DynamoDB_Access" {
     Version   = "2012-10-17",
     Statement = [
       {
-        Sid       = "DynoDB Minimal Access"
-        Effect    = "Allow"
+        Sid       = "DynoDBMinimalAccess",
+        Effect    = "Allow",
         Action    = [
           "dynamodb:GetShardIterator",
           "dynamodb:Scan",
@@ -101,12 +99,12 @@ resource "aws_iam_policy" "DynamoDB_Access" {
           "dynamodb:ConditionCheckItem",
           "dynamodb:DescribeTable",
           "dynamodb:GetItem"
-        ]
+        ],
         Resource  = "*"
       },
       {
-        Sid       = "DynoDB Full Access"
-        Effect    = "Allow"
+        Sid       = "DynoDBFullccAess",
+        Effect    = "Allow",
         Action    = [
           "dynamodb:GetShardIterator",
           "dynamodb:Scan",
@@ -123,9 +121,13 @@ resource "aws_iam_policy" "DynamoDB_Access" {
           "dynamodb:GetItem",
           "dynamodb:UpdateItem",
           "dynamodb:DeleteTable"
-        ]
-        Resource  = "arn:aws:dynamodb:*:*:table/*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
+        ],
+        Resource  = "arn:aws:dynamodb:*:*:table/*",
+        Condition = {
+          "StringEquals": {
+            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+          }
+      }
       }
     ]
   })
@@ -133,14 +135,14 @@ resource "aws_iam_policy" "DynamoDB_Access" {
 
 # EC2 Role and User Policy
 
-resource "aws_iam_policy" "EC2ReadOnlyPolicy" {
-  name        = "EC2ReadOnlyPolicy"
+resource "aws_iam_policy" "EC2_Read_Only" {
+  name        = "EC2_Read_Only"
   description = "Read-only access to EC2 instances"
   policy      = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
+        Effect   = "Allow",
         Action   = [
           "ec2-instance-connect:SendSSHPublicKey",    # This is important
           "ec2:DescribeInstances",
@@ -160,12 +162,12 @@ resource "aws_iam_policy" "EC2ReadOnlyPolicy" {
           "ec2:StartInstances",
           "ec2:StopInstances",
           "ec2:Connect"
-        ]
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
-      },{
-        Effect = "Allow"
-        Action = "elasticloadbalancing:Describe*"
+        ],
         Resource = "*"
+      },{
+        Effect = "Allow",
+        Action = "elasticloadbalancing:Describe*",
+        Resource = "*",
       },
               {
             Effect = "Allow",
@@ -173,26 +175,26 @@ resource "aws_iam_policy" "EC2ReadOnlyPolicy" {
                 "cloudwatch:ListMetrics",
                 "cloudwatch:GetMetricStatistics",
                 "cloudwatch:Describe*"
-            ]
-            Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
+            ],
+            Resource = "*"
         },
         {
             Effect = "Allow",
             Action = "autoscaling:Describe*",
-            Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
+            Resource = "*"
         }
     ]
   })
 }
 
-resource "aws_iam_policy" "EC2LaunchandConnectPolicy" {
-  name        = "EC2LaunchandConnectPolicy"
-  description = "EC2LaunchandConnectPolicy"
+resource "aws_iam_policy" "EC2LaunchandConnect_Policy" {
+  name        = "EC2LaunchandConnect_Policy"
+  description = "EC2LaunchandConnect_Policy"
   policy      = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
+        Effect   = "Allow",
         Action   = [
           "ec2:LaunchInstances",
           "ec2:CreateSecurityGroup",            
@@ -202,10 +204,10 @@ resource "aws_iam_policy" "EC2LaunchandConnectPolicy" {
           "ec2:RevokeSecurityGroupIngress",
           "ec2:AuthorizeSecurityGroupIngress",
           "ec2:RunInstances",
-          "ec2:CreateTags",                  
-        ]
+          "ec2:CreateTags",
+          "ec2:CreateVpc"                  
+        ],
         Resource = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -222,17 +224,16 @@ resource "aws_iam_policy" "S3_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
+        Effect    = "Allow",
         Action    = [
           "s3:PutObject",
           "s3:GetObject",
           "s3:ListAllMyBuckets"
-        ]
+        ],
         Resource  = [
           "arn:aws:s3:::aws_s3_bucket.FactoryOuletFrontEnd.id/*",
           "arn:aws:s3:::aws_s3_bucket.FactoryOuletFrontEnd.id"
         ]
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -247,10 +248,9 @@ resource "aws_iam_policy" "Codebuild_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
-        Action    = "codebuild:StartBuild"
+        Effect    = "Allow",
+        Action    = "codebuild:StartBuild",
         Resource  = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -265,16 +265,14 @@ resource "aws_iam_policy" "Codepipeline_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
-        Action    = "codepipeline:PutJobSuccessResult"
+        Effect    = "Allow",
+        Action    = "codepipeline:PutJobSuccessResult",
         Resource  = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       },
       {
-        Effect    = "Allow"
-        Action    = "codepipeline:PutJobFailureResult"
+        Effect    = "Allow",
+        Action    = "codepipeline:PutJobFailureResult",
         Resource  = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -289,10 +287,9 @@ resource "aws_iam_policy" "iam_pass_role_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
-        Action    = "iam:PassRole"
+        Effect    = "Allow",
+        Action    = "iam:PassRole",
         Resource  = "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -305,13 +302,12 @@ resource "aws_iam_policy" "CodeBuild_Cloudwatch_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
+        Effect    = "Allow",
         Action    = [
           "logs:CreateLogStream",
           "logs:PutLogEvents"
-        ]
+        ],
         Resource  = "arn:aws:logs:*:*:log-group:/aws/codebuild/*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -324,13 +320,12 @@ resource "aws_iam_policy" "Codepipeline_cloudwatch_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
+        Effect    = "Allow",
         Action    = [
           "logs:CreateLogStream",
           "logs:PutLogEvents"
-        ]
+        ],
         Resource  = "arn:aws:logs:*:*:log-group:/aws/codepipeline/*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -354,7 +349,6 @@ resource "aws_iam_policy" "secrets_manager_policy" {
           "secretsmanager:ListSecrets"
         ],
         Resource  =  "*"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -369,12 +363,11 @@ resource "aws_iam_role" "code_pipeline_role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow"
+        Effect    = "Allow",
         Principal = {
           Service = ["codepipeline.amazonaws.com"] 
-        }
+        },
         Action   = "sts:AssumeRole"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -385,14 +378,14 @@ resource "aws_iam_role" "code_pipeline_role" {
 resource "aws_iam_policy_attachment" "code_pipeline_policy_attachment" {
   name       = "codepipeline-policy-attachment-${each.key}"
   for_each =  { 
-                aws_iam_policy.S3_policy.arn,
-                aws_iam_policy.Codebuild_policy.arn,
-                aws_iam_policy.iam_pass_role_policy.arn,
-                aws_iam_policy.Codepipeline_cloudwatch_policy.arn,
-                aws_iam_policy.secrets_manager_policy.arn,
-                aws_iam_policy.EC2ReadOnlyPolicy.arn
+                S3_policy = aws_iam_policy.S3_policy.arn,
+                Codebuild_policy = aws_iam_policy.Codebuild_policy.arn,
+                iam_pass_role_policy = aws_iam_policy.iam_pass_role_policy.arn,
+                Codepipeline_cloudwatch_policy = aws_iam_policy.Codepipeline_cloudwatch_policy.arn,
+                secrets_manager_policy = aws_iam_policy.secrets_manager_policy.arn,
+                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn
               }
-  policy_arn = each.key
+  policy_arn = each.value
   roles      = [aws_iam_role.code_pipeline_role.id]
 }
 
@@ -409,7 +402,6 @@ resource "aws_iam_role" "codebuild_service_role" {
           Service = "codebuild.amazonaws.com"
         }
         Action   = "sts:AssumeRole"
-        Principal = "arn:aws:iam::686255975511:group/S3FactoryOutlet"
       }
     ]
   })
@@ -421,27 +413,25 @@ resource "aws_iam_role" "codebuild_service_role" {
 resource "aws_iam_policy_attachment" "codebuild_policy_attachment" {
   name       = "codebuild-policy-attachment-${each.key}"
   for_each =    {
-                aws_iam_policy.S3_policy.arn,
-                aws_iam_policy.Codepipeline_policy.arn,
-                aws_iam_policy.iam_pass_role_policy.arn,
-                aws_iam_policy.CodeBuild_Cloudwatch_policy.arn,
-                aws_iam_policy.secrets_manager_policy.arn,
-                aws_iam_policy.EC2ReadOnlyPolicy.arn
+                S3_policy = aws_iam_policy.S3_policy.arn,
+                Codepipeline_policy = aws_iam_policy.Codepipeline_policy.arn,
+                iam_pass_role_policy = aws_iam_policy.iam_pass_role_policy.arn,
+                CodeBuild_Cloudwatch_policy = aws_iam_policy.CodeBuild_Cloudwatch_policy.arn,
+                secrets_manager_policy = aws_iam_policy.secrets_manager_policy.arn,
+                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn
                 }
-  policy_arn = each.key
+  policy_arn = each.value
   roles      = [aws_iam_role.codebuild_service_role.id]
 }
 
 resource "aws_iam_group_policy_attachment" "Attach_DynamoDB_Policy" {
   for_each =  {
-                aws_iam_policy.UserCodeBuildCodePipelineAccess.arn,
-                aws_iam_policy.DynamoDB_Access.arn,
-                aws_iam_policy.iam_pass_role_policy.arn,
-                aws_iam_policy.CodeBuild_Cloudwatch_policy.arn,
-                aws_iam_policy.secrets_manager_policy.arn,
-                aws_iam_policy.EC2ReadOnlyPolicy.arn,
-                aws_iam_policy.Secrets_Full_Access.arn
-                
-  policy_arn = each.key
+                CodeBuildCodePipelineAccess = aws_iam_policy.UserCodeBuildCodePipelineAccess.arn,
+                DynamoDB_Access = aws_iam_policy.DynamoDB_Access.arn,
+                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn,
+                Secrets_Full_Access = aws_iam_policy.Secrets_Full_Access.arn,
+                EC2LaunchandConnect_Policy = aws_iam_policy.EC2LaunchandConnect_Policy.arn
+  }
+  policy_arn = each.value
   group = "S3FactoryOutlet"
 }

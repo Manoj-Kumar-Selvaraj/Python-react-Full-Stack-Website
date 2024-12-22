@@ -2,10 +2,104 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0" # Ensure compatibility with your desired AWS provider version
+      version = "~> 5.81.0" # Ensure compatibility with your desired AWS provider version
     }
   }
-  required_version = ">= 1.3.0" # Ensure compatibility with your Terraform version
+  required_version = ">= 1.10.2" # Ensure compatibility with your Terraform version
+}
+
+resource "aws_vpc" "cicd_vpc" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
+}
+
+# Internet Gateway
+resource "aws_internet_gateway" "cicd_vpc_igw" {
+  vpc_id = aws_vpc.cicd_vpc.id
+    tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
+}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = aws_vpc.cicd_vpc.id
+  cidr_block              = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
+}
+
+resource "aws_subnet" "private_subnet" {
+  vpc_id                  = aws_vpc.cicd_vpc.id
+  cidr_block              = "10.0.2.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
+}
+
+# Route Table for Public Subnet
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.cicd_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.cicd_vpc_igw.id
+  }
+
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
+}
+
+# Associate Route Table with Public Subnet
+resource "aws_route_table_association" "public_subnet_association" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public.id
+}
+
+# Security Group for Public Access
+resource "aws_security_group" "public_access" {
+  vpc_id = aws_vpc.cicd_vpc.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
 }
 
 # DynamoDB Table for Locking Terraform State
@@ -18,6 +112,10 @@ resource "aws_dynamodb_table" "terraform_lock_table" {
   attribute {
     name = "LockID"
     type = "S"
+  }
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
   }
 }
 
@@ -77,12 +175,22 @@ output "website_url" {
 # CodeBuild Project for React App
 resource "aws_codebuild_project" "react_app_build" {
   name = "react-app-build"
+    tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
     image        = "aws/codebuild/nodejs:latest"
     type         = "LINUX_CONTAINER"
+    privileged_mode = true
   }
+    vpc_config {
+    vpc_id           = aws_vpc.cicd_vpc.id
+    subnets          = [aws_subnet.public_subnet.id]
+    security_group_ids = [aws_security_group.public_access.id]
+    }
 
   source {
     type     = "GITHUB"
@@ -122,6 +230,10 @@ BUILD_SPEC
 resource "aws_secretsmanager_secret" "github_oauth_token" {
   name        = "github_oauth_token_secret_name"
   description = "GitHub OAuth Token for AWS CodePipeline"
+    tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
 }
  
 # Store OAuth Token in Secrets Manager
@@ -136,7 +248,10 @@ resource "aws_secretsmanager_secret_version" "github_oauth_token_version" {
 resource "aws_codepipeline" "react_app_pipeline" {
   name     = "react-app-pipeline"
   role_arn = var.code_pipeline_role
-
+  tags = {
+    Name        = "FactoryOulet"
+    Environment = "Production"
+  }
   artifact_store {
     type     = "S3"
     location = aws_s3_bucket.FactoryOuletFrontEnd.bucket
