@@ -15,7 +15,7 @@ resource "aws_iam_policy" "Secrets_Full_Access" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      {Sid = "Fullaccess",
+      {Sid = "SecretsFullFullaccess",
       Effect = "Allow",
       Action = "secretsmanager:*",
       Resource = "*"
@@ -43,39 +43,148 @@ resource "aws_iam_policy" "UserCloudWatchFullAccess" {
   })
 }
 
-resource "aws_iam_policy" "UserCodeBuildCodePipelineAccess" {
-  name        = "UserCodeBuildCodePipelineAccess"
+resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
+  name        = "UserCodeBuildCodePipelineS3Access"
   description = "Policy for users to manage CodeBuild and CodePipeline"
   
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Sid    = "CodePipelineAccess",
+        Sid    = "CodePipelineMinimalAccess",
         Effect = "Allow",
         Action = [
+          "codepipeline:List*",
+          "codepipeline:Get*",
           "codepipeline:StartPipelineExecution",
-          "codepipeline:GetPipelineState",
-          "codepipeline:ListPipelines",
-          "codepipeline:GetPipeline",
-          "codepipeline:GetPipelineExecution"
-        ],
+          "codepipeline:CreatePipeline"
+          ],
         Resource = "*"
       },
       {
-        Sid    = "CodeBuildAccess",
+        Sid    = "CodePipelineFullAccess",
         Effect = "Allow",
         Action = [
-          "codebuild:StartBuild",
-          "codebuild:BatchGetBuilds",
-          "codebuild:ListBuilds",
-          "codebuild:StopBuild",
-          "codebuild:ListProjects"
-        ],
-        Resource = "*"
+          "codepipeline:AcknowledgeJob",
+          "codepipeline:AcknowledgeThirdPartyJob",
+          "codepipeline:Create*",
+          "codepipeline:Delete*",
+          "codepipeline:DeregisterWebhookWithThirdParty",
+          "codepipeline:Disable*",
+          "codepipeline:Enable*",
+          "codepipeline:OverrideStageCondition",
+          "codepipeline:PollForJobs",
+          "codepipeline:PollForThirdPartyJobs",
+          "codepipeline:Put*",
+          "codepipeline:RegisterWebhookWithThirdParty",
+          "codepipeline:RetryStageExecution",
+          "codepipeline:RollbackStage",
+          "codepipeline:StopPipelineExecution",
+          "codepipeline:TagResource",
+          "codepipeline:UntagResource",
+          "codepipeline:Update*",
+          ],
+        Resource = "*",
+        Condition = {
+          "StringEquals": {
+            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+          }
       }
-    ]
-  })
+      },
+      {
+        Sid       = "CodeBuildMinimalAccess",
+        Effect    = "Allow",
+        Action    = [ "codebuild:BatchGetBuildBatches",
+                      "codebuild:BatchGetBuilds",
+                      "codebuild:BatchGetProjects",
+                      "codebuild:BatchGetReportGroups",
+                      "codebuild:BatchGetReports",
+                      "codebuild:DescribeCodeCoverages",
+                      "codebuild:DescribeTestCases",
+                      "codebuild:GetResourcePolicy",
+                      "codebuild:ListBuilds",
+                      "codebuild:ListProjects",
+                      "codebuild:StartBuild",
+                      "codebuild:Start*",
+                      "codebuild:BatchGet*",
+                      "codebuild:List*"
+                    ]
+        Resource  = "*"
+      },
+      {
+        Sid       = "CodeBuildFullAccess",
+        Effect    = "Allow",
+        Action    = [ "codebuild:StopBuildBatch",
+                      "codebuild:RetryBuild",
+                      "codebuild:RetryBuildBatch",
+                      "codebuild:CreateProject",
+                      "codebuild:UpdateProject",
+                      "codebuild:DeleteProject",
+                      "codebuild:BatchGetBuildBatches",
+                      "codebuild:BatchGetReports",
+                      "codebuild:BatchPutCodeCoverages",
+                      "codebuild:BatchPutTestCases",
+                      "codebuild:PutResourcePolicy",
+                      "codebuild:DeleteResourcePolicy",
+                      "codebuild:DeleteOAuthToken",
+                      "codebuild:PersistOAuthToken",
+                      "codebuild:ImportSourceCredentials",
+                      "codebuild:DeleteProject",
+                      "codebuild:DeleteReport",
+                      "codebuild:DeleteWebhook",
+                      "codebuild:DescribeCodeCoverages",
+                      "codebuild:GetReportGroupTrend",
+                      "codebuild:ListReportsForReportGroup",
+                      "codebuild:Delete*",
+                      "codebuild:Update*",
+                      "codebuild:Stop*",
+                      "codebuild:BatchDeleteBuilds",
+                      "codebuild:Create*",
+                      "codebuild:BatchGetFleets",
+                      "codebuild:InvalidateProjectCache"
+                    ],
+        Resource  = "*",
+        Condition = {
+          "StringEquals": {
+            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+          }
+      }
+    },
+    {
+      Sid = "S3FullAccess"
+      Effect = "Allow",
+      Action = ["S3:Get*",
+                "S3:List*",
+                "S3:Describe*",
+                "S3:CreateBucket"],
+      Resource = "*"
+    },
+        {
+      Sid = "S3MinimalAccess"
+      Effect = "Allow",
+      Action = ["S3:Put*",
+                "S3:Create*",
+                "S3:Update*",
+                "S3:Delete*",
+                "S3:AbortMultipartUpload",
+                "S3:AssociateAccessGrantsIdentityCenter",
+                "S3:InitiateReplication",
+                "S3:PauseReplication",
+                "S3:SubmitMultiRegionAccessPointRoutes",
+                "S3:ReplicateTags",
+                "S3:TagResource",
+                "S3:UntagResource",
+                "S3:BypassGovernanceRetention",
+                "S3:ObjectOwnerOverrideToBucketOwner",
+                "S3:DissociateAccessGrantsIdentityCenter",
+                "S3:ReplicateDelete",
+                "S3:ReplicateObject",
+                "S3:RestoreObject"
+                ],
+      Resource = "*"
+    }
+  ]
+})
 }
 
 resource "aws_iam_policy" "DynamoDB_Access" {
@@ -98,7 +207,30 @@ resource "aws_iam_policy" "DynamoDB_Access" {
           "dynamodb:BatchGetItem",
           "dynamodb:ConditionCheckItem",
           "dynamodb:DescribeTable",
-          "dynamodb:GetItem"
+          "dynamodb:GetItem",
+          "dynamodb:DescribeBackup",
+          "dynamodb:DescribeContinuousBackups",
+          "dynamodb:DescribeContributorInsights",
+          "dynamodb:DescribeEndpoints",
+          "dynamodb:DescribeExport",
+          "dynamodb:DescribeGlobalTable",
+          "dynamodb:DescribeGlobalTableSettings",
+          "dynamodb:DescribeImport",
+          "dynamodb:DescribeKinesisStreamingDestination",
+          "dynamodb:DescribeLimits",
+          "dynamodb:DescribeReservedCapacity",
+          "dynamodb:DescribeReservedCapacityOfferings",
+          "dynamodb:DescribeTableReplicaAutoScaling",
+          "dynamodb:DescribeTimeToLive",
+          "dynamodb:GetAbacStatus",
+          "dynamodb:ListTagsOfResource",
+          "dynamodb:PartiQLSelect",
+          "dynamodb:ListBackups",
+          "dynamodb:ListContributorInsights",
+          "dynamodb:ListExports",
+          "dynamodb:ListGlobalTables",
+          "dynamodb:ListImports",
+          "dynamodb:ListTables"
         ],
         Resource  = "*"
       },
@@ -120,7 +252,40 @@ resource "aws_iam_policy" "DynamoDB_Access" {
           "dynamodb:DeleteItem",
           "dynamodb:GetItem",
           "dynamodb:UpdateItem",
-          "dynamodb:DeleteTable"
+          "dynamodb:DeleteTable",
+          "dynamodb:GetResourcePolicy",
+          "dynamodb:CreateBackup",
+          "dynamodb:CreateGlobalTable",
+          "dynamodb:CreateTable",
+          "dynamodb:CreateTableReplica",
+          "dynamodb:DeleteBackup",
+          "dynamodb:DeleteTableReplica",
+          "dynamodb:DisableKinesisStreamingDestination",
+          "dynamodb:EnableKinesisStreamingDestination",
+          "dynamodb:ExportTableToPointInTime",
+          "dynamodb:ImportTable",
+          "dynamodb:PartiQLDelete",
+          "dynamodb:PartiQLInsert",
+          "dynamodb:PartiQLUpdate",
+          "dynamodb:PurchaseReservedCapacityOfferings",
+          "dynamodb:RestoreTableFromAwsBackup",
+          "dynamodb:RestoreTableFromBackup",
+          "dynamodb:RestoreTableToPointInTime",
+          "dynamodb:StartAwsBackupJob",
+          "dynamodb:TagResource",
+          "dynamodb:UntagResource",
+          "dynamodb:UpdateContinuousBackups",
+          "dynamodb:UpdateContributorInsights",
+          "dynamodb:UpdateGlobalTable",
+          "dynamodb:UpdateGlobalTableSettings",
+          "dynamodb:UpdateGlobalTableVersion",
+          "dynamodb:UpdateKinesisStreamingDestination",
+          "dynamodb:UpdateTable",
+          "dynamodb:UpdateTableReplicaAutoScaling",
+          "dynamodb:UpdateTimeToLive",
+          "dynamodb:DeleteResourcePolicy",
+          "dynamodb:PutResourcePolicy",
+          "dynamodb:UpdateAbacStatus"
         ],
         Resource  = "arn:aws:dynamodb:*:*:table/*",
         Condition = {
@@ -142,6 +307,7 @@ resource "aws_iam_policy" "EC2_Read_Only" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid      = "EC2MinimalAccess"
         Effect   = "Allow",
         Action   = [
           "ec2-instance-connect:SendSSHPublicKey",    # This is important
@@ -161,7 +327,11 @@ resource "aws_iam_policy" "EC2_Read_Only" {
           "ec2:DescribeNetworkInterfaces",
           "ec2:StartInstances",
           "ec2:StopInstances",
-          "ec2:Connect"
+          "ec2:Connect",
+          "ec2:Get*",
+          "ec2:Describe*",
+          "ec2:List*"
+
         ],
         Resource = "*"
       },{
@@ -194,6 +364,7 @@ resource "aws_iam_policy" "EC2LaunchandConnect_Policy" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid      = "EC2LaunchAndConnect",
         Effect   = "Allow",
         Action   = [
           "ec2:LaunchInstances",
@@ -205,9 +376,23 @@ resource "aws_iam_policy" "EC2LaunchandConnect_Policy" {
           "ec2:AuthorizeSecurityGroupIngress",
           "ec2:RunInstances",
           "ec2:CreateTags",
-          "ec2:CreateVpc"                  
+          "ec2:CreateVpc",
+          "ec2:Create*"                  
         ],
         Resource = "*"
+      },
+      {
+        Sid = "EC2DeleteAccess"
+        Effect   = "Allow",
+        Action   = [
+          "ec2:Delete*",
+        ],
+        Resource = "*",
+                Condition = {
+          "StringEquals": {
+            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+          }
+      }
       }
     ]
   })
@@ -248,9 +433,19 @@ resource "aws_iam_policy" "Codebuild_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect    = "Allow",
-        Action    = "codebuild:StartBuild",
-        Resource  = "*"
+        Effect = "Allow",
+        Action = [
+          "codebuild:StartBuild",
+          "codebuild:BatchGetBuilds",
+          "codebuild:BatchGetProjects",
+          "codebuild:ListBuilds",
+          "codebuild:ListProjects",
+          "codebuild:ListReportGroups",
+          "codebuild:ListCuratedEnvironmentImages",
+          "codebuild:RetryBuild",
+          "codebuild:StopBuild"
+        ],
+        Resource = "*"
       }
     ]
   })
@@ -266,7 +461,15 @@ resource "aws_iam_policy" "Codepipeline_policy" {
     Statement = [
       {
         Effect    = "Allow",
-        Action    = "codepipeline:PutJobSuccessResult",
+        "Action": [
+        "codepipeline:PollForJobs",
+        "codepipeline:GetJobDetails",
+        "codepipeline:PutJobSuccessResult",
+        "codepipeline:PutJobFailureResult",
+        "codepipeline:StartPipelineExecution",
+        "codepipeline:GetPipelineState",
+        "codepipeline:GetPipeline"
+      ],
         Resource  = "*"
       },
       {
@@ -426,12 +629,12 @@ resource "aws_iam_policy_attachment" "codebuild_policy_attachment" {
 
 resource "aws_iam_group_policy_attachment" "Attach_DynamoDB_Policy" {
   for_each =  {
-                CodeBuildCodePipelineAccess = aws_iam_policy.UserCodeBuildCodePipelineAccess.arn,
+                CodeBuildCodePipelineAccess = aws_iam_policy.UserCodeBuildCodePipelineS3Access.arn,
                 DynamoDB_Access = aws_iam_policy.DynamoDB_Access.arn,
                 EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn,
                 Secrets_Full_Access = aws_iam_policy.Secrets_Full_Access.arn,
                 EC2LaunchandConnect_Policy = aws_iam_policy.EC2LaunchandConnect_Policy.arn
   }
   policy_arn = each.value
-  group = "S3FactoryOutlet"
+  group = "FactoryOutlet"
 }

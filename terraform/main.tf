@@ -8,7 +8,7 @@ module "IAM" {
 }
 
 # CICD Module
-module "CICD" {
+/*module "CICD" {
   source = "./modules/cicd"
   code_pipeline_role = module.IAM.code_pipeline_role
   code_build_role    = module.IAM.code_build_role
@@ -16,4 +16,4 @@ module "CICD" {
     aws = aws.default
   }
 }
-
+*/
