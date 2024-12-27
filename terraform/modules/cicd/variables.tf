@@ -1,13 +1,12 @@
 variable git_pat {
   type        = string
-  default     = ""
-  description = "description"
+  description = "Git PAT variable"
 }
 
 variable code_pipeline_role {
   type        = string
   default     = ""
-  description = "description"
+  description = "code_pipeline_role_variable"
 }
 
 variable code_build_role {

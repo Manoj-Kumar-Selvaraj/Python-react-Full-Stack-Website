@@ -10,6 +10,33 @@ terraform {
 }
 
 
+resource "aws_iam_group" "factory_outlet" {
+  name = "FactoryOulet"
+}
+
+resource "aws_iam_policy" "code_star_user_policy" {
+  name        = "CodeStarConnectionsPolicy"
+  description = "Policy for CodeStar connections to GitHub"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "codestar-connections:CreateConnection",
+          "codestar-connections:DeleteConnection",
+          "codestar-connections:ListConnections",
+          "codestar-connections:GetConnection",
+          "codestar-connections:UpdateConnection"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+
 resource "aws_iam_policy" "Secrets_Full_Access" {
   name = "UserSecrestManagerPolicy"
   policy = jsonencode({
@@ -57,7 +84,9 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
           "codepipeline:List*",
           "codepipeline:Get*",
           "codepipeline:StartPipelineExecution",
-          "codepipeline:CreatePipeline"
+          "codepipeline:CreatePipeline",
+          "codepipeline:TagResource",
+          
           ],
         Resource = "*"
       },
@@ -87,7 +116,7 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
         Resource = "*",
         Condition = {
           "StringEquals": {
-            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+            "aws:ResourceTag/OwnerGroup": "FactoryOulet-Frontend"
           }
       }
       },
@@ -107,7 +136,8 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
                       "codebuild:StartBuild",
                       "codebuild:Start*",
                       "codebuild:BatchGet*",
-                      "codebuild:List*"
+                      "codebuild:List*",
+                      "codebuild:CreateProject"
                     ]
         Resource  = "*"
       },
@@ -146,7 +176,7 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
         Resource  = "*",
         Condition = {
           "StringEquals": {
-            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+            "aws:ResourceTag/OwnerGroup": "FactoryOulet-Frontend"
           }
       }
     },
@@ -156,7 +186,8 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
       Action = ["S3:Get*",
                 "S3:List*",
                 "S3:Describe*",
-                "S3:CreateBucket"],
+                "S3:CreateBucket",
+                "S3:PutBucketPolicy"],
       Resource = "*"
     },
         {
@@ -181,7 +212,12 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
                 "S3:ReplicateObject",
                 "S3:RestoreObject"
                 ],
-      Resource = "*"
+      Resource = "*",
+      Condition = {
+          "StringEquals": {
+            "aws:ResourceTag/OwnerGroup": "FactoryOulet-Frontend"
+          }
+      }
     }
   ]
 })
@@ -230,7 +266,9 @@ resource "aws_iam_policy" "DynamoDB_Access" {
           "dynamodb:ListExports",
           "dynamodb:ListGlobalTables",
           "dynamodb:ListImports",
-          "dynamodb:ListTables"
+          "dynamodb:ListTables",
+          "dynamodb:CreateTable",
+          "dynamodb:TagResource"
         ],
         Resource  = "*"
       },
@@ -290,7 +328,7 @@ resource "aws_iam_policy" "DynamoDB_Access" {
         Resource  = "arn:aws:dynamodb:*:*:table/*",
         Condition = {
           "StringEquals": {
-            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+            "aws:ResourceTag/OwnerGroup": "FactoryOulet-Frontend"
           }
       }
       }
@@ -311,20 +349,6 @@ resource "aws_iam_policy" "EC2_Read_Only" {
         Effect   = "Allow",
         Action   = [
           "ec2-instance-connect:SendSSHPublicKey",    # This is important
-          "ec2:DescribeInstances",
-          "ec2:DescribeImages",
-          "ec2:DescribeVolumes",
-          "ec2:DescribeSnapshots",
-          "ec2:DescribeKeyPairs",
-          "ec2:DescribeSecurityGroups",
-          "ec2:DescribeRegions",
-          "ec2:DescribeAvailabilityZones",
-          "ec2:DescribeInstanceTypeOfferings",
-          "ec2:DescribeLaunchTemplateVersions",
-          "ec2:DescribeRouteTables",
-          "ec2:DescribeVpcs",
-          "ec2:DescribeSubnets",
-          "ec2:DescribeNetworkInterfaces",
           "ec2:StartInstances",
           "ec2:StopInstances",
           "ec2:Connect",
@@ -390,7 +414,7 @@ resource "aws_iam_policy" "EC2LaunchandConnect_Policy" {
         Resource = "*",
                 Condition = {
           "StringEquals": {
-            "dynamodb:ResourceTag/OwnerGroup": "FactoryOutlet"
+            "aws:ResourceTag/OwnerGroup": "FactoryOulet-Frontend"
           }
       }
       }
@@ -415,10 +439,7 @@ resource "aws_iam_policy" "S3_policy" {
           "s3:GetObject",
           "s3:ListAllMyBuckets"
         ],
-        Resource  = [
-          "arn:aws:s3:::aws_s3_bucket.FactoryOuletFrontEnd.id/*",
-          "arn:aws:s3:::aws_s3_bucket.FactoryOuletFrontEnd.id"
-        ]
+        Resource  = "*",
       }
     ]
   })
@@ -443,7 +464,10 @@ resource "aws_iam_policy" "Codebuild_policy" {
           "codebuild:ListReportGroups",
           "codebuild:ListCuratedEnvironmentImages",
           "codebuild:RetryBuild",
-          "codebuild:StopBuild"
+          "codebuild:StopBuild",
+          "ec2:DeleteNetworkInterface",
+          "ec2:DescribeNetworkInterfaces",
+          "ec2:CreateNetworkInterface"
         ],
         Resource = "*"
       }
@@ -468,7 +492,10 @@ resource "aws_iam_policy" "Codepipeline_policy" {
         "codepipeline:PutJobFailureResult",
         "codepipeline:StartPipelineExecution",
         "codepipeline:GetPipelineState",
-        "codepipeline:GetPipeline"
+        "codepipeline:GetPipeline",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:CreateNetworkInterface"
       ],
         Resource  = "*"
       },
@@ -508,7 +535,8 @@ resource "aws_iam_policy" "CodeBuild_Cloudwatch_policy" {
         Effect    = "Allow",
         Action    = [
           "logs:CreateLogStream",
-          "logs:PutLogEvents"
+          "logs:PutLogEvents",
+          "logs:CreateLogGroup"
         ],
         Resource  = "arn:aws:logs:*:*:log-group:/aws/codebuild/*"
       }
@@ -557,8 +585,28 @@ resource "aws_iam_policy" "secrets_manager_policy" {
   })
 }
 
-# IAM Role for CodePipeline
+resource "aws_iam_policy" "codestar_permission" {
+  name        = "CodePipelineGitHubPermission"
+  description = "Permissions for CodePipeline to interact with GitHub via CodeStar Connections"
+  
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid    = "AllowGitHubConnectionAccess",
+        Effect = "Allow",
+        Action = [
+          "codestar-connections:UseConnection",
+          "codestar-connections:DescribeConnection",
+          "codestar-connections:ListConnections"
+        ],
+        Resource = "*"
+      }
+    ]
+  })
+}
 
+# IAM Role for CodePipeline
 resource "aws_iam_role" "code_pipeline_role" {
   name = "codepipeline-service-role"
 
@@ -576,20 +624,67 @@ resource "aws_iam_role" "code_pipeline_role" {
   })
 }
 
-
-# IAM Policy Attachment for CodePipeline Role
-resource "aws_iam_policy_attachment" "code_pipeline_policy_attachment" {
-  name       = "codepipeline-policy-attachment-${each.key}"
-  for_each =  { 
-                S3_policy = aws_iam_policy.S3_policy.arn,
-                Codebuild_policy = aws_iam_policy.Codebuild_policy.arn,
-                iam_pass_role_policy = aws_iam_policy.iam_pass_role_policy.arn,
-                Codepipeline_cloudwatch_policy = aws_iam_policy.Codepipeline_cloudwatch_policy.arn,
-                secrets_manager_policy = aws_iam_policy.secrets_manager_policy.arn,
-                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn
-              }
-  policy_arn = each.value
+# IAM Policy Attachment for CodePipeline Role (S3 Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_s3_policy_attachment" {
+  name       = "codepipeline-s3-policy-attachment"
+  policy_arn = aws_iam_policy.S3_policy.arn
   roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.S3_policy, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (Codebuild Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_codebuild_policy_attachment" {
+  name       = "codepipeline-codebuild-policy-attachment"
+  policy_arn = aws_iam_policy.Codebuild_policy.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.Codebuild_policy, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (IAM Pass Role Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_iam_pass_role_policy_attachment" {
+  name       = "codepipeline-iam-pass-role-policy-attachment"
+  policy_arn = aws_iam_policy.iam_pass_role_policy.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.iam_pass_role_policy, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (CloudWatch Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_cloudwatch_policy_attachment" {
+  name       = "codepipeline-cloudwatch-policy-attachment"
+  policy_arn = aws_iam_policy.Codepipeline_cloudwatch_policy.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.Codepipeline_cloudwatch_policy, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (Secrets Manager Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_secrets_manager_policy_attachment" {
+  name       = "codepipeline-secrets-manager-policy-attachment"
+  policy_arn = aws_iam_policy.secrets_manager_policy.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.secrets_manager_policy, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (EC2 Read-Only Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_ec2_read_only_policy_attachment" {
+  name       = "codepipeline-ec2-read-only-policy-attachment"
+  policy_arn = aws_iam_policy.EC2_Read_Only.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.EC2_Read_Only, aws_iam_role.code_pipeline_role]
+}
+
+# IAM Policy Attachment for CodePipeline Role (CodeStar Permission Policy)
+resource "aws_iam_policy_attachment" "code_pipeline_codestar_permission_policy_attachment" {
+  name       = "codepipeline-codestar-permission-policy-attachment"
+  policy_arn = aws_iam_policy.codestar_permission.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.codestar_permission, aws_iam_role.code_pipeline_role]
 }
 
 # IAM Role for CodeBuild
@@ -610,31 +705,130 @@ resource "aws_iam_role" "codebuild_service_role" {
   })
 }
 
-
-
-# IAM Policy Attachment for CodeBuild Role
-resource "aws_iam_policy_attachment" "codebuild_policy_attachment" {
-  name       = "codebuild-policy-attachment-${each.key}"
-  for_each =    {
-                S3_policy = aws_iam_policy.S3_policy.arn,
-                Codepipeline_policy = aws_iam_policy.Codepipeline_policy.arn,
-                iam_pass_role_policy = aws_iam_policy.iam_pass_role_policy.arn,
-                CodeBuild_Cloudwatch_policy = aws_iam_policy.CodeBuild_Cloudwatch_policy.arn,
-                secrets_manager_policy = aws_iam_policy.secrets_manager_policy.arn,
-                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn
-                }
-  policy_arn = each.value
+# IAM Policy Attachment for CodeBuild Role (S3 Policy)
+resource "aws_iam_policy_attachment" "codebuild_s3_policy_attachment" {
+  name       = "codebuild-s3-policy-attachment"
+  policy_arn = aws_iam_policy.S3_policy.arn
   roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.S3_policy, aws_iam_role.codebuild_service_role]
 }
 
-resource "aws_iam_group_policy_attachment" "Attach_DynamoDB_Policy" {
-  for_each =  {
-                CodeBuildCodePipelineAccess = aws_iam_policy.UserCodeBuildCodePipelineS3Access.arn,
-                DynamoDB_Access = aws_iam_policy.DynamoDB_Access.arn,
-                EC2_Read_Only = aws_iam_policy.EC2_Read_Only.arn,
-                Secrets_Full_Access = aws_iam_policy.Secrets_Full_Access.arn,
-                EC2LaunchandConnect_Policy = aws_iam_policy.EC2LaunchandConnect_Policy.arn
-  }
-  policy_arn = each.value
-  group = "FactoryOutlet"
+# IAM Policy Attachment for CodeBuild Role (CodePipeline Policy)
+resource "aws_iam_policy_attachment" "codebuild_codepipeline_policy_attachment" {
+  name       = "codebuild-codepipeline-policy-attachment"
+  policy_arn = aws_iam_policy.Codepipeline_policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.Codepipeline_policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (IAM Pass Role Policy)
+resource "aws_iam_policy_attachment" "codebuild_iam_pass_role_policy_attachment" {
+  name       = "codebuild-iam-pass-role-policy-attachment"
+  policy_arn = aws_iam_policy.iam_pass_role_policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.iam_pass_role_policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (CloudWatch Policy)
+resource "aws_iam_policy_attachment" "codebuild_cloudwatch_policy_attachment" {
+  name       = "codebuild-cloudwatch-policy-attachment"
+  policy_arn = aws_iam_policy.CodeBuild_Cloudwatch_policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.CodeBuild_Cloudwatch_policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (Secrets Manager Policy)
+resource "aws_iam_policy_attachment" "codebuild_secrets_manager_policy_attachment" {
+  name       = "codebuild-secrets-manager-policy-attachment"
+  policy_arn = aws_iam_policy.secrets_manager_policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.secrets_manager_policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (EC2 Read-Only Policy)
+resource "aws_iam_policy_attachment" "codebuild_ec2_read_only_policy_attachment" {
+  name       = "codebuild-ec2-read-only-policy-attachment"
+  policy_arn = aws_iam_policy.EC2_Read_Only.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.EC2_Read_Only, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (CodeStar Permission Policy)
+resource "aws_iam_policy_attachment" "codebuild_codestar_permission_policy_attachment" {
+  name       = "codebuild-codestar-permission-policy-attachment"
+  policy_arn = aws_iam_policy.codestar_permission.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.codestar_permission, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (EC2LaunchandConnect_Policy)
+resource "aws_iam_policy_attachment" "codebuild_EC2LaunchandConnect_Policy_attachment" {
+  name       = "codebuild-EC2LaunchandConnect_Policy-attachment"
+  policy_arn = aws_iam_policy.EC2LaunchandConnect_Policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.EC2LaunchandConnect_Policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Group Policy Attachment for DynamoDB Policy
+resource "aws_iam_group_policy_attachment" "Attach_EC2_Read_Only" {
+  policy_arn = aws_iam_policy.EC2_Read_Only.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.EC2_Read_Only]
+}
+
+# IAM Group Policy Attachment for CodeBuild CodePipeline Access
+resource "aws_iam_group_policy_attachment" "Attach_CodeBuild_CodePipeline_Access" {
+  policy_arn = aws_iam_policy.UserCodeBuildCodePipelineS3Access.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.UserCodeBuildCodePipelineS3Access]
+}
+
+# IAM Group Policy Attachment for DynamoDB Access
+resource "aws_iam_group_policy_attachment" "Attach_DynamoDB_Access" {
+  policy_arn = aws_iam_policy.DynamoDB_Access.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.DynamoDB_Access]
+}
+
+# IAM Group Policy Attachment for Secrets Full Access
+resource "aws_iam_group_policy_attachment" "Attach_Secrets_Full_Access" {
+  policy_arn = aws_iam_policy.Secrets_Full_Access.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.Secrets_Full_Access]
+}
+
+# IAM Group Policy Attachment for EC2 Launch and Connect Policy
+resource "aws_iam_group_policy_attachment" "Attach_EC2LaunchandConnect_Policy" {
+  policy_arn = aws_iam_policy.EC2LaunchandConnect_Policy.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.EC2LaunchandConnect_Policy]
+}
+
+# IAM Group Policy Attachment for User CloudWatch Full Access
+resource "aws_iam_group_policy_attachment" "Attach_UserCloudWatchFullAccess" {
+  policy_arn = aws_iam_policy.UserCloudWatchFullAccess.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.UserCloudWatchFullAccess]
+}
+
+# IAM Group Policy Attachment for CodeStar User Policy
+resource "aws_iam_group_policy_attachment" "Attach_CodeStar_User_Policy" {
+  policy_arn = aws_iam_policy.code_star_user_policy.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.code_star_user_policy]
 }

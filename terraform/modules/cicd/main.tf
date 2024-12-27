@@ -14,7 +14,7 @@ resource "aws_vpc" "cicd_vpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -23,7 +23,7 @@ resource "aws_vpc" "cicd_vpc" {
 resource "aws_internet_gateway" "cicd_vpc_igw" {
   vpc_id = aws_vpc.cicd_vpc.id
     tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -31,10 +31,11 @@ resource "aws_internet_gateway" "cicd_vpc_igw" {
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.cicd_vpc.id
   cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -42,10 +43,11 @@ resource "aws_subnet" "public_subnet" {
 resource "aws_subnet" "private_subnet" {
   vpc_id                  = aws_vpc.cicd_vpc.id
   cidr_block              = "10.0.2.0/24"
+  availability_zone       = "us-east-1b"
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -60,7 +62,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -97,7 +99,7 @@ resource "aws_security_group" "public_access" {
   }
 
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -114,7 +116,7 @@ resource "aws_dynamodb_table" "terraform_lock_table" {
     type = "S"
   }
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -133,7 +135,7 @@ resource "aws_s3_bucket" "FactoryOuletFrontEnd" {
   }
 
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -176,7 +178,7 @@ output "website_url" {
 resource "aws_codebuild_project" "react_app_build" {
   name = "react-app-build"
     tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 
@@ -228,10 +230,10 @@ BUILD_SPEC
 
 # Secrets Manager to store GitHub OAuth Token
 resource "aws_secretsmanager_secret" "github_oauth_token" {
-  name        = "github_oauth_token_secret_name"
+  name        = "github_oauth_token_secret_string"
   description = "GitHub OAuth Token for AWS CodePipeline"
     tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
 }
@@ -239,9 +241,7 @@ resource "aws_secretsmanager_secret" "github_oauth_token" {
 # Store OAuth Token in Secrets Manager
 resource "aws_secretsmanager_secret_version" "github_oauth_token_version" {
   secret_id     = aws_secretsmanager_secret.github_oauth_token.id
-  secret_string = jsonencode({
-    OAuthToken = var.git_pat
-  })
+  secret_string = var.git_pat
 }
 
 # CodePipeline for React App
@@ -249,7 +249,7 @@ resource "aws_codepipeline" "react_app_pipeline" {
   name     = "react-app-pipeline"
   role_arn = var.code_pipeline_role
   tags = {
-    Name        = "FactoryOulet"
+    OwnerGroup  = "FactoryOulet-Frontend"
     Environment = "Production"
   }
   artifact_store {
