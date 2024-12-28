@@ -174,6 +174,15 @@ output "website_url" {
   description = "React website URL"
 }
 
+resource "aws_ecr_repository" "custom_nodejs_image_repo" {
+  name                 = "custom-nodejs-repo"  
+  image_tag_mutability = "MUTABLE"   #This means that you can push a new image to ECR with the same tag name, replacing the old image.             
+  tags = {
+    OwnerGroup  = "FactoryOutlet-Frontend"
+    Environment = "Production"
+  }
+}
+
 # CodeBuild Project for React App
 resource "aws_codebuild_project" "react_app_build" {
   name = "react-app-build"
@@ -196,7 +205,7 @@ resource "aws_codebuild_project" "react_app_build" {
 
   source {
     type     = "GITHUB"
-    location = "https://github.com/Manoj-Kumar-Selvaraj/Python-react-Full-Stack-Website"
+    location = "https://github.com/Manoj-Kumar-Selvaraj/Python-react-Full-Stack-Website#frontend"
     buildspec = <<BUILD_SPEC
 version: 0.2
 

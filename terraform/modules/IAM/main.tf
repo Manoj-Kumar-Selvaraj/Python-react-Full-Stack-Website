@@ -14,6 +14,31 @@ resource "aws_iam_group" "factory_outlet" {
   name = "FactoryOulet"
 }
 
+resource "aws_iam_policy" "UserEcrPolicy" {
+  name        = "AllowCreateECRCodeBuildEC2"
+  description = "Policy to allow creating ECR, CodeBuild, and EC2 resources with least privilege"
+  
+  # Here we restrict permissions to only the specific actions required
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "ecr:CreateRepository",       
+          "ecr:DescribeRepositories",    
+          "ecr:DeleteRepository",
+          "ecr:TagResource",
+          "ecr:ListRepositories",
+          "ecr:ListTagsForResource"      
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+
 resource "aws_iam_policy" "code_star_user_policy" {
   name        = "CodeStarConnectionsPolicy"
   description = "Policy for CodeStar connections to GitHub"
@@ -422,6 +447,25 @@ resource "aws_iam_policy" "EC2LaunchandConnect_Policy" {
   })
 }
 
+resource "aws_iam_policy" "codebuild_ecr_policy" {
+  name   = "CodeBuildECRPolicy"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "ecr:GetAuthorizationToken",  
+          "ecr:BatchCheckLayerAvailability",  
+          "ecr:BatchGetImage",  
+          "ecr:PutImage",  #
+          "s3:PutObject", 
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
 
 
 #S3 Role Policy
@@ -687,6 +731,17 @@ resource "aws_iam_policy_attachment" "code_pipeline_codestar_permission_policy_a
   depends_on = [aws_iam_policy.codestar_permission, aws_iam_role.code_pipeline_role]
 }
 
+
+
+# IAM Policy Attachment for CodePipeline Role (ecr_policy)
+resource "aws_iam_policy_attachment" "code_pipeline_ECR_policy_attachment" {
+  name       = "codepipeline-ECR-permission-policy-attachment"
+  policy_arn = aws_iam_policy.codebuild_ecr_policy.arn
+  roles      = [aws_iam_role.code_pipeline_role.id]
+
+  depends_on = [aws_iam_policy.codebuild_ecr_policy, aws_iam_role.code_pipeline_role]
+}
+
 # IAM Role for CodeBuild
 resource "aws_iam_role" "codebuild_service_role" {
   name = "codebuild-service-role"
@@ -777,6 +832,16 @@ resource "aws_iam_policy_attachment" "codebuild_EC2LaunchandConnect_Policy_attac
   depends_on = [aws_iam_policy.EC2LaunchandConnect_Policy, aws_iam_role.codebuild_service_role]
 }
 
+
+# IAM Policy Attachment for CodeBuild Role (codebuild_ecr_policy)
+resource "aws_iam_policy_attachment" "codebuild_ecr_policy_attachment" {
+  name       = "codebuild_ecr_policy-attachment"
+  policy_arn = aws_iam_policy.codebuild_ecr_policy.arn
+  roles      = [aws_iam_role.codebuild_service_role.id]
+
+  depends_on = [aws_iam_policy.codebuild_ecr_policy, aws_iam_role.codebuild_service_role]
+}
+
 # IAM Group Policy Attachment for DynamoDB Policy
 resource "aws_iam_group_policy_attachment" "Attach_EC2_Read_Only" {
   policy_arn = aws_iam_policy.EC2_Read_Only.arn
@@ -831,4 +896,13 @@ resource "aws_iam_group_policy_attachment" "Attach_CodeStar_User_Policy" {
   group      = var.group
 
   depends_on = [aws_iam_policy.code_star_user_policy]
+}
+
+
+# IAM Group Policy Attachment for UserEcrPolicy
+resource "aws_iam_group_policy_attachment" "Attach_UserEcrPolicy" {
+  policy_arn = aws_iam_policy.UserEcrPolicy.arn
+  group      = var.group
+
+  depends_on = [aws_iam_policy.UserEcrPolicy]
 }
