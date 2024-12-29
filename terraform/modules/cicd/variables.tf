@@ -14,3 +14,7 @@ variable code_build_role {
   default     = ""
   description = "description"
 }
+
+variable Attach_UserEcrPolicy {
+  type = string
+}

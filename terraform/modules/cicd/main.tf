@@ -174,13 +174,14 @@ output "website_url" {
   description = "React website URL"
 }
 
-resource "aws_ecr_repository" "custom_nodejs_image_repo" {
-  name                 = "custom-nodejs-repo"  
+resource "aws_ecr_repository" "custom_nodejs_image" {
+  name                 = "nodejs-repo"  
   image_tag_mutability = "MUTABLE"   #This means that you can push a new image to ECR with the same tag name, replacing the old image.             
   tags = {
     OwnerGroup  = "FactoryOutlet-Frontend"
     Environment = "Production"
   }
+  depends_on = [var.Attach_UserEcrPolicy]
 }
 
 # CodeBuild Project for React App

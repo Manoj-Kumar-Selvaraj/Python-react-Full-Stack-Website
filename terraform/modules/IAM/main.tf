@@ -10,12 +10,8 @@ terraform {
 }
 
 
-resource "aws_iam_group" "factory_outlet" {
-  name = "FactoryOulet"
-}
-
-resource "aws_iam_policy" "UserEcrPolicy" {
-  name        = "AllowCreateECRCodeBuildEC2"
+resource "aws_iam_policy" "EcrAccessPolicy" {
+  name_prefix = "ECRPolicy"
   description = "Policy to allow creating ECR, CodeBuild, and EC2 resources with least privilege"
   
   # Here we restrict permissions to only the specific actions required
@@ -900,9 +896,8 @@ resource "aws_iam_group_policy_attachment" "Attach_CodeStar_User_Policy" {
 
 
 # IAM Group Policy Attachment for UserEcrPolicy
-resource "aws_iam_group_policy_attachment" "Attach_UserEcrPolicy" {
-  policy_arn = aws_iam_policy.UserEcrPolicy.arn
+resource "aws_iam_group_policy_attachment" "EcrAccessPolicy_Attachment" {
+  policy_arn = aws_iam_policy.EcrAccessPolicy.arn
   group      = var.group
-
-  depends_on = [aws_iam_policy.UserEcrPolicy]
+  depends_on = [aws_iam_policy.EcrAccessPolicy]
 }

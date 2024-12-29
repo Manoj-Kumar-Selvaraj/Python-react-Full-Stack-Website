@@ -7,3 +7,7 @@ output "code_build_role" {
     description = "This is the code pipeline role output"
     value       = aws_iam_role.codebuild_service_role.arn
 }
+
+output "Attach_UserEcrPolicy" {
+    value = aws_iam_group_policy_attachment.EcrAccessPolicy_Attachment.id
+}
