@@ -11,9 +11,10 @@ terraform {
 
 
 resource "aws_iam_policy" "EcrAccessPolicy" {
-  name_prefix = "ECRPolicy"
+  name = "ECRPolicy"
   description = "Policy to allow creating ECR, CodeBuild, and EC2 resources with least privilege"
   
+
   # Here we restrict permissions to only the specific actions required
   policy = jsonencode({
     Version = "2012-10-17"
@@ -25,8 +26,13 @@ resource "aws_iam_policy" "EcrAccessPolicy" {
           "ecr:DescribeRepositories",    
           "ecr:DeleteRepository",
           "ecr:TagResource",
-          "ecr:ListRepositories",
-          "ecr:ListTagsForResource"      
+          "ecr:List*",
+          "ecr:ListTagsForResource",
+          "ecr:GetAuthorizationToken",
+          "ecr:InitiateLayerUpload",
+          "ecr:UploadLayerPart",
+          "ecr:CompleteLayerUpload",
+          "ecr:PutImage"
         ]
         Resource = "*"
       }
@@ -454,8 +460,9 @@ resource "aws_iam_policy" "codebuild_ecr_policy" {
           "ecr:GetAuthorizationToken",  
           "ecr:BatchCheckLayerAvailability",  
           "ecr:BatchGetImage",  
-          "ecr:PutImage",  #
+          "ecr:PutImage",  
           "s3:PutObject", 
+          "ecr:GetDownloadUrlForLayer"
         ]
         Resource = "*"
       }
@@ -836,6 +843,13 @@ resource "aws_iam_policy_attachment" "codebuild_ecr_policy_attachment" {
   roles      = [aws_iam_role.codebuild_service_role.id]
 
   depends_on = [aws_iam_policy.codebuild_ecr_policy, aws_iam_role.codebuild_service_role]
+}
+
+# IAM Policy Attachment for CodeBuild Role (AmazonEC2ContainerRegistryReadOnly )
+resource "aws_iam_policy_attachment" "AmazonEC2ContainerRegistryReadOnly_attachment" {
+  name       = "codebuild_AmazonEC2ContainerRegistryReadOnly-attachment"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  roles      = [aws_iam_role.codebuild_service_role.id]
 }
 
 # IAM Group Policy Attachment for DynamoDB Policy

@@ -184,6 +184,51 @@ resource "aws_ecr_repository" "custom_nodejs_image" {
   depends_on = [var.Attach_UserEcrPolicy]
 }
 
+resource "null_resource" "ecr_login" {
+  provisioner "local-exec" {
+    command = "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${aws_ecr_repository.custom_nodejs_image.repository_url}"
+  }
+}
+
+resource "null_resource" "docker_push" {
+  depends_on = [aws_ecr_repository.custom_nodejs_image, null_resource.ecr_login]
+
+  provisioner "local-exec" {
+    command = <<EOT
+      docker build -t nodejs-docker-image /workspaces/Python-react-Full-Stack-Website/custom-nodejs-docker
+      docker tag nodejs-docker-image:latest ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
+      docker push ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
+    EOT
+  }
+}
+
+resource "aws_ecr_repository_policy" "codebuild_policy" {
+  repository = aws_ecr_repository.custom_nodejs_image.name
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCodeBuildToPullImages",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": [
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer"
+      ]
+    }
+  ]
+}
+EOF
+}
+
+
+
 # CodeBuild Project for React App
 resource "aws_codebuild_project" "react_app_build" {
   name = "react-app-build"
@@ -194,16 +239,18 @@ resource "aws_codebuild_project" "react_app_build" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/nodejs:latest"
+    image        = "039612868338.dkr.ecr.us-east-1.amazonaws.com/nodejs-repo:latest"
     type         = "LINUX_CONTAINER"
     privileged_mode = true
   }
+  /*
+  CodeBuild builds require a NAT Gateway to reach the internet, because they do not get assigned a public IP address like an EC2 instance does in a public subnet. You can think of it like CodeBuild builds are always in a private subnet in your VPC: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html
     vpc_config {
     vpc_id           = aws_vpc.cicd_vpc.id
     subnets          = [aws_subnet.public_subnet.id]
     security_group_ids = [aws_security_group.public_access.id]
     }
-
+  */
   source {
     type     = "GITHUB"
     location = "https://github.com/Manoj-Kumar-Selvaraj/Python-react-Full-Stack-Website#frontend"
@@ -318,3 +365,6 @@ resource "aws_codepipeline" "react_app_pipeline" {
     }
   }
 }
+
+
+
