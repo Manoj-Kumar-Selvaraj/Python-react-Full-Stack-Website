@@ -195,8 +195,8 @@ resource "null_resource" "docker_push" {
 
   provisioner "local-exec" {
     command = <<EOT
-      docker build -t nodejs-docker-image /workspaces/Python-react-Full-Stack-Website/custom-nodejs-docker
-      docker tag nodejs-docker-image:latest ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
+      docker build -t ubuntu-docker-image /workspaces/Python-react-Full-Stack-Website/custom-ubuntu-docker
+      docker tag ubuntu-docker-image:latest ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
       docker push ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
     EOT
   }
@@ -261,6 +261,12 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
+      - apt update -y && apt upgrade -y
+      - echo Initial Update completed
+      - apt install nodejs -y
+      - node -v
+      - apt install npm -y
+      - npm -v
       - npm update
       - npm ci
 
