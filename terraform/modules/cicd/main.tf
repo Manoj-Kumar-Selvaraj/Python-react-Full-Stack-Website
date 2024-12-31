@@ -261,14 +261,11 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - apt update -y && apt upgrade -y
-      - echo Initial Update completed
-      - apt install nodejs -y
+      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+      - apt-get install -y nodejs
       - node -v
-      - apt install npm -y
       - npm -v
-      - npm update
-      - npm ci
+      - npm install
 
   build:
     commands:
