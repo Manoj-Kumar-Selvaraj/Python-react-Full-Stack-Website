@@ -13,9 +13,9 @@ module "IAM" {
   }
 }
 
-# CICD Module
-module "CICD" {
-  source = "./modules/cicd"
+# ROUTE-53 Module
+module "" {
+  source = "./modules/ROUTE-53"
   code_pipeline_role = module.IAM.code_pipeline_role
   code_build_role    = module.IAM.code_build_role
   git_pat = var.git_pat
