@@ -1,8 +1,5 @@
 #Terraform Import:
 
-resource "aws_iam_group" "factory_outlet" {
-  name = "FactoryOutlet"
-}
 
 # IAM Module
 module "IAM" {
