@@ -8,6 +8,6 @@ resource "aws_s3_bucket" "lambda_bucket" {
 
 resource "aws_s3_object" "lambda_code" {
   bucket = aws_s3_bucket.lambda_bucket.bucket
-  key    = var.lam_file
-  source = var.lam_file
+  key    = "sns_lambda_function.zip"
+  source = "sns_lambda_function.zip"
 }
