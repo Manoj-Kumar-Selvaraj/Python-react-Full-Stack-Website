@@ -1,0 +1,229 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_group" "factory_outlet_frontend_developer_group" {
+      [32m+[0m[0m arn       = (known after apply)
+      [32m+[0m[0m id        = (known after apply)
+      [32m+[0m[0m name      = "FactoryOutletFrontEndDevelopers"
+      [32m+[0m[0m path      = "/"
+      [32m+[0m[0m unique_id = (known after apply)
+    }
+******************************************************************************************************************************************************
+ERRORED
+**********************************************************************************************************************************************
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer1[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user" "factory_outlet_frontend_developer1" {
+      [32m+[0m[0m arn           = (known after apply)
+      [32m+[0m[0m force_destroy = false
+      [32m+[0m[0m id            = (known after apply)
+      [32m+[0m[0m name          = "FactoryOutletFrontEndDeveloper1"
+      [32m+[0m[0m path          = "/"
+      [32m+[0m[0m tags          = {
+          [32m+[0m[0m "Technologies_And_Services" = jsonencode(
+                [
+                  [32m+[0m[0m "React",
+                  [32m+[0m[0m "Terraform",
+                  [32m+[0m[0m "AWS S3",
+                  [32m+[0m[0m "AWS CodePipeline",
+                  [32m+[0m[0m "AWS CodeBuild",
+                  [32m+[0m[0m "AWS SecretsManager",
+                  [32m+[0m[0m "AWS EC2",
+                  [32m+[0m[0m "AWS Route53",
+                  [32m+[0m[0m "AWS CloudFront",
+                  [32m+[0m[0m "AWS VPC",
+                  [32m+[0m[0m "AWS CLoudWatch",
+                  [32m+[0m[0m "AWS SNS",
+                  [32m+[0m[0m "AWS EFS",
+                  [32m+[0m[0m "AWS EBS",
+                  [32m+[0m[0m "AWS STSVPN",
+                  [32m+[0m[0m "AWS Console",
+                ]
+            )
+        }
+      [32m+[0m[0m tags_all      = {
+          [32m+[0m[0m "Technologies_And_Services" = jsonencode(
+                [
+                  [32m+[0m[0m "React",
+                  [32m+[0m[0m "Terraform",
+                  [32m+[0m[0m "AWS S3",
+                  [32m+[0m[0m "AWS CodePipeline",
+                  [32m+[0m[0m "AWS CodeBuild",
+                  [32m+[0m[0m "AWS SecretsManager",
+                  [32m+[0m[0m "AWS EC2",
+                  [32m+[0m[0m "AWS Route53",
+                  [32m+[0m[0m "AWS CloudFront",
+                  [32m+[0m[0m "AWS VPC",
+                  [32m+[0m[0m "AWS CLoudWatch",
+                  [32m+[0m[0m "AWS SNS",
+                  [32m+[0m[0m "AWS EFS",
+                  [32m+[0m[0m "AWS EBS",
+                  [32m+[0m[0m "AWS STSVPN",
+                  [32m+[0m[0m "AWS Console",
+                ]
+            )
+        }
+      [32m+[0m[0m unique_id     = (known after apply)
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_group_membership" "factory_outlet_frontend_developer1_to_group" {
+      [32m+[0m[0m groups = [
+          [32m+[0m[0m "FactoryOutletFrontEndDevelopers",
+        ]
+      [32m+[0m[0m id     = (known after apply)
+      [32m+[0m[0m user   = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer1_login[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_login_profile" "factory_outlet_frontend_developer1_login" {
+      [32m+[0m[0m encrypted_password      = (known after apply)
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m key_fingerprint         = (known after apply)
+      [32m+[0m[0m password                = (sensitive value)
+      [32m+[0m[0m password_length         = 20
+      [32m+[0m[0m password_reset_required = true
+      [32m+[0m[0m user                    = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1mPlan:[0m 4 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
+[0m[1mmodule.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group: Refreshing state... [id=FactoryOutletFrontEndDevelopers][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer1[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user" "factory_outlet_frontend_developer1" {
+      [32m+[0m[0m arn           = (known after apply)
+      [32m+[0m[0m force_destroy = false
+      [32m+[0m[0m id            = (known after apply)
+      [32m+[0m[0m name          = "FactoryOutletFrontEndDeveloper1"
+      [32m+[0m[0m path          = "/"
+      [32m+[0m[0m tags          = {
+          [32m+[0m[0m "Technologies_And_Services" = "React, Terraform, AWS S3, AWS CodePipeline, AWS CodeBuild, AWS SecretsManager, AWS EC2, AWS Route53, AWS CloudFront, AWS VPC, AWS CloudWatch, AWS SNS, AWS EFS, AWS EBS, AWS STSVPN, AWS Console"
+        }
+      [32m+[0m[0m tags_all      = {
+          [32m+[0m[0m "Technologies_And_Services" = "React, Terraform, AWS S3, AWS CodePipeline, AWS CodeBuild, AWS SecretsManager, AWS EC2, AWS Route53, AWS CloudFront, AWS VPC, AWS CloudWatch, AWS SNS, AWS EFS, AWS EBS, AWS STSVPN, AWS Console"
+        }
+      [32m+[0m[0m unique_id     = (known after apply)
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_group_membership" "factory_outlet_frontend_developer1_to_group" {
+      [32m+[0m[0m groups = [
+          [32m+[0m[0m "FactoryOutletFrontEndDevelopers",
+        ]
+      [32m+[0m[0m id     = (known after apply)
+      [32m+[0m[0m user   = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer1_login[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_login_profile" "factory_outlet_frontend_developer1_login" {
+      [32m+[0m[0m encrypted_password      = (known after apply)
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m key_fingerprint         = (known after apply)
+      [32m+[0m[0m password                = (sensitive value)
+      [32m+[0m[0m password_length         = 20
+      [32m+[0m[0m password_reset_required = true
+      [32m+[0m[0m user                    = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1mPlan:[0m 3 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+**************************************************************************************************************************************************************************
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
+[0m[1mmodule.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group: Refreshing state... [id=FactoryOutletFrontEndDevelopers][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer1[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user" "factory_outlet_frontend_developer1" {
+      [32m+[0m[0m arn           = (known after apply)
+      [32m+[0m[0m force_destroy = false
+      [32m+[0m[0m id            = (known after apply)
+      [32m+[0m[0m name          = "FactoryOutletFrontEndDeveloper1"
+      [32m+[0m[0m path          = "/"
+      [32m+[0m[0m tags          = {
+          [32m+[0m[0m "Technologies_And_Services_AWS CloudFront"     = "AWS CloudFront"
+          [32m+[0m[0m "Technologies_And_Services_AWS CloudWatch"     = "AWS CloudWatch"
+          [32m+[0m[0m "Technologies_And_Services_AWS CodeBuild"      = "AWS CodeBuild"
+          [32m+[0m[0m "Technologies_And_Services_AWS CodePipeline"   = "AWS CodePipeline"
+          [32m+[0m[0m "Technologies_And_Services_AWS Console"        = "AWS Console"
+          [32m+[0m[0m "Technologies_And_Services_AWS EBS"            = "AWS EBS"
+          [32m+[0m[0m "Technologies_And_Services_AWS EC2"            = "AWS EC2"
+          [32m+[0m[0m "Technologies_And_Services_AWS EFS"            = "AWS EFS"
+          [32m+[0m[0m "Technologies_And_Services_AWS Route53"        = "AWS Route53"
+          [32m+[0m[0m "Technologies_And_Services_AWS S3"             = "AWS S3"
+          [32m+[0m[0m "Technologies_And_Services_AWS SNS"            = "AWS SNS"
+          [32m+[0m[0m "Technologies_And_Services_AWS STSVPN"         = "AWS STSVPN"
+          [32m+[0m[0m "Technologies_And_Services_AWS SecretsManager" = "AWS SecretsManager"
+          [32m+[0m[0m "Technologies_And_Services_AWS VPC"            = "AWS VPC"
+          [32m+[0m[0m "Technologies_And_Services_React"              = "React"
+          [32m+[0m[0m "Technologies_And_Services_Terraform"          = "Terraform"
+        }
+      [32m+[0m[0m tags_all      = {
+          [32m+[0m[0m "Technologies_And_Services_AWS CloudFront"     = "AWS CloudFront"
+          [32m+[0m[0m "Technologies_And_Services_AWS CloudWatch"     = "AWS CloudWatch"
+          [32m+[0m[0m "Technologies_And_Services_AWS CodeBuild"      = "AWS CodeBuild"
+          [32m+[0m[0m "Technologies_And_Services_AWS CodePipeline"   = "AWS CodePipeline"
+          [32m+[0m[0m "Technologies_And_Services_AWS Console"        = "AWS Console"
+          [32m+[0m[0m "Technologies_And_Services_AWS EBS"            = "AWS EBS"
+          [32m+[0m[0m "Technologies_And_Services_AWS EC2"            = "AWS EC2"
+          [32m+[0m[0m "Technologies_And_Services_AWS EFS"            = "AWS EFS"
+          [32m+[0m[0m "Technologies_And_Services_AWS Route53"        = "AWS Route53"
+          [32m+[0m[0m "Technologies_And_Services_AWS S3"             = "AWS S3"
+          [32m+[0m[0m "Technologies_And_Services_AWS SNS"            = "AWS SNS"
+          [32m+[0m[0m "Technologies_And_Services_AWS STSVPN"         = "AWS STSVPN"
+          [32m+[0m[0m "Technologies_And_Services_AWS SecretsManager" = "AWS SecretsManager"
+          [32m+[0m[0m "Technologies_And_Services_AWS VPC"            = "AWS VPC"
+          [32m+[0m[0m "Technologies_And_Services_React"              = "React"
+          [32m+[0m[0m "Technologies_And_Services_Terraform"          = "Terraform"
+        }
+      [32m+[0m[0m unique_id     = (known after apply)
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_group_membership" "factory_outlet_frontend_developer1_to_group" {
+      [32m+[0m[0m groups = [
+          [32m+[0m[0m "FactoryOutletFrontEndDevelopers",
+        ]
+      [32m+[0m[0m id     = (known after apply)
+      [32m+[0m[0m user   = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1m  # module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer1_login[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_user_login_profile" "factory_outlet_frontend_developer1_login" {
+      [32m+[0m[0m encrypted_password      = (known after apply)
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m key_fingerprint         = (known after apply)
+      [32m+[0m[0m password                = (sensitive value)
+      [32m+[0m[0m password_length         = 20
+      [32m+[0m[0m password_reset_required = true
+      [32m+[0m[0m user                    = "FactoryOutletFrontEndDeveloper1"
+    }
+
+[1mPlan:[0m 3 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

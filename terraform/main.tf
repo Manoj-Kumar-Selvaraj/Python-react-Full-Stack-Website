@@ -1,24 +1,27 @@
-#Terraform Import:
-
+terraform {
+  backend "s3" {
+    bucket         = "factoryoutlet-terraform-lock-bucket"
+    key            = "Root/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "factoryoutlet-terraform-lock-table"
+  }
+}
 
 # IAM Module
 module "IAM" {
   source = "./modules/IAM"
-  group = aws_iam_group.factory_outlet.name
   providers = {
-    aws = aws.default
+    aws = aws.Root
   }
 }
 
-# ROUTE-53 Module
-module "" {
-  source = "./modules/ROUTE-53"
-  code_pipeline_role = module.IAM.code_pipeline_role
-  code_build_role    = module.IAM.code_build_role
-  git_pat = var.git_pat
-  Attach_UserEcrPolicy = module.IAM.Attach_UserEcrPolicy
+# CALLING SNS MODULE
+
+module "SNS" {
+  source = "./modules/SNS"
+  depends_on = [module.RESOURCES]
+  user = module.RESOURCES.user
   providers = {
-    aws = aws.default
+    aws = aws.Root
   }
 }
-
