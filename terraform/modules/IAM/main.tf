@@ -7,3 +7,13 @@ module "RESOURCES" {
   }
 }
 
+# CALLING RESOURCE MODULE
+
+module "PERMISSIONS" {
+  source = "./modules/PERMISSIONS"
+  snsuser_sns_topic = var.main_snsuser_sns_topic
+  snsuser_sns_topic_arn = var.main_snsuser_sns_topic_arn
+  providers = {
+    aws = aws.Root
+  }
+}
