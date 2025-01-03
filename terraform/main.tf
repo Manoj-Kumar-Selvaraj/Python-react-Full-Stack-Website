@@ -22,8 +22,7 @@ module "IAM" {
 module "SNS" {
   source = "./modules/SNS"
   depends_on = [module.IAM]
-  sns_iam_resources_user_factory_outlet_frontend_developer1
-  user = module.RESOURCES.user
+  sns_iam_resources_user_factory_outlet_frontend_developer1 = module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer1
   providers = {
     aws = aws.Root
   }
@@ -35,9 +34,9 @@ module "LAMBDA" {
   source = "./modules/LAMBDA"
   depends_on = [module.IAM,module.SNS,module.S3]
   lambda_iam_permissions_lambda_execution_role = main_lambda_snsfun_lambda_execution_role
-  lambda_iam_permissions_lambda_execution_role_arn = main_lambda_snsfun_lambda_execution_role_
-  lambda_s3_s3lam_bucket_lambda_bucket = 
-  lambda_s3_s3lam_bucket_lambda_bucket_name
+  lambda_iam_permissions_lambda_execution_role_arn = main_lambda_snsfun_lambda_execution_role_arn
+  lambda_s3_s3lam_bucket_lambda_bucket = main_lambda_snsfun_s3_lambda_bucket
+  lambda_s3_s3lam_bucket_lambda_bucket_name = main_lambda_snsfun_s3_lambda_bucket_name
   user = module.RESOURCES.user
   providers = {
     aws = aws.Root
