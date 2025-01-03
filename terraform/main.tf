@@ -25,3 +25,25 @@ module "SNS" {
     aws = aws.Root
   }
 }
+
+# CALLING LAMBDA MODULE
+
+module "LAMBDA" {
+  source = "./modules/LAMBDA"
+  depends_on = [module.RESOURCES]
+  user = module.RESOURCES.user
+  providers = {
+    aws = aws.Root
+  }
+}
+
+# CALLING S3 MODULE
+
+module "S3" {
+  source = "./modules/S3"
+  depends_on = [module.RESOURCES]
+  user = module.RESOURCES.user
+  providers = {
+    aws = aws.Root
+  }
+}
