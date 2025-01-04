@@ -31,10 +31,10 @@ resource "aws_iam_role_policy" "lambda_sns_permissions" {
       {
         Effect   = "Allow",
         Action   = ["sns:Publish"],
-        Resource = "var.snsuser_sns_topic_arn"
+        Resource = var.snsuser_sns_topic_arn
         Condition = {
           "StringEquals": {
-            "aws:ResourceTag/Application": "FactoryOulet",
+            "aws:ResourceTag/Application": "FactoryOutlet",
             "aws:ResourceTag/Group"      : "Frontend" 
           }
       }
