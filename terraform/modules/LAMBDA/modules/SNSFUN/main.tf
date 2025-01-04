@@ -5,7 +5,7 @@ resource "aws_lambda_function" "iam_user_notification" {
   handler       = "sns_lambda_function.lambda_handler"
   runtime       = "python3.9"
   filename      = "sns_lambda_function.zip"
-  source_code_hash = filebase64sha256("lambda_function.zip")
+  source_code_hash = filebase64sha256("sns_lambda_function.zip")
   s3_bucket     = var.s3_s3lam_bucket_lambda_bucket_name
   s3_key        = "sns_lambda_function.zip"
   tags = {
