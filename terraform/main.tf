@@ -16,6 +16,7 @@ module "IAM" {
   }
 }
 
+/*
 # CALLING SNS MODULE
 
 module "SNS" {
@@ -50,3 +51,4 @@ module "S3" {
     aws = aws.Root
   }
 }
+*/
