@@ -14,6 +14,7 @@ resource "aws_iam_role" "lambda_execution_role" {
         },
         Action = "sts:AssumeRole"
       }
+     }
     ]
   })
 }
