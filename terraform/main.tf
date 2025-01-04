@@ -33,10 +33,9 @@ module "LAMBDA" {
   source = "./modules/LAMBDA"
   depends_on = [module.IAM,module.SNS,module.S3]
   lambda_iam_permissions_lambda_execution_role = module.IAM.main_lambda_snsfun_lambda_execution_role
-  lambda_iam_permissions_lambda_execution_role_arn = mmodule.IAM.main_lambda_snsfun_lambda_execution_role_arn
+  lambda_iam_permissions_lambda_execution_role_arn = module.IAM.main_lambda_snsfun_lambda_execution_role_arn
   lambda_s3_s3lam_bucket_lambda_bucket = module.S3.main_lambda_snsfun_s3_lambda_bucket
   lambda_s3_s3lam_bucket_lambda_bucket_name = module.S3.main_lambda_snsfun_s3_lambda_bucket_name
-  user = module.RESOURCES.user
   providers = {
     aws = aws.Root
   }
