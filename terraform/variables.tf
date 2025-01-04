@@ -1,11 +1,11 @@
 variable iam_sns_snsuser_sns_topic {
   type = string
-  Description = "snsuser module sns topic object for using it in depends on"
+  description = "snsuser module sns topic object for using it in depends on"
 }
 
 variable iam_sns_snsuser_sns_topic_arn {
   type = string
-  Description = "snsuser module sns topic arn for using it in resources"
+  description = "snsuser module sns topic arn for using it in resources"
 }
 
 variable lambda_iam_permissions_lambda_execution_role {
