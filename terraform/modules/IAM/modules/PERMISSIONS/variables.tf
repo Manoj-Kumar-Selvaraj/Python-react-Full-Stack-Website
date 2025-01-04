@@ -1,4 +1,5 @@
 variable snsuser_sns_topic {
+  default = " "
   type = string
   description = "snsuser module sns topic object for using it in depends on"
 }
