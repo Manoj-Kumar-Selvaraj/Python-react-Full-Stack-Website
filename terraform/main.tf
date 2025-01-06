@@ -27,20 +27,7 @@ module "SNS" {
     aws = aws.Root
   }
 }
-/*
-# CALLING LAMBDA MODULE
 
-module "LAMBDA" {
-  source = "./modules/LAMBDA"
-  depends_on = [module.IAM,module.SNS,module.S3]
-  lambda_iam_permissions_lambda_execution_role = module.IAM.main_lambda_snsfun_lambda_execution_role
-  lambda_iam_permissions_lambda_execution_role_arn = module.IAM.main_lambda_snsfun_lambda_execution_role_arn
-  lambda_s3_s3lam_bucket_lambda_bucket = module.S3.main_lambda_snsfun_s3_lambda_bucket
-  lambda_s3_s3lam_bucket_lambda_bucket_name = module.S3.main_lambda_snsfun_s3_lambda_bucket_name
-  providers = {
-    aws = aws.Root
-  }
-}
 
 # CALLING S3 MODULE
 
@@ -51,4 +38,16 @@ module "S3" {
     aws = aws.Root
   }
 }
-*/
+
+module "LAMBDA" {
+  source = "./modules/LAMBDA"
+  depends_on = [module.IAM,module.SNS,module.S3]
+  lambda_iam_permissions_lambda_execution_role = module.IAM.main_lambda_snsfun_lambda_execution_role
+  lambda_iam_permissions_lambda_execution_role_arn = module.IAM.main_lambda_snsfun_lambda_execution_role_arn
+  # lambda_s3_s3lam_bucket_lambda_bucket_name = module.S3.main_lambda_snsfun_s3_lambda_bucket_name
+  lambda_s3_s3lam_bucket_lambda_bucket_name = "factoryoutlet-lambda-code-storage"
+  lambda_sns_snsuser_sns_topic_user_creation_topic_arn = module.SNS.main_lambda_permissions_user_creation_topic_arn
+  providers = {
+    aws = aws.Root
+  }
+}

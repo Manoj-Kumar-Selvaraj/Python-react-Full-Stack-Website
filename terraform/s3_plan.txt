@@ -18,7 +18,7 @@ Terraform will perform the following actions:
       [32m+[0m[0m acceleration_status         = (known after apply)
       [32m+[0m[0m acl                         = (known after apply)
       [32m+[0m[0m arn                         = (known after apply)
-      [32m+[0m[0m bucket                      = "lambda-code-storage"
+      [32m+[0m[0m bucket                      = "factoryoutlet-lambda-code-storage"
       [32m+[0m[0m bucket_domain_name          = (known after apply)
       [32m+[0m[0m bucket_prefix               = (known after apply)
       [32m+[0m[0m bucket_regional_domain_name = (known after apply)
@@ -63,7 +63,7 @@ Terraform will perform the following actions:
 [0m  [32m+[0m[0m resource "aws_s3_object" "lambda_code" {
       [32m+[0m[0m acl                    = (known after apply)
       [32m+[0m[0m arn                    = (known after apply)
-      [32m+[0m[0m bucket                 = "lambda-code-storage"
+      [32m+[0m[0m bucket                 = "factoryoutlet-lambda-code-storage"
       [32m+[0m[0m bucket_key_enabled     = (known after apply)
       [32m+[0m[0m checksum_crc32         = (known after apply)
       [32m+[0m[0m checksum_crc32c        = (known after apply)
