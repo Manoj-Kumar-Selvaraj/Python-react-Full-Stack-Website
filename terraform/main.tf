@@ -20,7 +20,7 @@ module "IAM" {
 
 module "SNS" {
   source = "./modules/SNS"
-  depends_on = [module.IAM]
+  depends_on = [module.IAM.module.PERMISSIONS]
   sns_iam_resources_user_factory_outlet_frontend_developer1 = module.IAM.module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer1
   providers = {
     aws = aws.Root
