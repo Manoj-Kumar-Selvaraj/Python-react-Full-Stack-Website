@@ -10,12 +10,13 @@ terraform {
 # IAM Module
 module "IAM" {
   source = "./modules/IAM"
-  iam_sns_snsuser_sns_topic_arn = module.SNS.main_iam_permissions_user_creation_topic_arn != "" ? module.SNS.main_iam_permissions_user_creation_topic_arn : "*"
-  providers = {
+  # iam_sns_snsuser_sns_topic_arn = module.SNS.main_iam_permissions_user_creation_topic_arn != "" ? module.SNS.main_iam_permissions_user_creation_topic_arn : "*"
+  iam_sns_snsuser_sns_topic_arn = module.SNS.main_iam_permissions_user_creation_topic_arn = "*"  
+providers = {
     aws = aws.Root
   }
 }
-
+/*
 # CALLING SNS MODULE
 
 module "SNS" {
@@ -50,3 +51,4 @@ module "S3" {
     aws = aws.Root
   }
 }
+*/
