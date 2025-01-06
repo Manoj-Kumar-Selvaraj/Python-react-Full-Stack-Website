@@ -10,24 +10,24 @@ terraform {
 # IAM Module
 module "IAM" {
   source = "./modules/IAM"
+  # depends_on = [module.SNS]
   # iam_sns_snsuser_sns_topic_arn = module.SNS.main_iam_permissions_user_creation_topic_arn != "" ? module.SNS.main_iam_permissions_user_creation_topic_arn : "*"
   iam_sns_snsuser_sns_topic_arn = "*"  
-providers = {
-    aws = aws.Root
-  }
-}
-/*
-# CALLING SNS MODULE
-
-module "SNS" {
-  source = "./modules/SNS"
-  depends_on = [module.IAM.module.PERMISSIONS]
-  sns_iam_resources_user_factory_outlet_frontend_developer1 = module.IAM.module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer1
   providers = {
     aws = aws.Root
   }
 }
+# CALLING SNS MODULE
 
+module "SNS" {
+  depends_on  = [module.IAM]
+  source = "./modules/SNS"
+  sns_iam_resources_user_factory_outlet_frontend_developer1 = module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer1
+  providers = {
+    aws = aws.Root
+  }
+}
+/*
 # CALLING LAMBDA MODULE
 
 module "LAMBDA" {
