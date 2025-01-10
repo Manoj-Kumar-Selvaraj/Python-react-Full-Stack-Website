@@ -34,6 +34,16 @@ resource "aws_iam_role_policy" "lambda_sns_permissions" {
             "aws:ResourceTag/Group"      = "Frontend"
           }
         }
+      },
+     {
+        Effect = "Allow",
+        Action = [
+          "logs:DescribeLogGroups",
+          "logs:DescribeLogStreams",
+          "logs:GetLogEvents",
+          "logs:FilterLogEvents"
+        ],
+        Resource = "*"
       }
     ]
   })
