@@ -1,0 +1,67 @@
+@ManojKumarSelvaraj-2 ➜ /workspaces/FullStack-FactoryOutlet (AWS-Terraform) $ ls -l
+total 66056
+Permissions No_of_hardlinks  Owner(User)     Group            Size    Mod_Time           File Name
+-rw-rw-rw-           1          codespace      root            25       Jan 20 09:42       README.md
+-rw-rw-rw-           1          codespace      root      67598662       Jan 20 09:42       awscliv2.zip
+-rw-rw-rw-           1          codespace      root          7673       Jan 20 09:42       htop.txt
+-rw-rw-rw-           1          codespace      codespace        1       Jan 20 09:46       linux-practice.txt
+-rw-rw-rw-           1          codespace      root          9743       Jan 20 09:42       monitoring.txt
+-rw-rw-rw-           1          codespace      root           401       Jan 20 09:42       permissions.txt
+-rw-rw-rw-           1          codespace      root             0       Jan 20 09:42       results.txt
+-rw-rw-rw-           1          codespace      root          1622       Jan 20 09:42       setup.sh
+drwxrwxrwx+          3          codespace      root          4096       Jan 20 09:42       terraform
+
+D stands for directory and its default permission is rwx
+
+*) Default prporty of setup.sh is -rw-rw-rw-, We need to change it to rwx using the below command
+
+chmod 764 setup.sh 
+
+Output:
+
+-rwxrw-r-- 1 codespace root 1622 Jan 20 09:42 setup.sh
+
+Now cutting the write access as well from group and read access from others using below commands:
+
+chmod o-r setup.sh
+chmod g-w setup.sh
+
+Output:
+
+-rwxr----- 1 codespace root 1622 Jan 20 09:42 setup.sh
+
+Running Setup.sh to install AWS and Terraform(Please refer the setup.sh file for installation steps)
+
+Checking for the installation: 
+
+Terraform v1.10.4
+on linux_amd64
+
+aws-cli/2.23.2 Python/3.12.6 Linux/6.5.0-1025-azure exe/x86_64.ubuntu.20
+
+INSTALLATION SUCCESSFUL
+
+2) Setting up AWS Credentials 
+
+Navigate to credentials folder in Root for setting up AWS credentials are simply type aws configure
+Before that create a key in AWS IAM console.
+
+3) Setup gitignore files for avoiding the files thats not necessary or the files that will cause issues in future(Refer gitignore.io website)
+
+4) Plan for terraform dir-tree setup
+
+5)Create the directories
+
+6) Creating the IAM User, Group, roles and policies. Via Root IAM account for the project.
+
+7) Create dynamodb_table = terraform/main.tf and S3 bucket = factoryoutlet-terraform-lock-bucket under Root User in consoel for S3 Backend terraform state management
+
+8)RESOURCES sub-module in IAM module:
+    Creating IAM user and Group for Front end development.
+    Attaching the User to the Group
+    Granting Consloe access to the newly created user
+
+9) Once User is created, root user need to reset the password for new user in console.
+    To implement a automatic alert notification for the required parties and SNS alert need to be setup and a Lambda function to publish a message.
+    Setting necessary permission in IAM module PERMISSION sub-module.
+        

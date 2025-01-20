@@ -10,6 +10,10 @@ terraform {
 
 provider "aws" {
   alias   = "Root"
-  region  = "us-east-1"  
+  region  = "us-east-1"
+  assume_role {
+    role_arn     = "arn:aws:iam::039612868338:role/FactoryOutlet-Front-End-Root-Role"
+    session_name = "Initial-setupsession"
+  } 
   profile = "default"   
 }
