@@ -11,4 +11,5 @@ resource "aws_s3_object" "lambda_code" {
   bucket = aws_s3_bucket.lambda_bucket.bucket
   key    = "sns_lambda_function.zip"
   source = "${path.module}/sns_lambda_function.zip"
+  source_hash = filebase64sha256("${path.module}/sns_lambda_function.zip")
 }

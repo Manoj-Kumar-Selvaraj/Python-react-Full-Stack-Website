@@ -38,10 +38,13 @@ resource "aws_iam_role_policy" "lambda_sns_permissions" {
      {
         Effect = "Allow",
         Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
           "logs:DescribeLogGroups",
           "logs:DescribeLogStreams",
           "logs:GetLogEvents",
-          "logs:FilterLogEvents"
+          "logs:FilterLogEvents",
+          "logs:PutLogEvents"
         ],
         Resource = "*"
       }
