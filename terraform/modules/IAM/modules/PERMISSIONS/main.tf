@@ -51,3 +51,39 @@ resource "aws_iam_role_policy" "lambda_sns_permissions" {
     ]
   })
 }
+
+# IAM Role for CloudWatch Logs integration
+resource "aws_iam_role" "cloudwatch_logs_role" {
+  name               = "cloudtrail-cloudwatch-logs-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Effect    = "Allow"
+        Principal = {
+          Service = "cloudtrail.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# IAM Role Policy for CloudWatch Logs
+resource "aws_iam_role_policy" "cloudwatch_logs_policy" {
+  name = "cloudtrail-cloudwatch-logs-policy"
+  role = aws_iam_role.cloudwatch_logs_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = ["logs:PutLogEvents",
+                    "logs:CreateLogStream"
+                  ]
+        Effect   = "Allow"
+        Resource = "*"
+      }
+    ]
+  })
+}

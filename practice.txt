@@ -45,6 +45,8 @@ INSTALLATION SUCCESSFUL
 
 Navigate to credentials folder in Root for setting up AWS credentials are simply type aws configure
 Before that create a key in AWS IAM console.
+Dont provide full access to the Root IAM user, instead create a role with neccasary permissions and assume the role.
+This will prevents security risks since roles are temporary eg 15 min to 12 hr.
 
 3) Setup gitignore files for avoiding the files thats not necessary or the files that will cause issues in future(Refer gitignore.io website)
 
