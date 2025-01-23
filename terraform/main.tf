@@ -51,3 +51,29 @@ module "LAMBDA" {
     aws = aws.Root
   }
 }
+
+# CALLING MODULE CLOUDWATCH
+
+module "CLOUDWATCH" {
+    source = "./modules/CLOUDWATCH"
+    cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn = main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn
+    cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name = main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name
+    eventbridge = false
+}
+
+
+# CALLING CLOUDTRAIL MODULE
+
+module "CLOUDTRAILUSERNOTIFICATION" {
+    source = "./modules/CLOUDTRAIL"
+    cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn = var.cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn
+    cloudtrial_cloudtrialusernotification_iam_permissions_cloud_watch_logs_role_arn = var.cloudtrial_cloudtrialusernotification_iam_permissions_cloud_watch_logs_role_arn
+    cloudtrial_cloudtrialusernotification_s3_s3trail_s3_bucket_name = var.cloudtrial_cloudtrialusernotification_s3_s3trail_s3_bucket_name
+}
+
+module "CLOUDWATCH" {
+    source = "./modules/CLOUDWATCH"
+    cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn = main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn
+    cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name = main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name
+    eventbridge = true
+}

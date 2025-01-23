@@ -33,3 +33,7 @@ variable lambda_sns_snsuser_sns_topic_user_creation_topic_arn {
   type = string
   description = "SNS ARN"
 }
+
+variable eventbridge {
+  type = bool
+}

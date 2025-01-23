@@ -1,0 +1,7 @@
+output "main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn" {
+    value=module.SNS.lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn
+}
+
+output "main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name" {
+    value=module.SNSFUN.lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name
+}
