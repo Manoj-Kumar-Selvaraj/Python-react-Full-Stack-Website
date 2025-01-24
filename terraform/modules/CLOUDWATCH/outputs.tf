@@ -1,7 +1,8 @@
-output "main_cloudtrail_cloudtrailusernotification_cloudtrail_log_group_name" {
-    value =  module.aws_cloudwatch_log_group.Cloudtrail_log_group.name
-}
 
 output "main_cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_name" {
-    value =  module.CLOUDTRAILLOGUSERNOTIFICATION.cloudwatch_cloudtrailusernotification_cloudtrailusernotification_cloudtrail_log_group_name
+    value =  module.CLOUDTRAILLOGSUSERNOTIFICATION.cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_name
+}
+
+output "main_cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_arn" {
+    value =  module.CLOUDTRAILLOGSUSERNOTIFICATION.cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_arn
 }

@@ -9,6 +9,7 @@ module "CLOUDTRAILLOGSUSERNOTIFICATION" {
 # CALLING EVENTBRIDGEUSERNOTIFICATION MODULE 
 
 module "EVENTBRIDGEUSERNOTIFICATION" {
+    count = var.eventbridge?1:0
     source = "./modules/EVENTBRIDGEUSERNOTIFICATION"
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn = var.cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name = var.cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name

@@ -8,6 +8,6 @@ module "S3LAM" {
 
 module "S3TRAIL" {
   source = "./modules/S3TRAIL"
-  bucket_name = "usernotification_cloudtrail_bucket"
+  bucket_name = "usernotification-cloudtrail-bucket"
 }
 

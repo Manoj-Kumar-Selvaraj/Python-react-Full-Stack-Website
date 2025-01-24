@@ -79,7 +79,8 @@ resource "aws_iam_role_policy" "cloudwatch_logs_policy" {
     Statement = [
       {
         Action   = ["logs:PutLogEvents",
-                    "logs:CreateLogStream"
+                    "logs:CreateLogStream",
+                    "s3:PutObject"
                   ]
         Effect   = "Allow"
         Resource = "*"
