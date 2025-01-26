@@ -1,8 +1,0 @@
-
-output "main_cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_name" {
-    value =  module.CLOUDTRAILLOGSUSERNOTIFICATION.cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_name
-}
-
-output "main_cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_arn" {
-    value =  module.CLOUDTRAILLOGSUSERNOTIFICATION.cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_arn
-}

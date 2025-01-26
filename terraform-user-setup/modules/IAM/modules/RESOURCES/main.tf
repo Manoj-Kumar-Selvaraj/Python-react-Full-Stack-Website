@@ -17,8 +17,8 @@ locals {
 
 # Creating the user with tag values
 
-resource "aws_iam_user" "factory_outlet_frontend_developer1" {
-  name = "FactoryOutletFrontEndDeveloper1"
+resource "aws_iam_user" "factory_outlet_frontend_developer2" {
+  name = "FactoryOutletFrontEndDeveloper2"
   tags = {
     for tech in local.technologies :
     "Technologies_And_Services_${tech}" => tech
@@ -29,14 +29,14 @@ resource "aws_iam_user" "factory_outlet_frontend_developer1" {
 # Attaching the user to Group
 
 resource "aws_iam_user_group_membership" "factory_outlet_frontend_developer1_to_group" {
-  user  = aws_iam_user.factory_outlet_frontend_developer1.name
+  user  = aws_iam_user.factory_outlet_frontend_developer2.name
   groups  = [aws_iam_group.factory_outlet_frontend_developer_group.name]
 }
 
 # Granting Console Access to The user
 
 resource "aws_iam_user_login_profile" "factory_outlet_frontend_developer1_login" {
-  user    = aws_iam_user.factory_outlet_frontend_developer1.name
+  user    = aws_iam_user.factory_outlet_frontend_developer2.name
   # password = "Dummy" # This is managed automatically by AWS and its not allowed in terraform.
   password_reset_required = true  # Set to true if you want the user to change the password on first login
 }

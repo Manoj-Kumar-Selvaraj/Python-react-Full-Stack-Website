@@ -1,6 +1,7 @@
 # CALLING CLOUDTRAILLOGSUSERNOTIFICATION
 
 module "CLOUDTRAILLOGSUSERNOTIFICATION" {
+    count = var.eventbridge?0:1
     source = "./modules/CLOUDTRAILLOGSUSERNOTIFICATION"
     cloudtraillogsusernotification_log_group_name = var.cloudtraillogsusernotification_log_group_name
     cloudtraillogsusernotification_retention_days = var.cloudtraillogsusernotification_retention_days
