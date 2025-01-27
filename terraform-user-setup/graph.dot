@@ -1,0 +1,104 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  subgraph "cluster_module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION" {
+    label = "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION"
+    fontname = "sans-serif"
+    "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail" [label="aws_cloudtrail.Master_Trail"];
+  }
+  subgraph "cluster_module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION" {
+    label = "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION"
+    fontname = "sans-serif"
+    "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group" [label="aws_cloudwatch_log_group.Cloudtrail_log_group"];
+  }
+  subgraph "cluster_module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION" {
+    label = "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION"
+    fontname = "sans-serif"
+    "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule" [label="aws_cloudwatch_event_rule.usercreationnotificationrule"];
+    "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example" [label="aws_cloudwatch_event_target.example"];
+    "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge" [label="aws_lambda_permission.allow_eventbridge"];
+  }
+  subgraph "cluster_module.CLOUDWATCH_EVENTBRIDGE.module.CLOUDTRAILLOGSUSERNOTIFICATION" {
+    label = "module.CLOUDWATCH_EVENTBRIDGE.module.CLOUDTRAILLOGSUSERNOTIFICATION"
+    fontname = "sans-serif"
+    "module.CLOUDWATCH_EVENTBRIDGE.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group" [label="aws_cloudwatch_log_group.Cloudtrail_log_group"];
+  }
+  subgraph "cluster_module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION" {
+    label = "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION"
+    fontname = "sans-serif"
+    "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule" [label="aws_cloudwatch_event_rule.usercreationnotificationrule"];
+    "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example" [label="aws_cloudwatch_event_target.example"];
+    "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge" [label="aws_lambda_permission.allow_eventbridge"];
+  }
+  subgraph "cluster_module.IAM.module.PERMISSIONS" {
+    label = "module.IAM.module.PERMISSIONS"
+    fontname = "sans-serif"
+    "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role" [label="aws_iam_role.cloudwatch_logs_role"];
+    "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role" [label="aws_iam_role.lambda_execution_role"];
+    "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy" [label="aws_iam_role_policy.cloudwatch_logs_policy"];
+    "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions" [label="aws_iam_role_policy.lambda_sns_permissions"];
+  }
+  subgraph "cluster_module.IAM.module.RESOURCES" {
+    label = "module.IAM.module.RESOURCES"
+    fontname = "sans-serif"
+    "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group" [label="aws_iam_group.factory_outlet_frontend_developer_group"];
+    "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer" [label="aws_iam_user.factory_outlet_frontend_developer"];
+    "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group" [label="aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group"];
+    "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login" [label="aws_iam_user_login_profile.factory_outlet_frontend_developer_login"];
+  }
+  subgraph "cluster_module.LAMBDA.module.SNSFUN" {
+    label = "module.LAMBDA.module.SNSFUN"
+    fontname = "sans-serif"
+    "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification" [label="aws_lambda_function.iam_user_notification"];
+  }
+  subgraph "cluster_module.S3.module.S3LAM" {
+    label = "module.S3.module.S3LAM"
+    fontname = "sans-serif"
+    "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket" [label="aws_s3_bucket.lambda_bucket"];
+    "module.S3.module.S3LAM.aws_s3_object.lambda_code" [label="aws_s3_object.lambda_code"];
+  }
+  subgraph "cluster_module.S3.module.S3TRAIL" {
+    label = "module.S3.module.S3TRAIL"
+    fontname = "sans-serif"
+    "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket" [label="aws_s3_bucket.cloudtrail_bucket"];
+    "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy" [label="aws_s3_bucket_policy.cloudtrail_bucket_policy"];
+  }
+  subgraph "cluster_module.SNS.module.SNSUSER" {
+    label = "module.SNS.module.SNSUSER"
+    fontname = "sans-serif"
+    "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic" [label="aws_sns_topic.user_creation_topic"];
+    "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription" [label="aws_sns_topic_subscription.user_creation_email_subscription"];
+  }
+  "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail" -> "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group";
+  "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail" -> "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example";
+  "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail" -> "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge";
+  "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group" -> "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification";
+  "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule" -> "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification";
+  "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example" -> "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule";
+  "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge" -> "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule";
+  "module.CLOUDWATCH_EVENTBRIDGE.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group" -> "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail";
+  "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule" -> "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail";
+  "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example" -> "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule";
+  "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge" -> "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule";
+  "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role" -> "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group";
+  "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role" -> "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login";
+  "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role" -> "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group";
+  "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role" -> "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login";
+  "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy" -> "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role";
+  "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions" -> "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role";
+  "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group" -> "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group";
+  "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group" -> "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer";
+  "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login" -> "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer";
+  "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification" -> "module.S3.module.S3LAM.aws_s3_object.lambda_code";
+  "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification" -> "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy";
+  "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification" -> "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription";
+  "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy";
+  "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions";
+  "module.S3.module.S3LAM.aws_s3_object.lambda_code" -> "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket";
+  "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy";
+  "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions";
+  "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy" -> "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket";
+  "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy";
+  "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic" -> "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions";
+  "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription" -> "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic";
+}
