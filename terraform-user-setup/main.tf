@@ -13,6 +13,8 @@ module "IAM" {
   # depends_on = [module.SNS]
   # iam_sns_snsuser_sns_topic_arn = module.SNS.main_iam_permissions_user_creation_topic_arn != "" ? module.SNS.main_iam_permissions_user_creation_topic_arn : "*"
   iam_sns_snsuser_sns_topic_arn = "*"  
+  user_name = "Factory_outlet_frontend_developer1"
+  group_name = "FactoryOutletFrontEndDevelopers"
   providers = {
     aws = aws.Root
   }
@@ -22,7 +24,7 @@ module "IAM" {
 module "SNS" {
   depends_on  = [module.IAM]
   source = "./modules/SNS"
-  sns_iam_resources_user_factory_outlet_frontend_developer1 = module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer1
+  sns_iam_resources_user_factory_outlet_frontend_developer = module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer
   providers = {
     aws = aws.Root
   }

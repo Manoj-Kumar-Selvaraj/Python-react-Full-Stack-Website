@@ -22,7 +22,7 @@ variable lambda_s3_s3lam_bucket_lambda_bucket_name {
   description = "s3lam bucket name"
 }
 
-variable sns_iam_resources_user_factory_outlet_frontend_developer1 {
+variable sns_iam_resources_user_factory_outlet_frontend_developer {
   default = " "
   type = string
   description = "User Name"
