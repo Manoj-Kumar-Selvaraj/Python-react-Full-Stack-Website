@@ -138,4 +138,8 @@ terraform_to_aws_service_map = {
     "aws_xray_tracing_rule": "xray",
     "aws_xray_encryption_config": "xray",
     "aws_xray_resource_policy": "xray",
+    "aws_lambda_permission": "lambda",
+    "aws_iam_role_policy": "iam",
+    "aws_iam_user_group_membership": "iam",
+    "aws_iam_user_login_profile": "iam",
 }

@@ -13,7 +13,7 @@ resource "aws_cloudwatch_event_rule" "usercreationnotificationrule" {
 }
 
 # EventBridge Target
-resource "aws_cloudwatch_event_target" "example" {
+resource "aws_cloudwatch_event_target" "lambda_target" {
   rule      = aws_cloudwatch_event_rule.usercreationnotificationrule.name
   target_id = "lambda-function"
   arn       = var.cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn

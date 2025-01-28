@@ -1,1 +1,1054 @@
-{"format_version":"1.0","terraform_version":"1.10.4","values":{"root_module":{"child_modules":[{"address":"module.CLOUDTRAILUSERNOTIFICATION","child_modules":[{"resources":[{"address":"module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail","mode":"managed","type":"aws_cloudtrail","name":"Master_Trail","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":1,"values":{"advanced_event_selector":[],"arn":"arn:aws:cloudtrail:us-east-1:039612868338:trail/aws_cloudtrail","cloud_watch_logs_group_arn":"arn:aws:logs:us-east-1:039612868338:log-group:cloudtraillogsusernotification_log_group:*","cloud_watch_logs_role_arn":"arn:aws:iam::039612868338:role/cloudtrail-cloudwatch-logs-role","enable_log_file_validation":true,"enable_logging":true,"event_selector":[{"data_resource":[],"exclude_management_event_sources":[],"include_management_events":true,"read_write_type":"All"}],"home_region":"us-east-1","id":"arn:aws:cloudtrail:us-east-1:039612868338:trail/aws_cloudtrail","include_global_service_events":true,"insight_selector":[{"insight_type":"ApiCallRateInsight"}],"is_multi_region_trail":true,"is_organization_trail":false,"kms_key_id":"","name":"aws_cloudtrail","s3_bucket_name":"usernotification-cloudtrail-bucket","s3_key_prefix":"","sns_topic_name":"","tags":{},"tags_all":{}},"sensitive_values":{"advanced_event_selector":[],"event_selector":[{"data_resource":[],"exclude_management_event_sources":[]}],"insight_selector":[{}],"tags":{},"tags_all":{}},"depends_on":["module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge","module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]}],"address":"module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION"}]},{"address":"module.CLOUDWATCH","child_modules":[{"resources":[{"address":"module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION[0].aws_cloudwatch_log_group.Cloudtrail_log_group","mode":"managed","type":"aws_cloudwatch_log_group","name":"Cloudtrail_log_group","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:logs:us-east-1:039612868338:log-group:cloudtraillogsusernotification_log_group","id":"cloudtraillogsusernotification_log_group","kms_key_id":"","log_group_class":"STANDARD","name":"cloudtraillogsusernotification_log_group","name_prefix":"","retention_in_days":14,"skip_destroy":false,"tags":{},"tags_all":{}},"sensitive_values":{"tags":{},"tags_all":{}},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]}],"address":"module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION[0]"}]},{"address":"module.CLOUDWATCH_EVENTBRIDGE","child_modules":[{"resources":[{"address":"module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0].aws_cloudwatch_event_rule.usercreationnotificationrule","mode":"managed","type":"aws_cloudwatch_event_rule","name":"usercreationnotificationrule","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":1,"values":{"arn":"arn:aws:events:us-east-1:039612868338:rule/iam-user-created-rule","description":"Trigger Lambda when a new IAM user is created","event_bus_name":"default","event_pattern":"{\"detail\":{\"eventName\":[\"CreateUser\"],\"eventSource\":[\"iam.amazonaws.com\"]},\"detail-type\":[\"AWS API Call via CloudTrail\"],\"source\":[\"aws.iam\"]}","force_destroy":false,"id":"iam-user-created-rule","is_enabled":true,"name":"iam-user-created-rule","name_prefix":"","role_arn":"","schedule_expression":"","state":"ENABLED","tags":{},"tags_all":{}},"sensitive_values":{"tags":{},"tags_all":{}},"depends_on":["module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail","module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge","module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]},{"address":"module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0].aws_cloudwatch_event_target.example","mode":"managed","type":"aws_cloudwatch_event_target","name":"example","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":1,"values":{"appsync_target":[],"arn":"arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification","batch_target":[],"dead_letter_config":[],"ecs_target":[],"event_bus_name":"default","force_destroy":false,"http_target":[],"id":"iam-user-created-rule-lambda-function","input":"","input_path":"","input_transformer":[],"kinesis_target":[],"redshift_target":[],"retry_policy":[],"role_arn":"","rule":"iam-user-created-rule","run_command_targets":[],"sagemaker_pipeline_target":[],"sqs_target":[],"target_id":"lambda-function"},"sensitive_values":{"appsync_target":[],"batch_target":[],"dead_letter_config":[],"ecs_target":[],"http_target":[],"input_transformer":[],"kinesis_target":[],"redshift_target":[],"retry_policy":[],"run_command_targets":[],"sagemaker_pipeline_target":[],"sqs_target":[]},"depends_on":["module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail","module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge","module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]},{"address":"module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0].aws_lambda_permission.allow_eventbridge","mode":"managed","type":"aws_lambda_permission","name":"allow_eventbridge","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"action":"lambda:InvokeFunction","event_source_token":null,"function_name":"IAMUserNotification","function_url_auth_type":null,"id":"AllowExecutionFromEventBridge","principal":"events.amazonaws.com","principal_org_id":null,"qualifier":"","source_account":null,"source_arn":"arn:aws:events:us-east-1:039612868338:rule/iam-user-created-rule","statement_id":"AllowExecutionFromEventBridge","statement_id_prefix":""},"sensitive_values":{},"depends_on":["module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail","module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.example","module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge","module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule","module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]}],"address":"module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0]"}]},{"address":"module.IAM","child_modules":[{"resources":[{"address":"module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","mode":"managed","type":"aws_iam_role","name":"cloudwatch_logs_role","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:iam::039612868338:role/cloudtrail-cloudwatch-logs-role","assume_role_policy":"{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}","create_date":"2025-01-24T07:55:30Z","description":"","force_detach_policies":false,"id":"cloudtrail-cloudwatch-logs-role","inline_policy":[{"name":"cloudtrail-cloudwatch-logs-policy","policy":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:PutLogEvents\",\"logs:CreateLogStream\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}"}],"managed_policy_arns":[],"max_session_duration":3600,"name":"cloudtrail-cloudwatch-logs-role","name_prefix":"","path":"/","permissions_boundary":"","tags":{},"tags_all":{},"unique_id":"AROAQSOI4M3ZLGZBOK7IE"},"sensitive_values":{"inline_policy":[{}],"managed_policy_arns":[],"tags":{},"tags_all":{}},"depends_on":["module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","mode":"managed","type":"aws_iam_role","name":"lambda_execution_role","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:iam::039612868338:role/lambda_execution_role","assume_role_policy":"{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}","create_date":"2025-01-20T14:43:00Z","description":"","force_detach_policies":false,"id":"lambda_execution_role","inline_policy":[{"name":"terraform-20250120144301143400000001","policy":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"sns:Publish\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/Application\":\"FactoryOutlet\",\"aws:ResourceTag/Group\":\"Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:DescribeLogGroups\",\"logs:DescribeLogStreams\",\"logs:GetLogEvents\",\"logs:FilterLogEvents\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}"}],"managed_policy_arns":[],"max_session_duration":3600,"name":"lambda_execution_role","name_prefix":"","path":"/","permissions_boundary":"","tags":{"Application":"FactoryOutlet","Group":"Frontend"},"tags_all":{"Application":"FactoryOutlet","Group":"Frontend"},"unique_id":"AROAQSOI4M3ZMPUMJ7TDF"},"sensitive_values":{"inline_policy":[{}],"managed_policy_arns":[],"tags":{},"tags_all":{}},"depends_on":["module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","mode":"managed","type":"aws_iam_role_policy","name":"cloudwatch_logs_policy","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"id":"cloudtrail-cloudwatch-logs-role:cloudtrail-cloudwatch-logs-policy","name":"cloudtrail-cloudwatch-logs-policy","name_prefix":"","policy":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:PutLogEvents\",\"logs:CreateLogStream\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}","role":"cloudtrail-cloudwatch-logs-role"},"sensitive_values":{},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","mode":"managed","type":"aws_iam_role_policy","name":"lambda_sns_permissions","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"id":"lambda_execution_role:terraform-20250120144301143400000001","name":"terraform-20250120144301143400000001","name_prefix":"terraform-","policy":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"sns:Publish\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/Application\":\"FactoryOutlet\",\"aws:ResourceTag/Group\":\"Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:DescribeLogGroups\",\"logs:DescribeLogStreams\",\"logs:GetLogEvents\",\"logs:FilterLogEvents\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}","role":"lambda_execution_role"},"sensitive_values":{},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]}],"address":"module.IAM.module.PERMISSIONS"},{"resources":[{"address":"module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","mode":"managed","type":"aws_iam_group","name":"factory_outlet_frontend_developer_group","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:iam::039612868338:group/FactoryOutletFrontEndDevelopers","id":"FactoryOutletFrontEndDevelopers","name":"FactoryOutletFrontEndDevelopers","path":"/","unique_id":"AGPAQSOI4M3ZA5KZOLRZU"},"sensitive_values":{}},{"address":"module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","mode":"managed","type":"aws_iam_user","name":"factory_outlet_frontend_developer","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:iam::039612868338:user/Factory_outlet_frontend_developer1","force_destroy":false,"id":"Factory_outlet_frontend_developer1","name":"Factory_outlet_frontend_developer1","path":"/","permissions_boundary":"","tags":{"Technologies_And_Services_AWS CloudFront":"AWS CloudFront","Technologies_And_Services_AWS CloudWatch":"AWS CloudWatch","Technologies_And_Services_AWS CodeBuild":"AWS CodeBuild","Technologies_And_Services_AWS CodePipeline":"AWS CodePipeline","Technologies_And_Services_AWS Console":"AWS Console","Technologies_And_Services_AWS EBS":"AWS EBS","Technologies_And_Services_AWS EC2":"AWS EC2","Technologies_And_Services_AWS EFS":"AWS EFS","Technologies_And_Services_AWS Route53":"AWS Route53","Technologies_And_Services_AWS S3":"AWS S3","Technologies_And_Services_AWS SNS":"AWS SNS","Technologies_And_Services_AWS STSVPN":"AWS STSVPN","Technologies_And_Services_AWS SecretsManager":"AWS SecretsManager","Technologies_And_Services_AWS VPC":"AWS VPC","Technologies_And_Services_React":"React","Technologies_And_Services_Terraform":"Terraform"},"tags_all":{"Technologies_And_Services_AWS CloudFront":"AWS CloudFront","Technologies_And_Services_AWS CloudWatch":"AWS CloudWatch","Technologies_And_Services_AWS CodeBuild":"AWS CodeBuild","Technologies_And_Services_AWS CodePipeline":"AWS CodePipeline","Technologies_And_Services_AWS Console":"AWS Console","Technologies_And_Services_AWS EBS":"AWS EBS","Technologies_And_Services_AWS EC2":"AWS EC2","Technologies_And_Services_AWS EFS":"AWS EFS","Technologies_And_Services_AWS Route53":"AWS Route53","Technologies_And_Services_AWS S3":"AWS S3","Technologies_And_Services_AWS SNS":"AWS SNS","Technologies_And_Services_AWS STSVPN":"AWS STSVPN","Technologies_And_Services_AWS SecretsManager":"AWS SecretsManager","Technologies_And_Services_AWS VPC":"AWS VPC","Technologies_And_Services_React":"React","Technologies_And_Services_Terraform":"Terraform"},"unique_id":"AIDAQSOI4M3ZDDWEJ6I5S"},"sensitive_values":{"tags":{},"tags_all":{}}},{"address":"module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","mode":"managed","type":"aws_iam_user_group_membership","name":"factory_outlet_frontend_developer1_to_group","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"groups":["FactoryOutletFrontEndDevelopers"],"id":"terraform-20250127103557738700000001","user":"Factory_outlet_frontend_developer1"},"sensitive_values":{"groups":[false]},"depends_on":["module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer"]},{"address":"module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","mode":"managed","type":"aws_iam_user_login_profile","name":"factory_outlet_frontend_developer_login","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"encrypted_password":null,"id":"Factory_outlet_frontend_developer1","key_fingerprint":null,"password":"2ueu91G3HGrUSlU|Qefm","password_length":20,"password_reset_required":true,"pgp_key":null,"user":"Factory_outlet_frontend_developer1"},"sensitive_values":{"password":true},"depends_on":["module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer"]}],"address":"module.IAM.module.RESOURCES"}]},{"address":"module.LAMBDA","child_modules":[{"resources":[{"address":"module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification","mode":"managed","type":"aws_lambda_function","name":"iam_user_notification","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"architectures":["x86_64"],"arn":"arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification","code_sha256":"2XS/1Zd9k+1NgE93ly1lbbr5MOFd8Kt+/Ve7v8e+bEo=","code_signing_config_arn":"","dead_letter_config":[],"description":"","environment":[{"variables":{"SNS_TOPIC_ARN":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications"}}],"ephemeral_storage":[{"size":512}],"file_system_config":[],"filename":null,"function_name":"IAMUserNotification","handler":"sns_lambda_function.lambda_handler","id":"IAMUserNotification","image_config":[],"image_uri":"","invoke_arn":"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification/invocations","kms_key_arn":"","last_modified":"2025-01-23T07:06:59.000+0000","layers":[],"logging_config":[{"application_log_level":"","log_format":"Text","log_group":"/aws/lambda/IAMUserNotification","system_log_level":""}],"memory_size":128,"package_type":"Zip","publish":false,"qualified_arn":"arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification:$LATEST","qualified_invoke_arn":"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification:$LATEST/invocations","replace_security_groups_on_destroy":null,"replacement_security_group_ids":null,"reserved_concurrent_executions":-1,"role":"arn:aws:iam::039612868338:role/lambda_execution_role","runtime":"python3.9","s3_bucket":"factoryoutlet-lambda-code-storage","s3_key":"sns_lambda_function.zip","s3_object_version":null,"signing_job_arn":"","signing_profile_version_arn":"","skip_destroy":false,"snap_start":[],"source_code_hash":"SqIUv0wXk2KyDzsk6FmVZCwlhRea+DeBlhW1LHDWKkI=","source_code_size":901,"tags":{"Application":"FactoryOutlet","Group":"Frontend"},"tags_all":{"Application":"FactoryOutlet","Group":"Frontend"},"timeout":3,"timeouts":null,"tracing_config":[{"mode":"PassThrough"}],"version":"$LATEST","vpc_config":[]},"sensitive_values":{"architectures":[false],"dead_letter_config":[],"environment":[{"variables":{}}],"ephemeral_storage":[{}],"file_system_config":[],"image_config":[],"layers":[],"logging_config":[{}],"snap_start":[],"tags":{},"tags_all":{},"tracing_config":[{}],"vpc_config":[]},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","module.S3.module.S3LAM.aws_s3_object.lambda_code","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"]}],"address":"module.LAMBDA.module.SNSFUN"}]},{"address":"module.S3","child_modules":[{"resources":[{"address":"module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket","mode":"managed","type":"aws_s3_bucket","name":"lambda_bucket","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"acceleration_status":"","acl":null,"arn":"arn:aws:s3:::factoryoutlet-lambda-code-storage","bucket":"factoryoutlet-lambda-code-storage","bucket_domain_name":"factoryoutlet-lambda-code-storage.s3.amazonaws.com","bucket_prefix":"","bucket_regional_domain_name":"factoryoutlet-lambda-code-storage.s3.us-east-1.amazonaws.com","cors_rule":[],"force_destroy":false,"grant":[{"id":"18eaa71083ecbd81bcf200ab8f4288ae6caf9e274ccf9acf52d60b5817c1830f","permissions":["FULL_CONTROL"],"type":"CanonicalUser","uri":""}],"hosted_zone_id":"Z3AQBSTGFYJSTF","id":"factoryoutlet-lambda-code-storage","lifecycle_rule":[],"logging":[],"object_lock_configuration":[],"object_lock_enabled":false,"policy":"","region":"us-east-1","replication_configuration":[],"request_payer":"BucketOwner","server_side_encryption_configuration":[{"rule":[{"apply_server_side_encryption_by_default":[{"kms_master_key_id":"","sse_algorithm":"AES256"}],"bucket_key_enabled":false}]}],"tags":{"Application":"FactoryOutlet","Group":"Frontend"},"tags_all":{"Application":"FactoryOutlet","Group":"Frontend"},"timeouts":null,"versioning":[{"enabled":false,"mfa_delete":false}],"website":[],"website_domain":null,"website_endpoint":null},"sensitive_values":{"cors_rule":[],"grant":[{"permissions":[false]}],"lifecycle_rule":[],"logging":[],"object_lock_configuration":[],"replication_configuration":[],"server_side_encryption_configuration":[{"rule":[{"apply_server_side_encryption_by_default":[{}]}]}],"tags":{},"tags_all":{},"versioning":[{}],"website":[]},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.S3.module.S3LAM.aws_s3_object.lambda_code","mode":"managed","type":"aws_s3_object","name":"lambda_code","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"acl":null,"arn":"arn:aws:s3:::factoryoutlet-lambda-code-storage/sns_lambda_function.zip","bucket":"factoryoutlet-lambda-code-storage","bucket_key_enabled":false,"cache_control":"","checksum_algorithm":null,"checksum_crc32":"","checksum_crc32c":"","checksum_sha1":"","checksum_sha256":"","content":null,"content_base64":null,"content_disposition":"","content_encoding":"","content_language":"","content_type":"application/octet-stream","etag":"f80da18787e2a462dc15b86d7f7ffd6b","force_destroy":false,"id":"sns_lambda_function.zip","key":"sns_lambda_function.zip","kms_key_id":null,"metadata":{},"object_lock_legal_hold_status":"","object_lock_mode":"","object_lock_retain_until_date":"","override_provider":[],"server_side_encryption":"AES256","source":"modules/S3/modules/S3LAM/sns_lambda_function.zip","source_hash":"2XS/1Zd9k+1NgE93ly1lbbr5MOFd8Kt+/Ve7v8e+bEo=","storage_class":"STANDARD","tags":{},"tags_all":{},"version_id":"","website_redirect":""},"sensitive_values":{"metadata":{},"override_provider":[],"tags":{},"tags_all":{}},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket"]}],"address":"module.S3.module.S3LAM"},{"resources":[{"address":"module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket","mode":"managed","type":"aws_s3_bucket","name":"cloudtrail_bucket","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"acceleration_status":"","acl":null,"arn":"arn:aws:s3:::usernotification-cloudtrail-bucket","bucket":"usernotification-cloudtrail-bucket","bucket_domain_name":"usernotification-cloudtrail-bucket.s3.amazonaws.com","bucket_prefix":"","bucket_regional_domain_name":"usernotification-cloudtrail-bucket.s3.us-east-1.amazonaws.com","cors_rule":[],"force_destroy":false,"grant":[{"id":"18eaa71083ecbd81bcf200ab8f4288ae6caf9e274ccf9acf52d60b5817c1830f","permissions":["FULL_CONTROL"],"type":"CanonicalUser","uri":""}],"hosted_zone_id":"Z3AQBSTGFYJSTF","id":"usernotification-cloudtrail-bucket","lifecycle_rule":[],"logging":[],"object_lock_configuration":[],"object_lock_enabled":false,"policy":"{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket/*\"}],\"Version\":\"2012-10-17\"}","region":"us-east-1","replication_configuration":[],"request_payer":"BucketOwner","server_side_encryption_configuration":[{"rule":[{"apply_server_side_encryption_by_default":[{"kms_master_key_id":"","sse_algorithm":"AES256"}],"bucket_key_enabled":false}]}],"tags":{"Application":"FactoryOutlet","Group":"Frontend"},"tags_all":{"Application":"FactoryOutlet","Group":"Frontend"},"timeouts":null,"versioning":[{"enabled":false,"mfa_delete":false}],"website":[],"website_domain":null,"website_endpoint":null},"sensitive_values":{"cors_rule":[],"grant":[{"permissions":[false]}],"lifecycle_rule":[],"logging":[],"object_lock_configuration":[],"replication_configuration":[],"server_side_encryption_configuration":[{"rule":[{"apply_server_side_encryption_by_default":[{}]}]}],"tags":{},"tags_all":{},"versioning":[{}],"website":[]},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy","mode":"managed","type":"aws_s3_bucket_policy","name":"cloudtrail_bucket_policy","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"bucket":"usernotification-cloudtrail-bucket","id":"usernotification-cloudtrail-bucket","policy":"{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket/*\"}],\"Version\":\"2012-10-17\"}"},"sensitive_values":{},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket"]}],"address":"module.S3.module.S3TRAIL"}]},{"address":"module.SNS","child_modules":[{"resources":[{"address":"module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic","mode":"managed","type":"aws_sns_topic","name":"user_creation_topic","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"application_failure_feedback_role_arn":"","application_success_feedback_role_arn":"","application_success_feedback_sample_rate":0,"archive_policy":"","arn":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications","beginning_archive_time":"","content_based_deduplication":false,"delivery_policy":"","display_name":"","fifo_topic":false,"firehose_failure_feedback_role_arn":"","firehose_success_feedback_role_arn":"","firehose_success_feedback_sample_rate":0,"http_failure_feedback_role_arn":"","http_success_feedback_role_arn":"","http_success_feedback_sample_rate":0,"id":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications","kms_master_key_id":"","lambda_failure_feedback_role_arn":"","lambda_success_feedback_role_arn":"","lambda_success_feedback_sample_rate":0,"name":"user-creation-notifications","name_prefix":"","owner":"039612868338","policy":"{\"Id\":\"__default_policy_ID\",\"Statement\":[{\"Action\":[\"SNS:GetTopicAttributes\",\"SNS:SetTopicAttributes\",\"SNS:AddPermission\",\"SNS:RemovePermission\",\"SNS:DeleteTopic\",\"SNS:Subscribe\",\"SNS:ListSubscriptionsByTopic\",\"SNS:Publish\"],\"Condition\":{\"StringEquals\":{\"AWS:SourceOwner\":\"039612868338\"}},\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Resource\":\"arn:aws:sns:us-east-1:039612868338:user-creation-notifications\",\"Sid\":\"__default_statement_ID\"}],\"Version\":\"2008-10-17\"}","signature_version":0,"sqs_failure_feedback_role_arn":"","sqs_success_feedback_role_arn":"","sqs_success_feedback_sample_rate":0,"tags":{"Application":"FactoryOutlet","Group":"Frontend"},"tags_all":{"Application":"FactoryOutlet","Group":"Frontend"},"tracing_config":""},"sensitive_values":{"tags":{},"tags_all":{}},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"]},{"address":"module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription","mode":"managed","type":"aws_sns_topic_subscription","name":"user_creation_email_subscription","provider_name":"registry.terraform.io/hashicorp/aws","schema_version":0,"values":{"arn":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications:4013d607-376d-4bc0-b3c5-ff7b3f55f753","confirmation_timeout_in_minutes":1,"confirmation_was_authenticated":false,"delivery_policy":"","endpoint":"ss.mano1998@gmail.com","endpoint_auto_confirms":false,"filter_policy":"","filter_policy_scope":"","id":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications:4013d607-376d-4bc0-b3c5-ff7b3f55f753","owner_id":"039612868338","pending_confirmation":false,"protocol":"email","raw_message_delivery":false,"redrive_policy":"","replay_policy":"","subscription_role_arn":"","topic_arn":"arn:aws:sns:us-east-1:039612868338:user-creation-notifications"},"sensitive_values":{},"depends_on":["module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role","module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role","module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy","module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions","module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group","module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer","module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group","module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login","module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"]}],"address":"module.SNS.module.SNSUSER"}]}]}}}
+{
+  "version": 4,
+  "terraform_version": "1.10.5",
+  "serial": 33,
+  "lineage": "7b841dff-e288-c226-a42c-c3e5fd50722b",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION",
+      "mode": "managed",
+      "type": "aws_cloudtrail",
+      "name": "Master_Trail",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "advanced_event_selector": [],
+            "arn": "arn:aws:cloudtrail:us-east-1:039612868338:trail/aws_cloudtrail",
+            "cloud_watch_logs_group_arn": "arn:aws:logs:us-east-1:039612868338:log-group:cloudtraillogsusernotification_log_group:*",
+            "cloud_watch_logs_role_arn": "arn:aws:iam::039612868338:role/cloudtrail-cloudwatch-logs-role",
+            "enable_log_file_validation": true,
+            "enable_logging": true,
+            "event_selector": [
+              {
+                "data_resource": [],
+                "exclude_management_event_sources": [],
+                "include_management_events": true,
+                "read_write_type": "All"
+              }
+            ],
+            "home_region": "us-east-1",
+            "id": "arn:aws:cloudtrail:us-east-1:039612868338:trail/aws_cloudtrail",
+            "include_global_service_events": true,
+            "insight_selector": [
+              {
+                "insight_type": "ApiCallRateInsight"
+              }
+            ],
+            "is_multi_region_trail": true,
+            "is_organization_trail": false,
+            "kms_key_id": "",
+            "name": "aws_cloudtrail",
+            "s3_bucket_name": "usernotification-cloudtrail-bucket",
+            "s3_key_prefix": "",
+            "sns_topic_name": "",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION[0]",
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "Cloudtrail_log_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:us-east-1:039612868338:log-group:cloudtraillogsusernotification_log_group",
+            "id": "cloudtraillogsusernotification_log_group",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "cloudtraillogsusernotification_log_group",
+            "name_prefix": "",
+            "retention_in_days": 14,
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0]",
+      "mode": "managed",
+      "type": "aws_cloudwatch_event_rule",
+      "name": "usercreationnotificationrule",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:events:us-east-1:039612868338:rule/iam-user-created-rule",
+            "description": "Trigger Lambda when a new IAM user is created",
+            "event_bus_name": "default",
+            "event_pattern": "{\"detail\":{\"eventName\":[\"CreateUser\"],\"eventSource\":[\"iam.amazonaws.com\"]},\"detail-type\":[\"AWS API Call via CloudTrail\"],\"source\":[\"aws.iam\"]}",
+            "force_destroy": false,
+            "id": "iam-user-created-rule",
+            "is_enabled": true,
+            "name": "iam-user-created-rule",
+            "name_prefix": "",
+            "role_arn": "",
+            "schedule_expression": "",
+            "state": "ENABLED",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
+            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0]",
+      "mode": "managed",
+      "type": "aws_cloudwatch_event_target",
+      "name": "lambda_target",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "appsync_target": [],
+            "arn": "arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification",
+            "batch_target": [],
+            "dead_letter_config": [],
+            "ecs_target": [],
+            "event_bus_name": "default",
+            "force_destroy": false,
+            "http_target": [],
+            "id": "iam-user-created-rule-lambda-function",
+            "input": "",
+            "input_path": "",
+            "input_transformer": [],
+            "kinesis_target": [],
+            "redshift_target": [],
+            "retry_policy": [],
+            "role_arn": "",
+            "rule": "iam-user-created-rule",
+            "run_command_targets": [],
+            "sagemaker_pipeline_target": [],
+            "sqs_target": [],
+            "target_id": "lambda-function"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
+            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
+            "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION[0]",
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_eventbridge",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "IAMUserNotification",
+            "function_url_auth_type": null,
+            "id": "AllowExecutionFromEventBridge",
+            "principal": "events.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "source_account": null,
+            "source_arn": "arn:aws:events:us-east-1:039612868338:rule/iam-user-created-rule",
+            "statement_id": "AllowExecutionFromEventBridge",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
+            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
+            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
+            "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.PERMISSIONS",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "cloudwatch_logs_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:role/cloudtrail-cloudwatch-logs-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-01-24T07:55:30Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "cloudtrail-cloudwatch-logs-role",
+            "inline_policy": [
+              {
+                "name": "cloudtrail-cloudwatch-logs-policy",
+                "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:PutLogEvents\",\"logs:CreateLogStream\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "cloudtrail-cloudwatch-logs-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAQSOI4M3ZLGZBOK7IE"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.PERMISSIONS",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "lambda_execution_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:role/lambda_execution_role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-01-20T14:43:00Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "lambda_execution_role",
+            "inline_policy": [
+              {
+                "name": "terraform-20250120144301143400000001",
+                "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"sns:Publish\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/Application\":\"FactoryOutlet\",\"aws:ResourceTag/Group\":\"Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:DescribeLogGroups\",\"logs:DescribeLogStreams\",\"logs:GetLogEvents\",\"logs:FilterLogEvents\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "lambda_execution_role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tags_all": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "unique_id": "AROAQSOI4M3ZMPUMJ7TDF"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.PERMISSIONS",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "cloudwatch_logs_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "cloudtrail-cloudwatch-logs-role:cloudtrail-cloudwatch-logs-policy",
+            "name": "cloudtrail-cloudwatch-logs-policy",
+            "name_prefix": "",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:PutLogEvents\",\"logs:CreateLogStream\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+            "role": "cloudtrail-cloudwatch-logs-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.PERMISSIONS",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "lambda_sns_permissions",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "lambda_execution_role:terraform-20250120144301143400000001",
+            "name": "terraform-20250120144301143400000001",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"sns:Publish\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/Application\":\"FactoryOutlet\",\"aws:ResourceTag/Group\":\"Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:DescribeLogGroups\",\"logs:DescribeLogStreams\",\"logs:GetLogEvents\",\"logs:FilterLogEvents\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+            "role": "lambda_execution_role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group",
+      "name": "factory_outlet_frontend_developer_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:group/FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers",
+            "name": "FactoryOutletFrontEndDevelopers",
+            "path": "/",
+            "unique_id": "AGPAQSOI4M3ZA5KZOLRZU"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user",
+      "name": "factory_outlet_frontend_developer",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:user/Factory_outlet_frontend_developer1",
+            "force_destroy": false,
+            "id": "Factory_outlet_frontend_developer1",
+            "name": "Factory_outlet_frontend_developer1",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Technologies_And_Services_AWS CloudFront": "AWS CloudFront",
+              "Technologies_And_Services_AWS CloudWatch": "AWS CloudWatch",
+              "Technologies_And_Services_AWS CodeBuild": "AWS CodeBuild",
+              "Technologies_And_Services_AWS CodePipeline": "AWS CodePipeline",
+              "Technologies_And_Services_AWS Console": "AWS Console",
+              "Technologies_And_Services_AWS EBS": "AWS EBS",
+              "Technologies_And_Services_AWS EC2": "AWS EC2",
+              "Technologies_And_Services_AWS EFS": "AWS EFS",
+              "Technologies_And_Services_AWS Route53": "AWS Route53",
+              "Technologies_And_Services_AWS S3": "AWS S3",
+              "Technologies_And_Services_AWS SNS": "AWS SNS",
+              "Technologies_And_Services_AWS STSVPN": "AWS STSVPN",
+              "Technologies_And_Services_AWS SecretsManager": "AWS SecretsManager",
+              "Technologies_And_Services_AWS VPC": "AWS VPC",
+              "Technologies_And_Services_React": "React",
+              "Technologies_And_Services_Terraform": "Terraform"
+            },
+            "tags_all": {
+              "Technologies_And_Services_AWS CloudFront": "AWS CloudFront",
+              "Technologies_And_Services_AWS CloudWatch": "AWS CloudWatch",
+              "Technologies_And_Services_AWS CodeBuild": "AWS CodeBuild",
+              "Technologies_And_Services_AWS CodePipeline": "AWS CodePipeline",
+              "Technologies_And_Services_AWS Console": "AWS Console",
+              "Technologies_And_Services_AWS EBS": "AWS EBS",
+              "Technologies_And_Services_AWS EC2": "AWS EC2",
+              "Technologies_And_Services_AWS EFS": "AWS EFS",
+              "Technologies_And_Services_AWS Route53": "AWS Route53",
+              "Technologies_And_Services_AWS S3": "AWS S3",
+              "Technologies_And_Services_AWS SNS": "AWS SNS",
+              "Technologies_And_Services_AWS STSVPN": "AWS STSVPN",
+              "Technologies_And_Services_AWS SecretsManager": "AWS SecretsManager",
+              "Technologies_And_Services_AWS VPC": "AWS VPC",
+              "Technologies_And_Services_React": "React",
+              "Technologies_And_Services_Terraform": "Terraform"
+            },
+            "unique_id": "AIDAQSOI4M3ZDDWEJ6I5S"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user_group_membership",
+      "name": "factory_outlet_frontend_developer1_to_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [
+              "FactoryOutletFrontEndDevelopers"
+            ],
+            "id": "terraform-20250127103557738700000001",
+            "user": "Factory_outlet_frontend_developer1"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user_login_profile",
+      "name": "factory_outlet_frontend_developer_login",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "encrypted_password": null,
+            "id": "Factory_outlet_frontend_developer1",
+            "key_fingerprint": null,
+            "password": "2ueu91G3HGrUSlU|Qefm",
+            "password_length": 20,
+            "password_reset_required": true,
+            "pgp_key": null,
+            "user": "Factory_outlet_frontend_developer1"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "password"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.LAMBDA.module.SNSFUN",
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "iam_user_notification",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification",
+            "code_sha256": "2XS/1Zd9k+1NgE93ly1lbbr5MOFd8Kt+/Ve7v8e+bEo=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "SNS_TOPIC_ARN": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": null,
+            "function_name": "IAMUserNotification",
+            "handler": "sns_lambda_function.lambda_handler",
+            "id": "IAMUserNotification",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-01-23T07:06:59.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/IAMUserNotification",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:039612868338:function:IAMUserNotification:$LATEST/invocations",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::039612868338:role/lambda_execution_role",
+            "runtime": "python3.9",
+            "s3_bucket": "factoryoutlet-lambda-code-storage",
+            "s3_key": "sns_lambda_function.zip",
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "SqIUv0wXk2KyDzsk6FmVZCwlhRea+DeBlhW1LHDWKkI=",
+            "source_code_size": 901,
+            "tags": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tags_all": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
+            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
+            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
+            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.S3.module.S3LAM",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "lambda_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::factoryoutlet-lambda-code-storage",
+            "bucket": "factoryoutlet-lambda-code-storage",
+            "bucket_domain_name": "factoryoutlet-lambda-code-storage.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "factoryoutlet-lambda-code-storage.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "18eaa71083ecbd81bcf200ab8f4288ae6caf9e274ccf9acf52d60b5817c1830f",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "factoryoutlet-lambda-code-storage",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tags_all": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.S3.module.S3LAM",
+      "mode": "managed",
+      "type": "aws_s3_object",
+      "name": "lambda_code",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acl": null,
+            "arn": "arn:aws:s3:::factoryoutlet-lambda-code-storage/sns_lambda_function.zip",
+            "bucket": "factoryoutlet-lambda-code-storage",
+            "bucket_key_enabled": false,
+            "cache_control": "",
+            "checksum_algorithm": null,
+            "checksum_crc32": "",
+            "checksum_crc32c": "",
+            "checksum_sha1": "",
+            "checksum_sha256": "",
+            "content": null,
+            "content_base64": null,
+            "content_disposition": "",
+            "content_encoding": "",
+            "content_language": "",
+            "content_type": "application/octet-stream",
+            "etag": "f80da18787e2a462dc15b86d7f7ffd6b",
+            "force_destroy": false,
+            "id": "sns_lambda_function.zip",
+            "key": "sns_lambda_function.zip",
+            "kms_key_id": null,
+            "metadata": {},
+            "object_lock_legal_hold_status": "",
+            "object_lock_mode": "",
+            "object_lock_retain_until_date": "",
+            "override_provider": [],
+            "server_side_encryption": "AES256",
+            "source": "modules/S3/modules/S3LAM/sns_lambda_function.zip",
+            "source_hash": "2XS/1Zd9k+1NgE93ly1lbbr5MOFd8Kt+/Ve7v8e+bEo=",
+            "storage_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "version_id": "",
+            "website_redirect": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.S3.module.S3TRAIL",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "cloudtrail_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::usernotification-cloudtrail-bucket",
+            "bucket": "usernotification-cloudtrail-bucket",
+            "bucket_domain_name": "usernotification-cloudtrail-bucket.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "usernotification-cloudtrail-bucket.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "18eaa71083ecbd81bcf200ab8f4288ae6caf9e274ccf9acf52d60b5817c1830f",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "usernotification-cloudtrail-bucket",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket/*\"}],\"Version\":\"2012-10-17\"}",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tags_all": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.S3.module.S3TRAIL",
+      "mode": "managed",
+      "type": "aws_s3_bucket_policy",
+      "name": "cloudtrail_bucket_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "usernotification-cloudtrail-bucket",
+            "id": "usernotification-cloudtrail-bucket",
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::usernotification-cloudtrail-bucket/*\"}],\"Version\":\"2012-10-17\"}"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.SNS.module.SNSUSER",
+      "mode": "managed",
+      "type": "aws_sns_topic",
+      "name": "user_creation_topic",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "application_failure_feedback_role_arn": "",
+            "application_success_feedback_role_arn": "",
+            "application_success_feedback_sample_rate": 0,
+            "archive_policy": "",
+            "arn": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications",
+            "beginning_archive_time": "",
+            "content_based_deduplication": false,
+            "delivery_policy": "",
+            "display_name": "",
+            "fifo_topic": false,
+            "firehose_failure_feedback_role_arn": "",
+            "firehose_success_feedback_role_arn": "",
+            "firehose_success_feedback_sample_rate": 0,
+            "http_failure_feedback_role_arn": "",
+            "http_success_feedback_role_arn": "",
+            "http_success_feedback_sample_rate": 0,
+            "id": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications",
+            "kms_master_key_id": "",
+            "lambda_failure_feedback_role_arn": "",
+            "lambda_success_feedback_role_arn": "",
+            "lambda_success_feedback_sample_rate": 0,
+            "name": "user-creation-notifications",
+            "name_prefix": "",
+            "owner": "039612868338",
+            "policy": "{\"Id\":\"__default_policy_ID\",\"Statement\":[{\"Action\":[\"SNS:GetTopicAttributes\",\"SNS:SetTopicAttributes\",\"SNS:AddPermission\",\"SNS:RemovePermission\",\"SNS:DeleteTopic\",\"SNS:Subscribe\",\"SNS:ListSubscriptionsByTopic\",\"SNS:Publish\"],\"Condition\":{\"StringEquals\":{\"AWS:SourceOwner\":\"039612868338\"}},\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Resource\":\"arn:aws:sns:us-east-1:039612868338:user-creation-notifications\",\"Sid\":\"__default_statement_ID\"}],\"Version\":\"2008-10-17\"}",
+            "signature_version": 0,
+            "sqs_failure_feedback_role_arn": "",
+            "sqs_success_feedback_role_arn": "",
+            "sqs_success_feedback_sample_rate": 0,
+            "tags": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tags_all": {
+              "Application": "FactoryOutlet",
+              "Group": "Frontend"
+            },
+            "tracing_config": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.SNS.module.SNSUSER",
+      "mode": "managed",
+      "type": "aws_sns_topic_subscription",
+      "name": "user_creation_email_subscription",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications:4013d607-376d-4bc0-b3c5-ff7b3f55f753",
+            "confirmation_timeout_in_minutes": 1,
+            "confirmation_was_authenticated": false,
+            "delivery_policy": "",
+            "endpoint": "ss.mano1998@gmail.com",
+            "endpoint_auto_confirms": false,
+            "filter_policy": "",
+            "filter_policy_scope": "",
+            "id": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications:4013d607-376d-4bc0-b3c5-ff7b3f55f753",
+            "owner_id": "039612868338",
+            "pending_confirmation": false,
+            "protocol": "email",
+            "raw_message_delivery": false,
+            "redrive_policy": "",
+            "replay_policy": "",
+            "subscription_role_arn": "",
+            "topic_arn": "arn:aws:sns:us-east-1:039612868338:user-creation-notifications"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
+            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
+            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
+            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
+

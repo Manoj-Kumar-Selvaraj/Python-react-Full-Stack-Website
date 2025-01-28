@@ -1,0 +1,98 @@
+Found AWS modules: ['analytics', 'ar', 'blockchain', 'business', 'compute', 'cost', 'database', 'devtools', 'enablement', 'enduser', 'engagement', 'game', 'general', 'integration', 'iot', 'management', 'media', 'migration', 'ml', 'mobile', 'network', 'quantum', 'robotics', 'satellite', 'security', 'storage']
+Attempting to import diagrams.aws.analytics...
+Successfully imported analytics with 30 icons.
+Attempting to import diagrams.aws.ar...
+Successfully imported ar with 2 icons.
+Attempting to import diagrams.aws.blockchain...
+Successfully imported blockchain with 5 icons.
+Attempting to import diagrams.aws.business...
+Successfully imported business with 5 icons.
+Attempting to import diagrams.aws.compute...
+Successfully imported compute with 47 icons.
+Attempting to import diagrams.aws.cost...
+Successfully imported cost with 6 icons.
+Attempting to import diagrams.aws.database...
+Successfully imported database with 40 icons.
+Attempting to import diagrams.aws.devtools...
+Successfully imported devtools with 15 icons.
+Attempting to import diagrams.aws.enablement...
+Successfully imported enablement with 5 icons.
+Attempting to import diagrams.aws.enduser...
+Successfully imported enduser with 5 icons.
+Attempting to import diagrams.aws.engagement...
+Successfully imported engagement with 6 icons.
+Attempting to import diagrams.aws.game...
+Successfully imported game with 2 icons.
+Attempting to import diagrams.aws.general...
+Successfully imported general with 24 icons.
+Attempting to import diagrams.aws.integration...
+Successfully imported integration with 21 icons.
+Attempting to import diagrams.aws.iot...
+Successfully imported iot with 62 icons.
+Attempting to import diagrams.aws.management...
+Successfully imported management with 59 icons.
+Attempting to import diagrams.aws.media...
+Successfully imported media with 13 icons.
+Attempting to import diagrams.aws.migration...
+Successfully imported migration with 17 icons.
+Attempting to import diagrams.aws.ml...
+Successfully imported ml with 29 icons.
+Attempting to import diagrams.aws.mobile...
+Successfully imported mobile with 7 icons.
+Attempting to import diagrams.aws.network...
+Successfully imported network with 45 icons.
+Attempting to import diagrams.aws.quantum...
+Successfully imported quantum with 2 icons.
+Attempting to import diagrams.aws.robotics...
+Successfully imported robotics with 6 icons.
+Attempting to import diagrams.aws.satellite...
+Successfully imported satellite with 2 icons.
+Attempting to import diagrams.aws.security...
+Successfully imported security with 49 icons.
+Attempting to import diagrams.aws.storage...
+Successfully imported storage with 33 icons.
+Loading Terraform state file: tfstate.json
+Parsing root module...
+Extracted 20 services.
+Generating diagram...
+Searching for icon for service type: aws_cloudtrail (Cloudtrail)
+Adding icon for Master_Trail
+Searching for icon for service type: aws_cloudwatch_log_group (Cloudwatch)
+Adding icon for Cloudtrail_log_group
+Searching for icon for service type: aws_cloudwatch_event_rule (Cloudwatch)
+Adding icon for usercreationnotificationrule
+Searching for icon for service type: aws_cloudwatch_event_target (Cloudwatch)
+Adding icon for example
+Searching for icon for service type: aws_lambda_permission (Lambda)
+Adding icon for allow_eventbridge
+Searching for icon for service type: aws_iam_role (Iam)
+Adding icon for cloudwatch_logs_role
+Searching for icon for service type: aws_iam_role (Iam)
+Adding icon for lambda_execution_role
+Searching for icon for service type: aws_iam_role_policy (Iam)
+Adding icon for cloudwatch_logs_policy
+Searching for icon for service type: aws_iam_role_policy (Iam)
+Adding icon for lambda_sns_permissions
+Searching for icon for service type: aws_iam_group (Iam)
+Adding icon for factory_outlet_frontend_developer_group
+Searching for icon for service type: aws_iam_user (Iam)
+Adding icon for factory_outlet_frontend_developer
+Searching for icon for service type: aws_iam_user_group_membership (Iam)
+Adding icon for factory_outlet_frontend_developer1_to_group
+Searching for icon for service type: aws_iam_user_login_profile (Iam)
+Adding icon for factory_outlet_frontend_developer_login
+Searching for icon for service type: aws_lambda_function (Lambda)
+Adding icon for iam_user_notification
+Searching for icon for service type: aws_s3_bucket (S3)
+Adding icon for lambda_bucket
+Searching for icon for service type: aws_s3_object (S3)
+Adding icon for lambda_code
+Searching for icon for service type: aws_s3_bucket (S3)
+Adding icon for cloudtrail_bucket
+Searching for icon for service type: aws_s3_bucket_policy (S3)
+Adding icon for cloudtrail_bucket_policy
+Searching for icon for service type: aws_sns_topic (Sns)
+Adding icon for user_creation_topic
+Searching for icon for service type: aws_sns_topic_subscription (Sns)
+Adding icon for user_creation_email_subscription
+Diagram generation complete. Check the output file.

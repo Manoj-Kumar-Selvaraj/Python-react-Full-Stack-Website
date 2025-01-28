@@ -38,19 +38,21 @@ def load_tfstate(filename="tfstate.json"):
 def extract_services(json_data):
     """Recursively extract AWS services and resource names from Terraform state."""
     services = []
+    dependency_matrix = {}
 
     def parse_module(module):
-        if "resources" in module:
             for resource in module["resources"]:
                 service_type = resource.get("type", "")
                 resource_name = resource.get("name", "")
                 if service_type.startswith("aws_"):
-                    services.append((service_type, resource_name))
-        if "child_modules" in module:
-            for child in module["child_modules"]:
-                parse_module(child)
+                    services.append({"service_type":service_type, "resource_name":resource_name})
+                    dependency_matrix[resource_name]=[]
+            for dependencies in module["dependencies"]:
+                pattern = r'([^\.]+)$'
+                dependency_name = re.search(pattern, dependencies).group(1)
+                dependency_matrix[resource_name].append(dependency_name)
 
-    root_module = json_data.get("values", {}).get("root_module", {})
+    parent_module = json_data.get("resources", {})
     print(f"Parsing root module...")  # Debugging: print parsing start message
     parse_module(root_module)
     print(f"Extracted {len(services)} services.")  # Debugging: print how many services were extracted
