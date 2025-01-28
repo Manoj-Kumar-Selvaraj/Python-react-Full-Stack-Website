@@ -1,125 +1,106 @@
-import requests
-import json
 import os
-from PIL import Image, ImageDraw
-import cairosvg
+import json
+import importlib
+from diagrams import Diagram
+import pkgutil
+from diagrams.aws import __path__ as aws_package_path
+from terraform_to_aws_mapping import terraform_to_aws_service_map  # Import the mapping file
 
-# Folder to store AWS icons locally
-icons_folder = "aws_icons"
-if not os.path.exists(icons_folder):
-    os.makedirs(icons_folder)
-
-# Function to generate AWS service icon name based on naming conventions
-def get_service_icon_name(resource_name):
-    # Remove the 'aws_' prefix and make the first letter of each word capitalized
-    service_name_parts = resource_name.replace('aws_', '').split('_')
-    service_icon_name = ''.join([part.capitalize() for part in service_name_parts])
-    return service_icon_name
-
-# Function to fetch AWS service icon from https://awsicons.dev and save locally
-def fetch_icon(service_name):
-    # Generate service icon name using the naming convention
-    service_icon_name = get_service_icon_name(service_name)
-
-    # URL to AWS Icons website (using the dynamic service name for the icon)
-    icon_url = f"https://awsicons.dev/icons/{service_icon_name}.svg"
-
-    # Local file path for the SVG and PNG
-    svg_icon_path = os.path.join(icons_folder, f"{service_icon_name}.svg")
-    png_icon_path = os.path.join(icons_folder, f"{service_icon_name}.png")
-
-    if not os.path.exists(svg_icon_path):
+# Step 1: Dynamically import AWS icons
+def load_aws_icons():
+    """Dynamically load AWS icons from diagrams.aws."""
+    aws_icons = {}
+    aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
+    print(f"Found AWS modules: {aws_modules}")  # Debugging: print the AWS modules found
+    for module_name in aws_modules:
         try:
-            # Fetch icon from the AWS Icons website
-            response = requests.get(icon_url)
-            if response.status_code == 200:
-                # Save the SVG locally
-                with open(svg_icon_path, 'wb') as file:
-                    file.write(response.content)
-                print(f"Downloaded {service_icon_name} icon (SVG).")
-            else:
-                print(f"Failed to download icon for {service_icon_name}. HTTP status {response.status_code}")
-        except Exception as e:
-            print(f"Error fetching icon for {service_icon_name}: {e}")
+            print(f"Attempting to import diagrams.aws.{module_name}...")  # Debugging: module import
+            module = importlib.import_module(f"diagrams.aws.{module_name}")
+            icons = {icon.lower(): getattr(module, icon) for icon in dir(module) if not icon.startswith("_")}
+            aws_icons[module_name.lower()] = icons
+            print(f"Successfully imported {module_name} with {len(icons)} icons.")  # Debugging: print imported icons count
+        except ImportError as e:
+            print(f"Failed to import diagrams.aws.{module_name}: {e}")  # Debugging: import failure message
+            continue
+    return aws_icons
 
-    # Convert SVG to PNG if not already converted
-    if not os.path.exists(png_icon_path):
-        try:
-            # Attempt to convert the SVG to PNG
-            cairosvg.svg2png(url=svg_icon_path, write_to=png_icon_path)
-            print(f"Converted {service_icon_name} icon to PNG.")
-        except Exception as e:
-            print(f"Error converting {service_icon_name} icon to PNG: {e}")
+aws_icons = load_aws_icons()
 
-    return png_icon_path
-
-# Load tfstate.json file
+# Step 2: Load and parse Terraform state file
 def load_tfstate(filename="tfstate.json"):
-    with open(filename, 'r') as file:
+    """Load the Terraform state file."""
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Terraform state file '{filename}' not found.")
+    with open(filename, "r") as file:
+        print(f"Loading Terraform state file: {filename}")  # Debugging: print the loading message
         return json.load(file)
 
-# Recursive function to extract services and resource names from nested modules
 def extract_services(json_data):
+    """Recursively extract AWS services and resource names from Terraform state."""
     services = []
 
-    def extract_from_module(module):
-        if 'resources' in module:
-            for resource in module['resources']:
-                service_name = resource.get('type', '')
-                resource_name = resource.get('name', '')
-                if service_name.startswith('aws_'):  # Only consider AWS resources
-                    services.append((service_name, resource_name))
+    def parse_module(module):
+        if "resources" in module:
+            for resource in module["resources"]:
+                service_type = resource.get("type", "")
+                resource_name = resource.get("name", "")
+                if service_type.startswith("aws_"):
+                    services.append((service_type, resource_name))
+        if "child_modules" in module:
+            for child in module["child_modules"]:
+                parse_module(child)
 
-        # Check if the module has child modules and recursively extract from them
-        if 'child_modules' in module:
-            for child_module in module['child_modules']:
-                extract_from_module(child_module)
-
-    # Extract services from the root module
-    root_module = json_data.get('values', {}).get('root_module', {})
-    extract_from_module(root_module)
-
+    root_module = json_data.get("values", {}).get("root_module", {})
+    print(f"Parsing root module...")  # Debugging: print parsing start message
+    parse_module(root_module)
+    print(f"Extracted {len(services)} services.")  # Debugging: print how many services were extracted
     return services
 
-# Create the image with AWS service icons, service names, and resource names
-def create_image(services):
-    img_width, img_height = 800, 1000
-    img = Image.new('RGB', (img_width, img_height), color='white')
-    draw = ImageDraw.Draw(img)
+# Step 3: Map resources to AWS icons
+def get_icon(service_type):
+    """Fetch the corresponding AWS icon based on the service type."""
+    # Use the terraform_to_aws mapping to find the AWS service name
+    aws_service_name = terraform_to_aws_service_map.get(service_type, None)
     
-    y_offset = 20
-    icon_size = 50  # Size of the icons
+    if not aws_service_name:
+        print(f"No AWS service mapping found for {service_type}")  # Debugging: No mapping found
+        return None
     
-    for service, resource in services:
-        # Fetch or download the icon based on the service name
-        icon_path = fetch_icon(service)
-
-        if os.path.exists(icon_path):
-            try:
-                icon = Image.open(icon_path).resize((icon_size, icon_size))
-                img.paste(icon, (20, y_offset))  # Paste the icon on the image at the given position
-            except Exception as e:
-                print(f"Error loading icon for {service}: {e}")
-        else:
-            draw.text((20, y_offset), "Icon not found", fill='black')
-
-        # Draw the service name and resource name
-        draw.text((80, y_offset), service, fill='black')  # Draw service name
-        y_offset += icon_size + 10
-        draw.text((80, y_offset), resource, fill='gray')  # Draw resource name
-        
-        # Increase the y_offset to space out resources
-        y_offset += 40
+    # Try to format the AWS service name to match icon names
+    service_parts = aws_service_name.replace(" ", "").split("_")
+    service_name = "".join([part.capitalize() for part in service_parts])
+    print(f"Searching for icon for service type: {service_type} ({service_name})")  # Debugging: print service being searched
+    for module, icons in aws_icons.items():
+        if service_name.lower() in icons:
+            return icons[service_name.lower()]
     
-    # Save or show the image
-    img.save("aws_services_image.png")
-    img.show()
+    print(f"Icon not found for {service_type}")  # Debugging: print icon not found message
+    return None  # Return None if no matching icon is found
 
-# Load the tfstate data
-tfstate_data = load_tfstate()
+# Step 4: Generate diagram
+def create_diagram(services, output_file="output_diagram"):
+    """Generate an AWS architecture diagram using the extracted services."""
+    print(f"Generating diagram...")  # Debugging: print diagram generation start
+    with Diagram("AWS Architecture Diagram", show=False, filename=output_file):
+        for service_type, resource_name in services:
+            icon = get_icon(service_type)
+            if icon:
+                print(f"Adding icon for {resource_name}")  # Debugging: print adding icon
+                icon(resource_name)
+            else:
+                print(f"Icon not found for {service_type} ({resource_name})")  # Debugging: print missing icon
 
-# Extract the services and resources
-services = extract_services(tfstate_data)
+# Main execution
+if __name__ == "__main__":
+    try:
+        # Load Terraform state file
+        tfstate_data = load_tfstate("tfstate.json")
 
-# Create and display the image
-create_image(services)
+        # Extract AWS services from the state file
+        services = extract_services(tfstate_data)
+
+        # Generate the diagram with the extracted services
+        create_diagram(services)
+        print("Diagram generation complete. Check the output file.")
+    except Exception as e:
+        print(f"Error: {e}")
