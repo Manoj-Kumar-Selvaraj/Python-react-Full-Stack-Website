@@ -22,7 +22,7 @@ module "IAM" {
 # CALLING SNS MODULE
 
 module "SNS" {
-  depends_on  = [module.IAM]
+  # depends_on  = [module.IAM]
   source = "./modules/SNS"
   sns_iam_resources_user_factory_outlet_frontend_developer = module.IAM.main_sns_snsuser_user_factory_outlet_frontend_developer
   providers = {
@@ -35,7 +35,7 @@ module "SNS" {
 
 module "S3" {
   source = "./modules/S3"
-  depends_on = [module.IAM]
+  # depends_on = [module.IAM]
   providers = {
     aws = aws.Root
   }
@@ -43,11 +43,11 @@ module "S3" {
 
 module "LAMBDA" {
   source = "./modules/LAMBDA"
-  depends_on = [module.IAM,module.SNS,module.S3]
+  # depends_on = [module.IAM,module.SNS,module.S3]
   lambda_iam_permissions_lambda_execution_role = module.IAM.main_lambda_snsfun_lambda_execution_role
   lambda_iam_permissions_lambda_execution_role_arn = module.IAM.main_lambda_snsfun_lambda_execution_role_arn
-  # lambda_s3_s3lam_bucket_lambda_bucket_name = module.S3.main_lambda_snsfun_s3_lambda_bucket_name
-  lambda_s3_s3lam_bucket_lambda_bucket_name = "factoryoutlet-lambda-code-storage"
+  lambda_s3_s3lam_bucket_lambda_bucket_name = module.S3.main_lambda_snsfun_s3_lambda_bucket_name
+  # lambda_s3_s3lam_bucket_lambda_bucket_name = "factoryoutlet-lambda-code-storage"
   lambda_sns_snsuser_sns_topic_user_creation_topic_arn = module.SNS.main_lambda_permissions_user_creation_topic_arn
   providers = {
     aws = aws.Root
@@ -58,7 +58,7 @@ module "LAMBDA" {
 
 module "CLOUDWATCH" {
     source = "./modules/CLOUDWATCH"
-    depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA]
+    # depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA]
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn = module.LAMBDA.main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name = module.LAMBDA.main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name
     eventbridge = false
@@ -69,14 +69,14 @@ module "CLOUDWATCH" {
 
 module "CLOUDTRAILUSERNOTIFICATION" {
     source = "./modules/CLOUDTRIAL"
-    depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA,module.CLOUDWATCH]
-    cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn = "arn:aws:logs:us-east-1:039612868338:log-group:cloudtraillogsusernotification_log_group"
+    # depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA,module.CLOUDWATCH]
+    cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn = module.CLOUDWATCH.main_cloudwatch_cloudtrailusernotification_cloudtrail_cloudtrailusernotification_log_group_arn
     cloudtrial_cloudtrialusernotification_iam_permissions_cloud_watch_logs_role_arn = module.IAM.main_iam_permissions_cloudtrail_cloudtrailusercreationnotification_cloudwatch_logs_role_arn
     cloudtrial_cloudtrialusernotification_s3_s3trail_s3_bucket_name = module.S3.main_cloudtrail_cloudtrailusernotification_cloudtrail_bucket_name
 }
 
 module "CLOUDWATCH_EVENTBRIDGE" {
-    depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA,module.CLOUDWATCH,module.CLOUDTRAILUSERNOTIFICATION]
+    # depends_on = [module.IAM,module.SNS,module.S3,module.LAMBDA,module.CLOUDWATCH,module.CLOUDTRAILUSERNOTIFICATION]
     source = "./modules/CLOUDWATCH"
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_arn = module.LAMBDA.main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_arn
     cloudwatch_eventbridgeusernotification_lambda_snsfun_lambdafn_name = module.LAMBDA.main_lambda_snsfun_cloudwatch_eventbridgeusernotification_lambda_fn_iam_user_notification_name

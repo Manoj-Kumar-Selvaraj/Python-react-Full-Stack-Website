@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.10.5",
-  "serial": 33,
+  "serial": 36,
   "lineage": "7b841dff-e288-c226-a42c-c3e5fd50722b",
   "outputs": {},
   "resources": [
@@ -51,24 +51,12 @@
           "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
           "dependencies": [
             "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
             "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
             "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
             "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
             "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
             "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
-            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
-            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket"
           ]
         }
       ]
@@ -95,24 +83,7 @@
             "tags_all": {}
           },
           "sensitive_attributes": [],
-          "private": "bnVsbA==",
-          "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
-            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
-            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
-          ]
+          "private": "bnVsbA=="
         }
       ]
     },
@@ -142,29 +113,7 @@
             "tags_all": {}
           },
           "sensitive_attributes": [],
-          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
-          "dependencies": [
-            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
-            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
-            "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
-            "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
-          ]
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
         }
       ]
     },
@@ -203,27 +152,15 @@
           "sensitive_attributes": [],
           "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
           "dependencies": [
-            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
-            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
             "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
             "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
             "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
             "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
             "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
             "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
             "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"
           ]
         }
       ]
@@ -254,27 +191,15 @@
           "sensitive_attributes": [],
           "private": "bnVsbA==",
           "dependencies": [
-            "module.CLOUDTRAILUSERNOTIFICATION.module.CLOUDTRAILUSERNOTIFICATION.aws_cloudtrail.Master_Trail",
-            "module.CLOUDWATCH.module.CLOUDTRAILLOGSUSERNOTIFICATION.aws_cloudwatch_log_group.Cloudtrail_log_group",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_target.lambda_target",
-            "module.CLOUDWATCH.module.EVENTBRIDGEUSERNOTIFICATION.aws_lambda_permission.allow_eventbridge",
             "module.CLOUDWATCH_EVENTBRIDGE.module.EVENTBRIDGEUSERNOTIFICATION.aws_cloudwatch_event_rule.usercreationnotificationrule",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
             "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
             "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
             "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
             "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
             "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.LAMBDA.module.SNSFUN.aws_lambda_function.iam_user_notification",
             "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"
           ]
         }
       ]
@@ -655,20 +580,13 @@
           "sensitive_attributes": [],
           "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
           "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
             "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
             "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
             "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
             "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
             "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket",
-            "module.S3.module.S3LAM.aws_s3_object.lambda_code",
-            "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket",
-            "module.S3.module.S3TRAIL.aws_s3_bucket_policy.cloudtrail_bucket_policy",
-            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic",
-            "module.SNS.module.SNSUSER.aws_sns_topic_subscription.user_creation_email_subscription"
+            "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"
           ]
         }
       ]
@@ -747,17 +665,7 @@
             "website_endpoint": null
           },
           "sensitive_attributes": [],
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
-          "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
-          ]
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
         }
       ]
     },
@@ -809,14 +717,6 @@
           "sensitive_attributes": [],
           "private": "bnVsbA==",
           "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.S3.module.S3LAM.aws_s3_bucket.lambda_bucket"
           ]
         }
@@ -896,17 +796,7 @@
             "website_endpoint": null
           },
           "sensitive_attributes": [],
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
-          "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
-          ]
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
         }
       ]
     },
@@ -927,14 +817,6 @@
           "sensitive_attributes": [],
           "private": "bnVsbA==",
           "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.S3.module.S3TRAIL.aws_s3_bucket.cloudtrail_bucket"
           ]
         }
@@ -990,17 +872,7 @@
             "tracing_config": ""
           },
           "sensitive_attributes": [],
-          "private": "bnVsbA==",
-          "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login"
-          ]
+          "private": "bnVsbA=="
         }
       ]
     },
@@ -1035,14 +907,6 @@
           "sensitive_attributes": [],
           "private": "bnVsbA==",
           "dependencies": [
-            "module.IAM.module.PERMISSIONS.aws_iam_role.cloudwatch_logs_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role.lambda_execution_role",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.cloudwatch_logs_policy",
-            "module.IAM.module.PERMISSIONS.aws_iam_role_policy.lambda_sns_permissions",
-            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
-            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_frontend_developer",
-            "module.IAM.module.RESOURCES.aws_iam_user_group_membership.factory_outlet_frontend_developer1_to_group",
-            "module.IAM.module.RESOURCES.aws_iam_user_login_profile.factory_outlet_frontend_developer_login",
             "module.SNS.module.SNSUSER.aws_sns_topic.user_creation_topic"
           ]
         }
