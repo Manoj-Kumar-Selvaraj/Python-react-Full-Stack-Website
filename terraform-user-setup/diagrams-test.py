@@ -4,10 +4,13 @@ import importlib
 from diagrams import Diagram, Cluster, Edge
 import pkgutil
 from diagrams.aws import __path__ as aws_package_path
-from terraform_to_aws_mapping import terraform_to_aws_service_map  # Import the mapping file
+from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
 
-# Step 1: Load AWS icons dynamically
+# Adjustable icon size
+ICON_SIZE = "10"  # Modify this value to adjust icon size manually
+
+# Load AWS icons dynamically
 def load_aws_icons():
     aws_icons = {}
     aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
@@ -22,14 +25,14 @@ def load_aws_icons():
 
 aws_icons = load_aws_icons()
 
-# Step 2: Load Terraform state
+# Load Terraform state
 def load_tfstate(filename="tfstate.json"):
     if not os.path.exists(filename):
         raise FileNotFoundError(f"Terraform state file '{filename}' not found.")
     with open(filename, "r") as file:
         return json.load(file)
 
-# Step 3: Extract services and dependencies
+# Extract services and dependencies
 def extract_services(json_data):
     services = []
     dependency_matrix = defaultdict(set)
@@ -45,28 +48,28 @@ def extract_services(json_data):
             )
     return services, dependency_matrix
 
-# Step 4: AWS category mapping for clusters
+# AWS category mapping for clusters
 aws_categories = {
-    "compute": ["ec2", "lambda", "batch", "ecs", "eks", "fargate"],
-    "storage": ["s3", "ebs", "efs", "fsx", "glacier"],
-    "database": ["rds", "dynamodb", "aurora", "redshift", "neptune"],
-    "networking": ["vpc", "elb", "route53", "cloudfront", "directconnect"],
-    "security": ["iam", "kms", "waf", "guardduty", "shield", "cognito"],
-    "monitoring": ["cloudwatch", "xray", "logs", "eventbridge", "sns", "sqs"],
-    "analytics": ["athena", "glue", "kinesis", "quicksight", "emr"],
-    "machinelearning": ["sagemaker", "rekognition", "comprehend", "forecast"],
-    "developer": ["codebuild", "codecommit", "codedeploy", "codepipeline"],
-    "iot": ["iot", "greengrass", "freertos", "sitewise"],
-    "other": ["cloudtrail", "organizations", "servicecatalog"]
+    "Compute": ["ec2", "lambda", "batch", "ecs", "eks", "fargate"],
+    "Storage": ["s3", "ebs", "efs", "fsx", "glacier"],
+    "Database": ["rds", "dynamodb", "aurora", "redshift", "neptune"],
+    "Networking": ["vpc", "elb", "route53", "cloudfront", "directconnect"],
+    "Security": ["iam", "kms", "waf", "guardduty", "shield", "cognito"],
+    "Monitoring": ["cloudwatch", "xray", "logs", "eventbridge", "sns", "sqs"],
+    "Analytics": ["athena", "glue", "kinesis", "quicksight", "emr"],
+    "Machine Learning": ["sagemaker", "rekognition", "comprehend", "forecast"],
+    "Developer": ["codebuild", "codecommit", "codedeploy", "codepipeline"],
+    "IoT": ["iot", "greengrass", "freertos", "sitewise"],
+    "Other": ["cloudtrail", "organizations", "servicecatalog"]
 }
 
 def get_category(service_type):
     for category, services in aws_categories.items():
         if any(service in service_type for service in services):
             return category
-    return "other"
+    return "Other"
 
-# Step 5: Get AWS icon
+# Get AWS icon
 def get_icon(service_type):
     aws_service_name = terraform_to_aws_service_map.get(service_type, None)
     if not aws_service_name:
@@ -77,7 +80,7 @@ def get_icon(service_type):
             return icons[service_name.lower()]
     return None
 
-# Step 6: Generate dynamic clusters
+# Generate diagram with better spacing and alignment
 def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     nodes = {}
     categories = defaultdict(list)
@@ -86,20 +89,37 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         category = get_category(service_type)
         categories[category].append((service_type, resource_name))
     
-    with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="png", graph_attr={"size": "20,10"}):
+    graph_attrs = {
+        "size": "50,25",  # Greatly increase diagram size
+        "dpi": "500",
+        "rankdir": "TB",  # Top to Bottom layout
+        "nodesep": "3",  # Increase spacing between nodes
+        "ranksep": "4"  # Increase spacing between ranks
+    }
+    
+    edge_attrs = {
+        "penwidth": "3",
+        "color": "blue",
+        "fontcolor": "black"
+    }
+    
+    with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="png", graph_attr=graph_attrs, edge_attr=edge_attrs):
         cluster_nodes = {}
-        
+
         for category, items in categories.items():
-            with Cluster(category.capitalize()):
+            with Cluster(category):
                 for service_type, resource_name in items:
                     icon = get_icon(service_type)
                     if icon:
-                        cluster_nodes[resource_name] = icon(f"{resource_name}\n({service_type})")
+                        cluster_nodes[resource_name] = icon(f"\n[{resource_name}]\n({service_type})", fontsize=ICON_SIZE, shape="box")
         
+        # Adjust arrows with labels
         for (source_type, source_name), dependencies in dependency_matrix.items():
             for target_name in dependencies:
                 if source_name in cluster_nodes and target_name in cluster_nodes:
-                    cluster_nodes[source_name] >> Edge(color="blue", style="dashed", xlabel="Dependency") >> cluster_nodes[target_name]
+                    cluster_nodes[source_name] >> Edge(
+                        xlabel="Uses", color="black", fontcolor="black", style="bold", penwidth="5", tooltip="Dependency"  # Added tooltip for hover effect
+                    ) >> cluster_nodes[target_name]
 
 # Main execution
 if __name__ == "__main__":
