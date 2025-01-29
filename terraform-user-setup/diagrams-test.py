@@ -1,16 +1,14 @@
 import os
 import json
 import importlib
-from diagrams import Diagram, Edge
+from diagrams import Diagram, Cluster, Edge
 import pkgutil
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  # Import the mapping file
-import re
 from collections import defaultdict
 
-# Step 1: Dynamically import AWS icons
+# Step 1: Load AWS icons dynamically
 def load_aws_icons():
-    """Dynamically load AWS icons from diagrams.aws."""
     aws_icons = {}
     aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
     for module_name in aws_modules:
@@ -24,9 +22,8 @@ def load_aws_icons():
 
 aws_icons = load_aws_icons()
 
-# Step 2: Load and parse Terraform state file
+# Step 2: Load Terraform state
 def load_tfstate(filename="tfstate.json"):
-    """Load the Terraform state file."""
     if not os.path.exists(filename):
         raise FileNotFoundError(f"Terraform state file '{filename}' not found.")
     with open(filename, "r") as file:
@@ -34,7 +31,6 @@ def load_tfstate(filename="tfstate.json"):
 
 # Step 3: Extract services and dependencies
 def extract_services(json_data):
-    """Extract AWS services and only immediate dependencies from Terraform state."""
     services = []
     dependency_matrix = defaultdict(set)
 
@@ -44,23 +40,34 @@ def extract_services(json_data):
         if service_type.startswith("aws_"):
             services.append((service_type, resource_name))
             dependencies = resource.get("instances", [{}])[0].get("dependencies", [])
-            direct_dependencies = {dep.split(".")[-1] for dep in dependencies if dep.split(".")[-1] != resource_name}
-            dependency_matrix[(service_type, resource_name)] = direct_dependencies
-    
-    # Filter out indirect dependencies
-    filtered_dependency_matrix = defaultdict(set)
-    for (service_type, resource_name), dependencies in dependency_matrix.items():
-        direct_deps = set()
-        for dependency_name in dependencies:
-            if any(dep_name == dependency_name for _, dep_name in services):
-                direct_deps.add(dependency_name)
-        filtered_dependency_matrix[(service_type, resource_name)] = direct_deps
-    
-    return services, filtered_dependency_matrix
+            dependency_matrix[(service_type, resource_name)].update(
+                {dep.split(".")[-1] for dep in dependencies if dep.split(".")[-1] != resource_name}
+            )
+    return services, dependency_matrix
 
-# Step 4: Map resources to AWS icons
+# Step 4: AWS category mapping for clusters
+aws_categories = {
+    "compute": ["ec2", "lambda", "batch", "ecs", "eks", "fargate"],
+    "storage": ["s3", "ebs", "efs", "fsx", "glacier"],
+    "database": ["rds", "dynamodb", "aurora", "redshift", "neptune"],
+    "networking": ["vpc", "elb", "route53", "cloudfront", "directconnect"],
+    "security": ["iam", "kms", "waf", "guardduty", "shield", "cognito"],
+    "monitoring": ["cloudwatch", "xray", "logs", "eventbridge", "sns", "sqs"],
+    "analytics": ["athena", "glue", "kinesis", "quicksight", "emr"],
+    "machinelearning": ["sagemaker", "rekognition", "comprehend", "forecast"],
+    "developer": ["codebuild", "codecommit", "codedeploy", "codepipeline"],
+    "iot": ["iot", "greengrass", "freertos", "sitewise"],
+    "other": ["cloudtrail", "organizations", "servicecatalog"]
+}
+
+def get_category(service_type):
+    for category, services in aws_categories.items():
+        if any(service in service_type for service in services):
+            return category
+    return "other"
+
+# Step 5: Get AWS icon
 def get_icon(service_type):
-    """Fetch the corresponding AWS icon based on the service type."""
     aws_service_name = terraform_to_aws_service_map.get(service_type, None)
     if not aws_service_name:
         return None
@@ -70,20 +77,29 @@ def get_icon(service_type):
             return icons[service_name.lower()]
     return None
 
-# Step 5: Generate diagram
+# Step 6: Generate dynamic clusters
 def create_diagram(services, dependency_matrix, output_file="output_diagram"):
-    """Generate an AWS architecture diagram using the extracted services."""
     nodes = {}
-    with Diagram("AWS Architecture Diagram", show=False, filename=output_file):
-        for service_type, resource_name in services:
-            icon = get_icon(service_type)
-            if icon:
-                nodes[resource_name] = icon(resource_name, width="2.0", height="2.0")  # Increased icon size
+    categories = defaultdict(list)
+    
+    for service_type, resource_name in services:
+        category = get_category(service_type)
+        categories[category].append((service_type, resource_name))
+    
+    with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="png", graph_attr={"size": "20,10"}):
+        cluster_nodes = {}
+        
+        for category, items in categories.items():
+            with Cluster(category.capitalize()):
+                for service_type, resource_name in items:
+                    icon = get_icon(service_type)
+                    if icon:
+                        cluster_nodes[resource_name] = icon(f"{resource_name}\n({service_type})")
         
         for (source_type, source_name), dependencies in dependency_matrix.items():
             for target_name in dependencies:
-                if source_name in nodes and target_name in nodes:
-                    nodes[target_name] >> Edge(color="blue") >> nodes[source_name]  # Reversed arrow direction
+                if source_name in cluster_nodes and target_name in cluster_nodes:
+                    cluster_nodes[source_name] >> Edge(color="blue", style="dashed", xlabel="Dependency") >> cluster_nodes[target_name]
 
 # Main execution
 if __name__ == "__main__":
