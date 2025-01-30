@@ -130,16 +130,16 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
 
             # Debug print for dependency matrix
-            print("Dependency Matrix:")
-            print(dependency_matrix)
+            # print("Dependency Matrix:")
+            # print(dependency_matrix)
 
             # Reverse arrows and improve dependencies
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
-                    print(f"Processing {source_name} with dependencies: {dependencies}")  # Debug print for each source node
+                    # print(f"Processing {source_name} with dependencies: {dependencies}")  # Debug print for each source node
                     # Use the one-to-many relationship for connecting source to multiple targets
                     targets = [cluster_nodes[target_name] for target_name in dependencies if target_name in cluster_nodes]
-                    print(f"Targets for {source_name}: {targets}")  # Debug print for target nodes
+                    # print(f"Targets for {source_name}: {targets}")  # Debug print for target nodes
                     if targets:
                         cluster_nodes[source_name] << Edge(
                             xlabel="Uses", color="black", fontcolor="black", style="bold", penwidth="5", tooltip="Dependency"
@@ -156,8 +156,8 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
-        print("Diagram generation complete. Check the output file.")
+        # print("Diagram generation complete. Check the output file.")
     except Exception as e:
-        print(f"Error: {e}")
+        # print(f"Error: {e}")
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())
