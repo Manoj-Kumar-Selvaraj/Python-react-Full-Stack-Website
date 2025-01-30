@@ -1,0 +1,32 @@
+2025-01-30 13:40:36,357 - ERROR - Error generating diagram: name 'Custom' is not defined
+2025-01-30 13:40:36,358 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 129, in create_diagram
+    text_label = Custom(f"{resource_name} ({service_type})", "./transparent.png")  # Text label below icon
+                 ^^^^^^
+NameError: name 'Custom' is not defined
+
+2025-01-30 13:40:36,359 - ERROR - Unhandled exception: name 'Custom' is not defined
+2025-01-30 13:40:36,360 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 160, in <module>
+    create_diagram(services, dependency_matrix)
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 129, in create_diagram
+    text_label = Custom(f"{resource_name} ({service_type})", "./transparent.png")  # Text label below icon
+                 ^^^^^^
+NameError: name 'Custom' is not defined
+
+2025-01-30 13:45:42,748 - ERROR - Error generating diagram: name 'Custom' is not defined
+2025-01-30 13:45:42,750 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 129, in create_diagram
+    text_label = Custom(f"{resource_name} ({service_type})", "./transparent.png")  # Text label below icon
+                 ^^^^^^
+NameError: name 'Custom' is not defined
+
+2025-01-30 13:45:42,750 - ERROR - Unhandled exception: name 'Custom' is not defined
+2025-01-30 13:45:42,751 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 161, in <module>
+    create_diagram(services, dependency_matrix)
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagrams-As-Code.py", line 129, in create_diagram
+    text_label = Custom(f"{resource_name} ({service_type})", "./transparent.png")  # Text label below icon
+                 ^^^^^^
+NameError: name 'Custom' is not defined
+
