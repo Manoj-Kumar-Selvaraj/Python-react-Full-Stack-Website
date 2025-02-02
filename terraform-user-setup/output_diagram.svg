@@ -30,31 +30,27 @@
 <path fill="#e5f5fd" stroke="#aeb6be" d="M5062,-33C5062,-33 5990,-33 5990,-33 5996,-33 6002,-39 6002,-45 6002,-45 6002,-922 6002,-922 6002,-928 5996,-934 5990,-934 5990,-934 5062,-934 5062,-934 5056,-934 5050,-928 5050,-922 5050,-922 5050,-45 5050,-45 5050,-39 5056,-33 5062,-33"/>
 <text text-anchor="middle" x="5082" y="-920.4" font-family="Sans-Serif" font-size="12.00" fill="#2d3436">Storage</text>
 </g>
-<!-- 5fd3af7ccde94ab298ef7660f64b5e3e -->
+<!-- 89c520507a7c48c6b4f983cf003f67bb -->
 <g id="node1" class="node">
-<title>5fd3af7ccde94ab298ef7660f64b5e3e</title>
+<title>89c520507a7c48c6b4f983cf003f67bb</title>
 <g id="a_node1"><a xlink:title="Click to view more details for user_creation_email_subscription">
 <path fill="none" stroke="black" d="M364,-905C364,-905 28,-905 28,-905 22,-905 16,-899 16,-893 16,-893 16,-629 16,-629 16,-623 22,-617 28,-617 28,-617 364,-617 364,-617 370,-617 376,-623 376,-629 376,-629 376,-893 376,-893 376,-899 370,-905 364,-905"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-905"/>
-<text text-anchor="middle" x="196" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[user_creation_email_subscription]</text>
-<text text-anchor="middle" x="196" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_sns_topic_subscription)</text>
 </a>
 </g>
 </g>
-<!-- 0383d2be75f949e8b2e4144cc8658dce -->
-<g id="node3" class="node">
-<title>0383d2be75f949e8b2e4144cc8658dce</title>
-<g id="a_node3"><a xlink:title="Click to view more details for user_creation_topic">
+<!-- e20e9b2d91d34aa7a76984aa1513d57d -->
+<g id="node2" class="node">
+<title>e20e9b2d91d34aa7a76984aa1513d57d</title>
+<g id="a_node2"><a xlink:title="Click to view more details for user_creation_topic">
 <path fill="none" stroke="black" d="M940,-329C940,-329 604,-329 604,-329 598,-329 592,-323 592,-317 592,-317 592,-53 592,-53 592,-47 598,-41 604,-41 604,-41 940,-41 940,-41 946,-41 952,-47 952,-53 952,-53 952,-317 952,-317 952,-323 946,-329 940,-329"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-329"/>
-<text text-anchor="middle" x="772" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[user_creation_topic]</text>
-<text text-anchor="middle" x="772" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_sns_topic)</text>
 </a>
 </g>
 </g>
-<!-- 5fd3af7ccde94ab298ef7660f64b5e3e&#45;&gt;0383d2be75f949e8b2e4144cc8658dce -->
+<!-- 89c520507a7c48c6b4f983cf003f67bb&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d -->
 <g id="edge24" class="edge">
-<title>5fd3af7ccde94ab298ef7660f64b5e3e&#45;&gt;0383d2be75f949e8b2e4144cc8658dce</title>
+<title>89c520507a7c48c6b4f983cf003f67bb&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d</title>
 <g id="a_edge24"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M386.02,-809C386.02,-809 430,-809 430,-809 430,-809 430,-185 430,-185 430,-185 509.59,-185 591.99,-185"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="386.02,-804.63 376.02,-809 386.02,-813.38 386.02,-804.63"/>
@@ -62,157 +58,55 @@
 </g>
 <text text-anchor="middle" x="414" y="-441.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- f3fb07522d874cb389183799e6b39bd0 -->
-<g id="node2" class="node">
-<title>f3fb07522d874cb389183799e6b39bd0</title>
-<g id="a_node2"><a xlink:title="Click to view more details for lambda_target">
-<path fill="none" stroke="black" d="M940,-905C940,-905 604,-905 604,-905 598,-905 592,-899 592,-893 592,-893 592,-629 592,-629 592,-623 598,-617 604,-617 604,-617 940,-617 940,-617 946,-617 952,-623 952,-629 952,-629 952,-893 952,-893 952,-899 946,-905 940,-905"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-905"/>
-<text text-anchor="middle" x="772" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_target]</text>
-<text text-anchor="middle" x="772" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_event_target)</text>
-</a>
-</g>
-</g>
-<!-- f3fb07522d874cb389183799e6b39bd0&#45;&gt;0383d2be75f949e8b2e4144cc8658dce -->
-<g id="edge5" class="edge">
-<title>f3fb07522d874cb389183799e6b39bd0&#45;&gt;0383d2be75f949e8b2e4144cc8658dce</title>
-<g id="a_edge5"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M652,-606.77C652,-606.77 652,-329.1 652,-329.1"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="647.63,-606.77 652,-616.77 656.38,-606.77 647.63,-606.77"/>
-</a>
-</g>
-<text text-anchor="middle" x="636" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- bc20c1e4297e48728549110f00c0bc6f -->
-<g id="node5" class="node">
-<title>bc20c1e4297e48728549110f00c0bc6f</title>
-<g id="a_node5"><a xlink:title="Click to view more details for usercreationnotificationrule">
+<!-- 732043d2b71d420ead3520ae20a2e0c8 -->
+<g id="node3" class="node">
+<title>732043d2b71d420ead3520ae20a2e0c8</title>
+<g id="a_node3"><a xlink:title="Click to view more details for usercreationnotificationrule">
 <path fill="none" stroke="black" d="M364,-329C364,-329 28,-329 28,-329 22,-329 16,-323 16,-317 16,-317 16,-53 16,-53 16,-47 22,-41 28,-41 28,-41 364,-41 364,-41 370,-41 376,-47 376,-53 376,-53 376,-317 376,-317 376,-323 370,-329 364,-329"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-329"/>
-<text text-anchor="middle" x="196" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[usercreationnotificationrule]</text>
-<text text-anchor="middle" x="196" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_event_rule)</text>
 </a>
 </g>
 </g>
-<!-- f3fb07522d874cb389183799e6b39bd0&#45;&gt;bc20c1e4297e48728549110f00c0bc6f -->
-<g id="edge6" class="edge">
-<title>f3fb07522d874cb389183799e6b39bd0&#45;&gt;bc20c1e4297e48728549110f00c0bc6f</title>
-<g id="a_edge6"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M581.98,-713C581.98,-713 538,-713 538,-713 538,-713 538,-113 538,-113 538,-113 458.41,-113 376.01,-113"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="581.98,-717.38 591.98,-713 581.98,-708.63 581.98,-717.38"/>
-</a>
-</g>
-<text text-anchor="middle" x="522" y="-357.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 8837b7a0fb13442abd674fabf08d77cb -->
-<g id="node7" class="node">
-<title>8837b7a0fb13442abd674fabf08d77cb</title>
-<g id="a_node7"><a xlink:title="Click to view more details for iam_user_notification">
-<path fill="none" stroke="black" d="M4830,-905C4830,-905 4494,-905 4494,-905 4488,-905 4482,-899 4482,-893 4482,-893 4482,-629 4482,-629 4482,-623 4488,-617 4494,-617 4494,-617 4830,-617 4830,-617 4836,-617 4842,-623 4842,-629 4842,-629 4842,-893 4842,-893 4842,-899 4836,-905 4830,-905"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-905"/>
-<text text-anchor="middle" x="4662" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[iam_user_notification]</text>
-<text text-anchor="middle" x="4662" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_lambda_function)</text>
-</a>
-</g>
-</g>
-<!-- f3fb07522d874cb389183799e6b39bd0&#45;&gt;8837b7a0fb13442abd674fabf08d77cb -->
-<g id="edge7" class="edge">
-<title>f3fb07522d874cb389183799e6b39bd0&#45;&gt;8837b7a0fb13442abd674fabf08d77cb</title>
-<g id="a_edge7"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M892,-606.74C892,-606.74 892,-575 892,-575 892,-575 4626,-575 4626,-575 4626,-575 4626,-592.49 4626,-616.74"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="887.63,-606.74 892,-616.74 896.38,-606.74 887.63,-606.74"/>
-</a>
-</g>
-<text text-anchor="middle" x="2748" y="-578.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 44884abf218d49babfcc52b0b1eeddc8 -->
-<g id="node16" class="node">
-<title>44884abf218d49babfcc52b0b1eeddc8</title>
-<g id="a_node16"><a xlink:title="Click to view more details for lambda_execution_role">
-<path fill="none" stroke="black" d="M3820,-329C3820,-329 3484,-329 3484,-329 3478,-329 3472,-323 3472,-317 3472,-317 3472,-53 3472,-53 3472,-47 3478,-41 3484,-41 3484,-41 3820,-41 3820,-41 3826,-41 3832,-47 3832,-53 3832,-53 3832,-317 3832,-317 3832,-323 3826,-329 3820,-329"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-329"/>
-<text text-anchor="middle" x="3652" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_execution_role]</text>
-<text text-anchor="middle" x="3652" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role)</text>
-</a>
-</g>
-</g>
-<!-- f3fb07522d874cb389183799e6b39bd0&#45;&gt;44884abf218d49babfcc52b0b1eeddc8 -->
-<g id="edge8" class="edge">
-<title>f3fb07522d874cb389183799e6b39bd0&#45;&gt;44884abf218d49babfcc52b0b1eeddc8</title>
-<g id="a_edge8"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M772,-606.79C772,-606.79 772,-370 772,-370 772,-370 3592,-370 3592,-370 3592,-370 3592,-353.05 3592,-329.4"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="767.63,-606.79 772,-616.79 776.38,-606.79 767.63,-606.79"/>
-</a>
-</g>
-<text text-anchor="middle" x="2067.9" y="-373.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- f520b6c6e9c54752a1824721c85a1b4b -->
-<g id="node17" class="node">
-<title>f520b6c6e9c54752a1824721c85a1b4b</title>
-<g id="a_node17"><a xlink:title="Click to view more details for lambda_bucket">
-<path fill="none" stroke="black" d="M5982,-329C5982,-329 5646,-329 5646,-329 5640,-329 5634,-323 5634,-317 5634,-317 5634,-53 5634,-53 5634,-47 5640,-41 5646,-41 5646,-41 5982,-41 5982,-41 5988,-41 5994,-47 5994,-53 5994,-53 5994,-317 5994,-317 5994,-323 5988,-329 5982,-329"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-329"/>
-<text text-anchor="middle" x="5814" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_bucket]</text>
-<text text-anchor="middle" x="5814" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket)</text>
-</a>
-</g>
-</g>
-<!-- f3fb07522d874cb389183799e6b39bd0&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b -->
-<g id="edge4" class="edge">
-<title>f3fb07522d874cb389183799e6b39bd0&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b</title>
-<g id="a_edge4"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M832,-606.9C832,-606.9 832,-452 832,-452 832,-452 5724,-452 5724,-452 5724,-452 5724,-392.1 5724,-329.05"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="827.63,-606.9 832,-616.9 836.38,-606.9 827.63,-606.9"/>
-</a>
-</g>
-<text text-anchor="middle" x="3246.02" y="-455.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 4890575e7e1043289dd2c8a08f14810e -->
+<!-- 7cb24af28d1c4d878362c2210bcbec4a -->
 <g id="node4" class="node">
-<title>4890575e7e1043289dd2c8a08f14810e</title>
+<title>7cb24af28d1c4d878362c2210bcbec4a</title>
 <g id="a_node4"><a xlink:title="Click to view more details for Cloudtrail_log_group">
 <path fill="none" stroke="black" d="M1516,-329C1516,-329 1180,-329 1180,-329 1174,-329 1168,-323 1168,-317 1168,-317 1168,-53 1168,-53 1168,-47 1174,-41 1180,-41 1180,-41 1516,-41 1516,-41 1522,-41 1528,-47 1528,-53 1528,-53 1528,-317 1528,-317 1528,-323 1522,-329 1516,-329"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-329"/>
-<text text-anchor="middle" x="1348" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[Cloudtrail_log_group]</text>
-<text text-anchor="middle" x="1348" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_log_group)</text>
 </a>
 </g>
 </g>
-<!-- 16bd35f692394449a764e8a8145279ce -->
-<g id="node6" class="node">
-<title>16bd35f692394449a764e8a8145279ce</title>
-<g id="a_node6"><a xlink:title="Click to view more details for Master_Trail">
+<!-- bf4c06b2858f4038973024fe5ae4019a -->
+<g id="node5" class="node">
+<title>bf4c06b2858f4038973024fe5ae4019a</title>
+<g id="a_node5"><a xlink:title="Click to view more details for Master_Trail">
 <path fill="none" stroke="black" d="M1516,-905C1516,-905 1180,-905 1180,-905 1174,-905 1168,-899 1168,-893 1168,-893 1168,-629 1168,-629 1168,-623 1174,-617 1180,-617 1180,-617 1516,-617 1516,-617 1522,-617 1528,-623 1528,-629 1528,-629 1528,-893 1528,-893 1528,-899 1522,-905 1516,-905"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudtrail.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-905"/>
-<text text-anchor="middle" x="1348" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[Master_Trail]</text>
-<text text-anchor="middle" x="1348" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudtrail)</text>
 </a>
 </g>
 </g>
-<!-- 16bd35f692394449a764e8a8145279ce&#45;&gt;4890575e7e1043289dd2c8a08f14810e -->
-<g id="edge1" class="edge">
-<title>16bd35f692394449a764e8a8145279ce&#45;&gt;4890575e7e1043289dd2c8a08f14810e</title>
-<g id="a_edge1"><a xlink:title="Dependency">
+<!-- bf4c06b2858f4038973024fe5ae4019a&#45;&gt;7cb24af28d1c4d878362c2210bcbec4a -->
+<g id="edge2" class="edge">
+<title>bf4c06b2858f4038973024fe5ae4019a&#45;&gt;7cb24af28d1c4d878362c2210bcbec4a</title>
+<g id="a_edge2"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M1288,-606.77C1288,-606.77 1288,-329.1 1288,-329.1"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="1283.63,-606.77 1288,-616.77 1292.38,-606.77 1283.63,-606.77"/>
 </a>
 </g>
 <text text-anchor="middle" x="1272" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 29b10660aa854e95b376b7bfb4941aa6 -->
-<g id="node10" class="node">
-<title>29b10660aa854e95b376b7bfb4941aa6</title>
-<g id="a_node10"><a xlink:title="Click to view more details for cloudwatch_logs_role">
+<!-- 82debf2cfe484b22ae1522ddc6730d8f -->
+<g id="node14" class="node">
+<title>82debf2cfe484b22ae1522ddc6730d8f</title>
+<g id="a_node14"><a xlink:title="Click to view more details for cloudwatch_logs_role">
 <path fill="none" stroke="black" d="M2092,-329C2092,-329 1756,-329 1756,-329 1750,-329 1744,-323 1744,-317 1744,-317 1744,-53 1744,-53 1744,-47 1750,-41 1756,-41 1756,-41 2092,-41 2092,-41 2098,-41 2104,-47 2104,-53 2104,-53 2104,-317 2104,-317 2104,-323 2098,-329 2092,-329"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-329"/>
-<text text-anchor="middle" x="1924" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudwatch_logs_role]</text>
-<text text-anchor="middle" x="1924" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role)</text>
 </a>
 </g>
 </g>
-<!-- 16bd35f692394449a764e8a8145279ce&#45;&gt;29b10660aa854e95b376b7bfb4941aa6 -->
+<!-- bf4c06b2858f4038973024fe5ae4019a&#45;&gt;82debf2cfe484b22ae1522ddc6730d8f -->
 <g id="edge3" class="edge">
-<title>16bd35f692394449a764e8a8145279ce&#45;&gt;29b10660aa854e95b376b7bfb4941aa6</title>
+<title>bf4c06b2858f4038973024fe5ae4019a&#45;&gt;82debf2cfe484b22ae1522ddc6730d8f</title>
 <g id="a_edge3"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M1538.35,-761C1538.35,-761 1636,-761 1636,-761 1636,-761 1636,-185 1636,-185 1636,-185 1685.61,-185 1743.65,-185"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="1538.35,-756.63 1528.35,-761 1538.35,-765.38 1538.35,-756.63"/>
@@ -220,71 +114,123 @@
 </g>
 <text text-anchor="middle" x="1620" y="-471.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 0b031abe5afb455cb9ffc05ebb3e5bc8 -->
-<g id="node19" class="node">
-<title>0b031abe5afb455cb9ffc05ebb3e5bc8</title>
-<g id="a_node19"><a xlink:title="Click to view more details for cloudtrail_bucket">
+<!-- 79926c14d79149bfab255556e29b67fc -->
+<g id="node17" class="node">
+<title>79926c14d79149bfab255556e29b67fc</title>
+<g id="a_node17"><a xlink:title="Click to view more details for cloudtrail_bucket">
 <path fill="none" stroke="black" d="M5406,-329C5406,-329 5070,-329 5070,-329 5064,-329 5058,-323 5058,-317 5058,-317 5058,-53 5058,-53 5058,-47 5064,-41 5070,-41 5070,-41 5406,-41 5406,-41 5412,-41 5418,-47 5418,-53 5418,-53 5418,-317 5418,-317 5418,-323 5412,-329 5406,-329"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-329"/>
-<text text-anchor="middle" x="5238" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudtrail_bucket]</text>
-<text text-anchor="middle" x="5238" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket)</text>
 </a>
 </g>
 </g>
-<!-- 16bd35f692394449a764e8a8145279ce&#45;&gt;0b031abe5afb455cb9ffc05ebb3e5bc8 -->
-<g id="edge2" class="edge">
-<title>16bd35f692394449a764e8a8145279ce&#45;&gt;0b031abe5afb455cb9ffc05ebb3e5bc8</title>
-<g id="a_edge2"><a xlink:title="Dependency">
+<!-- bf4c06b2858f4038973024fe5ae4019a&#45;&gt;79926c14d79149bfab255556e29b67fc -->
+<g id="edge1" class="edge">
+<title>bf4c06b2858f4038973024fe5ae4019a&#45;&gt;79926c14d79149bfab255556e29b67fc</title>
+<g id="a_edge1"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M1408,-606.87C1408,-606.87 1408,-411 1408,-411 1408,-411 5178,-411 5178,-411 5178,-411 5178,-373.52 5178,-329.09"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="1403.63,-606.87 1408,-616.87 1412.38,-606.87 1403.63,-606.87"/>
 </a>
 </g>
 <text text-anchor="middle" x="3220.02" y="-414.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 8837b7a0fb13442abd674fabf08d77cb&#45;&gt;0383d2be75f949e8b2e4144cc8658dce -->
-<g id="edge21" class="edge">
-<title>8837b7a0fb13442abd674fabf08d77cb&#45;&gt;0383d2be75f949e8b2e4144cc8658dce</title>
-<g id="a_edge21"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M4554,-606.92C4554,-606.92 4554,-534 4554,-534 4554,-534 712,-534 712,-534 712,-534 712,-425.29 712,-329.22"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="4549.63,-606.92 4554,-616.92 4558.38,-606.92 4549.63,-606.92"/>
+<!-- 2c2477e75740406cbc23d49d95610304 -->
+<g id="node6" class="node">
+<title>2c2477e75740406cbc23d49d95610304</title>
+<g id="a_node6"><a xlink:title="Click to view more details for lambda_target">
+<path fill="none" stroke="black" d="M940,-905C940,-905 604,-905 604,-905 598,-905 592,-899 592,-893 592,-893 592,-629 592,-629 592,-623 598,-617 604,-617 604,-617 940,-617 940,-617 946,-617 952,-623 952,-629 952,-629 952,-893 952,-893 952,-899 946,-905 940,-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-905"/>
 </a>
 </g>
-<text text-anchor="middle" x="2551.07" y="-537.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 8837b7a0fb13442abd674fabf08d77cb&#45;&gt;44884abf218d49babfcc52b0b1eeddc8 -->
-<g id="edge20" class="edge">
-<title>8837b7a0fb13442abd674fabf08d77cb&#45;&gt;44884abf218d49babfcc52b0b1eeddc8</title>
-<g id="a_edge20"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M4770,-606.67C4770,-606.67 4770,-137 4770,-137 4770,-137 4148.47,-137 3832.25,-137"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="4765.63,-606.67 4770,-616.67 4774.38,-606.67 4765.63,-606.67"/>
+<!-- 2c2477e75740406cbc23d49d95610304&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d -->
+<g id="edge5" class="edge">
+<title>2c2477e75740406cbc23d49d95610304&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d</title>
+<g id="a_edge5"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M652,-606.77C652,-606.77 652,-329.1 652,-329.1"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="647.63,-606.77 652,-616.77 656.38,-606.77 647.63,-606.77"/>
 </a>
 </g>
-<text text-anchor="middle" x="4519.96" y="-140.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+<text text-anchor="middle" x="636" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 8837b7a0fb13442abd674fabf08d77cb&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b -->
-<g id="edge19" class="edge">
-<title>8837b7a0fb13442abd674fabf08d77cb&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b</title>
-<g id="a_edge19"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M4698,-606.8C4698,-606.8 4698,-493 4698,-493 4698,-493 5814,-493 5814,-493 5814,-493 5814,-409.24 5814,-329.08"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="4693.63,-606.8 4698,-616.8 4702.38,-606.8 4693.63,-606.8"/>
+<!-- 2c2477e75740406cbc23d49d95610304&#45;&gt;732043d2b71d420ead3520ae20a2e0c8 -->
+<g id="edge6" class="edge">
+<title>2c2477e75740406cbc23d49d95610304&#45;&gt;732043d2b71d420ead3520ae20a2e0c8</title>
+<g id="a_edge6"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M581.98,-713C581.98,-713 538,-713 538,-713 538,-713 538,-113 538,-113 538,-113 458.41,-113 376.01,-113"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="581.98,-717.38 591.98,-713 581.98,-708.63 581.98,-717.38"/>
 </a>
 </g>
-<text text-anchor="middle" x="5265.06" y="-496.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+<text text-anchor="middle" x="522" y="-357.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e -->
+<!-- c9a0ebdef7164b76b8d6e22367d4b8f7 -->
 <g id="node8" class="node">
-<title>3e5c37f6062e4076b52d787956c08f5e</title>
-<g id="a_node8"><a xlink:title="Click to view more details for allow_eventbridge">
+<title>c9a0ebdef7164b76b8d6e22367d4b8f7</title>
+<g id="a_node8"><a xlink:title="Click to view more details for iam_user_notification">
+<path fill="none" stroke="black" d="M4830,-905C4830,-905 4494,-905 4494,-905 4488,-905 4482,-899 4482,-893 4482,-893 4482,-629 4482,-629 4482,-623 4488,-617 4494,-617 4494,-617 4830,-617 4830,-617 4836,-617 4842,-623 4842,-629 4842,-629 4842,-893 4842,-893 4842,-899 4836,-905 4830,-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-905"/>
+</a>
+</g>
+</g>
+<!-- 2c2477e75740406cbc23d49d95610304&#45;&gt;c9a0ebdef7164b76b8d6e22367d4b8f7 -->
+<g id="edge4" class="edge">
+<title>2c2477e75740406cbc23d49d95610304&#45;&gt;c9a0ebdef7164b76b8d6e22367d4b8f7</title>
+<g id="a_edge4"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M892,-606.74C892,-606.74 892,-575 892,-575 892,-575 4626,-575 4626,-575 4626,-575 4626,-592.49 4626,-616.74"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="887.63,-606.74 892,-616.74 896.38,-606.74 887.63,-606.74"/>
+</a>
+</g>
+<text text-anchor="middle" x="2748" y="-578.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- f525987230ac4442bbfe64cfc61fa9d2 -->
+<g id="node9" class="node">
+<title>f525987230ac4442bbfe64cfc61fa9d2</title>
+<g id="a_node9"><a xlink:title="Click to view more details for lambda_execution_role">
+<path fill="none" stroke="black" d="M3820,-329C3820,-329 3484,-329 3484,-329 3478,-329 3472,-323 3472,-317 3472,-317 3472,-53 3472,-53 3472,-47 3478,-41 3484,-41 3484,-41 3820,-41 3820,-41 3826,-41 3832,-47 3832,-53 3832,-53 3832,-317 3832,-317 3832,-323 3826,-329 3820,-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-329"/>
+</a>
+</g>
+</g>
+<!-- 2c2477e75740406cbc23d49d95610304&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2 -->
+<g id="edge7" class="edge">
+<title>2c2477e75740406cbc23d49d95610304&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2</title>
+<g id="a_edge7"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M772,-606.79C772,-606.79 772,-370 772,-370 772,-370 3592,-370 3592,-370 3592,-370 3592,-353.05 3592,-329.4"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="767.63,-606.79 772,-616.79 776.38,-606.79 767.63,-606.79"/>
+</a>
+</g>
+<text text-anchor="middle" x="2067.9" y="-373.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- c0cb205c44fd4a4fb3619216c3bce1b9 -->
+<g id="node20" class="node">
+<title>c0cb205c44fd4a4fb3619216c3bce1b9</title>
+<g id="a_node20"><a xlink:title="Click to view more details for lambda_bucket">
+<path fill="none" stroke="black" d="M5982,-329C5982,-329 5646,-329 5646,-329 5640,-329 5634,-323 5634,-317 5634,-317 5634,-53 5634,-53 5634,-47 5640,-41 5646,-41 5646,-41 5982,-41 5982,-41 5988,-41 5994,-47 5994,-53 5994,-53 5994,-317 5994,-317 5994,-323 5988,-329 5982,-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-329"/>
+</a>
+</g>
+</g>
+<!-- 2c2477e75740406cbc23d49d95610304&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9 -->
+<g id="edge8" class="edge">
+<title>2c2477e75740406cbc23d49d95610304&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9</title>
+<g id="a_edge8"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M832,-606.9C832,-606.9 832,-452 832,-452 832,-452 5724,-452 5724,-452 5724,-452 5724,-392.1 5724,-329.05"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="827.63,-606.9 832,-616.9 836.38,-606.9 827.63,-606.9"/>
+</a>
+</g>
+<text text-anchor="middle" x="3246.02" y="-455.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3 -->
+<g id="node7" class="node">
+<title>1c382ebde6fd47d99d31747ffb8f08d3</title>
+<g id="a_node7"><a xlink:title="Click to view more details for allow_eventbridge">
 <path fill="none" stroke="black" d="M4830,-1481C4830,-1481 4494,-1481 4494,-1481 4488,-1481 4482,-1475 4482,-1469 4482,-1469 4482,-1205 4482,-1205 4482,-1199 4488,-1193 4494,-1193 4494,-1193 4830,-1193 4830,-1193 4836,-1193 4842,-1199 4842,-1205 4842,-1205 4842,-1469 4842,-1469 4842,-1475 4836,-1481 4830,-1481"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-1481"/>
-<text text-anchor="middle" x="4662" y="-1221" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[allow_eventbridge]</text>
-<text text-anchor="middle" x="4662" y="-1199" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_lambda_permission)</text>
 </a>
 </g>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e&#45;&gt;0383d2be75f949e8b2e4144cc8658dce -->
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d -->
 <g id="edge10" class="edge">
-<title>3e5c37f6062e4076b52d787956c08f5e&#45;&gt;0383d2be75f949e8b2e4144cc8658dce</title>
+<title>1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d</title>
 <g id="a_edge10"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M4471.84,-1337C4471.84,-1337 1060,-1337 1060,-1337 1060,-1337 1060,-185 1060,-185 1060,-185 1010.39,-185 952.35,-185"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="4471.84,-1341.38 4481.84,-1337 4471.84,-1332.63 4471.84,-1341.38"/>
@@ -292,9 +238,9 @@
 </g>
 <text text-anchor="middle" x="2120.09" y="-1340.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e&#45;&gt;bc20c1e4297e48728549110f00c0bc6f -->
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;732043d2b71d420ead3520ae20a2e0c8 -->
 <g id="edge11" class="edge">
-<title>3e5c37f6062e4076b52d787956c08f5e&#45;&gt;bc20c1e4297e48728549110f00c0bc6f</title>
+<title>1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;732043d2b71d420ead3520ae20a2e0c8</title>
 <g id="a_edge11"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M4471.81,-1409C4471.81,-1409 484,-1409 484,-1409 484,-1409 484,-257 484,-257 484,-257 434.39,-257 376.35,-257"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="4471.81,-1413.38 4481.81,-1409 4471.81,-1404.63 4471.81,-1413.38"/>
@@ -302,114 +248,78 @@
 </g>
 <text text-anchor="middle" x="1832.08" y="-1412.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e&#45;&gt;8837b7a0fb13442abd674fabf08d77cb -->
-<g id="edge12" class="edge">
-<title>3e5c37f6062e4076b52d787956c08f5e&#45;&gt;8837b7a0fb13442abd674fabf08d77cb</title>
-<g id="a_edge12"><a xlink:title="Dependency">
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;c9a0ebdef7164b76b8d6e22367d4b8f7 -->
+<g id="edge9" class="edge">
+<title>1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;c9a0ebdef7164b76b8d6e22367d4b8f7</title>
+<g id="a_edge9"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M4662,-1182.77C4662,-1182.77 4662,-905.1 4662,-905.1"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="4657.63,-1182.77 4662,-1192.77 4666.38,-1182.77 4657.63,-1182.77"/>
 </a>
 </g>
 <text text-anchor="middle" x="4646" y="-1047.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e&#45;&gt;44884abf218d49babfcc52b0b1eeddc8 -->
-<g id="edge13" class="edge">
-<title>3e5c37f6062e4076b52d787956c08f5e&#45;&gt;44884abf218d49babfcc52b0b1eeddc8</title>
-<g id="a_edge13"><a xlink:title="Dependency">
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2 -->
+<g id="edge12" class="edge">
+<title>1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2</title>
+<g id="a_edge12"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M4471.82,-1265C4471.82,-1265 4157,-1265 4157,-1265 4157,-1265 4157,-233 4157,-233 4157,-233 3977.21,-233 3832.18,-233"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="4471.82,-1269.38 4481.82,-1265 4471.82,-1260.63 4471.82,-1269.38"/>
 </a>
 </g>
 <text text-anchor="middle" x="4141" y="-747.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 3e5c37f6062e4076b52d787956c08f5e&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b -->
-<g id="edge9" class="edge">
-<title>3e5c37f6062e4076b52d787956c08f5e&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b</title>
-<g id="a_edge9"><a xlink:title="Dependency">
+<!-- 1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9 -->
+<g id="edge13" class="edge">
+<title>1c382ebde6fd47d99d31747ffb8f08d3&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9</title>
+<g id="a_edge13"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M4852.07,-1337C4852.07,-1337 5526,-1337 5526,-1337 5526,-1337 5526,-185 5526,-185 5526,-185 5575.61,-185 5633.65,-185"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="4852.07,-1332.63 4842.07,-1337 4852.07,-1341.38 4852.07,-1332.63"/>
 </a>
 </g>
 <text text-anchor="middle" x="5510" y="-1047.74" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 9c3feaaf3e334ef196619e3c400cea97 -->
-<g id="node9" class="node">
-<title>9c3feaaf3e334ef196619e3c400cea97</title>
-<g id="a_node9"><a xlink:title="Click to view more details for factory_outlet_frontend_developer">
-<path fill="none" stroke="black" d="M3244,-329C3244,-329 2908,-329 2908,-329 2902,-329 2896,-323 2896,-317 2896,-317 2896,-53 2896,-53 2896,-47 2902,-41 2908,-41 2908,-41 3244,-41 3244,-41 3250,-41 3256,-47 3256,-53 3256,-53 3256,-317 3256,-317 3256,-323 3250,-329 3244,-329"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-329"/>
-<text text-anchor="middle" x="3076" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer]</text>
-<text text-anchor="middle" x="3076" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user)</text>
+<!-- c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d -->
+<g id="edge19" class="edge">
+<title>c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;e20e9b2d91d34aa7a76984aa1513d57d</title>
+<g id="a_edge19"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M4554,-606.92C4554,-606.92 4554,-534 4554,-534 4554,-534 712,-534 712,-534 712,-534 712,-425.29 712,-329.22"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="4549.63,-606.92 4554,-616.92 4558.38,-606.92 4549.63,-606.92"/>
 </a>
 </g>
+<text text-anchor="middle" x="2551.07" y="-537.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 5b9ceb053df44444a2aae4c2c509616d -->
-<g id="node11" class="node">
-<title>5b9ceb053df44444a2aae4c2c509616d</title>
-<g id="a_node11"><a xlink:title="Click to view more details for cloudwatch_logs_policy">
-<path fill="none" stroke="black" d="M2092,-905C2092,-905 1756,-905 1756,-905 1750,-905 1744,-899 1744,-893 1744,-893 1744,-629 1744,-629 1744,-623 1750,-617 1756,-617 1756,-617 2092,-617 2092,-617 2098,-617 2104,-623 2104,-629 2104,-629 2104,-893 2104,-893 2104,-899 2098,-905 2092,-905"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-905"/>
-<text text-anchor="middle" x="1924" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudwatch_logs_policy]</text>
-<text text-anchor="middle" x="1924" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role_policy)</text>
+<!-- c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2 -->
+<g id="edge20" class="edge">
+<title>c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2</title>
+<g id="a_edge20"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M4770,-606.67C4770,-606.67 4770,-137 4770,-137 4770,-137 4148.47,-137 3832.25,-137"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="4765.63,-606.67 4770,-616.67 4774.38,-606.67 4765.63,-606.67"/>
 </a>
 </g>
+<text text-anchor="middle" x="4519.96" y="-140.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 5b9ceb053df44444a2aae4c2c509616d&#45;&gt;29b10660aa854e95b376b7bfb4941aa6 -->
-<g id="edge14" class="edge">
-<title>5b9ceb053df44444a2aae4c2c509616d&#45;&gt;29b10660aa854e95b376b7bfb4941aa6</title>
-<g id="a_edge14"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M1924,-606.77C1924,-606.77 1924,-329.1 1924,-329.1"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="1919.63,-606.77 1924,-616.77 1928.38,-606.77 1919.63,-606.77"/>
+<!-- c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9 -->
+<g id="edge21" class="edge">
+<title>c9a0ebdef7164b76b8d6e22367d4b8f7&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9</title>
+<g id="a_edge21"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M4698,-606.8C4698,-606.8 4698,-493 4698,-493 4698,-493 5814,-493 5814,-493 5814,-493 5814,-409.24 5814,-329.08"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="4693.63,-606.8 4698,-616.8 4702.38,-606.8 4693.63,-606.8"/>
 </a>
 </g>
-<text text-anchor="middle" x="1908" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
+<text text-anchor="middle" x="5265.06" y="-496.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 341afa3102ad4fd093668927a80fc75c -->
-<g id="node12" class="node">
-<title>341afa3102ad4fd093668927a80fc75c</title>
-<g id="a_node12"><a xlink:title="Click to view more details for factory_outlet_frontend_developer_login">
-<path fill="none" stroke="black" d="M3244,-905C3244,-905 2908,-905 2908,-905 2902,-905 2896,-899 2896,-893 2896,-893 2896,-629 2896,-629 2896,-623 2902,-617 2908,-617 2908,-617 3244,-617 3244,-617 3250,-617 3256,-623 3256,-629 3256,-629 3256,-893 3256,-893 3256,-899 3250,-905 3244,-905"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-905"/>
-<text text-anchor="middle" x="3076" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer_login]</text>
-<text text-anchor="middle" x="3076" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user_login_profile)</text>
-</a>
-</g>
-</g>
-<!-- 341afa3102ad4fd093668927a80fc75c&#45;&gt;9c3feaaf3e334ef196619e3c400cea97 -->
-<g id="edge18" class="edge">
-<title>341afa3102ad4fd093668927a80fc75c&#45;&gt;9c3feaaf3e334ef196619e3c400cea97</title>
-<g id="a_edge18"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M3076,-606.77C3076,-606.77 3076,-329.1 3076,-329.1"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="3071.63,-606.77 3076,-616.77 3080.38,-606.77 3071.63,-606.77"/>
-</a>
-</g>
-<text text-anchor="middle" x="3060" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 60ad11a842744fdeba7a9effd09fae00 -->
-<g id="node13" class="node">
-<title>60ad11a842744fdeba7a9effd09fae00</title>
-<g id="a_node13"><a xlink:title="Click to view more details for factory_outlet_frontend_developer_group">
-<path fill="none" stroke="black" d="M2668,-329C2668,-329 2332,-329 2332,-329 2326,-329 2320,-323 2320,-317 2320,-317 2320,-53 2320,-53 2320,-47 2326,-41 2332,-41 2332,-41 2668,-41 2668,-41 2674,-41 2680,-47 2680,-53 2680,-53 2680,-317 2680,-317 2680,-323 2674,-329 2668,-329"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-329"/>
-<text text-anchor="middle" x="2500" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer_group]</text>
-<text text-anchor="middle" x="2500" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_group)</text>
-</a>
-</g>
-</g>
-<!-- 558694b60a3143d88a041b7e0ccabf3d -->
-<g id="node14" class="node">
-<title>558694b60a3143d88a041b7e0ccabf3d</title>
-<g id="a_node14"><a xlink:title="Click to view more details for lambda_sns_permissions">
+<!-- 26ac2e118f80498685b5a67007d25fbd -->
+<g id="node10" class="node">
+<title>26ac2e118f80498685b5a67007d25fbd</title>
+<g id="a_node10"><a xlink:title="Click to view more details for lambda_sns_permissions">
 <path fill="none" stroke="black" d="M3820,-905C3820,-905 3484,-905 3484,-905 3478,-905 3472,-899 3472,-893 3472,-893 3472,-629 3472,-629 3472,-623 3478,-617 3484,-617 3484,-617 3820,-617 3820,-617 3826,-617 3832,-623 3832,-629 3832,-629 3832,-893 3832,-893 3832,-899 3826,-905 3820,-905"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-905"/>
-<text text-anchor="middle" x="3652" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_sns_permissions]</text>
-<text text-anchor="middle" x="3652" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role_policy)</text>
 </a>
 </g>
 </g>
-<!-- 558694b60a3143d88a041b7e0ccabf3d&#45;&gt;44884abf218d49babfcc52b0b1eeddc8 -->
+<!-- 26ac2e118f80498685b5a67007d25fbd&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2 -->
 <g id="edge15" class="edge">
-<title>558694b60a3143d88a041b7e0ccabf3d&#45;&gt;44884abf218d49babfcc52b0b1eeddc8</title>
+<title>26ac2e118f80498685b5a67007d25fbd&#45;&gt;f525987230ac4442bbfe64cfc61fa9d2</title>
 <g id="a_edge15"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M3712,-606.77C3712,-606.77 3712,-329.1 3712,-329.1"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="3707.63,-606.77 3712,-616.77 3716.38,-606.77 3707.63,-606.77"/>
@@ -417,78 +327,128 @@
 </g>
 <text text-anchor="middle" x="3696" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 772e05a1fb4347f1926b850505a9e215 -->
+<!-- 80b2ddade204472c8e3571250eb68401 -->
+<g id="node11" class="node">
+<title>80b2ddade204472c8e3571250eb68401</title>
+<g id="a_node11"><a xlink:title="Click to view more details for factory_outlet_frontend_developer_group">
+<path fill="none" stroke="black" d="M2668,-329C2668,-329 2332,-329 2332,-329 2326,-329 2320,-323 2320,-317 2320,-317 2320,-53 2320,-53 2320,-47 2326,-41 2332,-41 2332,-41 2668,-41 2668,-41 2674,-41 2680,-47 2680,-53 2680,-53 2680,-317 2680,-317 2680,-323 2674,-329 2668,-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-329"/>
+</a>
+</g>
+</g>
+<!-- 7785c1fe141e426d9dea4099be9de062 -->
+<g id="node12" class="node">
+<title>7785c1fe141e426d9dea4099be9de062</title>
+<g id="a_node12"><a xlink:title="Click to view more details for factory_outlet_frontend_developer_login">
+<path fill="none" stroke="black" d="M3244,-905C3244,-905 2908,-905 2908,-905 2902,-905 2896,-899 2896,-893 2896,-893 2896,-629 2896,-629 2896,-623 2902,-617 2908,-617 2908,-617 3244,-617 3244,-617 3250,-617 3256,-623 3256,-629 3256,-629 3256,-893 3256,-893 3256,-899 3250,-905 3244,-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-905"/>
+</a>
+</g>
+</g>
+<!-- 7504aa8f01ef496fb4d65d3eafbb81e3 -->
+<g id="node13" class="node">
+<title>7504aa8f01ef496fb4d65d3eafbb81e3</title>
+<g id="a_node13"><a xlink:title="Click to view more details for factory_outlet_frontend_developer">
+<path fill="none" stroke="black" d="M3244,-329C3244,-329 2908,-329 2908,-329 2902,-329 2896,-323 2896,-317 2896,-317 2896,-53 2896,-53 2896,-47 2902,-41 2908,-41 2908,-41 3244,-41 3244,-41 3250,-41 3256,-47 3256,-53 3256,-53 3256,-317 3256,-317 3256,-323 3250,-329 3244,-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-329"/>
+</a>
+</g>
+</g>
+<!-- 7785c1fe141e426d9dea4099be9de062&#45;&gt;7504aa8f01ef496fb4d65d3eafbb81e3 -->
+<g id="edge18" class="edge">
+<title>7785c1fe141e426d9dea4099be9de062&#45;&gt;7504aa8f01ef496fb4d65d3eafbb81e3</title>
+<g id="a_edge18"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M3076,-606.77C3076,-606.77 3076,-329.1 3076,-329.1"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="3071.63,-606.77 3076,-616.77 3080.38,-606.77 3071.63,-606.77"/>
+</a>
+</g>
+<text text-anchor="middle" x="3060" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- 2fbcc753c6ee4341bb245553ed7b376b -->
 <g id="node15" class="node">
-<title>772e05a1fb4347f1926b850505a9e215</title>
+<title>2fbcc753c6ee4341bb245553ed7b376b</title>
 <g id="a_node15"><a xlink:title="Click to view more details for factory_outlet_frontend_developer1_to_group">
 <path fill="none" stroke="black" d="M2668,-905C2668,-905 2332,-905 2332,-905 2326,-905 2320,-899 2320,-893 2320,-893 2320,-629 2320,-629 2320,-623 2326,-617 2332,-617 2332,-617 2668,-617 2668,-617 2674,-617 2680,-623 2680,-629 2680,-629 2680,-893 2680,-893 2680,-899 2674,-905 2668,-905"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-905"/>
-<text text-anchor="middle" x="2500" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer1_to_group]</text>
-<text text-anchor="middle" x="2500" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user_group_membership)</text>
 </a>
 </g>
 </g>
-<!-- 772e05a1fb4347f1926b850505a9e215&#45;&gt;9c3feaaf3e334ef196619e3c400cea97 -->
+<!-- 2fbcc753c6ee4341bb245553ed7b376b&#45;&gt;80b2ddade204472c8e3571250eb68401 -->
 <g id="edge16" class="edge">
-<title>772e05a1fb4347f1926b850505a9e215&#45;&gt;9c3feaaf3e334ef196619e3c400cea97</title>
+<title>2fbcc753c6ee4341bb245553ed7b376b&#45;&gt;80b2ddade204472c8e3571250eb68401</title>
 <g id="a_edge16"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M2690.35,-761C2690.35,-761 2788,-761 2788,-761 2788,-761 2788,-185 2788,-185 2788,-185 2837.61,-185 2895.65,-185"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="2690.35,-756.63 2680.35,-761 2690.35,-765.38 2690.35,-756.63"/>
-</a>
-</g>
-<text text-anchor="middle" x="2772" y="-471.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 772e05a1fb4347f1926b850505a9e215&#45;&gt;60ad11a842744fdeba7a9effd09fae00 -->
-<g id="edge17" class="edge">
-<title>772e05a1fb4347f1926b850505a9e215&#45;&gt;60ad11a842744fdeba7a9effd09fae00</title>
-<g id="a_edge17"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M2500,-606.77C2500,-606.77 2500,-329.1 2500,-329.1"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="2495.63,-606.77 2500,-616.77 2504.38,-606.77 2495.63,-606.77"/>
 </a>
 </g>
 <text text-anchor="middle" x="2484" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- ce73133eaac54e4989e44703b3fea2b9 -->
+<!-- 2fbcc753c6ee4341bb245553ed7b376b&#45;&gt;7504aa8f01ef496fb4d65d3eafbb81e3 -->
+<g id="edge17" class="edge">
+<title>2fbcc753c6ee4341bb245553ed7b376b&#45;&gt;7504aa8f01ef496fb4d65d3eafbb81e3</title>
+<g id="a_edge17"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M2690.35,-761C2690.35,-761 2788,-761 2788,-761 2788,-761 2788,-185 2788,-185 2788,-185 2837.61,-185 2895.65,-185"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="2690.35,-756.63 2680.35,-761 2690.35,-765.38 2690.35,-756.63"/>
+</a>
+</g>
+<text text-anchor="middle" x="2772" y="-471.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- 1572094995744848956b897afcbc3e10 -->
+<g id="node16" class="node">
+<title>1572094995744848956b897afcbc3e10</title>
+<g id="a_node16"><a xlink:title="Click to view more details for cloudwatch_logs_policy">
+<path fill="none" stroke="black" d="M2092,-905C2092,-905 1756,-905 1756,-905 1750,-905 1744,-899 1744,-893 1744,-893 1744,-629 1744,-629 1744,-623 1750,-617 1756,-617 1756,-617 2092,-617 2092,-617 2098,-617 2104,-623 2104,-629 2104,-629 2104,-893 2104,-893 2104,-899 2098,-905 2092,-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-905"/>
+</a>
+</g>
+</g>
+<!-- 1572094995744848956b897afcbc3e10&#45;&gt;82debf2cfe484b22ae1522ddc6730d8f -->
+<g id="edge14" class="edge">
+<title>1572094995744848956b897afcbc3e10&#45;&gt;82debf2cfe484b22ae1522ddc6730d8f</title>
+<g id="a_edge14"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M1924,-606.77C1924,-606.77 1924,-329.1 1924,-329.1"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="1919.63,-606.77 1924,-616.77 1928.38,-606.77 1919.63,-606.77"/>
+</a>
+</g>
+<text text-anchor="middle" x="1908" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- f1c2bb9acc5f428085c6dcc8dd0f3789 -->
 <g id="node18" class="node">
-<title>ce73133eaac54e4989e44703b3fea2b9</title>
-<g id="a_node18"><a xlink:title="Click to view more details for cloudtrail_bucket_policy">
-<path fill="none" stroke="black" d="M5406,-905C5406,-905 5070,-905 5070,-905 5064,-905 5058,-899 5058,-893 5058,-893 5058,-629 5058,-629 5058,-623 5064,-617 5070,-617 5070,-617 5406,-617 5406,-617 5412,-617 5418,-623 5418,-629 5418,-629 5418,-893 5418,-893 5418,-899 5412,-905 5406,-905"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-905"/>
-<text text-anchor="middle" x="5238" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudtrail_bucket_policy]</text>
-<text text-anchor="middle" x="5238" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket_policy)</text>
-</a>
-</g>
-</g>
-<!-- ce73133eaac54e4989e44703b3fea2b9&#45;&gt;0b031abe5afb455cb9ffc05ebb3e5bc8 -->
-<g id="edge23" class="edge">
-<title>ce73133eaac54e4989e44703b3fea2b9&#45;&gt;0b031abe5afb455cb9ffc05ebb3e5bc8</title>
-<g id="a_edge23"><a xlink:title="Dependency">
-<path fill="none" stroke="black" stroke-width="5" d="M5298,-606.77C5298,-606.77 5298,-329.1 5298,-329.1"/>
-<polygon fill="black" stroke="black" stroke-width="5" points="5293.63,-606.77 5298,-616.77 5302.38,-606.77 5293.63,-606.77"/>
-</a>
-</g>
-<text text-anchor="middle" x="5282" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 8fb412902f2743c9ad26e204cd57d4d6 -->
-<g id="node20" class="node">
-<title>8fb412902f2743c9ad26e204cd57d4d6</title>
-<g id="a_node20"><a xlink:title="Click to view more details for lambda_code">
+<title>f1c2bb9acc5f428085c6dcc8dd0f3789</title>
+<g id="a_node18"><a xlink:title="Click to view more details for lambda_code">
 <path fill="none" stroke="black" d="M5982,-905C5982,-905 5646,-905 5646,-905 5640,-905 5634,-899 5634,-893 5634,-893 5634,-629 5634,-629 5634,-623 5640,-617 5646,-617 5646,-617 5982,-617 5982,-617 5988,-617 5994,-623 5994,-629 5994,-629 5994,-893 5994,-893 5994,-899 5988,-905 5982,-905"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-905"/>
-<text text-anchor="middle" x="5814" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_code]</text>
-<text text-anchor="middle" x="5814" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_object)</text>
 </a>
 </g>
 </g>
-<!-- 8fb412902f2743c9ad26e204cd57d4d6&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b -->
+<!-- f1c2bb9acc5f428085c6dcc8dd0f3789&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9 -->
 <g id="edge22" class="edge">
-<title>8fb412902f2743c9ad26e204cd57d4d6&#45;&gt;f520b6c6e9c54752a1824721c85a1b4b</title>
+<title>f1c2bb9acc5f428085c6dcc8dd0f3789&#45;&gt;c0cb205c44fd4a4fb3619216c3bce1b9</title>
 <g id="a_edge22"><a xlink:title="Dependency">
 <path fill="none" stroke="black" stroke-width="5" d="M5904,-606.77C5904,-606.77 5904,-329.1 5904,-329.1"/>
 <polygon fill="black" stroke="black" stroke-width="5" points="5899.63,-606.77 5904,-616.77 5908.38,-606.77 5899.63,-606.77"/>
 </a>
 </g>
 <text text-anchor="middle" x="5888" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
+</g>
+<!-- c46d9788ee97450d9c7fa5bfbf74255a -->
+<g id="node19" class="node">
+<title>c46d9788ee97450d9c7fa5bfbf74255a</title>
+<g id="a_node19"><a xlink:title="Click to view more details for cloudtrail_bucket_policy">
+<path fill="none" stroke="black" d="M5406,-905C5406,-905 5070,-905 5070,-905 5064,-905 5058,-899 5058,-893 5058,-893 5058,-629 5058,-629 5058,-623 5064,-617 5070,-617 5070,-617 5406,-617 5406,-617 5412,-617 5418,-623 5418,-629 5418,-629 5418,-893 5418,-893 5418,-899 5412,-905 5406,-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-905"/>
+</a>
+</g>
+</g>
+<!-- c46d9788ee97450d9c7fa5bfbf74255a&#45;&gt;79926c14d79149bfab255556e29b67fc -->
+<g id="edge23" class="edge">
+<title>c46d9788ee97450d9c7fa5bfbf74255a&#45;&gt;79926c14d79149bfab255556e29b67fc</title>
+<g id="a_edge23"><a xlink:title="Dependency">
+<path fill="none" stroke="black" stroke-width="5" d="M5298,-606.77C5298,-606.77 5298,-329.1 5298,-329.1"/>
+<polygon fill="black" stroke="black" stroke-width="5" points="5293.63,-606.77 5298,-616.77 5302.38,-606.77 5293.63,-606.77"/>
+</a>
+</g>
+<text text-anchor="middle" x="5282" y="-471.53" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
 </g>
 </svg>
