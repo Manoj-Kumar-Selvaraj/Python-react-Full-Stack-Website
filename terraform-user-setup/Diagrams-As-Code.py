@@ -8,7 +8,6 @@ from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
-
 # Configure logging
 logging.basicConfig(
     filename="error_log.txt", 
@@ -89,6 +88,7 @@ def get_icon(service_type):
     service_name = "".join([part.capitalize() for part in aws_service_name.replace(" ", "").split("_")])
     for module, icons in aws_icons.items():
         if service_name.lower() in icons:
+            print(icons[service_name.lower()])
             return icons[service_name.lower()]
     return None
 
