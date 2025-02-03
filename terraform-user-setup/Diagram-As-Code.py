@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 
 # Adjustable icon size
-ICON_SIZE = "20"  # Increased for better visibility
+ICON_SIZE = "2"  # Increased for better visibility
 
 # Load AWS icons dynamically
 def load_aws_icons():
@@ -107,12 +107,12 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             "size": "300,250", 
             "dpi": "400",
             "rankdir": "TB",  # Top to Bottom layout
-            "nodesep": "3",  # Increased spacing between nodes
-            "ranksep": "4"  # Increased spacing between ranks
+            "nodesep": "0.3",  # Increased spacing between nodes
+            "ranksep": "0.4"  # Increased spacing between ranks
         }
         
         edge_attrs = {
-            "penwidth": "5",
+            "penwidth": "0.5",
             "color": "blue",
             "fontcolor": "black"
         }
@@ -126,7 +126,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            node = icon(f"\n[{resource_name}]\n({service_type})", fontsize=ICON_SIZE, shape="box", width="5", height="4")
+                            node = icon(f"\n[{resource_name}]\n({service_type})", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
                             # print(node)
                             sub_nodes.append(node)
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
