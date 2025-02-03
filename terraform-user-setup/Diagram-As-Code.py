@@ -127,7 +127,8 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            node = icon(f"\n[{resource_name}]", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4", tooltip=f"{resource_name} ({service_type})")
+                            # node = icon(f"\n[{resource_name}]", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4", tooltip=f"{resource_name} ({service_type})")
+                            node = icon(f"\n", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4", tooltip=f"{resource_name} ({service_type})")
                             sub_nodes.append(node)
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
 
