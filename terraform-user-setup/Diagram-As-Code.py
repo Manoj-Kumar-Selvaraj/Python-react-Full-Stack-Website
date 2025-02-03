@@ -104,8 +104,8 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             categories[category].add((service_type, resource_name))
         
         graph_attrs = {
-            "size": "60,45",  # Increased diagram size
-            "dpi": "200",
+            "size": "40,30",  # Increased diagram size
+            "dpi": "150",
             "rankdir": "TB",  # Top to Bottom layout
             "nodesep": "3",  # Increased spacing between nodes
             "ranksep": "4"  # Increased spacing between ranks
