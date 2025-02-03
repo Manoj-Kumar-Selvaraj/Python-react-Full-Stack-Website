@@ -5,7 +5,8 @@ import logging
 import traceback
 import pkgutil
 import re
-from diagrams import Diagram, Cluster, Edge
+from diagrams.custom import Custom
+from diagrams import Diagram, Cluster, Edge, Node
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
@@ -93,6 +94,16 @@ def get_icon(service_type):
             return icons[service_name.lower()]
     return None
 
+def get_service_name(service_type):
+    aws_service_name = terraform_to_aws_service_map.get(service_type, None)
+    if not aws_service_name:
+        return None
+    service_name = "".join([part.capitalize() for part in aws_service_name.replace(" ", "").split("_")])
+    for module, icons in aws_icons.items():
+        if service_name.lower() in icons:
+            return service_name.lower()
+    return None
+
 # Generate diagram with better spacing and alignment
 def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     try:
@@ -126,12 +137,11 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     sub_nodes = []
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
+                        service_name = get_service_name(service_type)
                         if icon:
-                            # node = icon(f"\n[{resource_name}]", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4", tooltip=f"{resource_name} ({service_type})")
-                            # node = icon(f"\n", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4", tooltip=f"{resource_name} ({service_type})")
                             # Create the node with no label, only a tooltip
-                            node = icon("", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
-                            node.attr(tooltip=f"{resource_name} ({service_type})")  # Tooltip will display on hover
+                            # icon = icon("", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
+                            node = Custom(f"{resource_name}","https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/category/service_name",tooltip=f"{resource_name} ({service_type})")
                             sub_nodes.append(node)
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
 
