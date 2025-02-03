@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 
 # Adjustable icon size
-ICON_SIZE = "20"  # Increased for better visibility
+ICON_SIZE = "20"  # Adjust for better visibility
 
 # Load AWS icons dynamically
 def load_aws_icons():
@@ -107,14 +107,14 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             "size": "300,200", 
             "dpi": "200",
             "rankdir": "TB",  # Top to Bottom layout
-            "nodesep": "0.3",  # Increased spacing between nodes
-            "ranksep": "0.4"  # Increased spacing between ranks
+            "nodesep": "0.5",  # Slightly increased spacing between nodes
+            "ranksep": "0.6"  # Slightly increased spacing between ranks
         }
         
         edge_attrs = {
-            "penwidth": "0.5",
+            "penwidth": "0.5",  # Thin edges
             "color": "blue",
-            "arrowsize": "0.1",
+            "arrowsize": "0.6",  # Moderate arrow size
             "fontcolor": "black"
         }
         
@@ -128,24 +128,16 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                         icon = get_icon(service_type)
                         if icon:
                             node = icon(f"\n[{resource_name}]\n({service_type})", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
-                            # print(node)
                             sub_nodes.append(node)
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
-
-            # Debug print for dependency matrix
-            # print("Dependency Matrix:")
-            # print(dependency_matrix)
 
             # Reverse arrows and improve dependencies
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
-                    # print(f"Processing {source_name} with dependencies: {dependencies}")  # Debug print for each source node
-                    # Use the one-to-many relationship for connecting source to multiple targets
                     targets = [cluster_nodes[target_name] for target_name in dependencies if target_name in cluster_nodes]
-                    # print(f"Targets for {source_name}: {targets}")  # Debug print for target nodes
                     if targets:
                         cluster_nodes[source_name] << Edge(
-                            xlabel="Uses", color="black", fontcolor="black", style="bold", penwidth="5", tooltip="Dependency"
+                            xlabel="Uses", color="black", fontcolor="black", style="bold", penwidth="1", tooltip="Dependency"
                         ) << targets
 
         # After diagram creation, update local paths with S3 URLs using re
@@ -170,8 +162,6 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
-        # print("Diagram generation complete. Check the output file.")
     except Exception as e:
-        # print(f"Error: {e}")
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())
