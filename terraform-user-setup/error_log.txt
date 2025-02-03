@@ -46,3 +46,35 @@ NameError: name 'infrastructure_architecture' is not defined
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 NameError: name 'infrastructure_architecture' is not defined
 
+2025-02-03 19:11:44,792 - ERROR - Error generating diagram: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+2025-02-03 19:11:44,793 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 134, in create_diagram
+    node.attr(tooltip=f"{resource_name} ({service_type})")  # Tooltip will display on hover
+    ^^^^^^^^^
+AttributeError: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+
+2025-02-03 19:11:44,793 - ERROR - Unhandled exception: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+2025-02-03 19:11:44,793 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 169, in <module>
+    create_diagram(services, dependency_matrix)
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 134, in create_diagram
+    node.attr(tooltip=f"{resource_name} ({service_type})")  # Tooltip will display on hover
+    ^^^^^^^^^
+AttributeError: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+
+2025-02-03 19:12:06,482 - ERROR - Error generating diagram: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+2025-02-03 19:12:06,482 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 134, in create_diagram
+    node.attr(tooltip=f"{resource_name} ({service_type})")  # Tooltip will display on hover
+    ^^^^^^^^^
+AttributeError: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+
+2025-02-03 19:12:06,482 - ERROR - Unhandled exception: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+2025-02-03 19:12:06,483 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 168, in <module>
+    create_diagram(services, dependency_matrix)
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 134, in create_diagram
+    node.attr(tooltip=f"{resource_name} ({service_type})")  # Tooltip will display on hover
+    ^^^^^^^^^
+AttributeError: 'SimpleNotificationServiceSns' object has no attribute 'attr'
+
