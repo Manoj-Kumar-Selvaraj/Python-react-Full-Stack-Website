@@ -34,7 +34,7 @@
 <g id="node1" class="node">
 <title>52639cbfafc74bf6aa2f5235a42ec8c1</title>
 <path fill="none" stroke="black" d="M1516,-905C1516,-905 1180,-905 1180,-905 1174,-905 1168,-899 1168,-893 1168,-893 1168,-629 1168,-629 1168,-623 1174,-617 1180,-617 1180,-617 1516,-617 1516,-617 1522,-617 1528,-623 1528,-629 1528,-629 1528,-893 1528,-893 1528,-899 1522,-905 1516,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudtrail.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudtrail.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-905"/>
 <text text-anchor="middle" x="1348" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[Master_Trail]</text>
 <text text-anchor="middle" x="1348" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudtrail)</text>
 </g>
@@ -42,7 +42,7 @@
 <g id="node2" class="node">
 <title>1adcc9f615a54644a93c6a7c2a00885a</title>
 <path fill="none" stroke="black" d="M1516,-329C1516,-329 1180,-329 1180,-329 1174,-329 1168,-323 1168,-317 1168,-317 1168,-53 1168,-53 1168,-47 1174,-41 1180,-41 1180,-41 1516,-41 1516,-41 1522,-41 1528,-47 1528,-53 1528,-53 1528,-317 1528,-317 1528,-323 1522,-329 1516,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1204" y="-329"/>
 <text text-anchor="middle" x="1348" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[Cloudtrail_log_group]</text>
 <text text-anchor="middle" x="1348" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_log_group)</text>
 </g>
@@ -60,7 +60,7 @@
 <g id="node9" class="node">
 <title>d51f2cad925d49108706037ec1b09e2f</title>
 <path fill="none" stroke="black" d="M2092,-329C2092,-329 1756,-329 1756,-329 1750,-329 1744,-323 1744,-317 1744,-317 1744,-53 1744,-53 1744,-47 1750,-41 1756,-41 1756,-41 2092,-41 2092,-41 2098,-41 2104,-47 2104,-53 2104,-53 2104,-317 2104,-317 2104,-323 2098,-329 2092,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-329"/>
 <text text-anchor="middle" x="1924" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudwatch_logs_role]</text>
 <text text-anchor="middle" x="1924" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role)</text>
 </g>
@@ -78,7 +78,7 @@
 <g id="node17" class="node">
 <title>b63047dd40144c7f85540874dbd5527e</title>
 <path fill="none" stroke="black" d="M5406,-329C5406,-329 5070,-329 5070,-329 5064,-329 5058,-323 5058,-317 5058,-317 5058,-53 5058,-53 5058,-47 5064,-41 5070,-41 5070,-41 5406,-41 5406,-41 5412,-41 5418,-47 5418,-53 5418,-53 5418,-317 5418,-317 5418,-323 5412,-329 5406,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-329"/>
 <text text-anchor="middle" x="5238" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudtrail_bucket]</text>
 <text text-anchor="middle" x="5238" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket)</text>
 </g>
@@ -96,7 +96,7 @@
 <g id="node3" class="node">
 <title>e2fef8c485a349a68f6d1f9c242cf014</title>
 <path fill="none" stroke="black" d="M364,-905C364,-905 28,-905 28,-905 22,-905 16,-899 16,-893 16,-893 16,-629 16,-629 16,-623 22,-617 28,-617 28,-617 364,-617 364,-617 370,-617 376,-623 376,-629 376,-629 376,-893 376,-893 376,-899 370,-905 364,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-905"/>
 <text text-anchor="middle" x="196" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[user_creation_email_subscription]</text>
 <text text-anchor="middle" x="196" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_sns_topic_subscription)</text>
 </g>
@@ -104,7 +104,7 @@
 <g id="node5" class="node">
 <title>573a51ba647e40a1a990255dc34bb7c0</title>
 <path fill="none" stroke="black" d="M940,-329C940,-329 604,-329 604,-329 598,-329 592,-323 592,-317 592,-317 592,-53 592,-53 592,-47 598,-41 604,-41 604,-41 940,-41 940,-41 946,-41 952,-47 952,-53 952,-53 952,-317 952,-317 952,-323 946,-329 940,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-329"/>
 <text text-anchor="middle" x="772" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[user_creation_topic]</text>
 <text text-anchor="middle" x="772" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_sns_topic)</text>
 </g>
@@ -122,7 +122,7 @@
 <g id="node4" class="node">
 <title>1a9c7e3b7c234bf2980111f825a4d6c9</title>
 <path fill="none" stroke="black" d="M940,-905C940,-905 604,-905 604,-905 598,-905 592,-899 592,-893 592,-893 592,-629 592,-629 592,-623 598,-617 604,-617 604,-617 940,-617 940,-617 946,-617 952,-623 952,-629 952,-629 952,-893 952,-893 952,-899 946,-905 940,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="628" y="-905"/>
 <text text-anchor="middle" x="772" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_target]</text>
 <text text-anchor="middle" x="772" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_event_target)</text>
 </g>
@@ -140,7 +140,7 @@
 <g id="node6" class="node">
 <title>ff7936db63a543ffb89b8ffac89656e5</title>
 <path fill="none" stroke="black" d="M364,-329C364,-329 28,-329 28,-329 22,-329 16,-323 16,-317 16,-317 16,-53 16,-53 16,-47 22,-41 28,-41 28,-41 364,-41 364,-41 370,-41 376,-47 376,-53 376,-53 376,-317 376,-317 376,-323 370,-329 364,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="52" y="-329"/>
 <text text-anchor="middle" x="196" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[usercreationnotificationrule]</text>
 <text text-anchor="middle" x="196" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_cloudwatch_event_rule)</text>
 </g>
@@ -158,7 +158,7 @@
 <g id="node7" class="node">
 <title>5b20b42f756644ec828d9929565b893b</title>
 <path fill="none" stroke="black" d="M4830,-905C4830,-905 4494,-905 4494,-905 4488,-905 4482,-899 4482,-893 4482,-893 4482,-629 4482,-629 4482,-623 4488,-617 4494,-617 4494,-617 4830,-617 4830,-617 4836,-617 4842,-623 4842,-629 4842,-629 4842,-893 4842,-893 4842,-899 4836,-905 4830,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-905"/>
 <text text-anchor="middle" x="4662" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[iam_user_notification]</text>
 <text text-anchor="middle" x="4662" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_lambda_function)</text>
 </g>
@@ -176,7 +176,7 @@
 <g id="node11" class="node">
 <title>04667307873748c4828776d340d8cf27</title>
 <path fill="none" stroke="black" d="M3820,-329C3820,-329 3484,-329 3484,-329 3478,-329 3472,-323 3472,-317 3472,-317 3472,-53 3472,-53 3472,-47 3478,-41 3484,-41 3484,-41 3820,-41 3820,-41 3826,-41 3832,-47 3832,-53 3832,-53 3832,-317 3832,-317 3832,-323 3826,-329 3820,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-329"/>
 <text text-anchor="middle" x="3652" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_execution_role]</text>
 <text text-anchor="middle" x="3652" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role)</text>
 </g>
@@ -194,7 +194,7 @@
 <g id="node20" class="node">
 <title>3213358a13944aa9a7df079918986fd2</title>
 <path fill="none" stroke="black" d="M5982,-329C5982,-329 5646,-329 5646,-329 5640,-329 5634,-323 5634,-317 5634,-317 5634,-53 5634,-53 5634,-47 5640,-41 5646,-41 5646,-41 5982,-41 5982,-41 5988,-41 5994,-47 5994,-53 5994,-53 5994,-317 5994,-317 5994,-323 5988,-329 5982,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-329"/>
 <text text-anchor="middle" x="5814" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_bucket]</text>
 <text text-anchor="middle" x="5814" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket)</text>
 </g>
@@ -242,7 +242,7 @@
 <g id="node8" class="node">
 <title>02cfb510fd1645fc9e4d43aa8a39f5cd</title>
 <path fill="none" stroke="black" d="M4830,-1481C4830,-1481 4494,-1481 4494,-1481 4488,-1481 4482,-1475 4482,-1469 4482,-1469 4482,-1205 4482,-1205 4482,-1199 4488,-1193 4494,-1193 4494,-1193 4830,-1193 4830,-1193 4836,-1193 4842,-1199 4842,-1205 4842,-1205 4842,-1469 4842,-1469 4842,-1475 4836,-1481 4830,-1481"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-1481"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="4518" y="-1481"/>
 <text text-anchor="middle" x="4662" y="-1221" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[allow_eventbridge]</text>
 <text text-anchor="middle" x="4662" y="-1199" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_lambda_permission)</text>
 </g>
@@ -300,7 +300,7 @@
 <g id="node10" class="node">
 <title>50380224ebe04d7da664e4fec0e42664</title>
 <path fill="none" stroke="black" d="M3244,-329C3244,-329 2908,-329 2908,-329 2902,-329 2896,-323 2896,-317 2896,-317 2896,-53 2896,-53 2896,-47 2902,-41 2908,-41 2908,-41 3244,-41 3244,-41 3250,-41 3256,-47 3256,-53 3256,-53 3256,-317 3256,-317 3256,-323 3250,-329 3244,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-329"/>
 <text text-anchor="middle" x="3076" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer_group]</text>
 <text text-anchor="middle" x="3076" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_group)</text>
 </g>
@@ -308,7 +308,7 @@
 <g id="node12" class="node">
 <title>91aaafbfa2e54fae84b88abc02da6c13</title>
 <path fill="none" stroke="black" d="M3820,-905C3820,-905 3484,-905 3484,-905 3478,-905 3472,-899 3472,-893 3472,-893 3472,-629 3472,-629 3472,-623 3478,-617 3484,-617 3484,-617 3820,-617 3820,-617 3826,-617 3832,-623 3832,-629 3832,-629 3832,-893 3832,-893 3832,-899 3826,-905 3820,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="3508" y="-905"/>
 <text text-anchor="middle" x="3652" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_sns_permissions]</text>
 <text text-anchor="middle" x="3652" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role_policy)</text>
 </g>
@@ -326,7 +326,7 @@
 <g id="node13" class="node">
 <title>2f54c64b664c47b2b496a2211b396ba0</title>
 <path fill="none" stroke="black" d="M3244,-905C3244,-905 2908,-905 2908,-905 2902,-905 2896,-899 2896,-893 2896,-893 2896,-629 2896,-629 2896,-623 2902,-617 2908,-617 2908,-617 3244,-617 3244,-617 3250,-617 3256,-623 3256,-629 3256,-629 3256,-893 3256,-893 3256,-899 3250,-905 3244,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2932" y="-905"/>
 <text text-anchor="middle" x="3076" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer1_to_group]</text>
 <text text-anchor="middle" x="3076" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user_group_membership)</text>
 </g>
@@ -344,7 +344,7 @@
 <g id="node14" class="node">
 <title>6fee0675d688417e8af97ad3e899a261</title>
 <path fill="none" stroke="black" d="M2668,-329C2668,-329 2332,-329 2332,-329 2326,-329 2320,-323 2320,-317 2320,-317 2320,-53 2320,-53 2320,-47 2326,-41 2332,-41 2332,-41 2668,-41 2668,-41 2674,-41 2680,-47 2680,-53 2680,-53 2680,-317 2680,-317 2680,-323 2674,-329 2668,-329"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-329"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-329"/>
 <text text-anchor="middle" x="2500" y="-69" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer]</text>
 <text text-anchor="middle" x="2500" y="-47" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user)</text>
 </g>
@@ -362,7 +362,7 @@
 <g id="node15" class="node">
 <title>dd460a336a3a42dfabe4f2dfcaa6cbc1</title>
 <path fill="none" stroke="black" d="M2092,-905C2092,-905 1756,-905 1756,-905 1750,-905 1744,-899 1744,-893 1744,-893 1744,-629 1744,-629 1744,-623 1750,-617 1756,-617 1756,-617 2092,-617 2092,-617 2098,-617 2104,-623 2104,-629 2104,-629 2104,-893 2104,-893 2104,-899 2098,-905 2092,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="1780" y="-905"/>
 <text text-anchor="middle" x="1924" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudwatch_logs_policy]</text>
 <text text-anchor="middle" x="1924" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_role_policy)</text>
 </g>
@@ -380,7 +380,7 @@
 <g id="node16" class="node">
 <title>2172a4ce12954fcea39b2897df1de9df</title>
 <path fill="none" stroke="black" d="M2668,-905C2668,-905 2332,-905 2332,-905 2326,-905 2320,-899 2320,-893 2320,-893 2320,-629 2320,-629 2320,-623 2326,-617 2332,-617 2332,-617 2668,-617 2668,-617 2674,-617 2680,-623 2680,-629 2680,-629 2680,-893 2680,-893 2680,-899 2674,-905 2668,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="2356" y="-905"/>
 <text text-anchor="middle" x="2500" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[factory_outlet_frontend_developer_login]</text>
 <text text-anchor="middle" x="2500" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_iam_user_login_profile)</text>
 </g>
@@ -398,7 +398,7 @@
 <g id="node18" class="node">
 <title>4e419358279a418da4e2c35509f2d7ef</title>
 <path fill="none" stroke="black" d="M5406,-905C5406,-905 5070,-905 5070,-905 5064,-905 5058,-899 5058,-893 5058,-893 5058,-629 5058,-629 5058,-623 5064,-617 5070,-617 5070,-617 5406,-617 5406,-617 5412,-617 5418,-623 5418,-629 5418,-629 5418,-893 5418,-893 5418,-899 5412,-905 5406,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5094" y="-905"/>
 <text text-anchor="middle" x="5238" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[cloudtrail_bucket_policy]</text>
 <text text-anchor="middle" x="5238" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_bucket_policy)</text>
 </g>
@@ -416,7 +416,7 @@
 <g id="node19" class="node">
 <title>11de303f7d604571b385475637d30381</title>
 <path fill="none" stroke="black" d="M5982,-905C5982,-905 5646,-905 5646,-905 5640,-905 5634,-899 5634,-893 5634,-893 5634,-629 5634,-629 5634,-623 5640,-617 5646,-617 5646,-617 5982,-617 5982,-617 5988,-617 5994,-623 5994,-629 5994,-629 5994,-893 5994,-893 5994,-899 5988,-905 5982,-905"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-905"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="288px" height="288px" preserveAspectRatio="xMinYMin meet" x="5670" y="-905"/>
 <text text-anchor="middle" x="5814" y="-645" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">[lambda_code]</text>
 <text text-anchor="middle" x="5814" y="-623" font-family="Sans-Serif" font-size="20.00" fill="#2d3436">(aws_s3_object)</text>
 </g>
