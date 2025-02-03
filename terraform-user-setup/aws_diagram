@@ -1,6 +1,0 @@
-digraph "AWS Example" {
-	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="AWS Example" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
-	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
-	edge [color="#7B8894"]
-	dd4440cb3dd74e738f820750184c5eb0 [label="My S3 Bucket" height=1.9 image="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" shape=none]
-}
