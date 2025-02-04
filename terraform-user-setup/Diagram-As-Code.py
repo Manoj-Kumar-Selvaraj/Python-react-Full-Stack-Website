@@ -5,6 +5,7 @@ import logging
 import traceback
 import pkgutil
 import re
+from diagrams.custom import Custom
 from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
@@ -112,10 +113,9 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            # Directly using the AWS icon and setting the title for the tooltip
-                            node = icon(f"{resource_name} - {service_type}", shape="box", width="0.5", height="0.4")
-                            node.title = f"Resource: {resource_name}\nType: {service_type}"
-                            cluster_nodes[resource_name] = node
+                            icon = icon("", href=f"javascript:(event, '{resource_name}', '{service_type}')",
+                                        shape="box", width="0.5", height="0.4")
+                            cluster_nodes[resource_name] = icon
 
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
@@ -130,37 +130,10 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
         updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
 
-        tooltip_css = """
-<style><![CDATA[
-#tooltip {
-    display: none;
-    position: absolute;
-    background: white;
-    border: 1px solid black;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-}
-.icon:hover::after {
-    content: attr(title);
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 12px;
-}
-]]></style>
-"""
-
-        final_svg_content = updated_svg_content.replace("</svg>", tooltip_css + "\n</svg>")
+        # final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
 
         with open("infrastructure_architecture.svg", "w") as file:
-            file.write(final_svg_content)
+            file.write(updated_svg_content)
 
     except Exception as e:
         logging.error(f"Error generating diagram: {e}")
