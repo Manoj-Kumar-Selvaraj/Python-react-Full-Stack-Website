@@ -138,28 +138,34 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         logging.error(traceback.format_exc())
         raise
 
-def add_tooltips_with_regex(svg_file):
+def add_tooltips(svg_file):
     try:
         with open(svg_file, "r") as file:
             svg_content = file.read()
 
-        image_pattern = re.compile(
-            r'(<image[^>]*>)\s*(<text[^>]*>.*?</text>)', re.DOTALL
+        pattern = re.compile(
+            r'(<image[^>]*>)\s*(<text[^>]*>.*?</text>)\s*(<text[^>]*>.*?</text>)', re.DOTALL
         )
 
-        def add_tooltip(match):
-            image_tag = match.group(1)
-            text_tag = match.group(2)
-            tooltip_content = re.sub(r'<[^>]+>', '', text_tag).strip()
-            tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_content}</text>'
+        def tooltip_replacement(match):
+            image_tag, text1, text2 = match.groups()
+            text1_content = re.sub(r'<[^>]+>', '', text1).strip()
+            text2_content = re.sub(r'<[^>]+>', '', text2).strip()
+            tooltip_text = f"{text1_content}\n{text2_content}"
+            tooltip_tag = f'<title>{tooltip_text}</title>'
             return f"{image_tag}\n{tooltip_tag}"
 
-        modified_svg = image_pattern.sub(add_tooltip, svg_content)
+        modified_svg = pattern.sub(tooltip_replacement, svg_content)
 
         css_style = """
         <style>
-            image:hover + text {
-                visibility: visible;
+            title {
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+                background: white;
+                border: 1px solid black;
+                padding: 2px 4px;
+                opacity: 0.9;
             }
         </style>
         """
@@ -181,7 +187,7 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
-        add_tooltips_with_regex("infrastructure_architecture.svg")
+        add_tooltips("infrastructure_architecture.svg")
     except Exception as e:
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())
