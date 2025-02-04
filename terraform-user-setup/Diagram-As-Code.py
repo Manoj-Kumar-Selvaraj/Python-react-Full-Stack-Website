@@ -113,8 +113,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            icon = icon("", href=f"javascript:void(0);", 
-                                        shape="box", width="0.5", height="0.4", 
+                            icon = icon("", shape="box", width="0.5", height="0.4", 
                                         data_resource=resource_name, data_type=service_type)
                             cluster_nodes[resource_name] = icon
 
@@ -138,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const icons = document.querySelectorAll('[data-resource]');
     
     icons.forEach(function(icon) {
-        icon.addEventListener("click", function(event) {
+        icon.addEventListener("mouseover", function(event) {
             let resourceName = icon.getAttribute('data-resource');
             let serviceType = icon.getAttribute('data-type');
             let tooltip = document.getElementById("tooltip");

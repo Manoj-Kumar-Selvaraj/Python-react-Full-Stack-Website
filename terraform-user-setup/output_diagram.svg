@@ -30,327 +30,267 @@
 <path fill="#e5f5fd" stroke="#aeb6be" d="M670,-33C670,-33 770,-33 770,-33 776,-33 782,-39 782,-45 782,-45 782,-159 782,-159 782,-165 776,-171 770,-171 770,-171 670,-171 670,-171 664,-171 658,-165 658,-159 658,-159 658,-45 658,-45 658,-39 664,-33 670,-33"/>
 <text text-anchor="middle" x="690" y="-157.4" font-family="Sans-Serif" font-size="12.00" fill="#2d3436">Storage</text>
 </g>
-<!-- a1239517e6ef48b69e9c35c4faf440ee -->
+<!-- 0d4715c236344602a51f72b9dd5a536b -->
 <g id="node1" class="node">
-<title>a1239517e6ef48b69e9c35c4faf440ee</title>
-<g id="a_node1"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M114.33,-70C114.33,-70 97.67,-70 97.67,-70 92.83,-70 88,-65.17 88,-60.33 88,-60.33 88,-50.67 88,-50.67 88,-45.83 92.83,-41 97.67,-41 97.67,-41 114.33,-41 114.33,-41 119.17,-41 124,-45.83 124,-50.67 124,-50.67 124,-60.33 124,-60.33 124,-65.17 119.17,-70 114.33,-70"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- bdc8cff09ca849c0b0db9df25fa8d1f8 -->
-<g id="node2" class="node">
-<title>bdc8cff09ca849c0b0db9df25fa8d1f8</title>
-<g id="a_node2"><a xlink:href="javascript:void(0);">
+<title>0d4715c236344602a51f72b9dd5a536b</title>
 <path fill="none" stroke="black" d="M42.33,-70C42.33,-70 25.67,-70 25.67,-70 20.83,-70 16,-65.17 16,-60.33 16,-60.33 16,-50.67 16,-50.67 16,-45.83 20.83,-41 25.67,-41 25.67,-41 42.33,-41 42.33,-41 47.17,-41 52,-45.83 52,-50.67 52,-50.67 52,-60.33 52,-60.33 52,-65.17 47.17,-70 42.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-70"/>
-</a>
 </g>
+<!-- d34899597f1046668b73f90cea704c14 -->
+<g id="node2" class="node">
+<title>d34899597f1046668b73f90cea704c14</title>
+<path fill="none" stroke="black" d="M114.33,-70C114.33,-70 97.67,-70 97.67,-70 92.83,-70 88,-65.17 88,-60.33 88,-60.33 88,-50.67 88,-50.67 88,-45.83 92.83,-41 97.67,-41 97.67,-41 114.33,-41 114.33,-41 119.17,-41 124,-45.83 124,-50.67 124,-50.67 124,-60.33 124,-60.33 124,-65.17 119.17,-70 114.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-70"/>
 </g>
-<!-- 85bc878e215f4e11b13e6c62ce3e01de -->
+<!-- 8a7665c39d064e8f947ac1c9a4bac35c -->
 <g id="node3" class="node">
-<title>85bc878e215f4e11b13e6c62ce3e01de</title>
-<g id="a_node3"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M186.33,-142C186.33,-142 169.67,-142 169.67,-142 164.83,-142 160,-137.17 160,-132.33 160,-132.33 160,-122.67 160,-122.67 160,-117.83 164.83,-113 169.67,-113 169.67,-113 186.33,-113 186.33,-113 191.17,-113 196,-117.83 196,-122.67 196,-122.67 196,-132.33 196,-132.33 196,-137.17 191.17,-142 186.33,-142"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudtrail.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- be33bea8ad9c475985b7a19a04466c39 -->
-<g id="node5" class="node">
-<title>be33bea8ad9c475985b7a19a04466c39</title>
-<g id="a_node5"><a xlink:href="javascript:void(0);">
+<title>8a7665c39d064e8f947ac1c9a4bac35c</title>
 <path fill="none" stroke="black" d="M186.33,-70C186.33,-70 169.67,-70 169.67,-70 164.83,-70 160,-65.17 160,-60.33 160,-60.33 160,-50.67 160,-50.67 160,-45.83 164.83,-41 169.67,-41 169.67,-41 186.33,-41 186.33,-41 191.17,-41 196,-45.83 196,-50.67 196,-50.67 196,-60.33 196,-60.33 196,-65.17 191.17,-70 186.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-70"/>
-</a>
 </g>
+<!-- 78211247fcf649bba13c78d8791f65a5 -->
+<g id="node4" class="node">
+<title>78211247fcf649bba13c78d8791f65a5</title>
+<path fill="none" stroke="black" d="M186.33,-142C186.33,-142 169.67,-142 169.67,-142 164.83,-142 160,-137.17 160,-132.33 160,-132.33 160,-122.67 160,-122.67 160,-117.83 164.83,-113 169.67,-113 169.67,-113 186.33,-113 186.33,-113 191.17,-113 196,-117.83 196,-122.67 196,-122.67 196,-132.33 196,-132.33 196,-137.17 191.17,-142 186.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudtrail.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-142"/>
 </g>
-<!-- 85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;be33bea8ad9c475985b7a19a04466c39 -->
-<g id="edge2" class="edge">
-<title>85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;be33bea8ad9c475985b7a19a04466c39</title>
+<!-- 78211247fcf649bba13c78d8791f65a5&#45;&gt;8a7665c39d064e8f947ac1c9a4bac35c -->
+<g id="edge1" class="edge">
+<title>78211247fcf649bba13c78d8791f65a5&#45;&gt;8a7665c39d064e8f947ac1c9a4bac35c</title>
 <path fill="none" stroke="black" d="M172,-112.93C172,-112.93 172,-80.05 172,-80.05"/>
 <polygon fill="black" stroke="black" points="175.5,-80.05 172,-70.05 168.5,-80.05 175.5,-80.05"/>
 </g>
-<!-- d6717227d433481a9093e380c577aa1b -->
-<g id="node11" class="node">
-<title>d6717227d433481a9093e380c577aa1b</title>
-<g id="a_node11"><a xlink:href="javascript:void(0);">
+<!-- cb91edba849b4d21bd7c7ef2cbf443b3 -->
+<g id="node13" class="node">
+<title>cb91edba849b4d21bd7c7ef2cbf443b3</title>
 <path fill="none" stroke="black" d="M258.33,-70C258.33,-70 241.67,-70 241.67,-70 236.83,-70 232,-65.17 232,-60.33 232,-60.33 232,-50.67 232,-50.67 232,-45.83 236.83,-41 241.67,-41 241.67,-41 258.33,-41 258.33,-41 263.17,-41 268,-45.83 268,-50.67 268,-50.67 268,-60.33 268,-60.33 268,-65.17 263.17,-70 258.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-70"/>
-</a>
 </g>
-</g>
-<!-- 85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;d6717227d433481a9093e380c577aa1b -->
-<g id="edge1" class="edge">
-<title>85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;d6717227d433481a9093e380c577aa1b</title>
+<!-- 78211247fcf649bba13c78d8791f65a5&#45;&gt;cb91edba849b4d21bd7c7ef2cbf443b3 -->
+<g id="edge2" class="edge">
+<title>78211247fcf649bba13c78d8791f65a5&#45;&gt;cb91edba849b4d21bd7c7ef2cbf443b3</title>
 <path fill="none" stroke="black" d="M196.42,-127C205.28,-127 214,-127 214,-127 214,-127 214,-55 214,-55 214,-55 221.58,-55 221.58,-55"/>
 <polygon fill="black" stroke="black" points="221.58,-58.5 231.58,-55 221.58,-51.5 221.58,-58.5"/>
 </g>
-<!-- 386b26e00bf44f67aa937678a280ff36 -->
-<g id="node19" class="node">
-<title>386b26e00bf44f67aa937678a280ff36</title>
-<g id="a_node19"><a xlink:href="javascript:void(0);">
+<!-- d2db9fb58be345fb8c6a903b7109b279 -->
+<g id="node18" class="node">
+<title>d2db9fb58be345fb8c6a903b7109b279</title>
 <path fill="none" stroke="black" d="M692.33,-70C692.33,-70 675.67,-70 675.67,-70 670.83,-70 666,-65.17 666,-60.33 666,-60.33 666,-50.67 666,-50.67 666,-45.83 670.83,-41 675.67,-41 675.67,-41 692.33,-41 692.33,-41 697.17,-41 702,-45.83 702,-50.67 702,-50.67 702,-60.33 702,-60.33 702,-65.17 697.17,-70 692.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-70"/>
-</a>
 </g>
-</g>
-<!-- 85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;386b26e00bf44f67aa937678a280ff36 -->
+<!-- 78211247fcf649bba13c78d8791f65a5&#45;&gt;d2db9fb58be345fb8c6a903b7109b279 -->
 <g id="edge3" class="edge">
-<title>85bc878e215f4e11b13e6c62ce3e01de&#45;&gt;386b26e00bf44f67aa937678a280ff36</title>
+<title>78211247fcf649bba13c78d8791f65a5&#45;&gt;d2db9fb58be345fb8c6a903b7109b279</title>
 <path fill="none" stroke="black" d="M184,-112.99C184,-99.02 184,-80 184,-80 184,-80 678,-80 678,-80 678,-80 678,-79 678,-79"/>
 <polygon fill="black" stroke="black" points="681.5,-80.03 678,-70.03 674.5,-80.03 681.5,-80.03"/>
 </g>
-<!-- c7e336e498564cba9e6e68beb481f883 -->
-<g id="node4" class="node">
-<title>c7e336e498564cba9e6e68beb481f883</title>
-<g id="a_node4"><a xlink:href="javascript:void(0);">
+<!-- 53fbc2e639e04034812a82ae99019621 -->
+<g id="node5" class="node">
+<title>53fbc2e639e04034812a82ae99019621</title>
 <path fill="none" stroke="black" d="M42.33,-142C42.33,-142 25.67,-142 25.67,-142 20.83,-142 16,-137.17 16,-132.33 16,-132.33 16,-122.67 16,-122.67 16,-117.83 20.83,-113 25.67,-113 25.67,-113 42.33,-113 42.33,-113 47.17,-113 52,-117.83 52,-122.67 52,-122.67 52,-132.33 52,-132.33 52,-137.17 47.17,-142 42.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- c7e336e498564cba9e6e68beb481f883&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee -->
+<!-- 53fbc2e639e04034812a82ae99019621&#45;&gt;d34899597f1046668b73f90cea704c14 -->
 <g id="edge24" class="edge">
-<title>c7e336e498564cba9e6e68beb481f883&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee</title>
+<title>53fbc2e639e04034812a82ae99019621&#45;&gt;d34899597f1046668b73f90cea704c14</title>
 <path fill="none" stroke="black" d="M52.06,-132C63.44,-132 76,-132 76,-132 76,-132 76,-60 76,-60 76,-60 77.86,-60 77.86,-60"/>
 <polygon fill="black" stroke="black" points="77.86,-63.5 87.86,-60 77.86,-56.5 77.86,-63.5"/>
 </g>
-<!-- cae21ddd9db843218da084310eac52f7 -->
+<!-- 25feaf2625dc48e8b00e7a492b6b022c -->
 <g id="node6" class="node">
-<title>cae21ddd9db843218da084310eac52f7</title>
-<g id="a_node6"><a xlink:href="javascript:void(0);">
+<title>25feaf2625dc48e8b00e7a492b6b022c</title>
 <path fill="none" stroke="black" d="M114.33,-142C114.33,-142 97.67,-142 97.67,-142 92.83,-142 88,-137.17 88,-132.33 88,-132.33 88,-122.67 88,-122.67 88,-117.83 92.83,-113 97.67,-113 97.67,-113 114.33,-113 114.33,-113 119.17,-113 124,-117.83 124,-122.67 124,-122.67 124,-132.33 124,-132.33 124,-137.17 119.17,-142 114.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- cae21ddd9db843218da084310eac52f7&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee -->
-<g id="edge6" class="edge">
-<title>cae21ddd9db843218da084310eac52f7&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee</title>
-<path fill="none" stroke="black" d="M94,-112.93C94,-112.93 94,-80.05 94,-80.05"/>
-<polygon fill="black" stroke="black" points="97.5,-80.05 94,-70.05 90.5,-80.05 97.5,-80.05"/>
-</g>
-<!-- cae21ddd9db843218da084310eac52f7&#45;&gt;bdc8cff09ca849c0b0db9df25fa8d1f8 -->
-<g id="edge8" class="edge">
-<title>cae21ddd9db843218da084310eac52f7&#45;&gt;bdc8cff09ca849c0b0db9df25fa8d1f8</title>
+<!-- 25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;0d4715c236344602a51f72b9dd5a536b -->
+<g id="edge7" class="edge">
+<title>25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;0d4715c236344602a51f72b9dd5a536b</title>
 <path fill="none" stroke="black" d="M87.94,-122C76.56,-122 64,-122 64,-122 64,-122 64,-50 64,-50 64,-50 62.14,-50 62.14,-50"/>
 <polygon fill="black" stroke="black" points="62.14,-46.5 52.14,-50 62.14,-53.5 62.14,-46.5"/>
 </g>
-<!-- 89df5b2898314446947dcf69a4e92217 -->
-<g id="node8" class="node">
-<title>89df5b2898314446947dcf69a4e92217</title>
-<g id="a_node8"><a xlink:href="javascript:void(0);">
+<!-- 25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;d34899597f1046668b73f90cea704c14 -->
+<g id="edge5" class="edge">
+<title>25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;d34899597f1046668b73f90cea704c14</title>
+<path fill="none" stroke="black" d="M94,-112.93C94,-112.93 94,-80.05 94,-80.05"/>
+<polygon fill="black" stroke="black" points="97.5,-80.05 94,-70.05 90.5,-80.05 97.5,-80.05"/>
+</g>
+<!-- 4718a29204734fa5b76496f597d042d9 -->
+<g id="node7" class="node">
+<title>4718a29204734fa5b76496f597d042d9</title>
 <path fill="none" stroke="black" d="M620.33,-142C620.33,-142 603.67,-142 603.67,-142 598.83,-142 594,-137.17 594,-132.33 594,-132.33 594,-122.67 594,-122.67 594,-117.83 598.83,-113 603.67,-113 603.67,-113 620.33,-113 620.33,-113 625.17,-113 630,-117.83 630,-122.67 630,-122.67 630,-132.33 630,-132.33 630,-137.17 625.17,-142 620.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="597.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- cae21ddd9db843218da084310eac52f7&#45;&gt;89df5b2898314446947dcf69a4e92217 -->
+<!-- 25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;4718a29204734fa5b76496f597d042d9 -->
 <g id="edge4" class="edge">
-<title>cae21ddd9db843218da084310eac52f7&#45;&gt;89df5b2898314446947dcf69a4e92217</title>
+<title>25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;4718a29204734fa5b76496f597d042d9</title>
 <path fill="none" stroke="black" d="M106,-142.35C106,-152.08 106,-163 106,-163 106,-163 599.67,-163 599.67,-163 599.67,-163 599.67,-152.35 599.67,-152.35"/>
 <polygon fill="black" stroke="black" points="603.17,-152.35 599.67,-142.35 596.17,-152.35 603.17,-152.35"/>
 </g>
-<!-- bf5390570a444679956247f00a52ea10 -->
-<g id="node14" class="node">
-<title>bf5390570a444679956247f00a52ea10</title>
-<g id="a_node14"><a xlink:href="javascript:void(0);">
+<!-- fbb1ed0be8a346d6bac857aff1ebd728 -->
+<g id="node11" class="node">
+<title>fbb1ed0be8a346d6bac857aff1ebd728</title>
 <path fill="none" stroke="black" d="M474.33,-70C474.33,-70 457.67,-70 457.67,-70 452.83,-70 448,-65.17 448,-60.33 448,-60.33 448,-50.67 448,-50.67 448,-45.83 452.83,-41 457.67,-41 457.67,-41 474.33,-41 474.33,-41 479.17,-41 484,-45.83 484,-50.67 484,-50.67 484,-60.33 484,-60.33 484,-65.17 479.17,-70 474.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-70"/>
-</a>
 </g>
-</g>
-<!-- cae21ddd9db843218da084310eac52f7&#45;&gt;bf5390570a444679956247f00a52ea10 -->
-<g id="edge7" class="edge">
-<title>cae21ddd9db843218da084310eac52f7&#45;&gt;bf5390570a444679956247f00a52ea10</title>
+<!-- 25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728 -->
+<g id="edge8" class="edge">
+<title>25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728</title>
 <path fill="none" stroke="black" d="M112,-112.88C112,-97.34 112,-75 112,-75 112,-75 460,-75 460,-75 460,-75 460,-74.51 460,-74.51"/>
 <polygon fill="black" stroke="black" points="463.5,-80.08 460,-70.08 456.5,-80.08 463.5,-80.08"/>
 </g>
-<!-- 39672d5eb8db430095c189a40f06e14a -->
-<g id="node18" class="node">
-<title>39672d5eb8db430095c189a40f06e14a</title>
-<g id="a_node18"><a xlink:href="javascript:void(0);">
+<!-- 2a73a66ef05a466db134b9b15b91af46 -->
+<g id="node19" class="node">
+<title>2a73a66ef05a466db134b9b15b91af46</title>
 <path fill="none" stroke="black" d="M764.33,-70C764.33,-70 747.67,-70 747.67,-70 742.83,-70 738,-65.17 738,-60.33 738,-60.33 738,-50.67 738,-50.67 738,-45.83 742.83,-41 747.67,-41 747.67,-41 764.33,-41 764.33,-41 769.17,-41 774,-45.83 774,-50.67 774,-50.67 774,-60.33 774,-60.33 774,-65.17 769.17,-70 764.33,-70"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-70"/>
-</a>
 </g>
-</g>
-<!-- cae21ddd9db843218da084310eac52f7&#45;&gt;39672d5eb8db430095c189a40f06e14a -->
-<g id="edge5" class="edge">
-<title>cae21ddd9db843218da084310eac52f7&#45;&gt;39672d5eb8db430095c189a40f06e14a</title>
+<!-- 25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;2a73a66ef05a466db134b9b15b91af46 -->
+<g id="edge6" class="edge">
+<title>25feaf2625dc48e8b00e7a492b6b022c&#45;&gt;2a73a66ef05a466db134b9b15b91af46</title>
 <path fill="none" stroke="black" d="M118,-112.99C118,-101.02 118,-86 118,-86 118,-86 747,-86 747,-86 747,-86 747,-80.04 747,-80.04"/>
 <polygon fill="black" stroke="black" points="750.5,-80.04 747,-70.04 743.5,-80.04 750.5,-80.04"/>
 </g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115 -->
-<g id="node7" class="node">
-<title>6b2015ce8b2149d5abdc5c900a908115</title>
-<g id="a_node7"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M601.33,-214C601.33,-214 584.67,-214 584.67,-214 579.83,-214 575,-209.17 575,-204.33 575,-204.33 575,-194.67 575,-194.67 575,-189.83 579.83,-185 584.67,-185 584.67,-185 601.33,-185 601.33,-185 606.17,-185 611,-189.83 611,-194.67 611,-194.67 611,-204.33 611,-204.33 611,-209.17 606.17,-214 601.33,-214"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="578.5" y="-214"/>
-</a>
-</g>
-</g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee -->
-<g id="edge11" class="edge">
-<title>6b2015ce8b2149d5abdc5c900a908115&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee</title>
-<path fill="none" stroke="black" d="M584.5,-184.69C584.5,-157.42 584.5,-102 584.5,-102 584.5,-102 100,-102 100,-102 100,-102 100,-80.21 100,-80.21"/>
-<polygon fill="black" stroke="black" points="103.5,-80.21 100,-70.21 96.5,-80.21 103.5,-80.21"/>
-</g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115&#45;&gt;bdc8cff09ca849c0b0db9df25fa8d1f8 -->
-<g id="edge13" class="edge">
-<title>6b2015ce8b2149d5abdc5c900a908115&#45;&gt;bdc8cff09ca849c0b0db9df25fa8d1f8</title>
-<path fill="none" stroke="black" d="M579.75,-184.64C579.75,-158.49 579.75,-107 579.75,-107 579.75,-107 34,-107 34,-107 34,-107 34,-80.12 34,-80.12"/>
-<polygon fill="black" stroke="black" points="37.5,-80.12 34,-70.12 30.5,-80.12 37.5,-80.12"/>
-</g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115&#45;&gt;89df5b2898314446947dcf69a4e92217 -->
-<g id="edge9" class="edge">
-<title>6b2015ce8b2149d5abdc5c900a908115&#45;&gt;89df5b2898314446947dcf69a4e92217</title>
-<path fill="none" stroke="black" d="M605.33,-184.93C605.33,-184.93 605.33,-152.05 605.33,-152.05"/>
-<polygon fill="black" stroke="black" points="608.83,-152.05 605.33,-142.05 601.83,-152.05 608.83,-152.05"/>
-</g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115&#45;&gt;bf5390570a444679956247f00a52ea10 -->
-<g id="edge12" class="edge">
-<title>6b2015ce8b2149d5abdc5c900a908115&#45;&gt;bf5390570a444679956247f00a52ea10</title>
-<path fill="none" stroke="black" d="M589.25,-184.83C589.25,-149.02 589.25,-60 589.25,-60 589.25,-60 494.19,-60 494.19,-60"/>
-<polygon fill="black" stroke="black" points="494.19,-56.5 484.19,-60 494.19,-63.5 494.19,-56.5"/>
-</g>
-<!-- 6b2015ce8b2149d5abdc5c900a908115&#45;&gt;39672d5eb8db430095c189a40f06e14a -->
-<g id="edge10" class="edge">
-<title>6b2015ce8b2149d5abdc5c900a908115&#45;&gt;39672d5eb8db430095c189a40f06e14a</title>
-<path fill="none" stroke="black" d="M611.2,-199C646.31,-199 720,-199 720,-199 720,-199 720,-55 720,-55 720,-55 727.58,-55 727.58,-55"/>
-<polygon fill="black" stroke="black" points="727.58,-58.5 737.58,-55 727.58,-51.5 727.58,-58.5"/>
-</g>
-<!-- 89df5b2898314446947dcf69a4e92217&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee -->
+<!-- 4718a29204734fa5b76496f597d042d9&#45;&gt;d34899597f1046668b73f90cea704c14 -->
 <g id="edge20" class="edge">
-<title>89df5b2898314446947dcf69a4e92217&#45;&gt;a1239517e6ef48b69e9c35c4faf440ee</title>
+<title>4718a29204734fa5b76496f597d042d9&#45;&gt;d34899597f1046668b73f90cea704c14</title>
 <path fill="none" stroke="black" d="M603,-112.86C603,-104.63 603,-96 603,-96 603,-96 106,-96 106,-96 106,-96 106,-80.12 106,-80.12"/>
 <polygon fill="black" stroke="black" points="109.5,-80.12 106,-70.12 102.5,-80.12 109.5,-80.12"/>
 </g>
-<!-- 89df5b2898314446947dcf69a4e92217&#45;&gt;bf5390570a444679956247f00a52ea10 -->
+<!-- 4718a29204734fa5b76496f597d042d9&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728 -->
 <g id="edge21" class="edge">
-<title>89df5b2898314446947dcf69a4e92217&#45;&gt;bf5390570a444679956247f00a52ea10</title>
+<title>4718a29204734fa5b76496f597d042d9&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728</title>
 <path fill="none" stroke="black" d="M612,-112.92C612,-90.47 612,-50 612,-50 612,-50 494.2,-50 494.2,-50"/>
 <polygon fill="black" stroke="black" points="494.2,-46.5 484.2,-50 494.2,-53.5 494.2,-46.5"/>
 </g>
-<!-- 89df5b2898314446947dcf69a4e92217&#45;&gt;39672d5eb8db430095c189a40f06e14a -->
+<!-- 4718a29204734fa5b76496f597d042d9&#45;&gt;2a73a66ef05a466db134b9b15b91af46 -->
 <g id="edge19" class="edge">
-<title>89df5b2898314446947dcf69a4e92217&#45;&gt;39672d5eb8db430095c189a40f06e14a</title>
+<title>4718a29204734fa5b76496f597d042d9&#45;&gt;2a73a66ef05a466db134b9b15b91af46</title>
 <path fill="none" stroke="black" d="M621,-112.65C621,-102.55 621,-91 621,-91 621,-91 756,-91 756,-91 756,-91 756,-80.35 756,-80.35"/>
 <polygon fill="black" stroke="black" points="759.5,-80.35 756,-70.35 752.5,-80.35 759.5,-80.35"/>
 </g>
-<!-- 6053d88271c54efd90ab6ab413b655ab -->
+<!-- 6aa92846e324407a98f3ac60422ab955 -->
+<g id="node8" class="node">
+<title>6aa92846e324407a98f3ac60422ab955</title>
+<path fill="none" stroke="black" d="M601.33,-214C601.33,-214 584.67,-214 584.67,-214 579.83,-214 575,-209.17 575,-204.33 575,-204.33 575,-194.67 575,-194.67 575,-189.83 579.83,-185 584.67,-185 584.67,-185 601.33,-185 601.33,-185 606.17,-185 611,-189.83 611,-194.67 611,-194.67 611,-204.33 611,-204.33 611,-209.17 606.17,-214 601.33,-214"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="578.5" y="-214"/>
+</g>
+<!-- 6aa92846e324407a98f3ac60422ab955&#45;&gt;0d4715c236344602a51f72b9dd5a536b -->
+<g id="edge12" class="edge">
+<title>6aa92846e324407a98f3ac60422ab955&#45;&gt;0d4715c236344602a51f72b9dd5a536b</title>
+<path fill="none" stroke="black" d="M579.75,-184.64C579.75,-158.49 579.75,-107 579.75,-107 579.75,-107 34,-107 34,-107 34,-107 34,-80.12 34,-80.12"/>
+<polygon fill="black" stroke="black" points="37.5,-80.12 34,-70.12 30.5,-80.12 37.5,-80.12"/>
+</g>
+<!-- 6aa92846e324407a98f3ac60422ab955&#45;&gt;d34899597f1046668b73f90cea704c14 -->
+<g id="edge10" class="edge">
+<title>6aa92846e324407a98f3ac60422ab955&#45;&gt;d34899597f1046668b73f90cea704c14</title>
+<path fill="none" stroke="black" d="M584.5,-184.69C584.5,-157.42 584.5,-102 584.5,-102 584.5,-102 100,-102 100,-102 100,-102 100,-80.21 100,-80.21"/>
+<polygon fill="black" stroke="black" points="103.5,-80.21 100,-70.21 96.5,-80.21 103.5,-80.21"/>
+</g>
+<!-- 6aa92846e324407a98f3ac60422ab955&#45;&gt;4718a29204734fa5b76496f597d042d9 -->
+<g id="edge9" class="edge">
+<title>6aa92846e324407a98f3ac60422ab955&#45;&gt;4718a29204734fa5b76496f597d042d9</title>
+<path fill="none" stroke="black" d="M605.33,-184.93C605.33,-184.93 605.33,-152.05 605.33,-152.05"/>
+<polygon fill="black" stroke="black" points="608.83,-152.05 605.33,-142.05 601.83,-152.05 608.83,-152.05"/>
+</g>
+<!-- 6aa92846e324407a98f3ac60422ab955&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728 -->
+<g id="edge13" class="edge">
+<title>6aa92846e324407a98f3ac60422ab955&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728</title>
+<path fill="none" stroke="black" d="M589.25,-184.83C589.25,-149.02 589.25,-60 589.25,-60 589.25,-60 494.19,-60 494.19,-60"/>
+<polygon fill="black" stroke="black" points="494.19,-56.5 484.19,-60 494.19,-63.5 494.19,-56.5"/>
+</g>
+<!-- 6aa92846e324407a98f3ac60422ab955&#45;&gt;2a73a66ef05a466db134b9b15b91af46 -->
+<g id="edge11" class="edge">
+<title>6aa92846e324407a98f3ac60422ab955&#45;&gt;2a73a66ef05a466db134b9b15b91af46</title>
+<path fill="none" stroke="black" d="M611.2,-199C646.31,-199 720,-199 720,-199 720,-199 720,-55 720,-55 720,-55 727.58,-55 727.58,-55"/>
+<polygon fill="black" stroke="black" points="727.58,-58.5 737.58,-55 727.58,-51.5 727.58,-58.5"/>
+</g>
+<!-- 43fae3bf7ff34700880436e0369e20c9 -->
 <g id="node9" class="node">
-<title>6053d88271c54efd90ab6ab413b655ab</title>
-<g id="a_node9"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M402.33,-70C402.33,-70 385.67,-70 385.67,-70 380.83,-70 376,-65.17 376,-60.33 376,-60.33 376,-50.67 376,-50.67 376,-45.83 380.83,-41 385.67,-41 385.67,-41 402.33,-41 402.33,-41 407.17,-41 412,-45.83 412,-50.67 412,-50.67 412,-60.33 412,-60.33 412,-65.17 407.17,-70 402.33,-70"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- d065cabb328d4ba8a9edf40fb2308daa -->
-<g id="node10" class="node">
-<title>d065cabb328d4ba8a9edf40fb2308daa</title>
-<g id="a_node10"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M330.33,-70C330.33,-70 313.67,-70 313.67,-70 308.83,-70 304,-65.17 304,-60.33 304,-60.33 304,-50.67 304,-50.67 304,-45.83 308.83,-41 313.67,-41 313.67,-41 330.33,-41 330.33,-41 335.17,-41 340,-45.83 340,-50.67 340,-50.67 340,-60.33 340,-60.33 340,-65.17 335.17,-70 330.33,-70"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 91102eeed8cd412cbfa7fdd73987086a -->
-<g id="node12" class="node">
-<title>91102eeed8cd412cbfa7fdd73987086a</title>
-<g id="a_node12"><a xlink:href="javascript:void(0);">
+<title>43fae3bf7ff34700880436e0369e20c9</title>
 <path fill="none" stroke="black" d="M402.33,-142C402.33,-142 385.67,-142 385.67,-142 380.83,-142 376,-137.17 376,-132.33 376,-132.33 376,-122.67 376,-122.67 376,-117.83 380.83,-113 385.67,-113 385.67,-113 402.33,-113 402.33,-113 407.17,-113 412,-117.83 412,-122.67 412,-122.67 412,-132.33 412,-132.33 412,-137.17 407.17,-142 402.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-142"/>
-</a>
 </g>
+<!-- f4181afbef6c4b2694deb49425ec7101 -->
+<g id="node10" class="node">
+<title>f4181afbef6c4b2694deb49425ec7101</title>
+<path fill="none" stroke="black" d="M402.33,-70C402.33,-70 385.67,-70 385.67,-70 380.83,-70 376,-65.17 376,-60.33 376,-60.33 376,-50.67 376,-50.67 376,-45.83 380.83,-41 385.67,-41 385.67,-41 402.33,-41 402.33,-41 407.17,-41 412,-45.83 412,-50.67 412,-50.67 412,-60.33 412,-60.33 412,-65.17 407.17,-70 402.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-70"/>
 </g>
-<!-- 91102eeed8cd412cbfa7fdd73987086a&#45;&gt;6053d88271c54efd90ab6ab413b655ab -->
+<!-- 43fae3bf7ff34700880436e0369e20c9&#45;&gt;f4181afbef6c4b2694deb49425ec7101 -->
 <g id="edge18" class="edge">
-<title>91102eeed8cd412cbfa7fdd73987086a&#45;&gt;6053d88271c54efd90ab6ab413b655ab</title>
+<title>43fae3bf7ff34700880436e0369e20c9&#45;&gt;f4181afbef6c4b2694deb49425ec7101</title>
 <path fill="none" stroke="black" d="M394,-112.93C394,-112.93 394,-80.05 394,-80.05"/>
 <polygon fill="black" stroke="black" points="397.5,-80.05 394,-70.05 390.5,-80.05 397.5,-80.05"/>
 </g>
-<!-- b973341652c94336a577d00c4623a868 -->
-<g id="node13" class="node">
-<title>b973341652c94336a577d00c4623a868</title>
-<g id="a_node13"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
-</a>
+<!-- 4f8c867437374939b267e23fc328124a -->
+<g id="node12" class="node">
+<title>4f8c867437374939b267e23fc328124a</title>
+<path fill="none" stroke="black" d="M330.33,-70C330.33,-70 313.67,-70 313.67,-70 308.83,-70 304,-65.17 304,-60.33 304,-60.33 304,-50.67 304,-50.67 304,-45.83 308.83,-41 313.67,-41 313.67,-41 330.33,-41 330.33,-41 335.17,-41 340,-45.83 340,-50.67 340,-50.67 340,-60.33 340,-60.33 340,-65.17 335.17,-70 330.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-70"/>
 </g>
-</g>
-<!-- b973341652c94336a577d00c4623a868&#45;&gt;6053d88271c54efd90ab6ab413b655ab -->
-<g id="edge16" class="edge">
-<title>b973341652c94336a577d00c4623a868&#45;&gt;6053d88271c54efd90ab6ab413b655ab</title>
-<path fill="none" stroke="black" d="M340.42,-127C349.28,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 365.58,-55 365.58,-55"/>
-<polygon fill="black" stroke="black" points="365.58,-58.5 375.58,-55 365.58,-51.5 365.58,-58.5"/>
-</g>
-<!-- b973341652c94336a577d00c4623a868&#45;&gt;d065cabb328d4ba8a9edf40fb2308daa -->
-<g id="edge17" class="edge">
-<title>b973341652c94336a577d00c4623a868&#45;&gt;d065cabb328d4ba8a9edf40fb2308daa</title>
-<path fill="none" stroke="black" d="M322,-112.93C322,-112.93 322,-80.05 322,-80.05"/>
-<polygon fill="black" stroke="black" points="325.5,-80.05 322,-70.05 318.5,-80.05 325.5,-80.05"/>
-</g>
-<!-- 86e6e0413a36483aa66b87a3a9f310cf -->
-<g id="node15" class="node">
-<title>86e6e0413a36483aa66b87a3a9f310cf</title>
-<g id="a_node15"><a xlink:href="javascript:void(0);">
-<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
-<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- 86e6e0413a36483aa66b87a3a9f310cf&#45;&gt;d6717227d433481a9093e380c577aa1b -->
-<g id="edge14" class="edge">
-<title>86e6e0413a36483aa66b87a3a9f310cf&#45;&gt;d6717227d433481a9093e380c577aa1b</title>
-<path fill="none" stroke="black" d="M250,-112.93C250,-112.93 250,-80.05 250,-80.05"/>
-<polygon fill="black" stroke="black" points="253.5,-80.05 250,-70.05 246.5,-80.05 253.5,-80.05"/>
-</g>
-<!-- 0d93675f81694a7185a7f0dd727a70bb -->
-<g id="node16" class="node">
-<title>0d93675f81694a7185a7f0dd727a70bb</title>
-<g id="a_node16"><a xlink:href="javascript:void(0);">
+<!-- 4f82ad8a269f40209fa41daa087acac4 -->
+<g id="node14" class="node">
+<title>4f82ad8a269f40209fa41daa087acac4</title>
 <path fill="none" stroke="black" d="M474.33,-142C474.33,-142 457.67,-142 457.67,-142 452.83,-142 448,-137.17 448,-132.33 448,-132.33 448,-122.67 448,-122.67 448,-117.83 452.83,-113 457.67,-113 457.67,-113 474.33,-113 474.33,-113 479.17,-113 484,-117.83 484,-122.67 484,-122.67 484,-132.33 484,-132.33 484,-137.17 479.17,-142 474.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- 0d93675f81694a7185a7f0dd727a70bb&#45;&gt;bf5390570a444679956247f00a52ea10 -->
+<!-- 4f82ad8a269f40209fa41daa087acac4&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728 -->
 <g id="edge15" class="edge">
-<title>0d93675f81694a7185a7f0dd727a70bb&#45;&gt;bf5390570a444679956247f00a52ea10</title>
+<title>4f82ad8a269f40209fa41daa087acac4&#45;&gt;fbb1ed0be8a346d6bac857aff1ebd728</title>
 <path fill="none" stroke="black" d="M472,-112.93C472,-112.93 472,-80.05 472,-80.05"/>
 <polygon fill="black" stroke="black" points="475.5,-80.05 472,-70.05 468.5,-80.05 475.5,-80.05"/>
 </g>
-<!-- 229d4f87bfe3426d9b59257e19aab4c6 -->
+<!-- 0082935ba0e344b7b05dabd09d4a4fd0 -->
+<g id="node15" class="node">
+<title>0082935ba0e344b7b05dabd09d4a4fd0</title>
+<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
+</g>
+<!-- 0082935ba0e344b7b05dabd09d4a4fd0&#45;&gt;f4181afbef6c4b2694deb49425ec7101 -->
+<g id="edge16" class="edge">
+<title>0082935ba0e344b7b05dabd09d4a4fd0&#45;&gt;f4181afbef6c4b2694deb49425ec7101</title>
+<path fill="none" stroke="black" d="M340.42,-127C349.28,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 365.58,-55 365.58,-55"/>
+<polygon fill="black" stroke="black" points="365.58,-58.5 375.58,-55 365.58,-51.5 365.58,-58.5"/>
+</g>
+<!-- 0082935ba0e344b7b05dabd09d4a4fd0&#45;&gt;4f8c867437374939b267e23fc328124a -->
+<g id="edge17" class="edge">
+<title>0082935ba0e344b7b05dabd09d4a4fd0&#45;&gt;4f8c867437374939b267e23fc328124a</title>
+<path fill="none" stroke="black" d="M322,-112.93C322,-112.93 322,-80.05 322,-80.05"/>
+<polygon fill="black" stroke="black" points="325.5,-80.05 322,-70.05 318.5,-80.05 325.5,-80.05"/>
+</g>
+<!-- 101e5449b5134c748e431c81d047d40a -->
+<g id="node16" class="node">
+<title>101e5449b5134c748e431c81d047d40a</title>
+<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
+</g>
+<!-- 101e5449b5134c748e431c81d047d40a&#45;&gt;cb91edba849b4d21bd7c7ef2cbf443b3 -->
+<g id="edge14" class="edge">
+<title>101e5449b5134c748e431c81d047d40a&#45;&gt;cb91edba849b4d21bd7c7ef2cbf443b3</title>
+<path fill="none" stroke="black" d="M250,-112.93C250,-112.93 250,-80.05 250,-80.05"/>
+<polygon fill="black" stroke="black" points="253.5,-80.05 250,-70.05 246.5,-80.05 253.5,-80.05"/>
+</g>
+<!-- ddccf5913f71423ba4785e4616912895 -->
 <g id="node17" class="node">
-<title>229d4f87bfe3426d9b59257e19aab4c6</title>
-<g id="a_node17"><a xlink:href="javascript:void(0);">
+<title>ddccf5913f71423ba4785e4616912895</title>
 <path fill="none" stroke="black" d="M764.33,-142C764.33,-142 747.67,-142 747.67,-142 742.83,-142 738,-137.17 738,-132.33 738,-132.33 738,-122.67 738,-122.67 738,-117.83 742.83,-113 747.67,-113 747.67,-113 764.33,-113 764.33,-113 769.17,-113 774,-117.83 774,-122.67 774,-122.67 774,-132.33 774,-132.33 774,-137.17 769.17,-142 764.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- 229d4f87bfe3426d9b59257e19aab4c6&#45;&gt;39672d5eb8db430095c189a40f06e14a -->
+<!-- ddccf5913f71423ba4785e4616912895&#45;&gt;2a73a66ef05a466db134b9b15b91af46 -->
 <g id="edge22" class="edge">
-<title>229d4f87bfe3426d9b59257e19aab4c6&#45;&gt;39672d5eb8db430095c189a40f06e14a</title>
+<title>ddccf5913f71423ba4785e4616912895&#45;&gt;2a73a66ef05a466db134b9b15b91af46</title>
 <path fill="none" stroke="black" d="M765,-112.93C765,-112.93 765,-80.05 765,-80.05"/>
 <polygon fill="black" stroke="black" points="768.5,-80.05 765,-70.05 761.5,-80.05 768.5,-80.05"/>
 </g>
-<!-- a652baa6ab2146d4a694ace18fc43206 -->
+<!-- 20f89d80661c4f6490ac24f22fd58c87 -->
 <g id="node20" class="node">
-<title>a652baa6ab2146d4a694ace18fc43206</title>
-<g id="a_node20"><a xlink:href="javascript:void(0);">
+<title>20f89d80661c4f6490ac24f22fd58c87</title>
 <path fill="none" stroke="black" d="M692.33,-142C692.33,-142 675.67,-142 675.67,-142 670.83,-142 666,-137.17 666,-132.33 666,-132.33 666,-122.67 666,-122.67 666,-117.83 670.83,-113 675.67,-113 675.67,-113 692.33,-113 692.33,-113 697.17,-113 702,-117.83 702,-122.67 702,-122.67 702,-132.33 702,-132.33 702,-137.17 697.17,-142 692.33,-142"/>
 <image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-142"/>
-</a>
 </g>
-</g>
-<!-- a652baa6ab2146d4a694ace18fc43206&#45;&gt;386b26e00bf44f67aa937678a280ff36 -->
+<!-- 20f89d80661c4f6490ac24f22fd58c87&#45;&gt;d2db9fb58be345fb8c6a903b7109b279 -->
 <g id="edge23" class="edge">
-<title>a652baa6ab2146d4a694ace18fc43206&#45;&gt;386b26e00bf44f67aa937678a280ff36</title>
+<title>20f89d80661c4f6490ac24f22fd58c87&#45;&gt;d2db9fb58be345fb8c6a903b7109b279</title>
 <path fill="none" stroke="black" d="M690,-112.93C690,-112.93 690,-80.05 690,-80.05"/>
 <polygon fill="black" stroke="black" points="693.5,-80.05 690,-70.05 686.5,-80.05 693.5,-80.05"/>
 </g>
