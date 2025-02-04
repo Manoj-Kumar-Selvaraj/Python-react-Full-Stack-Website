@@ -133,10 +133,14 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         tooltip_js = """
 <script><![CDATA[
 function showTooltip(evt, resourceName, serviceType) {
+    if (!evt) evt = window.event;  // Ensure event is captured
     let tooltip = document.getElementById("tooltip");
     tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
-    tooltip.style.left = evt.clientX + 10 + "px";
-    tooltip.style.top = evt.clientY + 10 + "px";
+    if (evt) {
+        tooltip.style.left = evt.clientX + "px";
+        tooltip.style.top = evt.clientY + "px";
+    }
+
     tooltip.style.display = "block";
 }
 
