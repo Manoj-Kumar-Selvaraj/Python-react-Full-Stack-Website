@@ -18,10 +18,8 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-# Adjustable icon size
-ICON_SIZE = "20"  # Adjust for better visibility
+ICON_SIZE = "20"
 
-# Load AWS icons dynamically
 def load_aws_icons():
     aws_icons = {}
     aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
@@ -37,7 +35,6 @@ def load_aws_icons():
 
 aws_icons = load_aws_icons()
 
-# Load Terraform state
 def load_tfstate(filename="tfstate.json"):
     if not os.path.exists(filename):
         error_message = f"Terraform state file '{filename}' not found."
@@ -46,7 +43,6 @@ def load_tfstate(filename="tfstate.json"):
     with open(filename, "r") as file:
         return json.load(file)
 
-# Extract services and dependencies
 def extract_services(json_data):
     services = []
     dependency_matrix = defaultdict(set)
@@ -62,7 +58,6 @@ def extract_services(json_data):
             )
     return services, dependency_matrix
 
-# AWS category mapping for clusters
 aws_categories = {
     "Compute": ["ec2", "lambda", "batch", "ecs", "eks", "fargate"],
     "Storage": ["s3", "ebs", "efs", "fsx", "glacier"],
@@ -83,7 +78,6 @@ def get_category(service_type):
             return category
     return "Other"
 
-# Get AWS icon
 def get_icon(service_type):
     aws_service_name = terraform_to_aws_service_map.get(service_type, None)
     if not aws_service_name:
@@ -94,7 +88,6 @@ def get_icon(service_type):
             return icons[service_name.lower()]
     return None
 
-# Generate diagram with better spacing and alignment
 def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     try:
         nodes = {}
@@ -107,7 +100,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         graph_attrs = {
             "size": "300,200", 
             "dpi": "200",
-            "rankdir": "TB",  # Top to Bottom layout
+            "rankdir": "TB",
             "nodesep": "0.5",  
             "ranksep": "0.6"  
         }
@@ -120,21 +113,22 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            # Hide label, add JavaScript tooltip
                             icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
                                         shape="box", width="0.5", height="0.4")
                             cluster_nodes[resource_name] = icon
 
-            # Add dependencies
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
                     targets = [cluster_nodes[target_name] for target_name in dependencies if target_name in cluster_nodes]
                     if targets:
                         cluster_nodes[source_name] >> Edge(color="black", penwidth="1") >> targets
 
-        # Read generated SVG and inject JavaScript
         with open(output_file + ".svg", "r") as file:
             svg_content = file.read()
+
+        base_url = "https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/"
+        pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
+        updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
 
         tooltip_js = """
 <script><![CDATA[
@@ -170,17 +164,16 @@ document.addEventListener("click", function(event) {
 <div id="tooltip"></div>
 """
 
-        updated_svg_content = svg_content.replace("</svg>", tooltip_js + "\n</svg>")
+        final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
 
         with open("infrastructure_architecture.svg", "w") as file:
-            file.write(updated_svg_content)
+            file.write(final_svg_content)
 
     except Exception as e:
         logging.error(f"Error generating diagram: {e}")
         logging.error(traceback.format_exc())
         raise
 
-# Main execution
 if __name__ == "__main__":
     try:
         tfstate_data = load_tfstate("tfstate.json")
