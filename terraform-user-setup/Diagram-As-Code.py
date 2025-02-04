@@ -4,8 +4,10 @@ import importlib
 import logging
 import traceback
 import pkgutil
-from diagrams import Diagram, Cluster, Edge
+import re
 from diagrams.custom import Custom
+from diagrams import Diagram, Cluster, Edge
+from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
 
@@ -20,7 +22,7 @@ ICON_SIZE = "20"
 
 def load_aws_icons():
     aws_icons = {}
-    aws_modules = [name for _, name, _ in pkgutil.iter_modules()]
+    aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
     for module_name in aws_modules:
         try:
             module = importlib.import_module(f"diagrams.aws.{module_name}")
@@ -111,8 +113,8 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            icon = icon("", shape="box", width="0.5", height="0.4", 
-                                        data_resource=resource_name, data_type=service_type)
+                            icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
+                                        shape="box", width="0.5", height="0.4")
                             cluster_nodes[resource_name] = icon
 
             for (source_type, source_name), dependencies in dependency_matrix.items():
@@ -124,30 +126,25 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         with open(output_file + ".svg", "r") as file:
             svg_content = file.read()
 
-        # Add the Tooltip JS and CSS to the SVG
+        base_url = "https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/"
+        pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
+        updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
+
         tooltip_js = """
 <script><![CDATA[
-document.addEventListener("DOMContentLoaded", function () {
-    const icons = document.querySelectorAll('[data-resource]');
-    
-    icons.forEach(function(icon) {
-        icon.addEventListener("mouseover", function(event) {
-            let resourceName = icon.getAttribute('data-resource');
-            let serviceType = icon.getAttribute('data-type');
-            let tooltip = document.getElementById("tooltip");
-            tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
-            tooltip.style.left = event.pageX + "px";
-            tooltip.style.top = event.pageY + "px";
-            tooltip.style.display = "block";
-        });
-    });
+function showTooltip(evt, resourceName, serviceType) {
+    let tooltip = document.getElementById("tooltip");
+    tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
+    tooltip.style.left = evt.pageX + "px";
+    tooltip.style.top = evt.pageY + "px";
+    tooltip.style.display = "block";
+}
 
-    document.addEventListener("click", function(event) {
-        let tooltip = document.getElementById("tooltip");
-        if (!event.target.closest("[data-resource]")) {
-            tooltip.style.display = "none";
-        }
-    });
+document.addEventListener("click", function(event) {
+    let tooltip = document.getElementById("tooltip");
+    if (!event.target.closest("[href^='javascript:showTooltip']")) {
+        tooltip.style.display = "none";
+    }
 });
 ]]></script>
 
@@ -167,10 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
 <div id="tooltip"></div>
 """
 
-        # Combine the updated SVG content with the tooltip functionality
-        final_svg_content = svg_content.replace("</svg>", tooltip_js + "\n</svg>")
+        final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
 
-        with open("infrastructure_architecture_with_tooltip.svg", "w") as file:
+        with open("infrastructure_architecture.svg", "w") as file:
             file.write(final_svg_content)
 
     except Exception as e:
