@@ -130,6 +130,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
         updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
 
+        # Add the Tooltip JS and CSS to the SVG
         tooltip_js = """
 <script><![CDATA[
 function showTooltip(evt, resourceName, serviceType) {
@@ -164,6 +165,7 @@ document.addEventListener("click", function(event) {
 <div id="tooltip"></div>
 """
 
+        # Combine the updated SVG content with the tooltip functionality
         final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
 
         with open("infrastructure_architecture.svg", "w") as file:
