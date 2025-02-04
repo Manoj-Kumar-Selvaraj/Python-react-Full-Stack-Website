@@ -113,8 +113,16 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
-                                        shape="box", width="0.5", height="0.4")
+                            # Wrapping the icon with <a> tag to call showTooltip on click
+                            icon = Custom(
+                                resource_name,
+                                icon,
+                                href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')"
+                            ).attr(
+                                shape="box",
+                                width="0.5",
+                                height="0.4"
+                            )
                             cluster_nodes[resource_name] = icon
 
             for (source_type, source_name), dependencies in dependency_matrix.items():
