@@ -30,329 +30,329 @@
 <path fill="#e5f5fd" stroke="#aeb6be" d="M670,-33C670,-33 770,-33 770,-33 776,-33 782,-39 782,-45 782,-45 782,-159 782,-159 782,-165 776,-171 770,-171 770,-171 670,-171 670,-171 664,-171 658,-165 658,-159 658,-159 658,-45 658,-45 658,-39 664,-33 670,-33"/>
 <text text-anchor="middle" x="690" y="-157.4" font-family="Sans-Serif" font-size="12.00" fill="#2d3436">Storage</text>
 </g>
-<!-- 38788fc9468c44c2b66d50b344add117 -->
+<!-- 9aad75489d4f4533b491b79bda81295b -->
 <g id="node1" class="node">
-<title>38788fc9468c44c2b66d50b344add117</title>
+<title>9aad75489d4f4533b491b79bda81295b</title>
 <g id="a_node1"><a xlink:href="javascript:showTooltip(event, 'user_creation_topic', 'aws_sns_topic')">
 <path fill="none" stroke="black" d="M114.33,-70C114.33,-70 97.67,-70 97.67,-70 92.83,-70 88,-65.17 88,-60.33 88,-60.33 88,-50.67 88,-50.67 88,-45.83 92.83,-41 97.67,-41 97.67,-41 114.33,-41 114.33,-41 119.17,-41 124,-45.83 124,-50.67 124,-50.67 124,-60.33 124,-60.33 124,-65.17 119.17,-70 114.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12be6d905c8d44d2be1cec0c8a6732d4 -->
+<!-- c1379ae60599447c9d46d90a14c42bdb -->
 <g id="node2" class="node">
-<title>12be6d905c8d44d2be1cec0c8a6732d4</title>
+<title>c1379ae60599447c9d46d90a14c42bdb</title>
 <g id="a_node2"><a xlink:href="javascript:showTooltip(event, 'Master_Trail', 'aws_cloudtrail')">
 <path fill="none" stroke="black" d="M186.33,-142C186.33,-142 169.67,-142 169.67,-142 164.83,-142 160,-137.17 160,-132.33 160,-132.33 160,-122.67 160,-122.67 160,-117.83 164.83,-113 169.67,-113 169.67,-113 186.33,-113 186.33,-113 191.17,-113 196,-117.83 196,-122.67 196,-122.67 196,-132.33 196,-132.33 196,-137.17 191.17,-142 186.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudtrail.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- dc2fbe611a6141bbbf5209642a41f8d5 -->
-<g id="node3" class="node">
-<title>dc2fbe611a6141bbbf5209642a41f8d5</title>
-<g id="a_node3"><a xlink:href="javascript:showTooltip(event, 'Cloudtrail_log_group', 'aws_cloudwatch_log_group')">
+<!-- ef49a4bafae94292b843e113a16cce04 -->
+<g id="node6" class="node">
+<title>ef49a4bafae94292b843e113a16cce04</title>
+<g id="a_node6"><a xlink:href="javascript:showTooltip(event, 'Cloudtrail_log_group', 'aws_cloudwatch_log_group')">
 <path fill="none" stroke="black" d="M186.33,-70C186.33,-70 169.67,-70 169.67,-70 164.83,-70 160,-65.17 160,-60.33 160,-60.33 160,-50.67 160,-50.67 160,-45.83 164.83,-41 169.67,-41 169.67,-41 186.33,-41 186.33,-41 191.17,-41 196,-45.83 196,-50.67 196,-50.67 196,-60.33 196,-60.33 196,-65.17 191.17,-70 186.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;dc2fbe611a6141bbbf5209642a41f8d5 -->
+<!-- c1379ae60599447c9d46d90a14c42bdb&#45;&gt;ef49a4bafae94292b843e113a16cce04 -->
 <g id="edge2" class="edge">
-<title>12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;dc2fbe611a6141bbbf5209642a41f8d5</title>
+<title>c1379ae60599447c9d46d90a14c42bdb&#45;&gt;ef49a4bafae94292b843e113a16cce04</title>
 <path fill="none" stroke="black" d="M172,-112.93C172,-112.93 172,-80.05 172,-80.05"/>
 <polygon fill="black" stroke="black" points="175.5,-80.05 172,-70.05 168.5,-80.05 175.5,-80.05"/>
 </g>
-<!-- 7bea1fcdd59d4593a5e7c036354a455e -->
-<g id="node15" class="node">
-<title>7bea1fcdd59d4593a5e7c036354a455e</title>
-<g id="a_node15"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_role', 'aws_iam_role')">
+<!-- 58b949f61f63401d960b788b779592fc -->
+<g id="node13" class="node">
+<title>58b949f61f63401d960b788b779592fc</title>
+<g id="a_node13"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_role', 'aws_iam_role')">
 <path fill="none" stroke="black" d="M258.33,-70C258.33,-70 241.67,-70 241.67,-70 236.83,-70 232,-65.17 232,-60.33 232,-60.33 232,-50.67 232,-50.67 232,-45.83 236.83,-41 241.67,-41 241.67,-41 258.33,-41 258.33,-41 263.17,-41 268,-45.83 268,-50.67 268,-50.67 268,-60.33 268,-60.33 268,-65.17 263.17,-70 258.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;7bea1fcdd59d4593a5e7c036354a455e -->
+<!-- c1379ae60599447c9d46d90a14c42bdb&#45;&gt;58b949f61f63401d960b788b779592fc -->
 <g id="edge1" class="edge">
-<title>12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;7bea1fcdd59d4593a5e7c036354a455e</title>
+<title>c1379ae60599447c9d46d90a14c42bdb&#45;&gt;58b949f61f63401d960b788b779592fc</title>
 <path fill="none" stroke="black" d="M196.42,-127C205.28,-127 214,-127 214,-127 214,-127 214,-55 214,-55 214,-55 221.58,-55 221.58,-55"/>
 <polygon fill="black" stroke="black" points="221.58,-58.5 231.58,-55 221.58,-51.5 221.58,-58.5"/>
 </g>
-<!-- 62e22dfd566b47b389e55d9c446e86eb -->
-<g id="node20" class="node">
-<title>62e22dfd566b47b389e55d9c446e86eb</title>
-<g id="a_node20"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket', 'aws_s3_bucket')">
+<!-- d0a36acc49fc44f5901a27bc7a3fc16c -->
+<g id="node19" class="node">
+<title>d0a36acc49fc44f5901a27bc7a3fc16c</title>
+<g id="a_node19"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket', 'aws_s3_bucket')">
 <path fill="none" stroke="black" d="M692.33,-70C692.33,-70 675.67,-70 675.67,-70 670.83,-70 666,-65.17 666,-60.33 666,-60.33 666,-50.67 666,-50.67 666,-45.83 670.83,-41 675.67,-41 675.67,-41 692.33,-41 692.33,-41 697.17,-41 702,-45.83 702,-50.67 702,-50.67 702,-60.33 702,-60.33 702,-65.17 697.17,-70 692.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;62e22dfd566b47b389e55d9c446e86eb -->
+<!-- c1379ae60599447c9d46d90a14c42bdb&#45;&gt;d0a36acc49fc44f5901a27bc7a3fc16c -->
 <g id="edge3" class="edge">
-<title>12be6d905c8d44d2be1cec0c8a6732d4&#45;&gt;62e22dfd566b47b389e55d9c446e86eb</title>
+<title>c1379ae60599447c9d46d90a14c42bdb&#45;&gt;d0a36acc49fc44f5901a27bc7a3fc16c</title>
 <path fill="none" stroke="black" d="M184,-112.99C184,-99.02 184,-80 184,-80 184,-80 678,-80 678,-80 678,-80 678,-79 678,-79"/>
 <polygon fill="black" stroke="black" points="681.5,-80.03 678,-70.03 674.5,-80.03 681.5,-80.03"/>
 </g>
-<!-- 25c72420625a4d0db39d47707030c153 -->
+<!-- 9e27059234f34cd1be2c0ca52eab9391 -->
+<g id="node3" class="node">
+<title>9e27059234f34cd1be2c0ca52eab9391</title>
+<g id="a_node3"><a xlink:href="javascript:showTooltip(event, 'user_creation_email_subscription', 'aws_sns_topic_subscription')">
+<path fill="none" stroke="black" d="M42.33,-142C42.33,-142 25.67,-142 25.67,-142 20.83,-142 16,-137.17 16,-132.33 16,-132.33 16,-122.67 16,-122.67 16,-117.83 20.83,-113 25.67,-113 25.67,-113 42.33,-113 42.33,-113 47.17,-113 52,-117.83 52,-122.67 52,-122.67 52,-132.33 52,-132.33 52,-137.17 47.17,-142 42.33,-142"/>
+<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
+</a>
+</g>
+</g>
+<!-- 9e27059234f34cd1be2c0ca52eab9391&#45;&gt;9aad75489d4f4533b491b79bda81295b -->
+<g id="edge24" class="edge">
+<title>9e27059234f34cd1be2c0ca52eab9391&#45;&gt;9aad75489d4f4533b491b79bda81295b</title>
+<path fill="none" stroke="black" d="M52.06,-132C63.44,-132 76,-132 76,-132 76,-132 76,-60 76,-60 76,-60 77.86,-60 77.86,-60"/>
+<polygon fill="black" stroke="black" points="77.86,-63.5 87.86,-60 77.86,-56.5 77.86,-63.5"/>
+</g>
+<!-- 9bba095465d640bf8c09e60dde70d9c2 -->
 <g id="node4" class="node">
-<title>25c72420625a4d0db39d47707030c153</title>
+<title>9bba095465d640bf8c09e60dde70d9c2</title>
 <g id="a_node4"><a xlink:href="javascript:showTooltip(event, 'usercreationnotificationrule', 'aws_cloudwatch_event_rule')">
 <path fill="none" stroke="black" d="M42.33,-70C42.33,-70 25.67,-70 25.67,-70 20.83,-70 16,-65.17 16,-60.33 16,-60.33 16,-50.67 16,-50.67 16,-45.83 20.83,-41 25.67,-41 25.67,-41 42.33,-41 42.33,-41 47.17,-41 52,-45.83 52,-50.67 52,-50.67 52,-60.33 52,-60.33 52,-65.17 47.17,-70 42.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 56129da9fd89481089bb1099715e6914 -->
+<!-- 5f7d8d82eea041028eb48320330d4cee -->
 <g id="node5" class="node">
-<title>56129da9fd89481089bb1099715e6914</title>
-<g id="a_node5"><a xlink:href="javascript:showTooltip(event, 'user_creation_email_subscription', 'aws_sns_topic_subscription')">
-<path fill="none" stroke="black" d="M42.33,-142C42.33,-142 25.67,-142 25.67,-142 20.83,-142 16,-137.17 16,-132.33 16,-132.33 16,-122.67 16,-122.67 16,-117.83 20.83,-113 25.67,-113 25.67,-113 42.33,-113 42.33,-113 47.17,-113 52,-117.83 52,-122.67 52,-122.67 52,-132.33 52,-132.33 52,-137.17 47.17,-142 42.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- 56129da9fd89481089bb1099715e6914&#45;&gt;38788fc9468c44c2b66d50b344add117 -->
-<g id="edge24" class="edge">
-<title>56129da9fd89481089bb1099715e6914&#45;&gt;38788fc9468c44c2b66d50b344add117</title>
-<path fill="none" stroke="black" d="M52.06,-132C63.44,-132 76,-132 76,-132 76,-132 76,-60 76,-60 76,-60 77.86,-60 77.86,-60"/>
-<polygon fill="black" stroke="black" points="77.86,-63.5 87.86,-60 77.86,-56.5 77.86,-63.5"/>
-</g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b -->
-<g id="node6" class="node">
-<title>75b5a2301d4f49159f8ae75000f1af4b</title>
-<g id="a_node6"><a xlink:href="javascript:showTooltip(event, 'lambda_target', 'aws_cloudwatch_event_target')">
+<title>5f7d8d82eea041028eb48320330d4cee</title>
+<g id="a_node5"><a xlink:href="javascript:showTooltip(event, 'lambda_target', 'aws_cloudwatch_event_target')">
 <path fill="none" stroke="black" d="M114.33,-142C114.33,-142 97.67,-142 97.67,-142 92.83,-142 88,-137.17 88,-132.33 88,-132.33 88,-122.67 88,-122.67 88,-117.83 92.83,-113 97.67,-113 97.67,-113 114.33,-113 114.33,-113 119.17,-113 124,-117.83 124,-122.67 124,-122.67 124,-132.33 124,-132.33 124,-137.17 119.17,-142 114.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;38788fc9468c44c2b66d50b344add117 -->
+<!-- 5f7d8d82eea041028eb48320330d4cee&#45;&gt;9aad75489d4f4533b491b79bda81295b -->
 <g id="edge5" class="edge">
-<title>75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;38788fc9468c44c2b66d50b344add117</title>
+<title>5f7d8d82eea041028eb48320330d4cee&#45;&gt;9aad75489d4f4533b491b79bda81295b</title>
 <path fill="none" stroke="black" d="M94,-112.93C94,-112.93 94,-80.05 94,-80.05"/>
 <polygon fill="black" stroke="black" points="97.5,-80.05 94,-70.05 90.5,-80.05 97.5,-80.05"/>
 </g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;25c72420625a4d0db39d47707030c153 -->
+<!-- 5f7d8d82eea041028eb48320330d4cee&#45;&gt;9bba095465d640bf8c09e60dde70d9c2 -->
 <g id="edge4" class="edge">
-<title>75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;25c72420625a4d0db39d47707030c153</title>
+<title>5f7d8d82eea041028eb48320330d4cee&#45;&gt;9bba095465d640bf8c09e60dde70d9c2</title>
 <path fill="none" stroke="black" d="M87.94,-122C76.56,-122 64,-122 64,-122 64,-122 64,-50 64,-50 64,-50 62.14,-50 62.14,-50"/>
 <polygon fill="black" stroke="black" points="62.14,-46.5 52.14,-50 62.14,-53.5 62.14,-46.5"/>
 </g>
-<!-- c6d17d8bc9de4f4eaae7f0af01a46243 -->
+<!-- ff4d8e5eca974a439f0a7bf71c1f2094 -->
 <g id="node8" class="node">
-<title>c6d17d8bc9de4f4eaae7f0af01a46243</title>
+<title>ff4d8e5eca974a439f0a7bf71c1f2094</title>
 <g id="a_node8"><a xlink:href="javascript:showTooltip(event, 'iam_user_notification', 'aws_lambda_function')">
 <path fill="none" stroke="black" d="M620.33,-142C620.33,-142 603.67,-142 603.67,-142 598.83,-142 594,-137.17 594,-132.33 594,-132.33 594,-122.67 594,-122.67 594,-117.83 598.83,-113 603.67,-113 603.67,-113 620.33,-113 620.33,-113 625.17,-113 630,-117.83 630,-122.67 630,-122.67 630,-132.33 630,-132.33 630,-137.17 625.17,-142 620.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="597.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;c6d17d8bc9de4f4eaae7f0af01a46243 -->
-<g id="edge7" class="edge">
-<title>75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;c6d17d8bc9de4f4eaae7f0af01a46243</title>
+<!-- 5f7d8d82eea041028eb48320330d4cee&#45;&gt;ff4d8e5eca974a439f0a7bf71c1f2094 -->
+<g id="edge6" class="edge">
+<title>5f7d8d82eea041028eb48320330d4cee&#45;&gt;ff4d8e5eca974a439f0a7bf71c1f2094</title>
 <path fill="none" stroke="black" d="M106,-142.35C106,-152.08 106,-163 106,-163 106,-163 599.67,-163 599.67,-163 599.67,-163 599.67,-152.35 599.67,-152.35"/>
 <polygon fill="black" stroke="black" points="603.17,-152.35 599.67,-142.35 596.17,-152.35 603.17,-152.35"/>
 </g>
-<!-- 7b4146f82e744441bec3599bfa9d8746 -->
-<g id="node12" class="node">
-<title>7b4146f82e744441bec3599bfa9d8746</title>
-<g id="a_node12"><a xlink:href="javascript:showTooltip(event, 'lambda_execution_role', 'aws_iam_role')">
+<!-- 79e3209e117a4f6db4128d7c7f869729 -->
+<g id="node9" class="node">
+<title>79e3209e117a4f6db4128d7c7f869729</title>
+<g id="a_node9"><a xlink:href="javascript:showTooltip(event, 'lambda_execution_role', 'aws_iam_role')">
 <path fill="none" stroke="black" d="M474.33,-70C474.33,-70 457.67,-70 457.67,-70 452.83,-70 448,-65.17 448,-60.33 448,-60.33 448,-50.67 448,-50.67 448,-45.83 452.83,-41 457.67,-41 457.67,-41 474.33,-41 474.33,-41 479.17,-41 484,-45.83 484,-50.67 484,-50.67 484,-60.33 484,-60.33 484,-65.17 479.17,-70 474.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;7b4146f82e744441bec3599bfa9d8746 -->
-<g id="edge6" class="edge">
-<title>75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;7b4146f82e744441bec3599bfa9d8746</title>
+<!-- 5f7d8d82eea041028eb48320330d4cee&#45;&gt;79e3209e117a4f6db4128d7c7f869729 -->
+<g id="edge7" class="edge">
+<title>5f7d8d82eea041028eb48320330d4cee&#45;&gt;79e3209e117a4f6db4128d7c7f869729</title>
 <path fill="none" stroke="black" d="M112,-112.88C112,-97.34 112,-75 112,-75 112,-75 460,-75 460,-75 460,-75 460,-74.51 460,-74.51"/>
 <polygon fill="black" stroke="black" points="463.5,-80.08 460,-70.08 456.5,-80.08 463.5,-80.08"/>
 </g>
-<!-- ad3bc034c3e74164997885b63c31ff1c -->
-<g id="node18" class="node">
-<title>ad3bc034c3e74164997885b63c31ff1c</title>
-<g id="a_node18"><a xlink:href="javascript:showTooltip(event, 'lambda_bucket', 'aws_s3_bucket')">
+<!-- 33f26d255f6a4bb4aa8089df7eb103f6 -->
+<g id="node20" class="node">
+<title>33f26d255f6a4bb4aa8089df7eb103f6</title>
+<g id="a_node20"><a xlink:href="javascript:showTooltip(event, 'lambda_bucket', 'aws_s3_bucket')">
 <path fill="none" stroke="black" d="M764.33,-70C764.33,-70 747.67,-70 747.67,-70 742.83,-70 738,-65.17 738,-60.33 738,-60.33 738,-50.67 738,-50.67 738,-45.83 742.83,-41 747.67,-41 747.67,-41 764.33,-41 764.33,-41 769.17,-41 774,-45.83 774,-50.67 774,-50.67 774,-60.33 774,-60.33 774,-65.17 769.17,-70 764.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;ad3bc034c3e74164997885b63c31ff1c -->
+<!-- 5f7d8d82eea041028eb48320330d4cee&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6 -->
 <g id="edge8" class="edge">
-<title>75b5a2301d4f49159f8ae75000f1af4b&#45;&gt;ad3bc034c3e74164997885b63c31ff1c</title>
+<title>5f7d8d82eea041028eb48320330d4cee&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6</title>
 <path fill="none" stroke="black" d="M118,-112.99C118,-101.02 118,-86 118,-86 118,-86 747,-86 747,-86 747,-86 747,-80.04 747,-80.04"/>
 <polygon fill="black" stroke="black" points="750.5,-80.04 747,-70.04 743.5,-80.04 750.5,-80.04"/>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6 -->
+<!-- 549a015f23f1483382f394834ac5dfb3 -->
 <g id="node7" class="node">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6</title>
+<title>549a015f23f1483382f394834ac5dfb3</title>
 <g id="a_node7"><a xlink:href="javascript:showTooltip(event, 'allow_eventbridge', 'aws_lambda_permission')">
 <path fill="none" stroke="black" d="M601.33,-214C601.33,-214 584.67,-214 584.67,-214 579.83,-214 575,-209.17 575,-204.33 575,-204.33 575,-194.67 575,-194.67 575,-189.83 579.83,-185 584.67,-185 584.67,-185 601.33,-185 601.33,-185 606.17,-185 611,-189.83 611,-194.67 611,-194.67 611,-204.33 611,-204.33 611,-209.17 606.17,-214 601.33,-214"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="578.5" y="-214"/>
 </a>
 </g>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;38788fc9468c44c2b66d50b344add117 -->
+<!-- 549a015f23f1483382f394834ac5dfb3&#45;&gt;9aad75489d4f4533b491b79bda81295b -->
 <g id="edge10" class="edge">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;38788fc9468c44c2b66d50b344add117</title>
+<title>549a015f23f1483382f394834ac5dfb3&#45;&gt;9aad75489d4f4533b491b79bda81295b</title>
 <path fill="none" stroke="black" d="M584.5,-184.69C584.5,-157.42 584.5,-102 584.5,-102 584.5,-102 100,-102 100,-102 100,-102 100,-80.21 100,-80.21"/>
 <polygon fill="black" stroke="black" points="103.5,-80.21 100,-70.21 96.5,-80.21 103.5,-80.21"/>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;25c72420625a4d0db39d47707030c153 -->
+<!-- 549a015f23f1483382f394834ac5dfb3&#45;&gt;9bba095465d640bf8c09e60dde70d9c2 -->
 <g id="edge9" class="edge">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;25c72420625a4d0db39d47707030c153</title>
+<title>549a015f23f1483382f394834ac5dfb3&#45;&gt;9bba095465d640bf8c09e60dde70d9c2</title>
 <path fill="none" stroke="black" d="M579.75,-184.64C579.75,-158.49 579.75,-107 579.75,-107 579.75,-107 34,-107 34,-107 34,-107 34,-80.12 34,-80.12"/>
 <polygon fill="black" stroke="black" points="37.5,-80.12 34,-70.12 30.5,-80.12 37.5,-80.12"/>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;c6d17d8bc9de4f4eaae7f0af01a46243 -->
-<g id="edge12" class="edge">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;c6d17d8bc9de4f4eaae7f0af01a46243</title>
+<!-- 549a015f23f1483382f394834ac5dfb3&#45;&gt;ff4d8e5eca974a439f0a7bf71c1f2094 -->
+<g id="edge11" class="edge">
+<title>549a015f23f1483382f394834ac5dfb3&#45;&gt;ff4d8e5eca974a439f0a7bf71c1f2094</title>
 <path fill="none" stroke="black" d="M605.33,-184.93C605.33,-184.93 605.33,-152.05 605.33,-152.05"/>
 <polygon fill="black" stroke="black" points="608.83,-152.05 605.33,-142.05 601.83,-152.05 608.83,-152.05"/>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;7b4146f82e744441bec3599bfa9d8746 -->
-<g id="edge11" class="edge">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;7b4146f82e744441bec3599bfa9d8746</title>
+<!-- 549a015f23f1483382f394834ac5dfb3&#45;&gt;79e3209e117a4f6db4128d7c7f869729 -->
+<g id="edge12" class="edge">
+<title>549a015f23f1483382f394834ac5dfb3&#45;&gt;79e3209e117a4f6db4128d7c7f869729</title>
 <path fill="none" stroke="black" d="M589.25,-184.83C589.25,-149.02 589.25,-60 589.25,-60 589.25,-60 494.19,-60 494.19,-60"/>
 <polygon fill="black" stroke="black" points="494.19,-56.5 484.19,-60 494.19,-63.5 494.19,-56.5"/>
 </g>
-<!-- 9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;ad3bc034c3e74164997885b63c31ff1c -->
+<!-- 549a015f23f1483382f394834ac5dfb3&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6 -->
 <g id="edge13" class="edge">
-<title>9ca49007ccb940ddbb3e80a724a1e9b6&#45;&gt;ad3bc034c3e74164997885b63c31ff1c</title>
+<title>549a015f23f1483382f394834ac5dfb3&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6</title>
 <path fill="none" stroke="black" d="M611.2,-199C646.31,-199 720,-199 720,-199 720,-199 720,-55 720,-55 720,-55 727.58,-55 727.58,-55"/>
 <polygon fill="black" stroke="black" points="727.58,-58.5 737.58,-55 727.58,-51.5 727.58,-58.5"/>
 </g>
-<!-- c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;38788fc9468c44c2b66d50b344add117 -->
-<g id="edge20" class="edge">
-<title>c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;38788fc9468c44c2b66d50b344add117</title>
+<!-- ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;9aad75489d4f4533b491b79bda81295b -->
+<g id="edge21" class="edge">
+<title>ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;9aad75489d4f4533b491b79bda81295b</title>
 <path fill="none" stroke="black" d="M603,-112.86C603,-104.63 603,-96 603,-96 603,-96 106,-96 106,-96 106,-96 106,-80.12 106,-80.12"/>
 <polygon fill="black" stroke="black" points="109.5,-80.12 106,-70.12 102.5,-80.12 109.5,-80.12"/>
 </g>
-<!-- c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;7b4146f82e744441bec3599bfa9d8746 -->
+<!-- ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;79e3209e117a4f6db4128d7c7f869729 -->
 <g id="edge19" class="edge">
-<title>c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;7b4146f82e744441bec3599bfa9d8746</title>
+<title>ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;79e3209e117a4f6db4128d7c7f869729</title>
 <path fill="none" stroke="black" d="M612,-112.92C612,-90.47 612,-50 612,-50 612,-50 494.2,-50 494.2,-50"/>
 <polygon fill="black" stroke="black" points="494.2,-46.5 484.2,-50 494.2,-53.5 494.2,-46.5"/>
 </g>
-<!-- c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;ad3bc034c3e74164997885b63c31ff1c -->
-<g id="edge21" class="edge">
-<title>c6d17d8bc9de4f4eaae7f0af01a46243&#45;&gt;ad3bc034c3e74164997885b63c31ff1c</title>
+<!-- ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6 -->
+<g id="edge20" class="edge">
+<title>ff4d8e5eca974a439f0a7bf71c1f2094&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6</title>
 <path fill="none" stroke="black" d="M621,-112.65C621,-102.55 621,-91 621,-91 621,-91 756,-91 756,-91 756,-91 756,-80.35 756,-80.35"/>
 <polygon fill="black" stroke="black" points="759.5,-80.35 756,-70.35 752.5,-80.35 759.5,-80.35"/>
 </g>
-<!-- c2980a763a274483b82fc9762b10479e -->
-<g id="node9" class="node">
-<title>c2980a763a274483b82fc9762b10479e</title>
-<g id="a_node9"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_policy', 'aws_iam_role_policy')">
-<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- c2980a763a274483b82fc9762b10479e&#45;&gt;7bea1fcdd59d4593a5e7c036354a455e -->
-<g id="edge14" class="edge">
-<title>c2980a763a274483b82fc9762b10479e&#45;&gt;7bea1fcdd59d4593a5e7c036354a455e</title>
-<path fill="none" stroke="black" d="M250,-112.93C250,-112.93 250,-80.05 250,-80.05"/>
-<polygon fill="black" stroke="black" points="253.5,-80.05 250,-70.05 246.5,-80.05 253.5,-80.05"/>
-</g>
-<!-- 95f12ec1400f40dcaad133a90366591d -->
+<!-- 6f1e367c51bb4b1ea3edb2c4b6ae4884 -->
 <g id="node10" class="node">
-<title>95f12ec1400f40dcaad133a90366591d</title>
-<g id="a_node10"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_login', 'aws_iam_user_login_profile')">
+<title>6f1e367c51bb4b1ea3edb2c4b6ae4884</title>
+<g id="a_node10"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer1_to_group', 'aws_iam_user_group_membership')">
 <path fill="none" stroke="black" d="M402.33,-142C402.33,-142 385.67,-142 385.67,-142 380.83,-142 376,-137.17 376,-132.33 376,-132.33 376,-122.67 376,-122.67 376,-117.83 380.83,-113 385.67,-113 385.67,-113 402.33,-113 402.33,-113 407.17,-113 412,-117.83 412,-122.67 412,-122.67 412,-132.33 412,-132.33 412,-137.17 407.17,-142 402.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 4713f6ad70b64ddf9807c8e2009abe95 -->
-<g id="node11" class="node">
-<title>4713f6ad70b64ddf9807c8e2009abe95</title>
-<g id="a_node11"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer', 'aws_iam_user')">
+<!-- 923b31c489e7464b9544270bc6ec8120 -->
+<g id="node12" class="node">
+<title>923b31c489e7464b9544270bc6ec8120</title>
+<g id="a_node12"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_group', 'aws_iam_group')">
 <path fill="none" stroke="black" d="M402.33,-70C402.33,-70 385.67,-70 385.67,-70 380.83,-70 376,-65.17 376,-60.33 376,-60.33 376,-50.67 376,-50.67 376,-45.83 380.83,-41 385.67,-41 385.67,-41 402.33,-41 402.33,-41 407.17,-41 412,-45.83 412,-50.67 412,-50.67 412,-60.33 412,-60.33 412,-65.17 407.17,-70 402.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 95f12ec1400f40dcaad133a90366591d&#45;&gt;4713f6ad70b64ddf9807c8e2009abe95 -->
-<g id="edge18" class="edge">
-<title>95f12ec1400f40dcaad133a90366591d&#45;&gt;4713f6ad70b64ddf9807c8e2009abe95</title>
+<!-- 6f1e367c51bb4b1ea3edb2c4b6ae4884&#45;&gt;923b31c489e7464b9544270bc6ec8120 -->
+<g id="edge17" class="edge">
+<title>6f1e367c51bb4b1ea3edb2c4b6ae4884&#45;&gt;923b31c489e7464b9544270bc6ec8120</title>
 <path fill="none" stroke="black" d="M394,-112.93C394,-112.93 394,-80.05 394,-80.05"/>
 <polygon fill="black" stroke="black" points="397.5,-80.05 394,-70.05 390.5,-80.05 397.5,-80.05"/>
 </g>
-<!-- e2f5024c95c3439db806161b4f17487e -->
-<g id="node13" class="node">
-<title>e2f5024c95c3439db806161b4f17487e</title>
-<g id="a_node13"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_group', 'aws_iam_group')">
+<!-- 7b8c0f3313884a1ba5613178bdfc9560 -->
+<g id="node14" class="node">
+<title>7b8c0f3313884a1ba5613178bdfc9560</title>
+<g id="a_node14"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer', 'aws_iam_user')">
 <path fill="none" stroke="black" d="M330.33,-70C330.33,-70 313.67,-70 313.67,-70 308.83,-70 304,-65.17 304,-60.33 304,-60.33 304,-50.67 304,-50.67 304,-45.83 308.83,-41 313.67,-41 313.67,-41 330.33,-41 330.33,-41 335.17,-41 340,-45.83 340,-50.67 340,-50.67 340,-60.33 340,-60.33 340,-65.17 335.17,-70 330.33,-70"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 2d219295d356471598f8b970be1342c0 -->
-<g id="node14" class="node">
-<title>2d219295d356471598f8b970be1342c0</title>
-<g id="a_node14"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer1_to_group', 'aws_iam_user_group_membership')">
-<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
+<!-- 6f1e367c51bb4b1ea3edb2c4b6ae4884&#45;&gt;7b8c0f3313884a1ba5613178bdfc9560 -->
+<g id="edge16" class="edge">
+<title>6f1e367c51bb4b1ea3edb2c4b6ae4884&#45;&gt;7b8c0f3313884a1ba5613178bdfc9560</title>
+<path fill="none" stroke="black" d="M375.58,-127C366.72,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 350.42,-55 350.42,-55"/>
+<polygon fill="black" stroke="black" points="350.42,-51.5 340.42,-55 350.42,-58.5 350.42,-51.5"/>
+</g>
+<!-- 33570ba4ba8341c1a8f9d59da1443ecd -->
+<g id="node11" class="node">
+<title>33570ba4ba8341c1a8f9d59da1443ecd</title>
+<g id="a_node11"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_policy', 'aws_iam_role_policy')">
+<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
+<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 2d219295d356471598f8b970be1342c0&#45;&gt;4713f6ad70b64ddf9807c8e2009abe95 -->
-<g id="edge16" class="edge">
-<title>2d219295d356471598f8b970be1342c0&#45;&gt;4713f6ad70b64ddf9807c8e2009abe95</title>
-<path fill="none" stroke="black" d="M340.42,-127C349.28,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 365.58,-55 365.58,-55"/>
-<polygon fill="black" stroke="black" points="365.58,-58.5 375.58,-55 365.58,-51.5 365.58,-58.5"/>
+<!-- 33570ba4ba8341c1a8f9d59da1443ecd&#45;&gt;58b949f61f63401d960b788b779592fc -->
+<g id="edge14" class="edge">
+<title>33570ba4ba8341c1a8f9d59da1443ecd&#45;&gt;58b949f61f63401d960b788b779592fc</title>
+<path fill="none" stroke="black" d="M250,-112.93C250,-112.93 250,-80.05 250,-80.05"/>
+<polygon fill="black" stroke="black" points="253.5,-80.05 250,-70.05 246.5,-80.05 253.5,-80.05"/>
 </g>
-<!-- 2d219295d356471598f8b970be1342c0&#45;&gt;e2f5024c95c3439db806161b4f17487e -->
-<g id="edge17" class="edge">
-<title>2d219295d356471598f8b970be1342c0&#45;&gt;e2f5024c95c3439db806161b4f17487e</title>
-<path fill="none" stroke="black" d="M322,-112.93C322,-112.93 322,-80.05 322,-80.05"/>
-<polygon fill="black" stroke="black" points="325.5,-80.05 322,-70.05 318.5,-80.05 325.5,-80.05"/>
-</g>
-<!-- cbc8e8c6b7024e3b8b548afca78f8ab0 -->
-<g id="node16" class="node">
-<title>cbc8e8c6b7024e3b8b548afca78f8ab0</title>
-<g id="a_node16"><a xlink:href="javascript:showTooltip(event, 'lambda_sns_permissions', 'aws_iam_role_policy')">
+<!-- d85dd67053554aa2a61f0125bc5e338b -->
+<g id="node15" class="node">
+<title>d85dd67053554aa2a61f0125bc5e338b</title>
+<g id="a_node15"><a xlink:href="javascript:showTooltip(event, 'lambda_sns_permissions', 'aws_iam_role_policy')">
 <path fill="none" stroke="black" d="M474.33,-142C474.33,-142 457.67,-142 457.67,-142 452.83,-142 448,-137.17 448,-132.33 448,-132.33 448,-122.67 448,-122.67 448,-117.83 452.83,-113 457.67,-113 457.67,-113 474.33,-113 474.33,-113 479.17,-113 484,-117.83 484,-122.67 484,-122.67 484,-132.33 484,-132.33 484,-137.17 479.17,-142 474.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- cbc8e8c6b7024e3b8b548afca78f8ab0&#45;&gt;7b4146f82e744441bec3599bfa9d8746 -->
+<!-- d85dd67053554aa2a61f0125bc5e338b&#45;&gt;79e3209e117a4f6db4128d7c7f869729 -->
 <g id="edge15" class="edge">
-<title>cbc8e8c6b7024e3b8b548afca78f8ab0&#45;&gt;7b4146f82e744441bec3599bfa9d8746</title>
+<title>d85dd67053554aa2a61f0125bc5e338b&#45;&gt;79e3209e117a4f6db4128d7c7f869729</title>
 <path fill="none" stroke="black" d="M472,-112.93C472,-112.93 472,-80.05 472,-80.05"/>
 <polygon fill="black" stroke="black" points="475.5,-80.05 472,-70.05 468.5,-80.05 475.5,-80.05"/>
 </g>
-<!-- 54f4465f87f948359d2d9d122e8cb0b8 -->
-<g id="node17" class="node">
-<title>54f4465f87f948359d2d9d122e8cb0b8</title>
-<g id="a_node17"><a xlink:href="javascript:showTooltip(event, 'lambda_code', 'aws_s3_object')">
-<path fill="none" stroke="black" d="M764.33,-142C764.33,-142 747.67,-142 747.67,-142 742.83,-142 738,-137.17 738,-132.33 738,-132.33 738,-122.67 738,-122.67 738,-117.83 742.83,-113 747.67,-113 747.67,-113 764.33,-113 764.33,-113 769.17,-113 774,-117.83 774,-122.67 774,-122.67 774,-132.33 774,-132.33 774,-137.17 769.17,-142 764.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-142"/>
+<!-- 98337f9d726f4819ae2835fa778d19a4 -->
+<g id="node16" class="node">
+<title>98337f9d726f4819ae2835fa778d19a4</title>
+<g id="a_node16"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_login', 'aws_iam_user_login_profile')">
+<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
+<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 54f4465f87f948359d2d9d122e8cb0b8&#45;&gt;ad3bc034c3e74164997885b63c31ff1c -->
-<g id="edge22" class="edge">
-<title>54f4465f87f948359d2d9d122e8cb0b8&#45;&gt;ad3bc034c3e74164997885b63c31ff1c</title>
-<path fill="none" stroke="black" d="M765,-112.93C765,-112.93 765,-80.05 765,-80.05"/>
-<polygon fill="black" stroke="black" points="768.5,-80.05 765,-70.05 761.5,-80.05 768.5,-80.05"/>
+<!-- 98337f9d726f4819ae2835fa778d19a4&#45;&gt;7b8c0f3313884a1ba5613178bdfc9560 -->
+<g id="edge18" class="edge">
+<title>98337f9d726f4819ae2835fa778d19a4&#45;&gt;7b8c0f3313884a1ba5613178bdfc9560</title>
+<path fill="none" stroke="black" d="M322,-112.93C322,-112.93 322,-80.05 322,-80.05"/>
+<polygon fill="black" stroke="black" points="325.5,-80.05 322,-70.05 318.5,-80.05 325.5,-80.05"/>
 </g>
-<!-- bc70bc3e47b14a439747f7675971935b -->
-<g id="node19" class="node">
-<title>bc70bc3e47b14a439747f7675971935b</title>
-<g id="a_node19"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket_policy', 'aws_s3_bucket_policy')">
+<!-- ba557963dd174d629bbd8182312a3535 -->
+<g id="node17" class="node">
+<title>ba557963dd174d629bbd8182312a3535</title>
+<g id="a_node17"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket_policy', 'aws_s3_bucket_policy')">
 <path fill="none" stroke="black" d="M692.33,-142C692.33,-142 675.67,-142 675.67,-142 670.83,-142 666,-137.17 666,-132.33 666,-132.33 666,-122.67 666,-122.67 666,-117.83 670.83,-113 675.67,-113 675.67,-113 692.33,-113 692.33,-113 697.17,-113 702,-117.83 702,-122.67 702,-122.67 702,-132.33 702,-132.33 702,-137.17 697.17,-142 692.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- bc70bc3e47b14a439747f7675971935b&#45;&gt;62e22dfd566b47b389e55d9c446e86eb -->
+<!-- ba557963dd174d629bbd8182312a3535&#45;&gt;d0a36acc49fc44f5901a27bc7a3fc16c -->
 <g id="edge23" class="edge">
-<title>bc70bc3e47b14a439747f7675971935b&#45;&gt;62e22dfd566b47b389e55d9c446e86eb</title>
+<title>ba557963dd174d629bbd8182312a3535&#45;&gt;d0a36acc49fc44f5901a27bc7a3fc16c</title>
 <path fill="none" stroke="black" d="M690,-112.93C690,-112.93 690,-80.05 690,-80.05"/>
 <polygon fill="black" stroke="black" points="693.5,-80.05 690,-70.05 686.5,-80.05 693.5,-80.05"/>
+</g>
+<!-- 4d8a97cefa374057843b0cb588a7b743 -->
+<g id="node18" class="node">
+<title>4d8a97cefa374057843b0cb588a7b743</title>
+<g id="a_node18"><a xlink:href="javascript:showTooltip(event, 'lambda_code', 'aws_s3_object')">
+<path fill="none" stroke="black" d="M764.33,-142C764.33,-142 747.67,-142 747.67,-142 742.83,-142 738,-137.17 738,-132.33 738,-132.33 738,-122.67 738,-122.67 738,-117.83 742.83,-113 747.67,-113 747.67,-113 764.33,-113 764.33,-113 769.17,-113 774,-117.83 774,-122.67 774,-122.67 774,-132.33 774,-132.33 774,-137.17 769.17,-142 764.33,-142"/>
+<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-142"/>
+</a>
+</g>
+</g>
+<!-- 4d8a97cefa374057843b0cb588a7b743&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6 -->
+<g id="edge22" class="edge">
+<title>4d8a97cefa374057843b0cb588a7b743&#45;&gt;33f26d255f6a4bb4aa8089df7eb103f6</title>
+<path fill="none" stroke="black" d="M765,-112.93C765,-112.93 765,-80.05 765,-80.05"/>
+<polygon fill="black" stroke="black" points="768.5,-80.05 765,-70.05 761.5,-80.05 768.5,-80.05"/>
 </g>
 </g>
 
