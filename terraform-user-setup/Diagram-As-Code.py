@@ -4,10 +4,8 @@ import importlib
 import logging
 import traceback
 import pkgutil
-import re
-from diagrams.custom import Custom
 from diagrams import Diagram, Cluster, Edge
-from diagrams.aws import __path__ as aws_package_path
+from diagrams.custom import Custom
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
 
@@ -22,7 +20,7 @@ ICON_SIZE = "20"
 
 def load_aws_icons():
     aws_icons = {}
-    aws_modules = [name for _, name, _ in pkgutil.iter_modules(aws_package_path)]
+    aws_modules = [name for _, name, _ in pkgutil.iter_modules()]
     for module_name in aws_modules:
         try:
             module = importlib.import_module(f"diagrams.aws.{module_name}")
@@ -126,10 +124,6 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         with open(output_file + ".svg", "r") as file:
             svg_content = file.read()
 
-        base_url = "https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/"
-        pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
-        updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
-
         # Add the Tooltip JS and CSS to the SVG
         tooltip_js = """
 <script><![CDATA[
@@ -174,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
 """
 
         # Combine the updated SVG content with the tooltip functionality
-        final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
+        final_svg_content = svg_content.replace("</svg>", tooltip_js + "\n</svg>")
 
-        with open("infrastructure_architecture.svg", "w") as file:
+        with open("infrastructure_architecture_with_tooltip.svg", "w") as file:
             file.write(final_svg_content)
 
     except Exception as e:
