@@ -140,7 +140,9 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                         # service_name = get_service_name(service_type)
                         if icon:
                             # Create the node with no label, only a tooltip
-                            icon = icon(f"{resource_name}\n({service_type})", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
+                            # icon = icon(f"{resource_name}\n{service_type}", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
+                            icon = icon(label=f"<<B>{resource_name}</B>>", href=f"javascript:alert('{service_type}')",
+                                shape="box", width="0.5", height="0.4")
                             # node = Custom(f"{resource_name}","https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/category/service_name",tooltip=f"{resource_name} ({service_type})")
                             sub_nodes.append(icon)
                     cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
