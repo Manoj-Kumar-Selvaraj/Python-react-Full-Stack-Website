@@ -28,8 +28,6 @@
 <title>208371cabfdc4604826dd967450300dd</title>
 <path fill="none" stroke="black" d="M42.33,-142C42.33,-142 25.67,-142 25.67,-142 20.83,-142 16,-137.17 16,-132.33 16,-132.33 16,-122.67 16,-122.67 16,-117.83 20.83,-113 25.67,-113 25.67,-113 42.33,-113 42.33,-113 47.17,-113 52,-117.83 52,-122.67 52,-122.67 52,-132.33 52,-132.33 52,-137.17 47.17,-142 42.33,-142"/>
 <image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
-<text text-anchor="middle" x="34" y="-130.6" font-family="Sans-Serif" font-size="13.00" fill="#2d3436">user_creation_email_subscription</text>
-<text text-anchor="middle" x="34" y="-116.6" font-family="Sans-Serif" font-size="13.00" fill="#2d3436">aws_sns_topic_subscription</text>
 </g>
 <!-- 7394b68bdb684e648b2f9c7671396904 -->
 <g id="node6" class="node">
