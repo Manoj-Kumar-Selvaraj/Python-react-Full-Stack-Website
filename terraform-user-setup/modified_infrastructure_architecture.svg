@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2994pt" height="1497pt" viewBox="0.00 0.00 1078.00 539.00">
+  <!-- Tooltip container -->
+  <foreignObject id="tooltip" style="display:none; position: absolute; background: cornsilk; border: 1px solid black; border-radius: 5px; padding: 5px; pointer-events: none;">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+      <div id="tooltipText"></div>
+    </body>
+  </foreignObject>
 <g id="graph0" class="graph" transform="scale(0.36 0.36) rotate(0) translate(144 395)">
 <title>AWS Architecture Diagram</title>
 <polygon fill="white" stroke="transparent" points="-144,144 -144,-395 934,-395 934,144 -144,144"/>
@@ -326,10 +332,20 @@
 <polygon fill="black" stroke="black" points="693.5,-80.05 690,-70.05 686.5,-80.05 693.5,-80.05"/>
 </g>
 </g>
-<script type="text/javascript">
-            function showTooltip(resourceName, serviceType) {
-                var tooltip = document.getElementById('tooltip');
-                tooltip.innerHTML = "Resource: " + resourceName + "<br/>Service: " + serviceType;
-                tooltip.style.display = "block";
-            }
-        </script><div id="tooltip" style="display:none; position: absolute; background: rgba(0,0,0,0.7); color: white; padding: 5px; border-radius: 5px;"/></svg>
+  <!-- Add the JavaScript here -->
+  <script type="text/javascript">
+    function showTooltip(evt, text) {
+      var tooltip = document.getElementById("tooltip");
+      var tooltipText = document.getElementById("tooltipText");
+      tooltipText.innerHTML = text;
+      tooltip.style.display = "block";
+      tooltip.style.left = evt.pageX + 10 + 'px';
+      tooltip.style.top = evt.pageY + 10 + 'px';
+    }
+
+    function hideTooltip() {
+      var tooltip = document.getElementById("tooltip");
+      tooltip.style.display = "none";
+    }
+  </script>
+</svg>
