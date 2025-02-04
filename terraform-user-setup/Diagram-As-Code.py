@@ -8,14 +8,8 @@ import re
 from diagrams.custom import Custom
 from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
+from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
-
-# Import AWS service mapping
-try:
-    from terraform_to_aws_mapping import terraform_to_aws_service_map
-except ImportError:
-    terraform_to_aws_service_map = {}
-    logging.warning("Warning: terraform_to_aws_service_map module not found. AWS services mapping may be incomplete.")
 
 # Configure logging
 logging.basicConfig(
@@ -98,11 +92,11 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     try:
         nodes = {}
         categories = defaultdict(set)
-
+        
         for service_type, resource_name in services:
             category = get_category(service_type)
             categories[category].add((service_type, resource_name))
-
+        
         graph_attrs = {
             "size": "300,200", 
             "dpi": "200",
@@ -110,7 +104,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             "nodesep": "0.5",  
             "ranksep": "0.6"  
         }
-
+        
         with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="svg", graph_attr=graph_attrs):
             cluster_nodes = {}
 
@@ -119,13 +113,61 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            cluster_nodes[resource_name] = icon(resource_name)
+                            icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
+                                        shape="box", width="0.5", height="0.4")
+                            cluster_nodes[resource_name] = icon
 
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
                     targets = [cluster_nodes[target_name] for target_name in dependencies if target_name in cluster_nodes]
                     if targets:
                         cluster_nodes[source_name] >> Edge(color="black", penwidth="1") >> targets
+
+        with open(output_file + ".svg", "r") as file:
+            svg_content = file.read()
+
+        base_url = "https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/"
+        pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
+        updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
+
+        tooltip_js = """
+<script><![CDATA[
+function showTooltip(evt, resourceName, serviceType) {
+    let tooltip = document.getElementById("tooltip");
+    tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
+    tooltip.style.left = evt.clientX + 10 + "px";
+    tooltip.style.top = evt.clientY + 10 + "px";
+    tooltip.style.display = "block";
+}
+
+document.addEventListener("click", function(event) {
+    let tooltip = document.getElementById("tooltip");
+    if (!event.target.closest("[href^='javascript:showTooltip']")) {
+        tooltip.style.display = "none";
+    }
+});
+]]></script>
+
+<style><![CDATA[
+#tooltip {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+]]></style>
+
+<div id="tooltip"></div>
+"""
+
+        final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
+
+        with open("infrastructure_architecture.svg", "w") as file:
+            file.write(final_svg_content)
 
     except Exception as e:
         logging.error(f"Error generating diagram: {e}")
