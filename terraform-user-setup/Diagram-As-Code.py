@@ -138,34 +138,33 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         logging.error(traceback.format_exc())
         raise
 
-def add_tooltips(svg_file):
+def add_tooltips_with_regex(svg_file):
     try:
         with open(svg_file, "r") as file:
             svg_content = file.read()
 
-        pattern = re.compile(
-            r'(<image[^>]*>)\s*(<text[^>]*>.*?</text>)\s*(<text[^>]*>.*?</text>)', re.DOTALL
+        image_pattern = re.compile(
+            r'(<image[^>]*>)\s*(<text[^>]*?>.*?</text>)\s*(<text[^>]*?>.*?</text>)'
         )
 
-        def tooltip_replacement(match):
+        def add_tooltip(match):
             image_tag, text1, text2 = match.groups()
             text1_content = re.sub(r'<[^>]+>', '', text1).strip()
             text2_content = re.sub(r'<[^>]+>', '', text2).strip()
-            tooltip_text = f"{text1_content}\n{text2_content}"
-            tooltip_tag = f'<title>{tooltip_text}</title>'
+            tooltip_text = f"""
+            <tspan x='0' dy='1.2em' font-weight='bold' fill='#2d3436'>Name: {text1_content}</tspan>
+            <tspan x='0' dy='1.2em' font-weight='normal' fill='#636e72'>Type: {text2_content}</tspan>
+            """
+            tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_text}</text>'
+
             return f"{image_tag}\n{tooltip_tag}"
 
-        modified_svg = pattern.sub(tooltip_replacement, svg_content)
+        modified_svg = image_pattern.sub(add_tooltip, svg_content)
 
         css_style = """
         <style>
-            title {
-                font-family: Arial, sans-serif;
-                font-size: 12px;
-                background: white;
-                border: 1px solid black;
-                padding: 2px 4px;
-                opacity: 0.9;
+            image:hover + text {
+                visibility: visible;
             }
         </style>
         """
@@ -187,7 +186,7 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
-        add_tooltips("infrastructure_architecture.svg")
+        add_tooltips_with_regex("infrastructure_architecture.svg")
     except Exception as e:
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())

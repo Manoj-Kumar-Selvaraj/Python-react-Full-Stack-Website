@@ -1,0 +1,22 @@
+2025-02-04 19:38:33,050 - ERROR - Error adding tooltips: name 'tooltip_content' is not defined
+2025-02-04 19:38:33,053 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 158, in add_tooltips_with_regex
+    modified_svg = image_pattern.sub(add_tooltip, svg_content)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 155, in add_tooltip
+    tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_content}</text>'
+                                                                                                                ^^^^^^^^^^^^^^^
+NameError: name 'tooltip_content' is not defined. Did you mean: 'tooltip_text'?
+
+2025-02-04 19:38:33,053 - ERROR - Unhandled exception: name 'tooltip_content' is not defined
+2025-02-04 19:38:33,055 - ERROR - Traceback (most recent call last):
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 185, in <module>
+    add_tooltips_with_regex("infrastructure_architecture.svg")
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 158, in add_tooltips_with_regex
+    modified_svg = image_pattern.sub(add_tooltip, svg_content)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/FullStack-FactoryOutlet/terraform-user-setup/Diagram-As-Code.py", line 155, in add_tooltip
+    tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_content}</text>'
+                                                                                                                ^^^^^^^^^^^^^^^
+NameError: name 'tooltip_content' is not defined. Did you mean: 'tooltip_text'?
+
