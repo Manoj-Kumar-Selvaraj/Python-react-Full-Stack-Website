@@ -6,7 +6,7 @@ import traceback
 import pkgutil
 import re
 from diagrams.custom import Custom
-from diagrams import Diagram, Cluster, Edge, Node
+from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
@@ -94,16 +94,6 @@ def get_icon(service_type):
             return icons[service_name.lower()]
     return None
 
-def get_service_name(service_type):
-    aws_service_name = terraform_to_aws_service_map.get(service_type, None)
-    if not aws_service_name:
-        return None
-    service_name = "".join([part.capitalize() for part in aws_service_name.replace(" ", "").split("_")])
-    for module, icons in aws_icons.items():
-        if service_name.lower() in icons:
-            return service_name.lower()
-    return None
-
 # Generate diagram with better spacing and alignment
 def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     try:
@@ -118,53 +108,71 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             "size": "300,200", 
             "dpi": "200",
             "rankdir": "TB",  # Top to Bottom layout
-            "nodesep": "0.5",  # Slightly increased spacing between nodes
-            "ranksep": "0.6"  # Slightly increased spacing between ranks
+            "nodesep": "0.5",  
+            "ranksep": "0.6"  
         }
         
-        edge_attrs = {
-            "penwidth": "0.5",  # Thin edges
-            "color": "blue",
-            "arrowsize": "0.6",  # Moderate arrow size
-            "fontcolor": "black"
-        }
-        
-        with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="svg", graph_attr=graph_attrs, edge_attr=edge_attrs):
+        with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="svg", graph_attr=graph_attrs):
             cluster_nodes = {}
 
             for category, items in categories.items():
                 with Cluster(category):
-                    sub_nodes = []
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
-                        # service_name = get_service_name(service_type)
                         if icon:
-                            # Create the node with no label, only a tooltip
-                            # icon = icon(f"{resource_name}\n{service_type}", fontsize=ICON_SIZE, shape="box", width="0.5", height="0.4")
+                            # Hide label, add JavaScript tooltip
                             icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
-                                shape="box", width="0.5", height="0.4")
-                            # node = Custom(f"{resource_name}","https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/category/service_name",tooltip=f"{resource_name} ({service_type})")
-                            sub_nodes.append(icon)
-                    cluster_nodes.update({item[1]: sub_nodes[i] for i, item in enumerate(items)})
+                                        shape="box", width="0.5", height="0.4")
+                            cluster_nodes[resource_name] = icon
 
-            # Reverse arrows and improve dependencies
+            # Add dependencies
             for (source_type, source_name), dependencies in dependency_matrix.items():
                 if source_name in cluster_nodes:
                     targets = [cluster_nodes[target_name] for target_name in dependencies if target_name in cluster_nodes]
                     if targets:
-                        cluster_nodes[source_name] << Edge(
-                            xlabel="Uses", color="black", fontcolor="black", style="bold", penwidth="1", tooltip="Dependency"
-                        ) << targets
+                        cluster_nodes[source_name] >> Edge(color="black", penwidth="1") >> targets
 
-        # After diagram creation, update local paths with S3 URLs using re
+        # Read generated SVG and inject JavaScript
         with open(output_file + ".svg", "r") as file:
             svg_content = file.read()
 
-        base_url = "https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/"
-        pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
-        updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
+        tooltip_js = """
+<script><![CDATA[
+function showTooltip(evt, resourceName, serviceType) {
+    let tooltip = document.getElementById("tooltip");
+    tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
+    tooltip.style.left = evt.pageX + "px";
+    tooltip.style.top = evt.pageY + "px";
+    tooltip.style.display = "block";
+}
 
-        with open("infrastructure_architecture" + ".svg", "w") as file:
+document.addEventListener("click", function(event) {
+    let tooltip = document.getElementById("tooltip");
+    if (!event.target.closest("[href^='javascript:showTooltip']")) {
+        tooltip.style.display = "none";
+    }
+});
+]]></script>
+
+<style><![CDATA[
+#tooltip {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+]]></style>
+
+<div id="tooltip"></div>
+"""
+
+        updated_svg_content = svg_content.replace("</svg>", tooltip_js + "\n</svg>")
+
+        with open("infrastructure_architecture.svg", "w") as file:
             file.write(updated_svg_content)
 
     except Exception as e:

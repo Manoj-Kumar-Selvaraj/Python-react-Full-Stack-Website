@@ -30,425 +30,362 @@
 <path fill="#e5f5fd" stroke="#aeb6be" d="M670,-33C670,-33 770,-33 770,-33 776,-33 782,-39 782,-45 782,-45 782,-159 782,-159 782,-165 776,-171 770,-171 770,-171 670,-171 670,-171 664,-171 658,-165 658,-159 658,-159 658,-45 658,-45 658,-39 664,-33 670,-33"/>
 <text text-anchor="middle" x="690" y="-157.4" font-family="Sans-Serif" font-size="12.00" fill="#2d3436">Storage</text>
 </g>
-<!-- cd750fbe19514253bb80abad6c573f6a -->
+<!-- 9be4da6d78fb43aba904b484624f8f09 -->
 <g id="node1" class="node">
-<title>cd750fbe19514253bb80abad6c573f6a</title>
-<g id="a_node1"><a xlink:href="javascript:showTooltip(event, 'usercreationnotificationrule', 'aws_cloudwatch_event_rule')">
-<path fill="none" stroke="black" d="M42.33,-70C42.33,-70 25.67,-70 25.67,-70 20.83,-70 16,-65.17 16,-60.33 16,-60.33 16,-50.67 16,-50.67 16,-45.83 20.83,-41 25.67,-41 25.67,-41 42.33,-41 42.33,-41 47.17,-41 52,-45.83 52,-50.67 52,-50.67 52,-60.33 52,-60.33 52,-65.17 47.17,-70 42.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 19532d44a32446eebefaae4d22c4be6b -->
-<g id="node2" class="node">
-<title>19532d44a32446eebefaae4d22c4be6b</title>
-<g id="a_node2"><a xlink:href="javascript:showTooltip(event, 'Master_Trail', 'aws_cloudtrail')">
-<path fill="none" stroke="black" d="M186.33,-142C186.33,-142 169.67,-142 169.67,-142 164.83,-142 160,-137.17 160,-132.33 160,-132.33 160,-122.67 160,-122.67 160,-117.83 164.83,-113 169.67,-113 169.67,-113 186.33,-113 186.33,-113 191.17,-113 196,-117.83 196,-122.67 196,-122.67 196,-132.33 196,-132.33 196,-137.17 191.17,-142 186.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudtrail.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- 652b41364ba74726b73dedef3c6b1adf -->
-<g id="node5" class="node">
-<title>652b41364ba74726b73dedef3c6b1adf</title>
-<g id="a_node5"><a xlink:href="javascript:showTooltip(event, 'Cloudtrail_log_group', 'aws_cloudwatch_log_group')">
-<path fill="none" stroke="black" d="M186.33,-70C186.33,-70 169.67,-70 169.67,-70 164.83,-70 160,-65.17 160,-60.33 160,-60.33 160,-50.67 160,-50.67 160,-45.83 164.83,-41 169.67,-41 169.67,-41 186.33,-41 186.33,-41 191.17,-41 196,-45.83 196,-50.67 196,-50.67 196,-60.33 196,-60.33 196,-65.17 191.17,-70 186.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 19532d44a32446eebefaae4d22c4be6b&#45;&gt;652b41364ba74726b73dedef3c6b1adf -->
-<g id="edge3" class="edge">
-<title>19532d44a32446eebefaae4d22c4be6b&#45;&gt;652b41364ba74726b73dedef3c6b1adf</title>
-<g id="a_edge3"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M172,-106.93C172,-106.93 172,-70.05 172,-70.05"/>
-<polygon fill="black" stroke="black" points="169.9,-106.93 172,-112.93 174.1,-106.93 169.9,-106.93"/>
-</a>
-</g>
-<text text-anchor="middle" x="156" y="-92.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 5a7121f647394a10b4a663b11f00a6c6 -->
-<g id="node13" class="node">
-<title>5a7121f647394a10b4a663b11f00a6c6</title>
-<g id="a_node13"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_role', 'aws_iam_role')">
-<path fill="none" stroke="black" d="M258.33,-70C258.33,-70 241.67,-70 241.67,-70 236.83,-70 232,-65.17 232,-60.33 232,-60.33 232,-50.67 232,-50.67 232,-45.83 236.83,-41 241.67,-41 241.67,-41 258.33,-41 258.33,-41 263.17,-41 268,-45.83 268,-50.67 268,-50.67 268,-60.33 268,-60.33 268,-65.17 263.17,-70 258.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 19532d44a32446eebefaae4d22c4be6b&#45;&gt;5a7121f647394a10b4a663b11f00a6c6 -->
-<g id="edge2" class="edge">
-<title>19532d44a32446eebefaae4d22c4be6b&#45;&gt;5a7121f647394a10b4a663b11f00a6c6</title>
-<g id="a_edge2"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M202.42,-127C202.42,-127 214,-127 214,-127 214,-127 214,-55 214,-55 214,-55 222.72,-55 231.58,-55"/>
-<polygon fill="black" stroke="black" points="202.42,-124.9 196.42,-127 202.42,-129.1 202.42,-124.9"/>
-</a>
-</g>
-<text text-anchor="middle" x="198" y="-91.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 69b3087e794f4c28a3cf62f1ca134e3e -->
-<g id="node19" class="node">
-<title>69b3087e794f4c28a3cf62f1ca134e3e</title>
-<g id="a_node19"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket', 'aws_s3_bucket')">
-<path fill="none" stroke="black" d="M692.33,-70C692.33,-70 675.67,-70 675.67,-70 670.83,-70 666,-65.17 666,-60.33 666,-60.33 666,-50.67 666,-50.67 666,-45.83 670.83,-41 675.67,-41 675.67,-41 692.33,-41 692.33,-41 697.17,-41 702,-45.83 702,-50.67 702,-50.67 702,-60.33 702,-60.33 702,-65.17 697.17,-70 692.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 19532d44a32446eebefaae4d22c4be6b&#45;&gt;69b3087e794f4c28a3cf62f1ca134e3e -->
-<g id="edge1" class="edge">
-<title>19532d44a32446eebefaae4d22c4be6b&#45;&gt;69b3087e794f4c28a3cf62f1ca134e3e</title>
-<g id="a_edge1"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M184,-106.99C184,-106.99 184,-80 184,-80 184,-80 678,-80 678,-80 678,-80 678,-75.31 678,-70.03"/>
-<polygon fill="black" stroke="black" points="181.9,-106.99 184,-112.99 186.1,-106.99 181.9,-106.99"/>
-</a>
-</g>
-<text text-anchor="middle" x="430.49" y="-69.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 3b026716125b4461a0835ee806c5d6c9 -->
-<g id="node3" class="node">
-<title>3b026716125b4461a0835ee806c5d6c9</title>
-<g id="a_node3"><a xlink:href="javascript:showTooltip(event, 'user_creation_topic', 'aws_sns_topic')">
+<title>9be4da6d78fb43aba904b484624f8f09</title>
+<g id="a_node1"><a xlink:href="javascript:showTooltip(event, 'user_creation_topic', 'aws_sns_topic')">
 <path fill="none" stroke="black" d="M114.33,-70C114.33,-70 97.67,-70 97.67,-70 92.83,-70 88,-65.17 88,-60.33 88,-60.33 88,-50.67 88,-50.67 88,-45.83 92.83,-41 97.67,-41 97.67,-41 114.33,-41 114.33,-41 119.17,-41 124,-45.83 124,-50.67 124,-50.67 124,-60.33 124,-60.33 124,-65.17 119.17,-70 114.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 5105a8b264f9446a87d13d281e9a1045 -->
-<g id="node4" class="node">
-<title>5105a8b264f9446a87d13d281e9a1045</title>
-<g id="a_node4"><a xlink:href="javascript:showTooltip(event, 'user_creation_email_subscription', 'aws_sns_topic_subscription')">
+<!-- 6f6b4e394a28491289702593bea5a571 -->
+<g id="node2" class="node">
+<title>6f6b4e394a28491289702593bea5a571</title>
+<g id="a_node2"><a xlink:href="javascript:showTooltip(event, 'user_creation_email_subscription', 'aws_sns_topic_subscription')">
 <path fill="none" stroke="black" d="M42.33,-142C42.33,-142 25.67,-142 25.67,-142 20.83,-142 16,-137.17 16,-132.33 16,-132.33 16,-122.67 16,-122.67 16,-117.83 20.83,-113 25.67,-113 25.67,-113 42.33,-113 42.33,-113 47.17,-113 52,-117.83 52,-122.67 52,-122.67 52,-132.33 52,-132.33 52,-137.17 47.17,-142 42.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/integration/simple-notification-service-sns.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 5105a8b264f9446a87d13d281e9a1045&#45;&gt;3b026716125b4461a0835ee806c5d6c9 -->
+<!-- 6f6b4e394a28491289702593bea5a571&#45;&gt;9be4da6d78fb43aba904b484624f8f09 -->
 <g id="edge24" class="edge">
-<title>5105a8b264f9446a87d13d281e9a1045&#45;&gt;3b026716125b4461a0835ee806c5d6c9</title>
-<g id="a_edge24"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M58.06,-132C58.06,-132 76,-132 76,-132 76,-132 76,-60 76,-60 76,-60 81.54,-60 87.86,-60"/>
-<polygon fill="black" stroke="black" points="58.06,-129.9 52.06,-132 58.06,-134.1 58.06,-129.9"/>
-</a>
+<title>6f6b4e394a28491289702593bea5a571&#45;&gt;9be4da6d78fb43aba904b484624f8f09</title>
+<path fill="none" stroke="black" d="M52.06,-132C63.44,-132 76,-132 76,-132 76,-132 76,-60 76,-60 76,-60 77.86,-60 77.86,-60"/>
+<polygon fill="black" stroke="black" points="77.86,-63.5 87.86,-60 77.86,-56.5 77.86,-63.5"/>
 </g>
-<text text-anchor="middle" x="60" y="-102.64" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75 -->
-<g id="node6" class="node">
-<title>12c2ba3b281e4214b3738df4a7c05b75</title>
-<g id="a_node6"><a xlink:href="javascript:showTooltip(event, 'lambda_target', 'aws_cloudwatch_event_target')">
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96 -->
+<g id="node3" class="node">
+<title>6fb845b7a17647bdb1a0a40c3699ba96</title>
+<g id="a_node3"><a xlink:href="javascript:showTooltip(event, 'lambda_target', 'aws_cloudwatch_event_target')">
 <path fill="none" stroke="black" d="M114.33,-142C114.33,-142 97.67,-142 97.67,-142 92.83,-142 88,-137.17 88,-132.33 88,-132.33 88,-122.67 88,-122.67 88,-117.83 92.83,-113 97.67,-113 97.67,-113 114.33,-113 114.33,-113 119.17,-113 124,-117.83 124,-122.67 124,-122.67 124,-132.33 124,-132.33 124,-137.17 119.17,-142 114.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="91.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;cd750fbe19514253bb80abad6c573f6a -->
-<g id="edge7" class="edge">
-<title>12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;cd750fbe19514253bb80abad6c573f6a</title>
-<g id="a_edge7"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M81.94,-122C81.94,-122 64,-122 64,-122 64,-122 64,-50 64,-50 64,-50 58.46,-50 52.14,-50"/>
-<polygon fill="black" stroke="black" points="81.94,-124.1 87.94,-122 81.94,-119.9 81.94,-124.1"/>
-</a>
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;9be4da6d78fb43aba904b484624f8f09 -->
+<g id="edge6" class="edge">
+<title>6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;9be4da6d78fb43aba904b484624f8f09</title>
+<path fill="none" stroke="black" d="M94,-112.93C94,-112.93 94,-80.05 94,-80.05"/>
+<polygon fill="black" stroke="black" points="97.5,-80.05 94,-70.05 90.5,-80.05 97.5,-80.05"/>
 </g>
-<text text-anchor="middle" x="48" y="-78.64" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;3b026716125b4461a0835ee806c5d6c9 -->
-<g id="edge5" class="edge">
-<title>12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;3b026716125b4461a0835ee806c5d6c9</title>
-<g id="a_edge5"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M94,-106.93C94,-106.93 94,-70.05 94,-70.05"/>
-<polygon fill="black" stroke="black" points="91.9,-106.93 94,-112.93 96.1,-106.93 91.9,-106.93"/>
-</a>
-</g>
-<text text-anchor="middle" x="110" y="-92.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 6bde8027ef3e4e168fa23d480ef4cb84 -->
-<g id="node7" class="node">
-<title>6bde8027ef3e4e168fa23d480ef4cb84</title>
-<g id="a_node7"><a xlink:href="javascript:showTooltip(event, 'iam_user_notification', 'aws_lambda_function')">
-<path fill="none" stroke="black" d="M620.33,-142C620.33,-142 603.67,-142 603.67,-142 598.83,-142 594,-137.17 594,-132.33 594,-132.33 594,-122.67 594,-122.67 594,-117.83 598.83,-113 603.67,-113 603.67,-113 620.33,-113 620.33,-113 625.17,-113 630,-117.83 630,-122.67 630,-122.67 630,-132.33 630,-132.33 630,-137.17 625.17,-142 620.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="597.5" y="-142"/>
+<!-- de327817ce0444b494325d984287de0b -->
+<g id="node5" class="node">
+<title>de327817ce0444b494325d984287de0b</title>
+<g id="a_node5"><a xlink:href="javascript:showTooltip(event, 'usercreationnotificationrule', 'aws_cloudwatch_event_rule')">
+<path fill="none" stroke="black" d="M42.33,-70C42.33,-70 25.67,-70 25.67,-70 20.83,-70 16,-65.17 16,-60.33 16,-60.33 16,-50.67 16,-50.67 16,-45.83 20.83,-41 25.67,-41 25.67,-41 42.33,-41 42.33,-41 47.17,-41 52,-45.83 52,-50.67 52,-50.67 52,-60.33 52,-60.33 52,-65.17 47.17,-70 42.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;6bde8027ef3e4e168fa23d480ef4cb84 -->
-<g id="edge4" class="edge">
-<title>12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;6bde8027ef3e4e168fa23d480ef4cb84</title>
-<g id="a_edge4"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M106,-148.35C106,-148.35 106,-163 106,-163 106,-163 599.67,-163 599.67,-163 599.67,-163 599.67,-152.08 599.67,-142.35"/>
-<polygon fill="black" stroke="black" points="108.1,-148.35 106,-142.35 103.9,-148.35 108.1,-148.35"/>
-</a>
-</g>
-<text text-anchor="middle" x="339.83" y="-166.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 85f6e2dd04884ade8019b76821276e6d -->
-<g id="node12" class="node">
-<title>85f6e2dd04884ade8019b76821276e6d</title>
-<g id="a_node12"><a xlink:href="javascript:showTooltip(event, 'lambda_execution_role', 'aws_iam_role')">
-<path fill="none" stroke="black" d="M474.33,-70C474.33,-70 457.67,-70 457.67,-70 452.83,-70 448,-65.17 448,-60.33 448,-60.33 448,-50.67 448,-50.67 448,-45.83 452.83,-41 457.67,-41 457.67,-41 474.33,-41 474.33,-41 479.17,-41 484,-45.83 484,-50.67 484,-50.67 484,-60.33 484,-60.33 484,-65.17 479.17,-70 474.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-70"/>
-</a>
-</g>
-</g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;85f6e2dd04884ade8019b76821276e6d -->
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;de327817ce0444b494325d984287de0b -->
 <g id="edge8" class="edge">
-<title>12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;85f6e2dd04884ade8019b76821276e6d</title>
-<g id="a_edge8"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M112,-106.88C112,-106.88 112,-75 112,-75 112,-75 460,-75 460,-75 460,-75 460,-72.9 460,-70.08"/>
-<polygon fill="black" stroke="black" points="109.9,-106.88 112,-112.88 114.1,-106.88 109.9,-106.88"/>
+<title>6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;de327817ce0444b494325d984287de0b</title>
+<path fill="none" stroke="black" d="M87.94,-122C76.56,-122 64,-122 64,-122 64,-122 64,-50 64,-50 64,-50 62.14,-50 62.14,-50"/>
+<polygon fill="black" stroke="black" points="62.14,-46.5 52.14,-50 62.14,-53.5 62.14,-46.5"/>
+</g>
+<!-- edda8bc57319435a8a9cb3f35da50997 -->
+<g id="node8" class="node">
+<title>edda8bc57319435a8a9cb3f35da50997</title>
+<g id="a_node8"><a xlink:href="javascript:showTooltip(event, 'iam_user_notification', 'aws_lambda_function')">
+<path fill="none" stroke="black" d="M620.33,-142C620.33,-142 603.67,-142 603.67,-142 598.83,-142 594,-137.17 594,-132.33 594,-132.33 594,-122.67 594,-122.67 594,-117.83 598.83,-113 603.67,-113 603.67,-113 620.33,-113 620.33,-113 625.17,-113 630,-117.83 630,-122.67 630,-122.67 630,-132.33 630,-132.33 630,-137.17 625.17,-142 620.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="597.5" y="-142"/>
 </a>
 </g>
-<text text-anchor="middle" x="288.52" y="-78.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- f519d07254e3412b8603f624c35ba127 -->
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;edda8bc57319435a8a9cb3f35da50997 -->
+<g id="edge7" class="edge">
+<title>6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;edda8bc57319435a8a9cb3f35da50997</title>
+<path fill="none" stroke="black" d="M106,-142.35C106,-152.08 106,-163 106,-163 106,-163 599.67,-163 599.67,-163 599.67,-163 599.67,-152.35 599.67,-152.35"/>
+<polygon fill="black" stroke="black" points="603.17,-152.35 599.67,-142.35 596.17,-152.35 603.17,-152.35"/>
+</g>
+<!-- 327d84cb400840acb62297d580b95c98 -->
+<g id="node10" class="node">
+<title>327d84cb400840acb62297d580b95c98</title>
+<g id="a_node10"><a xlink:href="javascript:showTooltip(event, 'lambda_execution_role', 'aws_iam_role')">
+<path fill="none" stroke="black" d="M474.33,-70C474.33,-70 457.67,-70 457.67,-70 452.83,-70 448,-65.17 448,-60.33 448,-60.33 448,-50.67 448,-50.67 448,-45.83 452.83,-41 457.67,-41 457.67,-41 474.33,-41 474.33,-41 479.17,-41 484,-45.83 484,-50.67 484,-50.67 484,-60.33 484,-60.33 484,-65.17 479.17,-70 474.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-70"/>
+</a>
+</g>
+</g>
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;327d84cb400840acb62297d580b95c98 -->
+<g id="edge4" class="edge">
+<title>6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;327d84cb400840acb62297d580b95c98</title>
+<path fill="none" stroke="black" d="M112,-112.88C112,-97.34 112,-75 112,-75 112,-75 460,-75 460,-75 460,-75 460,-74.51 460,-74.51"/>
+<polygon fill="black" stroke="black" points="463.5,-80.08 460,-70.08 456.5,-80.08 463.5,-80.08"/>
+</g>
+<!-- 0017be51061a4784a0a7b8fe15295397 -->
 <g id="node17" class="node">
-<title>f519d07254e3412b8603f624c35ba127</title>
+<title>0017be51061a4784a0a7b8fe15295397</title>
 <g id="a_node17"><a xlink:href="javascript:showTooltip(event, 'lambda_bucket', 'aws_s3_bucket')">
 <path fill="none" stroke="black" d="M764.33,-70C764.33,-70 747.67,-70 747.67,-70 742.83,-70 738,-65.17 738,-60.33 738,-60.33 738,-50.67 738,-50.67 738,-45.83 742.83,-41 747.67,-41 747.67,-41 764.33,-41 764.33,-41 769.17,-41 774,-45.83 774,-50.67 774,-50.67 774,-60.33 774,-60.33 774,-65.17 769.17,-70 764.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;f519d07254e3412b8603f624c35ba127 -->
-<g id="edge6" class="edge">
-<title>12c2ba3b281e4214b3738df4a7c05b75&#45;&gt;f519d07254e3412b8603f624c35ba127</title>
-<g id="a_edge6"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M118,-106.99C118,-106.99 118,-86 118,-86 118,-86 747,-86 747,-86 747,-86 747,-77.89 747,-70.04"/>
-<polygon fill="black" stroke="black" points="115.9,-106.99 118,-112.99 120.1,-106.99 115.9,-106.99"/>
+<!-- 6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;0017be51061a4784a0a7b8fe15295397 -->
+<g id="edge5" class="edge">
+<title>6fb845b7a17647bdb1a0a40c3699ba96&#45;&gt;0017be51061a4784a0a7b8fe15295397</title>
+<path fill="none" stroke="black" d="M118,-112.99C118,-101.02 118,-86 118,-86 118,-86 747,-86 747,-86 747,-86 747,-80.04 747,-80.04"/>
+<polygon fill="black" stroke="black" points="750.5,-80.04 747,-70.04 743.5,-80.04 750.5,-80.04"/>
+</g>
+<!-- 9b85ba9d9d1d4735a119049726a707fa -->
+<g id="node4" class="node">
+<title>9b85ba9d9d1d4735a119049726a707fa</title>
+<g id="a_node4"><a xlink:href="javascript:showTooltip(event, 'Cloudtrail_log_group', 'aws_cloudwatch_log_group')">
+<path fill="none" stroke="black" d="M186.33,-70C186.33,-70 169.67,-70 169.67,-70 164.83,-70 160,-65.17 160,-60.33 160,-60.33 160,-50.67 160,-50.67 160,-45.83 164.83,-41 169.67,-41 169.67,-41 186.33,-41 186.33,-41 191.17,-41 196,-45.83 196,-50.67 196,-50.67 196,-60.33 196,-60.33 196,-65.17 191.17,-70 186.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudwatch.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-70"/>
 </a>
 </g>
-<text text-anchor="middle" x="413.99" y="-89.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;3b026716125b4461a0835ee806c5d6c9 -->
-<g id="edge19" class="edge">
-<title>6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;3b026716125b4461a0835ee806c5d6c9</title>
-<g id="a_edge19"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M603,-106.86C603,-106.86 603,-96 603,-96 603,-96 106,-96 106,-96 106,-96 106,-81.72 106,-70.12"/>
-<polygon fill="black" stroke="black" points="600.9,-106.86 603,-112.86 605.1,-106.86 600.9,-106.86"/>
+<!-- ab9ebe133e654af88e065e98550c2616 -->
+<g id="node6" class="node">
+<title>ab9ebe133e654af88e065e98550c2616</title>
+<g id="a_node6"><a xlink:href="javascript:showTooltip(event, 'Master_Trail', 'aws_cloudtrail')">
+<path fill="none" stroke="black" d="M186.33,-142C186.33,-142 169.67,-142 169.67,-142 164.83,-142 160,-137.17 160,-132.33 160,-132.33 160,-122.67 160,-122.67 160,-117.83 164.83,-113 169.67,-113 169.67,-113 186.33,-113 186.33,-113 191.17,-113 196,-117.83 196,-122.67 196,-122.67 196,-132.33 196,-132.33 196,-137.17 191.17,-142 186.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/management/cloudtrail.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="163.5" y="-142"/>
 </a>
 </g>
-<text text-anchor="middle" x="330.99" y="-99.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;85f6e2dd04884ade8019b76821276e6d -->
-<g id="edge21" class="edge">
-<title>6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;85f6e2dd04884ade8019b76821276e6d</title>
-<g id="a_edge21"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M612,-106.92C612,-106.92 612,-50 612,-50 612,-50 523.33,-50 484.2,-50"/>
-<polygon fill="black" stroke="black" points="609.9,-106.92 612,-112.92 614.1,-106.92 609.9,-106.92"/>
+<!-- ab9ebe133e654af88e065e98550c2616&#45;&gt;9b85ba9d9d1d4735a119049726a707fa -->
+<g id="edge1" class="edge">
+<title>ab9ebe133e654af88e065e98550c2616&#45;&gt;9b85ba9d9d1d4735a119049726a707fa</title>
+<path fill="none" stroke="black" d="M172,-112.93C172,-112.93 172,-80.05 172,-80.05"/>
+<polygon fill="black" stroke="black" points="175.5,-80.05 172,-70.05 168.5,-80.05 175.5,-80.05"/>
+</g>
+<!-- abeb4b381c4c4901ae8b8d72f50cad19 -->
+<g id="node12" class="node">
+<title>abeb4b381c4c4901ae8b8d72f50cad19</title>
+<g id="a_node12"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_role', 'aws_iam_role')">
+<path fill="none" stroke="black" d="M258.33,-70C258.33,-70 241.67,-70 241.67,-70 236.83,-70 232,-65.17 232,-60.33 232,-60.33 232,-50.67 232,-50.67 232,-45.83 236.83,-41 241.67,-41 241.67,-41 258.33,-41 258.33,-41 263.17,-41 268,-45.83 268,-50.67 268,-50.67 268,-60.33 268,-60.33 268,-65.17 263.17,-70 258.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-70"/>
 </a>
 </g>
-<text text-anchor="middle" x="560.56" y="-53.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;f519d07254e3412b8603f624c35ba127 -->
-<g id="edge20" class="edge">
-<title>6bde8027ef3e4e168fa23d480ef4cb84&#45;&gt;f519d07254e3412b8603f624c35ba127</title>
-<g id="a_edge20"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M621,-106.65C621,-106.65 621,-91 621,-91 621,-91 756,-91 756,-91 756,-91 756,-80.08 756,-70.35"/>
-<polygon fill="black" stroke="black" points="618.9,-106.65 621,-112.65 623.1,-106.65 618.9,-106.65"/>
+<!-- ab9ebe133e654af88e065e98550c2616&#45;&gt;abeb4b381c4c4901ae8b8d72f50cad19 -->
+<g id="edge2" class="edge">
+<title>ab9ebe133e654af88e065e98550c2616&#45;&gt;abeb4b381c4c4901ae8b8d72f50cad19</title>
+<path fill="none" stroke="black" d="M196.42,-127C205.28,-127 214,-127 214,-127 214,-127 214,-55 214,-55 214,-55 221.58,-55 221.58,-55"/>
+<polygon fill="black" stroke="black" points="221.58,-58.5 231.58,-55 221.58,-51.5 221.58,-58.5"/>
+</g>
+<!-- d9eb03d454bb465f9f1f8ca87bcc401f -->
+<g id="node20" class="node">
+<title>d9eb03d454bb465f9f1f8ca87bcc401f</title>
+<g id="a_node20"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket', 'aws_s3_bucket')">
+<path fill="none" stroke="black" d="M692.33,-70C692.33,-70 675.67,-70 675.67,-70 670.83,-70 666,-65.17 666,-60.33 666,-60.33 666,-50.67 666,-50.67 666,-45.83 670.83,-41 675.67,-41 675.67,-41 692.33,-41 692.33,-41 697.17,-41 702,-45.83 702,-50.67 702,-50.67 702,-60.33 702,-60.33 702,-65.17 697.17,-70 692.33,-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-70"/>
 </a>
 </g>
-<text text-anchor="middle" x="675" y="-94.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 9c6a9b174622491e96839fa214802feb -->
-<g id="node8" class="node">
-<title>9c6a9b174622491e96839fa214802feb</title>
-<g id="a_node8"><a xlink:href="javascript:showTooltip(event, 'allow_eventbridge', 'aws_lambda_permission')">
+<!-- ab9ebe133e654af88e065e98550c2616&#45;&gt;d9eb03d454bb465f9f1f8ca87bcc401f -->
+<g id="edge3" class="edge">
+<title>ab9ebe133e654af88e065e98550c2616&#45;&gt;d9eb03d454bb465f9f1f8ca87bcc401f</title>
+<path fill="none" stroke="black" d="M184,-112.99C184,-99.02 184,-80 184,-80 184,-80 678,-80 678,-80 678,-80 678,-79 678,-79"/>
+<polygon fill="black" stroke="black" points="681.5,-80.03 678,-70.03 674.5,-80.03 681.5,-80.03"/>
+</g>
+<!-- 45ee38df0db940a59bcb244384afba75 -->
+<g id="node7" class="node">
+<title>45ee38df0db940a59bcb244384afba75</title>
+<g id="a_node7"><a xlink:href="javascript:showTooltip(event, 'allow_eventbridge', 'aws_lambda_permission')">
 <path fill="none" stroke="black" d="M601.33,-214C601.33,-214 584.67,-214 584.67,-214 579.83,-214 575,-209.17 575,-204.33 575,-204.33 575,-194.67 575,-194.67 575,-189.83 579.83,-185 584.67,-185 584.67,-185 601.33,-185 601.33,-185 606.17,-185 611,-189.83 611,-194.67 611,-194.67 611,-204.33 611,-204.33 611,-209.17 606.17,-214 601.33,-214"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="578.5" y="-214"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/compute/lambda.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="578.5" y="-214"/>
 </a>
 </g>
 </g>
-<!-- 9c6a9b174622491e96839fa214802feb&#45;&gt;cd750fbe19514253bb80abad6c573f6a -->
-<g id="edge12" class="edge">
-<title>9c6a9b174622491e96839fa214802feb&#45;&gt;cd750fbe19514253bb80abad6c573f6a</title>
-<g id="a_edge12"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M579.75,-178.64C579.75,-178.64 579.75,-107 579.75,-107 579.75,-107 34,-107 34,-107 34,-107 34,-85.35 34,-70.12"/>
-<polygon fill="black" stroke="black" points="577.65,-178.64 579.75,-184.64 581.85,-178.64 577.65,-178.64"/>
-</a>
-</g>
-<text text-anchor="middle" x="308.25" y="-96.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 9c6a9b174622491e96839fa214802feb&#45;&gt;3b026716125b4461a0835ee806c5d6c9 -->
-<g id="edge10" class="edge">
-<title>9c6a9b174622491e96839fa214802feb&#45;&gt;3b026716125b4461a0835ee806c5d6c9</title>
-<g id="a_edge10"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M584.5,-178.69C584.5,-178.69 584.5,-102 584.5,-102 584.5,-102 100,-102 100,-102 100,-102 100,-83.84 100,-70.21"/>
-<polygon fill="black" stroke="black" points="582.4,-178.69 584.5,-184.69 586.6,-178.69 582.4,-178.69"/>
-</a>
-</g>
-<text text-anchor="middle" x="372.7" y="-91.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 9c6a9b174622491e96839fa214802feb&#45;&gt;6bde8027ef3e4e168fa23d480ef4cb84 -->
-<g id="edge9" class="edge">
-<title>9c6a9b174622491e96839fa214802feb&#45;&gt;6bde8027ef3e4e168fa23d480ef4cb84</title>
-<g id="a_edge9"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M605.33,-178.93C605.33,-178.93 605.33,-142.05 605.33,-142.05"/>
-<polygon fill="black" stroke="black" points="603.23,-178.93 605.33,-184.93 607.43,-178.93 603.23,-178.93"/>
-</a>
-</g>
-<text text-anchor="middle" x="589.33" y="-164.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 9c6a9b174622491e96839fa214802feb&#45;&gt;85f6e2dd04884ade8019b76821276e6d -->
-<g id="edge13" class="edge">
-<title>9c6a9b174622491e96839fa214802feb&#45;&gt;85f6e2dd04884ade8019b76821276e6d</title>
-<g id="a_edge13"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M589.25,-178.83C589.25,-178.83 589.25,-60 589.25,-60 589.25,-60 518.47,-60 484.19,-60"/>
-<polygon fill="black" stroke="black" points="587.15,-178.83 589.25,-184.83 591.35,-178.83 587.15,-178.83"/>
-</a>
-</g>
-<text text-anchor="middle" x="573.25" y="-70.49" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 9c6a9b174622491e96839fa214802feb&#45;&gt;f519d07254e3412b8603f624c35ba127 -->
+<!-- 45ee38df0db940a59bcb244384afba75&#45;&gt;9be4da6d78fb43aba904b484624f8f09 -->
 <g id="edge11" class="edge">
-<title>9c6a9b174622491e96839fa214802feb&#45;&gt;f519d07254e3412b8603f624c35ba127</title>
-<g id="a_edge11"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M617.2,-199C617.2,-199 720,-199 720,-199 720,-199 720,-55 720,-55 720,-55 728.72,-55 737.58,-55"/>
-<polygon fill="black" stroke="black" points="617.2,-196.9 611.2,-199 617.2,-201.1 617.2,-196.9"/>
-</a>
+<title>45ee38df0db940a59bcb244384afba75&#45;&gt;9be4da6d78fb43aba904b484624f8f09</title>
+<path fill="none" stroke="black" d="M584.5,-184.69C584.5,-157.42 584.5,-102 584.5,-102 584.5,-102 100,-102 100,-102 100,-102 100,-80.21 100,-80.21"/>
+<polygon fill="black" stroke="black" points="103.5,-80.21 100,-70.21 96.5,-80.21 103.5,-80.21"/>
 </g>
-<text text-anchor="middle" x="704" y="-173.21" font-family="Sans-Serif" font-size="13.00">Uses</text>
+<!-- 45ee38df0db940a59bcb244384afba75&#45;&gt;de327817ce0444b494325d984287de0b -->
+<g id="edge13" class="edge">
+<title>45ee38df0db940a59bcb244384afba75&#45;&gt;de327817ce0444b494325d984287de0b</title>
+<path fill="none" stroke="black" d="M579.75,-184.64C579.75,-158.49 579.75,-107 579.75,-107 579.75,-107 34,-107 34,-107 34,-107 34,-80.12 34,-80.12"/>
+<polygon fill="black" stroke="black" points="37.5,-80.12 34,-70.12 30.5,-80.12 37.5,-80.12"/>
 </g>
-<!-- 41c449f493f547f5bd271370d1e4bbbe -->
+<!-- 45ee38df0db940a59bcb244384afba75&#45;&gt;edda8bc57319435a8a9cb3f35da50997 -->
+<g id="edge12" class="edge">
+<title>45ee38df0db940a59bcb244384afba75&#45;&gt;edda8bc57319435a8a9cb3f35da50997</title>
+<path fill="none" stroke="black" d="M605.33,-184.93C605.33,-184.93 605.33,-152.05 605.33,-152.05"/>
+<polygon fill="black" stroke="black" points="608.83,-152.05 605.33,-142.05 601.83,-152.05 608.83,-152.05"/>
+</g>
+<!-- 45ee38df0db940a59bcb244384afba75&#45;&gt;327d84cb400840acb62297d580b95c98 -->
+<g id="edge9" class="edge">
+<title>45ee38df0db940a59bcb244384afba75&#45;&gt;327d84cb400840acb62297d580b95c98</title>
+<path fill="none" stroke="black" d="M589.25,-184.83C589.25,-149.02 589.25,-60 589.25,-60 589.25,-60 494.19,-60 494.19,-60"/>
+<polygon fill="black" stroke="black" points="494.19,-56.5 484.19,-60 494.19,-63.5 494.19,-56.5"/>
+</g>
+<!-- 45ee38df0db940a59bcb244384afba75&#45;&gt;0017be51061a4784a0a7b8fe15295397 -->
+<g id="edge10" class="edge">
+<title>45ee38df0db940a59bcb244384afba75&#45;&gt;0017be51061a4784a0a7b8fe15295397</title>
+<path fill="none" stroke="black" d="M611.2,-199C646.31,-199 720,-199 720,-199 720,-199 720,-55 720,-55 720,-55 727.58,-55 727.58,-55"/>
+<polygon fill="black" stroke="black" points="727.58,-58.5 737.58,-55 727.58,-51.5 727.58,-58.5"/>
+</g>
+<!-- edda8bc57319435a8a9cb3f35da50997&#45;&gt;9be4da6d78fb43aba904b484624f8f09 -->
+<g id="edge21" class="edge">
+<title>edda8bc57319435a8a9cb3f35da50997&#45;&gt;9be4da6d78fb43aba904b484624f8f09</title>
+<path fill="none" stroke="black" d="M603,-112.86C603,-104.63 603,-96 603,-96 603,-96 106,-96 106,-96 106,-96 106,-80.12 106,-80.12"/>
+<polygon fill="black" stroke="black" points="109.5,-80.12 106,-70.12 102.5,-80.12 109.5,-80.12"/>
+</g>
+<!-- edda8bc57319435a8a9cb3f35da50997&#45;&gt;327d84cb400840acb62297d580b95c98 -->
+<g id="edge19" class="edge">
+<title>edda8bc57319435a8a9cb3f35da50997&#45;&gt;327d84cb400840acb62297d580b95c98</title>
+<path fill="none" stroke="black" d="M612,-112.92C612,-90.47 612,-50 612,-50 612,-50 494.2,-50 494.2,-50"/>
+<polygon fill="black" stroke="black" points="494.2,-46.5 484.2,-50 494.2,-53.5 494.2,-46.5"/>
+</g>
+<!-- edda8bc57319435a8a9cb3f35da50997&#45;&gt;0017be51061a4784a0a7b8fe15295397 -->
+<g id="edge20" class="edge">
+<title>edda8bc57319435a8a9cb3f35da50997&#45;&gt;0017be51061a4784a0a7b8fe15295397</title>
+<path fill="none" stroke="black" d="M621,-112.65C621,-102.55 621,-91 621,-91 621,-91 756,-91 756,-91 756,-91 756,-80.35 756,-80.35"/>
+<polygon fill="black" stroke="black" points="759.5,-80.35 756,-70.35 752.5,-80.35 759.5,-80.35"/>
+</g>
+<!-- 93f9eb4773bc4d41ae9a0eba6fbfc3f2 -->
 <g id="node9" class="node">
-<title>41c449f493f547f5bd271370d1e4bbbe</title>
-<g id="a_node9"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_policy', 'aws_iam_role_policy')">
-<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- 41c449f493f547f5bd271370d1e4bbbe&#45;&gt;5a7121f647394a10b4a663b11f00a6c6 -->
-<g id="edge14" class="edge">
-<title>41c449f493f547f5bd271370d1e4bbbe&#45;&gt;5a7121f647394a10b4a663b11f00a6c6</title>
-<g id="a_edge14"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M250,-106.93C250,-106.93 250,-70.05 250,-70.05"/>
-<polygon fill="black" stroke="black" points="247.9,-106.93 250,-112.93 252.1,-106.93 247.9,-106.93"/>
-</a>
-</g>
-<text text-anchor="middle" x="234" y="-92.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 76f4fb84eaeb4dfdbbd0f0843a923d8a -->
-<g id="node10" class="node">
-<title>76f4fb84eaeb4dfdbbd0f0843a923d8a</title>
-<g id="a_node10"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer', 'aws_iam_user')">
+<title>93f9eb4773bc4d41ae9a0eba6fbfc3f2</title>
+<g id="a_node9"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer', 'aws_iam_user')">
 <path fill="none" stroke="black" d="M402.33,-70C402.33,-70 385.67,-70 385.67,-70 380.83,-70 376,-65.17 376,-60.33 376,-60.33 376,-50.67 376,-50.67 376,-45.83 380.83,-41 385.67,-41 385.67,-41 402.33,-41 402.33,-41 407.17,-41 412,-45.83 412,-50.67 412,-50.67 412,-60.33 412,-60.33 412,-65.17 407.17,-70 402.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 5f7e58220444442094491a4022181aab -->
+<!-- 98388d4519b944c392f68b83e11368a4 -->
 <g id="node11" class="node">
-<title>5f7e58220444442094491a4022181aab</title>
+<title>98388d4519b944c392f68b83e11368a4</title>
 <g id="a_node11"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_login', 'aws_iam_user_login_profile')">
 <path fill="none" stroke="black" d="M402.33,-142C402.33,-142 385.67,-142 385.67,-142 380.83,-142 376,-137.17 376,-132.33 376,-132.33 376,-122.67 376,-122.67 376,-117.83 380.83,-113 385.67,-113 385.67,-113 402.33,-113 402.33,-113 407.17,-113 412,-117.83 412,-122.67 412,-122.67 412,-132.33 412,-132.33 412,-137.17 407.17,-142 402.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="379.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 5f7e58220444442094491a4022181aab&#45;&gt;76f4fb84eaeb4dfdbbd0f0843a923d8a -->
+<!-- 98388d4519b944c392f68b83e11368a4&#45;&gt;93f9eb4773bc4d41ae9a0eba6fbfc3f2 -->
 <g id="edge18" class="edge">
-<title>5f7e58220444442094491a4022181aab&#45;&gt;76f4fb84eaeb4dfdbbd0f0843a923d8a</title>
-<g id="a_edge18"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M394,-106.93C394,-106.93 394,-70.05 394,-70.05"/>
-<polygon fill="black" stroke="black" points="391.9,-106.93 394,-112.93 396.1,-106.93 391.9,-106.93"/>
-</a>
+<title>98388d4519b944c392f68b83e11368a4&#45;&gt;93f9eb4773bc4d41ae9a0eba6fbfc3f2</title>
+<path fill="none" stroke="black" d="M394,-112.93C394,-112.93 394,-80.05 394,-80.05"/>
+<polygon fill="black" stroke="black" points="397.5,-80.05 394,-70.05 390.5,-80.05 397.5,-80.05"/>
 </g>
-<text text-anchor="middle" x="378" y="-78.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 8a8285bbcf344469b69f81b220cbeb02 -->
-<g id="node14" class="node">
-<title>8a8285bbcf344469b69f81b220cbeb02</title>
-<g id="a_node14"><a xlink:href="javascript:showTooltip(event, 'lambda_sns_permissions', 'aws_iam_role_policy')">
-<path fill="none" stroke="black" d="M474.33,-142C474.33,-142 457.67,-142 457.67,-142 452.83,-142 448,-137.17 448,-132.33 448,-132.33 448,-122.67 448,-122.67 448,-117.83 452.83,-113 457.67,-113 457.67,-113 474.33,-113 474.33,-113 479.17,-113 484,-117.83 484,-122.67 484,-122.67 484,-132.33 484,-132.33 484,-137.17 479.17,-142 474.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-142"/>
+<!-- 36b7177544f64e759808199ce01753a7 -->
+<g id="node13" class="node">
+<title>36b7177544f64e759808199ce01753a7</title>
+<g id="a_node13"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer1_to_group', 'aws_iam_user_group_membership')">
+<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 8a8285bbcf344469b69f81b220cbeb02&#45;&gt;85f6e2dd04884ade8019b76821276e6d -->
-<g id="edge15" class="edge">
-<title>8a8285bbcf344469b69f81b220cbeb02&#45;&gt;85f6e2dd04884ade8019b76821276e6d</title>
-<g id="a_edge15"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M472,-106.93C472,-106.93 472,-70.05 472,-70.05"/>
-<polygon fill="black" stroke="black" points="469.9,-106.93 472,-112.93 474.1,-106.93 469.9,-106.93"/>
-</a>
+<!-- 36b7177544f64e759808199ce01753a7&#45;&gt;93f9eb4773bc4d41ae9a0eba6fbfc3f2 -->
+<g id="edge17" class="edge">
+<title>36b7177544f64e759808199ce01753a7&#45;&gt;93f9eb4773bc4d41ae9a0eba6fbfc3f2</title>
+<path fill="none" stroke="black" d="M340.42,-127C349.28,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 365.58,-55 365.58,-55"/>
+<polygon fill="black" stroke="black" points="365.58,-58.5 375.58,-55 365.58,-51.5 365.58,-58.5"/>
 </g>
-<text text-anchor="middle" x="456" y="-92.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 7cbad6404d434d6984434ab767f451ac -->
+<!-- bca34c6d95dd44579fc07c415a97fdc6 -->
 <g id="node15" class="node">
-<title>7cbad6404d434d6984434ab767f451ac</title>
+<title>bca34c6d95dd44579fc07c415a97fdc6</title>
 <g id="a_node15"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer_group', 'aws_iam_group')">
 <path fill="none" stroke="black" d="M330.33,-70C330.33,-70 313.67,-70 313.67,-70 308.83,-70 304,-65.17 304,-60.33 304,-60.33 304,-50.67 304,-50.67 304,-45.83 308.83,-41 313.67,-41 313.67,-41 330.33,-41 330.33,-41 335.17,-41 340,-45.83 340,-50.67 340,-50.67 340,-60.33 340,-60.33 340,-65.17 335.17,-70 330.33,-70"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-70"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-70"/>
 </a>
 </g>
 </g>
-<!-- 0064b4626f3649e685f33ac6777bf3e5 -->
-<g id="node16" class="node">
-<title>0064b4626f3649e685f33ac6777bf3e5</title>
-<g id="a_node16"><a xlink:href="javascript:showTooltip(event, 'factory_outlet_frontend_developer1_to_group', 'aws_iam_user_group_membership')">
-<path fill="none" stroke="black" d="M330.33,-142C330.33,-142 313.67,-142 313.67,-142 308.83,-142 304,-137.17 304,-132.33 304,-132.33 304,-122.67 304,-122.67 304,-117.83 308.83,-113 313.67,-113 313.67,-113 330.33,-113 330.33,-113 335.17,-113 340,-117.83 340,-122.67 340,-122.67 340,-132.33 340,-132.33 340,-137.17 335.17,-142 330.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="307.5" y="-142"/>
-</a>
-</g>
-</g>
-<!-- 0064b4626f3649e685f33ac6777bf3e5&#45;&gt;76f4fb84eaeb4dfdbbd0f0843a923d8a -->
-<g id="edge17" class="edge">
-<title>0064b4626f3649e685f33ac6777bf3e5&#45;&gt;76f4fb84eaeb4dfdbbd0f0843a923d8a</title>
-<g id="a_edge17"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M346.42,-127C346.42,-127 358,-127 358,-127 358,-127 358,-55 358,-55 358,-55 366.72,-55 375.58,-55"/>
-<polygon fill="black" stroke="black" points="346.42,-124.9 340.42,-127 346.42,-129.1 346.42,-124.9"/>
-</a>
-</g>
-<text text-anchor="middle" x="342" y="-77.6" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- 0064b4626f3649e685f33ac6777bf3e5&#45;&gt;7cbad6404d434d6984434ab767f451ac -->
+<!-- 36b7177544f64e759808199ce01753a7&#45;&gt;bca34c6d95dd44579fc07c415a97fdc6 -->
 <g id="edge16" class="edge">
-<title>0064b4626f3649e685f33ac6777bf3e5&#45;&gt;7cbad6404d434d6984434ab767f451ac</title>
-<g id="a_edge16"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M322,-106.93C322,-106.93 322,-70.05 322,-70.05"/>
-<polygon fill="black" stroke="black" points="319.9,-106.93 322,-112.93 324.1,-106.93 319.9,-106.93"/>
+<title>36b7177544f64e759808199ce01753a7&#45;&gt;bca34c6d95dd44579fc07c415a97fdc6</title>
+<path fill="none" stroke="black" d="M322,-112.93C322,-112.93 322,-80.05 322,-80.05"/>
+<polygon fill="black" stroke="black" points="325.5,-80.05 322,-70.05 318.5,-80.05 325.5,-80.05"/>
+</g>
+<!-- 70cf400bb7874087a9d9b8dfafc50fc0 -->
+<g id="node14" class="node">
+<title>70cf400bb7874087a9d9b8dfafc50fc0</title>
+<g id="a_node14"><a xlink:href="javascript:showTooltip(event, 'cloudwatch_logs_policy', 'aws_iam_role_policy')">
+<path fill="none" stroke="black" d="M258.33,-142C258.33,-142 241.67,-142 241.67,-142 236.83,-142 232,-137.17 232,-132.33 232,-132.33 232,-122.67 232,-122.67 232,-117.83 236.83,-113 241.67,-113 241.67,-113 258.33,-113 258.33,-113 263.17,-113 268,-117.83 268,-122.67 268,-122.67 268,-132.33 268,-132.33 268,-137.17 263.17,-142 258.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="235.5" y="-142"/>
 </a>
 </g>
-<text text-anchor="middle" x="314" y="-78.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
 </g>
-<!-- 33522ea31ddd4eb0949ef56ade3842be -->
+<!-- 70cf400bb7874087a9d9b8dfafc50fc0&#45;&gt;abeb4b381c4c4901ae8b8d72f50cad19 -->
+<g id="edge14" class="edge">
+<title>70cf400bb7874087a9d9b8dfafc50fc0&#45;&gt;abeb4b381c4c4901ae8b8d72f50cad19</title>
+<path fill="none" stroke="black" d="M250,-112.93C250,-112.93 250,-80.05 250,-80.05"/>
+<polygon fill="black" stroke="black" points="253.5,-80.05 250,-70.05 246.5,-80.05 253.5,-80.05"/>
+</g>
+<!-- 8b39e83e17014c3e96cfcba7e9c35074 -->
+<g id="node16" class="node">
+<title>8b39e83e17014c3e96cfcba7e9c35074</title>
+<g id="a_node16"><a xlink:href="javascript:showTooltip(event, 'lambda_sns_permissions', 'aws_iam_role_policy')">
+<path fill="none" stroke="black" d="M474.33,-142C474.33,-142 457.67,-142 457.67,-142 452.83,-142 448,-137.17 448,-132.33 448,-132.33 448,-122.67 448,-122.67 448,-117.83 452.83,-113 457.67,-113 457.67,-113 474.33,-113 474.33,-113 479.17,-113 484,-117.83 484,-122.67 484,-122.67 484,-132.33 484,-132.33 484,-137.17 479.17,-142 474.33,-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/security/identity-and-access-management-iam.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="451.5" y="-142"/>
+</a>
+</g>
+</g>
+<!-- 8b39e83e17014c3e96cfcba7e9c35074&#45;&gt;327d84cb400840acb62297d580b95c98 -->
+<g id="edge15" class="edge">
+<title>8b39e83e17014c3e96cfcba7e9c35074&#45;&gt;327d84cb400840acb62297d580b95c98</title>
+<path fill="none" stroke="black" d="M472,-112.93C472,-112.93 472,-80.05 472,-80.05"/>
+<polygon fill="black" stroke="black" points="475.5,-80.05 472,-70.05 468.5,-80.05 475.5,-80.05"/>
+</g>
+<!-- f4c921bd9e3b47a8b4726c5237ad9cbc -->
 <g id="node18" class="node">
-<title>33522ea31ddd4eb0949ef56ade3842be</title>
+<title>f4c921bd9e3b47a8b4726c5237ad9cbc</title>
 <g id="a_node18"><a xlink:href="javascript:showTooltip(event, 'lambda_code', 'aws_s3_object')">
 <path fill="none" stroke="black" d="M764.33,-142C764.33,-142 747.67,-142 747.67,-142 742.83,-142 738,-137.17 738,-132.33 738,-132.33 738,-122.67 738,-122.67 738,-117.83 742.83,-113 747.67,-113 747.67,-113 764.33,-113 764.33,-113 769.17,-113 774,-117.83 774,-122.67 774,-122.67 774,-132.33 774,-132.33 774,-137.17 769.17,-142 764.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="741.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- 33522ea31ddd4eb0949ef56ade3842be&#45;&gt;f519d07254e3412b8603f624c35ba127 -->
+<!-- f4c921bd9e3b47a8b4726c5237ad9cbc&#45;&gt;0017be51061a4784a0a7b8fe15295397 -->
 <g id="edge22" class="edge">
-<title>33522ea31ddd4eb0949ef56ade3842be&#45;&gt;f519d07254e3412b8603f624c35ba127</title>
-<g id="a_edge22"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M765,-106.93C765,-106.93 765,-70.05 765,-70.05"/>
-<polygon fill="black" stroke="black" points="762.9,-106.93 765,-112.93 767.1,-106.93 762.9,-106.93"/>
-</a>
+<title>f4c921bd9e3b47a8b4726c5237ad9cbc&#45;&gt;0017be51061a4784a0a7b8fe15295397</title>
+<path fill="none" stroke="black" d="M765,-112.93C765,-112.93 765,-80.05 765,-80.05"/>
+<polygon fill="black" stroke="black" points="768.5,-80.05 765,-70.05 761.5,-80.05 768.5,-80.05"/>
 </g>
-<text text-anchor="middle" x="749" y="-92.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
-</g>
-<!-- c500a84142bb4fbc9a7ecc3cffb7ca68 -->
-<g id="node20" class="node">
-<title>c500a84142bb4fbc9a7ecc3cffb7ca68</title>
-<g id="a_node20"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket_policy', 'aws_s3_bucket_policy')">
+<!-- a0eeaf0cde504c0395a7adf5244c7230 -->
+<g id="node19" class="node">
+<title>a0eeaf0cde504c0395a7adf5244c7230</title>
+<g id="a_node19"><a xlink:href="javascript:showTooltip(event, 'cloudtrail_bucket_policy', 'aws_s3_bucket_policy')">
 <path fill="none" stroke="black" d="M692.33,-142C692.33,-142 675.67,-142 675.67,-142 670.83,-142 666,-137.17 666,-132.33 666,-132.33 666,-122.67 666,-122.67 666,-117.83 670.83,-113 675.67,-113 675.67,-113 692.33,-113 692.33,-113 697.17,-113 702,-117.83 702,-122.67 702,-122.67 702,-132.33 702,-132.33 702,-137.17 697.17,-142 692.33,-142"/>
-<image xlink:href="https://factoryoutlet-aws-diagrams-resources.s3.us-east-1.amazonaws.com/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-142"/>
+<image xlink:href="/home/codespace/.python/current/lib/python3.12/site-packages/resources/aws/storage/simple-storage-service-s3.png" width="29px" height="29px" preserveAspectRatio="xMinYMin meet" x="669.5" y="-142"/>
 </a>
 </g>
 </g>
-<!-- c500a84142bb4fbc9a7ecc3cffb7ca68&#45;&gt;69b3087e794f4c28a3cf62f1ca134e3e -->
+<!-- a0eeaf0cde504c0395a7adf5244c7230&#45;&gt;d9eb03d454bb465f9f1f8ca87bcc401f -->
 <g id="edge23" class="edge">
-<title>c500a84142bb4fbc9a7ecc3cffb7ca68&#45;&gt;69b3087e794f4c28a3cf62f1ca134e3e</title>
-<g id="a_edge23"><a xlink:title="Dependency">
-<path fill="none" stroke="black" d="M690,-106.93C690,-106.93 690,-70.05 690,-70.05"/>
-<polygon fill="black" stroke="black" points="687.9,-106.93 690,-112.93 692.1,-106.93 687.9,-106.93"/>
-</a>
-</g>
-<text text-anchor="middle" x="674" y="-78.09" font-family="Sans-Serif" font-size="13.00">Uses</text>
+<title>a0eeaf0cde504c0395a7adf5244c7230&#45;&gt;d9eb03d454bb465f9f1f8ca87bcc401f</title>
+<path fill="none" stroke="black" d="M690,-112.93C690,-112.93 690,-80.05 690,-80.05"/>
+<polygon fill="black" stroke="black" points="693.5,-80.05 690,-70.05 686.5,-80.05 693.5,-80.05"/>
 </g>
 </g>
+
+<script><![CDATA[
+function showTooltip(evt, resourceName, serviceType) {
+    let tooltip = document.getElementById("tooltip");
+    tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
+    tooltip.style.left = evt.pageX + "px";
+    tooltip.style.top = evt.pageY + "px";
+    tooltip.style.display = "block";
+}
+
+document.addEventListener("click", function(event) {
+    let tooltip = document.getElementById("tooltip");
+    if (!event.target.closest("[href^='javascript:showTooltip']")) {
+        tooltip.style.display = "none";
+    }
+});
+]]></script>
+
+<style><![CDATA[
+#tooltip {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+]]></style>
+
+<div id="tooltip"></div>
+
 </svg>
