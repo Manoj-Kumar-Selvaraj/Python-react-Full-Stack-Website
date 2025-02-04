@@ -10,7 +10,6 @@ from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
-from lxml import etree
 
 # Configure logging
 logging.basicConfig(
@@ -134,40 +133,46 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         with open("infrastructure_architecture.svg", "w") as file:
             file.write(updated_svg_content)
 
-        # Add tooltips JavaScript and modify SVG
-        with open("infrastructure_architecture.svg", "rb") as f:
-            svg_content = f.read()
-
-        root = etree.fromstring(svg_content)
-
-        js_script = """
-        <script type="text/javascript">
-            function showTooltip(resourceName, serviceType) {
-                var tooltip = document.getElementById('tooltip');
-                tooltip.innerHTML = "Resource: " + resourceName + "<br />Service: " + serviceType;
-                tooltip.style.display = "block";
-            }
-        </script>
-        """
-
-        script_element = etree.XML(js_script)
-        root.append(script_element)
-
-        tooltip_div = etree.Element("div", id="tooltip", style="display:none; position: absolute; background: rgba(0,0,0,0.7); color: white; padding: 5px; border-radius: 5px;")
-        root.append(tooltip_div)
-
-        for elem in root.iter():
-            # Ensure elem.tag is a string before comparing it
-            if isinstance(elem.tag, str) and ('rect' in elem.tag or 'circle' in elem.tag):
-                resource_name = elem.get('id', 'Unnamed')
-                service_type = elem.tag
-                elem.set('onmouseover', f"showTooltip('{resource_name}', '{service_type}')")
-
-        with open("modified_infrastructure_architecture.svg", "wb") as f:
-            f.write(etree.tostring(root))
-
     except Exception as e:
         logging.error(f"Error generating diagram: {e}")
+        logging.error(traceback.format_exc())
+        raise
+
+def add_tooltips_with_regex(svg_file):
+    try:
+        with open(svg_file, "r") as file:
+            svg_content = file.read()
+
+        image_pattern = re.compile(
+            r'(<image[^>]*>)\s*(<text[^>]*>.*?</text>)', re.DOTALL
+        )
+
+        def add_tooltip(match):
+            image_tag = match.group(1)
+            text_tag = match.group(2)
+            tooltip_content = re.sub(r'<[^>]+>', '', text_tag).strip()
+            tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_content}</text>'
+            return f"{image_tag}\n{tooltip_tag}"
+
+        modified_svg = image_pattern.sub(add_tooltip, svg_content)
+
+        css_style = """
+        <style>
+            image:hover + text {
+                visibility: visible;
+            }
+        </style>
+        """
+        modified_svg = modified_svg.replace("</svg>", f"{css_style}\n</svg>")
+
+        output_file = svg_file.replace(".svg", "_with_tooltips.svg")
+        with open(output_file, "w") as file:
+            file.write(modified_svg)
+
+        print(f"Tooltips added and saved to {output_file}")
+
+    except Exception as e:
+        logging.error(f"Error adding tooltips: {e}")
         logging.error(traceback.format_exc())
         raise
 
@@ -176,6 +181,7 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
+        add_tooltips_with_regex("infrastructure_architecture.svg")
     except Exception as e:
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())
