@@ -10,6 +10,7 @@ from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
 from terraform_to_aws_mapping import terraform_to_aws_service_map  
 from collections import defaultdict
+from lxml import etree
 
 # Configure logging
 logging.basicConfig(
@@ -113,7 +114,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            icon = icon("", href=f"javascript:(event, '{resource_name}', '{service_type}')",
+                            icon = icon(f"{resource_name}\n{service_type}",
                                         shape="box", width="0.5", height="0.4")
                             cluster_nodes[resource_name] = icon
 
@@ -130,10 +131,40 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         pattern = r'(<image[^>]+xlink:href=")(/home/codespace/.python[^"]+)(")'
         updated_svg_content = re.sub(pattern, lambda match: match.group(1) + base_url + match.group(2).split('/resources/')[-1] + match.group(3), svg_content)
 
-        # final_svg_content = updated_svg_content.replace("</svg>", tooltip_js + "\n</svg>")
-
         with open("infrastructure_architecture.svg", "w") as file:
             file.write(updated_svg_content)
+
+        # Add tooltips JavaScript and modify SVG
+        with open("infrastructure_architecture.svg", "rb") as f:
+            svg_content = f.read()
+
+        root = etree.fromstring(svg_content)
+
+        js_script = """
+        <script type="text/javascript">
+            function showTooltip(resourceName, serviceType) {
+                var tooltip = document.getElementById('tooltip');
+                tooltip.innerHTML = "Resource: " + resourceName + "<br />Service: " + serviceType;
+                tooltip.style.display = "block";
+            }
+        </script>
+        """
+
+        script_element = etree.XML(js_script)
+        root.append(script_element)
+
+        tooltip_div = etree.Element("div", id="tooltip", style="display:none; position: absolute; background: rgba(0,0,0,0.7); color: white; padding: 5px; border-radius: 5px;")
+        root.append(tooltip_div)
+
+        for elem in root.iter():
+            # Ensure elem.tag is a string before comparing it
+            if isinstance(elem.tag, str) and ('rect' in elem.tag or 'circle' in elem.tag):
+                resource_name = elem.get('id', 'Unnamed')
+                service_type = elem.tag
+                elem.set('onmouseover', f"showTooltip('{resource_name}', '{service_type}')")
+
+        with open("modified_infrastructure_architecture.svg", "wb") as f:
+            f.write(etree.tostring(root))
 
     except Exception as e:
         logging.error(f"Error generating diagram: {e}")
