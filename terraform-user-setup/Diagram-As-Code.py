@@ -113,8 +113,9 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
-                            icon = icon("", href=f"javascript:showTooltip(event, '{resource_name}', '{service_type}')",
-                                        shape="box", width="0.5", height="0.4")
+                            icon = icon("", href=f"javascript:void(0);", 
+                                        shape="box", width="0.5", height="0.4", 
+                                        data_resource=resource_name, data_type=service_type)
                             cluster_nodes[resource_name] = icon
 
             for (source_type, source_name), dependencies in dependency_matrix.items():
@@ -133,19 +134,27 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         # Add the Tooltip JS and CSS to the SVG
         tooltip_js = """
 <script><![CDATA[
-function showTooltip(evt, resourceName, serviceType) {
-    let tooltip = document.getElementById("tooltip");
-    tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
-    tooltip.style.left = evt.pageX + "px";
-    tooltip.style.top = evt.pageY + "px";
-    tooltip.style.display = "block";
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll('[data-resource]');
+    
+    icons.forEach(function(icon) {
+        icon.addEventListener("click", function(event) {
+            let resourceName = icon.getAttribute('data-resource');
+            let serviceType = icon.getAttribute('data-type');
+            let tooltip = document.getElementById("tooltip");
+            tooltip.innerHTML = `<b>Resource:</b> ${resourceName}<br/><b>Type:</b> ${serviceType}`;
+            tooltip.style.left = event.pageX + "px";
+            tooltip.style.top = event.pageY + "px";
+            tooltip.style.display = "block";
+        });
+    });
 
-document.addEventListener("click", function(event) {
-    let tooltip = document.getElementById("tooltip");
-    if (!event.target.closest("[href^='javascript:showTooltip']")) {
-        tooltip.style.display = "none";
-    }
+    document.addEventListener("click", function(event) {
+        let tooltip = document.getElementById("tooltip");
+        if (!event.target.closest("[data-resource]")) {
+            tooltip.style.display = "none";
+        }
+    });
 });
 ]]></script>
 
