@@ -153,7 +153,7 @@ def add_tooltips_with_regex(svg_file):
             text2_content = re.sub(r'<[^>]+>', '', text2).strip()
             tooltip_text = f"""
             <tspan x='0' dy='1.2em' font-weight='bold' fill='#2d3436'>Name: {text1_content}</tspan>
-            <tspan x='0' dy='1.2em' font-weight='normal' fill='#636e72'>Type: {text2_content}</tspan>
+            <tspan x='0' dy='1.2em' font-weight='bold' fill='#636e72'>Service: {text2_content}</tspan>
             """
             tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_text}</text>'
 
