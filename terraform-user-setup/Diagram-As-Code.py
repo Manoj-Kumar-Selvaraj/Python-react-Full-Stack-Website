@@ -8,7 +8,7 @@ import re
 from diagrams.custom import Custom
 from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
-from terraform_to_aws_mapping import terraform_to_aws_service_map  
+from terraform_to_aws_mapping import terraform_to_aws_service_map
 from collections import defaultdict
 
 # Configure logging
@@ -92,11 +92,11 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
     try:
         nodes = {}
         categories = defaultdict(set)
-        
+
         for service_type, resource_name in services:
             category = get_category(service_type)
             categories[category].add((service_type, resource_name))
-        
+
         graph_attrs = {
             "size": "300,200", 
             "dpi": "200",
@@ -104,7 +104,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             "nodesep": "0.5",  
             "ranksep": "0.6"  
         }
-        
+
         with Diagram("AWS Architecture Diagram", show=False, filename=output_file, outformat="svg", graph_attr=graph_attrs):
             cluster_nodes = {}
 
@@ -138,12 +138,12 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
         logging.error(traceback.format_exc())
         raise
 
-def add_tooltips_with_regex(svg_file):
+def add_interactive_features(svg_file):
     try:
         with open(svg_file, "r") as file:
             svg_content = file.read()
 
-        image_pattern = re.compile(
+        tool_tip_pattern = re.compile(
             r'(<image[^>]*>)\s*(<text[^>]*?>.*?</text>)\s*(<text[^>]*?>.*?</text>)'
         )
 
@@ -159,18 +159,105 @@ def add_tooltips_with_regex(svg_file):
 
             return f"{image_tag}\n{tooltip_tag}"
 
-        modified_svg = image_pattern.sub(add_tooltip, svg_content)
+        modified_svg_1 = tool_tip_pattern.sub(add_tooltip, svg_content)
 
-        css_style = """
-        <style>
-            image:hover + text {
-                visibility: visible;
-            }
-        </style>
+        def add_edge_event_attributes(svg_content):
+            svg_content = re.sub(
+                r'(<path[^>]*?.)(/)>',  
+                r'\1 onmouseover="highlightEdge(true, this.parentNode)" '
+                r'onmouseout="highlightEdge(false, this.parentNode)" '
+                r'onclick="toggleEdge(this.parentNode)"/>',
+                svg_content
+            )
+            svg_content = re.sub(
+                r'(<polygon[^>]*?.)(/)>',  
+                r'\1 onmouseover="highlightEdge(true, this.parentNode)" '
+                r'onmouseout="highlightEdge(false, this.parentNode)" '
+                r'onclick="toggleEdge(this.parentNode)"/>',
+                svg_content
+            )
+            return svg_content
+
+        modified_svg = add_edge_event_attributes(modified_svg_1)
+        additional_scripts = """
+            <!-- Clickable Area -->
+            <line id="clickable" x1="75" y1="75" x2="325" y2="75" class="clickable-area"
+                onmouseover="highlightEdge(true, this)" onmouseout="highlightEdge(false, this)" onclick="toggleEdge(this)"/>
+
+            <script>
+                let isActive = false;
+                let isHovered = false;
+
+                function highlightEdge(isHovering, element) {
+                    isHovered = isHovering;
+                    element.classList.toggle("hover", isHovered);
+                    console.log("Hover Event:", isHovered, "Element:", element);
+                }
+
+                function toggleEdge(element) {
+                    isActive = !isActive;
+                    element.classList.toggle("active", isActive);
+                    console.log("Toggle Edge Active:", isActive, "Element:", element);
+                }
+
+                window.addEventListener('resize', handleZoom);
+                window.addEventListener('wheel', handleZoom);
+
+                function handleZoom(event) {
+                    if (event.ctrlKey || event.metaKey || event.scale !== 1) return;
+                }
+
+                function resetEdgeState() {
+                    let edges = document.getElementsByClassName("edge");
+                    let clickable = document.getElementById("clickable");
+                    isActive = false;
+                    isHovered = false;
+
+                    for (let edge of edges) {
+                        edge.classList.remove("active", "hover");
+                    }
+
+                    if (clickable) clickable.setAttribute("stroke", "transparent");
+                }
+
+                document.addEventListener('click', (event) => {
+                    let edges = document.getElementsByClassName("edge");
+                    let isInside = Array.from(edges).some(edge => edge.contains(event.target));
+                    if (!isInside) resetEdgeState();
+                });
+            </script>
+
+            <style>
+                .edge.hover path,
+                .edge.hover polygon,
+                .line.hover {
+                    stroke: blue !important;  /* Apply hover color */
+                    fill: blue !important;
+                }
+
+                .edge.active path,
+                .edge.active polygon,
+                .line.active {
+                    stroke: green !important;  /* Apply active color */
+                    fill: green !important;
+                }
+
+                text {
+                    visibility: hidden;
+                    font-size: 12px;
+                    fill: black;
+                }
+
+                image:hover + text {
+                    visibility: visible;
+                }
+
+            </style>
         """
-        modified_svg = modified_svg.replace("</svg>", f"{css_style}\n</svg>")
 
-        output_file = svg_file.replace(".svg", "_with_tooltips.svg")
+        modified_svg = modified_svg.replace("</svg>", f"{additional_scripts}\n</svg>")
+
+        output_file = svg_file.replace(".svg", "_aws.svg")
         with open(output_file, "w") as file:
             file.write(modified_svg)
 
@@ -186,7 +273,7 @@ if __name__ == "__main__":
         tfstate_data = load_tfstate("tfstate.json")
         services, dependency_matrix = extract_services(tfstate_data)
         create_diagram(services, dependency_matrix)
-        add_tooltips_with_regex("infrastructure_architecture.svg")
+        add_interactive_features("infrastructure_architecture.svg")
     except Exception as e:
         logging.error(f"Unhandled exception: {e}")
         logging.error(traceback.format_exc())
