@@ -5,6 +5,7 @@ import logging
 import traceback
 import pkgutil
 import re
+import openai
 from diagrams.custom import Custom
 from diagrams import Diagram, Cluster, Edge
 from diagrams.aws import __path__ as aws_package_path
@@ -19,6 +20,8 @@ logging.basicConfig(
 )
 
 ICON_SIZE = "20"
+
+
 
 def load_aws_icons():
     aws_icons = {}
@@ -179,6 +182,7 @@ def add_interactive_features(svg_file):
             return svg_content
 
         modified_svg = add_edge_event_attributes(modified_svg_1)
+        
         additional_scripts = """
             <!-- Clickable Area -->
             <line id="clickable" x1="75" y1="75" x2="325" y2="75" class="clickable-area"
@@ -232,14 +236,18 @@ def add_interactive_features(svg_file):
                 .edge.hover polygon,
                 .line.hover {
                     stroke: blue !important;  /* Apply hover color */
-                    fill: blue !important;
+                    fill: none !important;
+                    stroke-width: 4px; /* Define stroke width */
+                    stroke-linecap: round; /* Rounded stroke ends */
                 }
 
                 .edge.active path,
                 .edge.active polygon,
                 .line.active {
                     stroke: green !important;  /* Apply active color */
-                    fill: green !important;
+                    fill: none !important;
+                    stroke-width: 4px; /* Define stroke width */
+                    stroke-linecap: round; /* Rounded stroke ends */
                 }
 
                 text {
@@ -260,8 +268,7 @@ def add_interactive_features(svg_file):
         output_file = svg_file.replace(".svg", "_aws.svg")
         with open(output_file, "w") as file:
             file.write(modified_svg)
-
-        print(f"Tooltips added and saved to {output_file}")
+        
 
     except Exception as e:
         logging.error(f"Error adding tooltips: {e}")
