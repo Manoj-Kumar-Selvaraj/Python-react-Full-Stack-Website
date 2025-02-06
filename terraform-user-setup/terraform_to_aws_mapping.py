@@ -142,4 +142,5 @@ terraform_to_aws_service_map = {
     "aws_iam_role_policy": "iam",
     "aws_iam_user_group_membership": "iam",
     "aws_iam_user_login_profile": "iam",
+    "aws_iam_group_policy_attachment": "iam",
 }

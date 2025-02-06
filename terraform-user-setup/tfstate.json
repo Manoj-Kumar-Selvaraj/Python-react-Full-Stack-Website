@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.10.5",
-  "serial": 37,
+  "serial": 40,
   "lineage": "7b841dff-e288-c226-a42c-c3e5fd50722b",
   "outputs": {},
   "resources": [
@@ -335,6 +335,1228 @@
             "name": "FactoryOutletFrontEndDevelopers",
             "path": "/",
             "unique_id": "AGPAQSOI4M3ZA5KZOLRZU"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_CodeBuild_CodePipeline_Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143336064100000004",
+            "policy_arn": "arn:aws:iam::039612868338:policy/UserCodeBuildCodePipelineS3Access"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.UserCodeBuildCodePipelineS3Access"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_CodeStar_User_Policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143336211100000006",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodeStarConnectionsPolicy"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.code_star_user_policy"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_DynamoDB_Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143332643600000001",
+            "policy_arn": "arn:aws:iam::039612868338:policy/DynamoDBcreate"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.DynamoDB_Access"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_EC2LaunchandConnect_Policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143751693600000002",
+            "policy_arn": "arn:aws:iam::039612868338:policy/EC2LaunchandConnect_Policy"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.EC2LaunchandConnect_Policy"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_EC2_Read_Only",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143751692300000001",
+            "policy_arn": "arn:aws:iam::039612868338:policy/EC2_Read_Only"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.EC2_Read_Only"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_Secrets_Full_Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143332879200000002",
+            "policy_arn": "arn:aws:iam::039612868338:policy/UserSecrestManagerPolicy"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.Secrets_Full_Access"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "Attach_UserCloudWatchFullAccess",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143336615800000007",
+            "policy_arn": "arn:aws:iam::039612868338:policy/UserCloudWatchFullAccess"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.UserCloudWatchFullAccess"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "EcrAccessPolicy_Attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "FactoryOutletFrontEndDevelopers",
+            "id": "FactoryOutletFrontEndDevelopers-20250206143716607700000001",
+            "policy_arn": "arn:aws:iam::039612868338:policy/ECRPolicy"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_frontend_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_policy.EcrAccessPolicy"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "CodeBuild_Cloudwatch_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodeBuildCloudWatchPolicy",
+            "attachment_count": 1,
+            "description": "Policy for CodeBuild to interact with CloudWatch Logs",
+            "id": "arn:aws:iam::039612868338:policy/CodeBuildCloudWatchPolicy",
+            "name": "CodeBuildCloudWatchPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\",\"logs:CreateLogGroup\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:*:*:log-group:/aws/codebuild/*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZJ55WD2RCR",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "Codebuild_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodeBuildPolicy",
+            "attachment_count": 1,
+            "description": "Policy for CodePipeline to trigger builds in CodeBuild",
+            "id": "arn:aws:iam::039612868338:policy/CodeBuildPolicy",
+            "name": "CodeBuildPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"codebuild:StartBuild\",\"codebuild:BatchGetBuilds\",\"codebuild:BatchGetProjects\",\"codebuild:ListBuilds\",\"codebuild:ListProjects\",\"codebuild:ListReportGroups\",\"codebuild:ListCuratedEnvironmentImages\",\"codebuild:RetryBuild\",\"codebuild:StopBuild\",\"ec2:DeleteNetworkInterface\",\"ec2:DescribeNetworkInterfaces\",\"ec2:CreateNetworkInterface\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZEVUFXFKQN",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "Codepipeline_cloudwatch_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodePipelineCloudWatchPolicy",
+            "attachment_count": 1,
+            "description": "Policy for CodePipeline to interact with CloudWatch Logs",
+            "id": "arn:aws:iam::039612868338:policy/CodePipelineCloudWatchPolicy",
+            "name": "CodePipelineCloudWatchPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:*:*:log-group:/aws/codepipeline/*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZB66E56AYL",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "Codepipeline_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodePipelinePolicy",
+            "attachment_count": 1,
+            "description": "Policy for CodeBuild to interact with CodePipeline",
+            "id": "arn:aws:iam::039612868338:policy/CodePipelinePolicy",
+            "name": "CodePipelinePolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"codepipeline:PollForJobs\",\"codepipeline:GetJobDetails\",\"codepipeline:PutJobSuccessResult\",\"codepipeline:PutJobFailureResult\",\"codepipeline:StartPipelineExecution\",\"codepipeline:GetPipelineState\",\"codepipeline:GetPipeline\",\"ec2:DeleteNetworkInterface\",\"ec2:DescribeNetworkInterfaces\",\"ec2:CreateNetworkInterface\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"codepipeline:PutJobFailureResult\",\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZLNN6YVMDO",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "DynamoDB_Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/DynamoDBcreate",
+            "attachment_count": 1,
+            "description": "This policy will give access to create view and use DynamoDB except destroying other users' tables",
+            "id": "arn:aws:iam::039612868338:policy/DynamoDBcreate",
+            "name": "DynamoDBcreate",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"dynamodb:GetShardIterator\",\"dynamodb:Scan\",\"dynamodb:Query\",\"dynamodb:DescribeStream\",\"dynamodb:GetRecords\",\"dynamodb:ListStreams\",\"dynamodb:BatchGetItem\",\"dynamodb:ConditionCheckItem\",\"dynamodb:DescribeTable\",\"dynamodb:GetItem\",\"dynamodb:DescribeBackup\",\"dynamodb:DescribeContinuousBackups\",\"dynamodb:DescribeContributorInsights\",\"dynamodb:DescribeEndpoints\",\"dynamodb:DescribeExport\",\"dynamodb:DescribeGlobalTable\",\"dynamodb:DescribeGlobalTableSettings\",\"dynamodb:DescribeImport\",\"dynamodb:DescribeKinesisStreamingDestination\",\"dynamodb:DescribeLimits\",\"dynamodb:DescribeReservedCapacity\",\"dynamodb:DescribeReservedCapacityOfferings\",\"dynamodb:DescribeTableReplicaAutoScaling\",\"dynamodb:DescribeTimeToLive\",\"dynamodb:GetAbacStatus\",\"dynamodb:ListTagsOfResource\",\"dynamodb:PartiQLSelect\",\"dynamodb:ListBackups\",\"dynamodb:ListContributorInsights\",\"dynamodb:ListExports\",\"dynamodb:ListGlobalTables\",\"dynamodb:ListImports\",\"dynamodb:ListTables\",\"dynamodb:CreateTable\",\"dynamodb:TagResource\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DynoDBMinimalAccess\"},{\"Action\":[\"dynamodb:GetShardIterator\",\"dynamodb:Scan\",\"dynamodb:Query\",\"dynamodb:DescribeStream\",\"dynamodb:GetRecords\",\"dynamodb:ListStreams\",\"dynamodb:BatchGetItem\",\"dynamodb:BatchWriteItem\",\"dynamodb:ConditionCheckItem\",\"dynamodb:PutItem\",\"dynamodb:DescribeTable\",\"dynamodb:DeleteItem\",\"dynamodb:GetItem\",\"dynamodb:UpdateItem\",\"dynamodb:DeleteTable\",\"dynamodb:GetResourcePolicy\",\"dynamodb:CreateBackup\",\"dynamodb:CreateGlobalTable\",\"dynamodb:CreateTable\",\"dynamodb:CreateTableReplica\",\"dynamodb:DeleteBackup\",\"dynamodb:DeleteTableReplica\",\"dynamodb:DisableKinesisStreamingDestination\",\"dynamodb:EnableKinesisStreamingDestination\",\"dynamodb:ExportTableToPointInTime\",\"dynamodb:ImportTable\",\"dynamodb:PartiQLDelete\",\"dynamodb:PartiQLInsert\",\"dynamodb:PartiQLUpdate\",\"dynamodb:PurchaseReservedCapacityOfferings\",\"dynamodb:RestoreTableFromAwsBackup\",\"dynamodb:RestoreTableFromBackup\",\"dynamodb:RestoreTableToPointInTime\",\"dynamodb:StartAwsBackupJob\",\"dynamodb:TagResource\",\"dynamodb:UntagResource\",\"dynamodb:UpdateContinuousBackups\",\"dynamodb:UpdateContributorInsights\",\"dynamodb:UpdateGlobalTable\",\"dynamodb:UpdateGlobalTableSettings\",\"dynamodb:UpdateGlobalTableVersion\",\"dynamodb:UpdateKinesisStreamingDestination\",\"dynamodb:UpdateTable\",\"dynamodb:UpdateTableReplicaAutoScaling\",\"dynamodb:UpdateTimeToLive\",\"dynamodb:DeleteResourcePolicy\",\"dynamodb:PutResourcePolicy\",\"dynamodb:UpdateAbacStatus\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/OwnerGroup\":\"FactoryOulet-Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"arn:aws:dynamodb:*:*:table/*\",\"Sid\":\"DynoDBFullccAess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZID7CUORLI",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "EC2LaunchandConnect_Policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/EC2LaunchandConnect_Policy",
+            "attachment_count": 1,
+            "description": "EC2LaunchandConnect_Policy",
+            "id": "arn:aws:iam::039612868338:policy/EC2LaunchandConnect_Policy",
+            "name": "EC2LaunchandConnect_Policy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"ec2:LaunchInstances\",\"ec2:CreateSecurityGroup\",\"ec2:DescribeKeyPairs\",\"ec2:ModifyInstanceAttribute\",\"ec2:DeleteSecurityGroup\",\"ec2:RevokeSecurityGroupIngress\",\"ec2:AuthorizeSecurityGroupIngress\",\"ec2:RunInstances\",\"ec2:CreateTags\",\"ec2:CreateVpc\",\"ec2:Create*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"EC2LaunchAndConnect\"},{\"Action\":[\"ec2:Delete*\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/OwnerGroup\":\"FactoryOulet-Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"EC2DeleteAccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZKZEXT4G7T",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "EC2_Read_Only",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/EC2_Read_Only",
+            "attachment_count": 0,
+            "description": "Read-only access to EC2 instances",
+            "id": "arn:aws:iam::039612868338:policy/EC2_Read_Only",
+            "name": "EC2_Read_Only",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"ec2-instance-connect:SendSSHPublicKey\",\"ec2:StartInstances\",\"ec2:StopInstances\",\"ec2:Connect\",\"ec2:Get*\",\"ec2:Describe*\",\"ec2:List*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"EC2MinimalAccess\"},{\"Action\":\"elasticloadbalancing:Describe*\",\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"cloudwatch:ListMetrics\",\"cloudwatch:GetMetricStatistics\",\"cloudwatch:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"autoscaling:Describe*\",\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZFVDNBXXLI",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "EcrAccessPolicy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/ECRPolicy",
+            "attachment_count": 1,
+            "description": "Policy to allow creating ECR, CodeBuild, and EC2 resources with least privilege",
+            "id": "arn:aws:iam::039612868338:policy/ECRPolicy",
+            "name": "ECRPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"ecr:CreateRepository\",\"ecr:DescribeRepositories\",\"ecr:DeleteRepository\",\"ecr:TagResource\",\"ecr:List*\",\"ecr:ListTagsForResource\",\"ecr:GetAuthorizationToken\",\"ecr:InitiateLayerUpload\",\"ecr:UploadLayerPart\",\"ecr:CompleteLayerUpload\",\"ecr:PutImage\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZLD7PL4ICX",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "S3_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/S3Policy",
+            "attachment_count": 0,
+            "description": "Policy for CodePipeline to access specific S3 bucket",
+            "id": "arn:aws:iam::039612868338:policy/S3Policy",
+            "name": "S3Policy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZE3B46ANAN",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "Secrets_Full_Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/UserSecrestManagerPolicy",
+            "attachment_count": 1,
+            "description": "",
+            "id": "arn:aws:iam::039612868338:policy/UserSecrestManagerPolicy",
+            "name": "UserSecrestManagerPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":\"secretsmanager:*\",\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"SecretsFullFullaccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZKJJCGNTX7",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "UserCloudWatchFullAccess",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/UserCloudWatchFullAccess",
+            "attachment_count": 1,
+            "description": "Policy to provide full access to CloudWatch for users",
+            "id": "arn:aws:iam::039612868338:policy/UserCloudWatchFullAccess",
+            "name": "UserCloudWatchFullAccess",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"cloudwatch:*\",\"logs:*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"CloudWatchFullAccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZLIUONAJ5V",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "UserCodeBuildCodePipelineS3Access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/UserCodeBuildCodePipelineS3Access",
+            "attachment_count": 1,
+            "description": "Policy for users to manage CodeBuild and CodePipeline",
+            "id": "arn:aws:iam::039612868338:policy/UserCodeBuildCodePipelineS3Access",
+            "name": "UserCodeBuildCodePipelineS3Access",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"codepipeline:List*\",\"codepipeline:Get*\",\"codepipeline:StartPipelineExecution\",\"codepipeline:CreatePipeline\",\"codepipeline:TagResource\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"CodePipelineMinimalAccess\"},{\"Action\":[\"codepipeline:AcknowledgeJob\",\"codepipeline:AcknowledgeThirdPartyJob\",\"codepipeline:Create*\",\"codepipeline:Delete*\",\"codepipeline:DeregisterWebhookWithThirdParty\",\"codepipeline:Disable*\",\"codepipeline:Enable*\",\"codepipeline:OverrideStageCondition\",\"codepipeline:PollForJobs\",\"codepipeline:PollForThirdPartyJobs\",\"codepipeline:Put*\",\"codepipeline:RegisterWebhookWithThirdParty\",\"codepipeline:RetryStageExecution\",\"codepipeline:RollbackStage\",\"codepipeline:StopPipelineExecution\",\"codepipeline:TagResource\",\"codepipeline:UntagResource\",\"codepipeline:Update*\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/OwnerGroup\":\"FactoryOulet-Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"CodePipelineFullAccess\"},{\"Action\":[\"codebuild:BatchGetBuildBatches\",\"codebuild:BatchGetBuilds\",\"codebuild:BatchGetProjects\",\"codebuild:BatchGetReportGroups\",\"codebuild:BatchGetReports\",\"codebuild:DescribeCodeCoverages\",\"codebuild:DescribeTestCases\",\"codebuild:GetResourcePolicy\",\"codebuild:ListBuilds\",\"codebuild:ListProjects\",\"codebuild:StartBuild\",\"codebuild:Start*\",\"codebuild:BatchGet*\",\"codebuild:List*\",\"codebuild:CreateProject\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"CodeBuildMinimalAccess\"},{\"Action\":[\"codebuild:StopBuildBatch\",\"codebuild:RetryBuild\",\"codebuild:RetryBuildBatch\",\"codebuild:CreateProject\",\"codebuild:UpdateProject\",\"codebuild:DeleteProject\",\"codebuild:BatchGetBuildBatches\",\"codebuild:BatchGetReports\",\"codebuild:BatchPutCodeCoverages\",\"codebuild:BatchPutTestCases\",\"codebuild:PutResourcePolicy\",\"codebuild:DeleteResourcePolicy\",\"codebuild:DeleteOAuthToken\",\"codebuild:PersistOAuthToken\",\"codebuild:ImportSourceCredentials\",\"codebuild:DeleteProject\",\"codebuild:DeleteReport\",\"codebuild:DeleteWebhook\",\"codebuild:DescribeCodeCoverages\",\"codebuild:GetReportGroupTrend\",\"codebuild:ListReportsForReportGroup\",\"codebuild:Delete*\",\"codebuild:Update*\",\"codebuild:Stop*\",\"codebuild:BatchDeleteBuilds\",\"codebuild:Create*\",\"codebuild:BatchGetFleets\",\"codebuild:InvalidateProjectCache\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/OwnerGroup\":\"FactoryOulet-Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"CodeBuildFullAccess\"},{\"Action\":[\"S3:Get*\",\"S3:List*\",\"S3:Describe*\",\"S3:CreateBucket\",\"S3:PutBucketPolicy\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"S3FullAccess\"},{\"Action\":[\"S3:Put*\",\"S3:Create*\",\"S3:Update*\",\"S3:Delete*\",\"S3:AbortMultipartUpload\",\"S3:AssociateAccessGrantsIdentityCenter\",\"S3:InitiateReplication\",\"S3:PauseReplication\",\"S3:SubmitMultiRegionAccessPointRoutes\",\"S3:ReplicateTags\",\"S3:TagResource\",\"S3:UntagResource\",\"S3:BypassGovernanceRetention\",\"S3:ObjectOwnerOverrideToBucketOwner\",\"S3:DissociateAccessGrantsIdentityCenter\",\"S3:ReplicateDelete\",\"S3:ReplicateObject\",\"S3:RestoreObject\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/OwnerGroup\":\"FactoryOulet-Frontend\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"S3MinimalAccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZGUSXTXGRQ",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "code_star_user_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodeStarConnectionsPolicy",
+            "attachment_count": 1,
+            "description": "Policy for CodeStar connections to GitHub",
+            "id": "arn:aws:iam::039612868338:policy/CodeStarConnectionsPolicy",
+            "name": "CodeStarConnectionsPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"codestar-connections:CreateConnection\",\"codestar-connections:DeleteConnection\",\"codestar-connections:ListConnections\",\"codestar-connections:GetConnection\",\"codestar-connections:UpdateConnection\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZCGBOYFYJ5",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "codebuild_ecr_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodeBuildECRPolicy",
+            "attachment_count": 0,
+            "description": "",
+            "id": "arn:aws:iam::039612868338:policy/CodeBuildECRPolicy",
+            "name": "CodeBuildECRPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"ecr:GetAuthorizationToken\",\"ecr:BatchCheckLayerAvailability\",\"ecr:BatchGetImage\",\"ecr:PutImage\",\"s3:PutObject\",\"ecr:GetDownloadUrlForLayer\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZFU6BIHTOA",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "codestar_permission",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/CodePipelineGitHubPermission",
+            "attachment_count": 0,
+            "description": "Permissions for CodePipeline to interact with GitHub via CodeStar Connections",
+            "id": "arn:aws:iam::039612868338:policy/CodePipelineGitHubPermission",
+            "name": "CodePipelineGitHubPermission",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"codestar-connections:UseConnection\",\"codestar-connections:DescribeConnection\",\"codestar-connections:ListConnections\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowGitHubConnectionAccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZGVBDAR34P",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "iam_pass_role_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/PassRolePolicy",
+            "attachment_count": 0,
+            "description": "Policy to allow CodePipeline to pass roles to CodeBuild",
+            "id": "arn:aws:iam::039612868338:policy/PassRolePolicy",
+            "name": "PassRolePolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":\"iam:PassRole\",\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZC4FWR3S6A",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "secrets_manager_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:policy/SecretsManagerAccessPolicy",
+            "attachment_count": 0,
+            "description": "Policy to allow access to specific secrets in Secrets Manager",
+            "id": "arn:aws:iam::039612868338:policy/SecretsManagerAccessPolicy",
+            "name": "SecretsManagerAccessPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"secretsmanager:GetSecretValue\",\"secretsmanager:DescribeSecret\",\"secretsmanager:ListSecrets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"SecretsManagerReadAccess\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAQSOI4M3ZJCI3FZVXX",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "AmazonEC2ContainerRegistryReadOnly_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codebuild_AmazonEC2ContainerRegistryReadOnly-attachment",
+            "name": "codebuild_AmazonEC2ContainerRegistryReadOnly-attachment",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_ECR_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codepipeline-ECR-permission-policy-attachment",
+            "name": "codepipeline-ECR-permission-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodeBuildECRPolicy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.codebuild_ecr_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_cloudwatch_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codepipeline-cloudwatch-policy-attachment",
+            "name": "codepipeline-cloudwatch-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodePipelineCloudWatchPolicy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.Codepipeline_cloudwatch_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_codebuild_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codepipeline-codebuild-policy-attachment",
+            "name": "codepipeline-codebuild-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodeBuildPolicy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.Codebuild_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_codestar_permission_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codepipeline-codestar-permission-policy-attachment",
+            "name": "codepipeline-codestar-permission-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodePipelineGitHubPermission",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.codestar_permission",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_ec2_read_only_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [
+              "FactoryOutletFrontEndDevelopers"
+            ],
+            "id": "codepipeline-ec2-read-only-policy-attachment",
+            "name": "codepipeline-ec2-read-only-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/EC2_Read_Only",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.EC2_Read_Only",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_iam_pass_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codepipeline-iam-pass-role-policy-attachment",
+            "name": "codepipeline-iam-pass-role-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/PassRolePolicy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.iam_pass_role_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_s3_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codepipeline-s3-policy-attachment",
+            "name": "codepipeline-s3-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/S3Policy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.S3_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "code_pipeline_secrets_manager_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codepipeline-secrets-manager-policy-attachment",
+            "name": "codepipeline-secrets-manager-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/SecretsManagerAccessPolicy",
+            "roles": [
+              "codepipeline-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.secrets_manager_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.code_pipeline_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_EC2LaunchandConnect_Policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codebuild-EC2LaunchandConnect_Policy-attachment",
+            "name": "codebuild-EC2LaunchandConnect_Policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/EC2LaunchandConnect_Policy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.EC2LaunchandConnect_Policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_cloudwatch_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codebuild-cloudwatch-policy-attachment",
+            "name": "codebuild-cloudwatch-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodeBuildCloudWatchPolicy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.CodeBuild_Cloudwatch_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_codepipeline_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [],
+            "id": "codebuild-codepipeline-policy-attachment",
+            "name": "codebuild-codepipeline-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodePipelinePolicy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.Codepipeline_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_codestar_permission_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codebuild-codestar-permission-policy-attachment",
+            "name": "codebuild-codestar-permission-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodePipelineGitHubPermission",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.codestar_permission",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_ec2_read_only_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [
+              "FactoryOutletFrontEndDevelopers"
+            ],
+            "id": "codebuild-ec2-read-only-policy-attachment",
+            "name": "codebuild-ec2-read-only-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/EC2_Read_Only",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.EC2_Read_Only",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_ecr_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codebuild_ecr_policy-attachment",
+            "name": "codebuild_ecr_policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/CodeBuildECRPolicy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.codebuild_ecr_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_iam_pass_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codebuild-iam-pass-role-policy-attachment",
+            "name": "codebuild-iam-pass-role-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/PassRolePolicy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.iam_pass_role_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_s3_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codebuild-s3-policy-attachment",
+            "name": "codebuild-s3-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/S3Policy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.S3_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "codebuild_secrets_manager_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": null,
+            "id": "codebuild-secrets-manager-policy-attachment",
+            "name": "codebuild-secrets-manager-policy-attachment",
+            "policy_arn": "arn:aws:iam::039612868338:policy/SecretsManagerAccessPolicy",
+            "roles": [
+              "codebuild-service-role"
+            ],
+            "users": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_policy.secrets_manager_policy",
+            "module.IAM.module.RESOURCES.aws_iam_role.codebuild_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "code_pipeline_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:role/codepipeline-service-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":[\"codepipeline.amazonaws.com\"]}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-02-06T14:33:31Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "codepipeline-service-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::039612868338:policy/CodeBuildPolicy",
+              "arn:aws:iam::039612868338:policy/CodePipelineCloudWatchPolicy"
+            ],
+            "max_session_duration": 3600,
+            "name": "codepipeline-service-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAQSOI4M3ZHWUZCRD2J"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "codebuild_service_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].Root",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:role/codebuild-service-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-02-06T14:33:31Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "codebuild-service-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::039612868338:policy/CodeBuildCloudWatchPolicy",
+              "arn:aws:iam::039612868338:policy/CodePipelinePolicy",
+              "arn:aws:iam::039612868338:policy/EC2LaunchandConnect_Policy",
+              "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+            ],
+            "max_session_duration": 3600,
+            "name": "codebuild-service-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAQSOI4M3ZLDAJNCHY5"
           },
           "sensitive_attributes": [],
           "private": "bnVsbA=="
