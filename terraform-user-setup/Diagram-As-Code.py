@@ -112,7 +112,7 @@ def create_diagram(services, dependency_matrix, output_file="output_diagram"):
             cluster_nodes = {}
 
             for category, items in categories.items():
-                with Cluster(category):
+                with Cluster(category, graph_attr={"rankdir": "TB"}):
                     for service_type, resource_name in items:
                         icon = get_icon(service_type)
                         if icon:
