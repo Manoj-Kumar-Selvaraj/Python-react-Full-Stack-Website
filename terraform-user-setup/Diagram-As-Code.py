@@ -158,7 +158,7 @@ def add_interactive_features(svg_file):
             <tspan x='0' dy='1.2em' font-weight='bold' fill='#2d3436'>Name: {text1_content}</tspan>
             <tspan x='0' dy='1.2em' font-weight='bold' fill='#636e72'>Service: {text2_content}</tspan>
             """
-            tooltip_tag = f'<text x="0" y="0" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_text}</text>'
+            tooltip_tag = f'<text class="tooltip" font-family="Sans-Serif" font-size="12" fill="black" visibility="hidden">{tooltip_text}</text>'
 
             return f"{image_tag}\n{tooltip_tag}"
 
@@ -179,6 +179,13 @@ def add_interactive_features(svg_file):
                 r'onclick="toggleEdge(this.parentNode)"/>',
                 svg_content
             )
+            svg_content = re.sub(
+                r'(<image[^>]+xlink:href="[^"]+")',
+                r'\1 onmouseover="showTooltip(evt, this.parentNode.id)" '
+                r'onmousemove="moveTooltip(evt, this.parentNode.id)" '
+                r'onmouseout="hideTooltip(this.parentNode.id)" ',
+                svg_content
+            )
             return svg_content
 
         modified_svg = add_edge_event_attributes(modified_svg_1)
@@ -189,6 +196,79 @@ def add_interactive_features(svg_file):
                 onmouseover="highlightEdge(true, this)" onmouseout="highlightEdge(false, this)" onclick="toggleEdge(this)"/>
 
             <script>
+                function getSVGCoords(evt, svgElement) {
+                    var rect = svgElement.getBoundingClientRect();
+                    var scaleX = svgElement.viewBox.baseVal.width / rect.width;
+                    var scaleY = svgElement.viewBox.baseVal.height / rect.height;
+
+                    return {
+                        x: (evt.clientX - rect.left) * scaleX,
+                        y: (evt.clientY - rect.top) * scaleY
+                    };
+                }
+                function showTooltip(evt, groupId) {
+                    var svgElement = evt.target.ownerSVGElement || evt.target;
+                    var tooltip = document.querySelector(`#${groupId} text`);
+
+                    if (tooltip) {
+                        var coords = getSVGCoords(evt, svgElement);
+                        var rect = svgElement.getBoundingClientRect();
+                        
+                        // Default offset
+                        let xOffset = 10;  
+                        let yOffset = -10; 
+
+                        // If tooltip is too far right, shift left
+                        if (coords.x + 100 > rect.width) { 
+                            xOffset = -100; 
+                        }
+
+                        tooltip.setAttribute("visibility", "visible");
+                        tooltip.setAttribute("x", coords.x + xOffset);
+                        tooltip.setAttribute("y", coords.y + yOffset);
+
+                        tooltip.querySelectorAll("tspan").forEach((tspan, index) => {
+                            tspan.setAttribute("x", coords.x + xOffset);
+                            if (index === 0) {
+                                tspan.setAttribute("y", coords.y + yOffset);
+                            } else {
+                                tspan.setAttribute("dy", "1.2em");
+                            }
+                        });
+                    }
+                }
+
+                function moveTooltip(evt, groupId) {
+                    var svgElement = evt.target.ownerSVGElement || evt.target;
+                    var tooltip = document.querySelector(`#${groupId} text`);
+
+                    if (tooltip) {
+                        var coords = getSVGCoords(evt, svgElement);
+                        var rect = svgElement.getBoundingClientRect();
+                        
+                        // Default offset
+                        let xOffset = 10;  
+                        let yOffset = -10; 
+
+                        // If tooltip is too far right, shift left
+                        if (coords.x + 100 > rect.width) { 
+                            xOffset = -100; 
+                        }
+
+                        tooltip.setAttribute("x", coords.x + xOffset);
+                        tooltip.setAttribute("y", coords.y + yOffset);
+
+                        tooltip.querySelectorAll("tspan").forEach((tspan, index) => {
+                            tspan.setAttribute("x", coords.x + xOffset);
+                            if (index === 0) {
+                                tspan.setAttribute("y", coords.y + yOffset);
+                            } else {
+                                tspan.setAttribute("dy", "1.2em");
+                            }
+                        });
+                    }
+                }
+
                 let isActive = false;
                 let isHovered = false;
 
