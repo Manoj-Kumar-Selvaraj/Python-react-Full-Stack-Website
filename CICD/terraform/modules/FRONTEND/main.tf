@@ -71,7 +71,7 @@ resource "null_resource" "docker_push" {
 
   provisioner "local-exec" {
     command = <<EOT
-      docker build -t ubuntu-docker-image /workspaces/FullStack-FactoryOutlet/CICD/custom-ubuntu-docker
+      docker build -t ubuntu-docker-image /workspaces/Python-react-Full-Stack-Website/CICD/custom-ubuntu-docker
       docker tag ubuntu-docker-image:latest ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
       docker push ${aws_ecr_repository.custom_nodejs_image.repository_url}:latest
     EOT
@@ -166,7 +166,7 @@ BUILD_SPEC
 
 # Secrets Manager to store GitHub OAuth Token
 resource "aws_secretsmanager_secret" "github_oauth_token" {
-  name        = "github_oauth_token_secret_string"
+  name        = "factory_outlet_githum_secret_string"
   description = "GitHub OAuth Token for AWS CodePipeline"
     tags = {
     OwnerGroup  = "FactoryOulet-Frontend"

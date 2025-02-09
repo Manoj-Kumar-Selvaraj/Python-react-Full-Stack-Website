@@ -11,5 +11,5 @@ terraform {
 provider "aws" {
   alias   = "FRONTENDDEVELOPER1"
   region  = "us-east-1"  
-  profile = "FRONTENDDEVELOPER1"   
+  profile = "default"   
 }
