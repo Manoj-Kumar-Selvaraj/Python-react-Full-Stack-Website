@@ -72,6 +72,7 @@ resource "aws_iam_policy" "EcrAccessPolicy" {
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
           "ecr:CompleteLayerUpload",
+          "ecr:SetRepositoryPolicy",
           "ecr:PutImage"
         ]
         Resource = "*"
@@ -254,6 +255,7 @@ resource "aws_iam_policy" "UserCodeBuildCodePipelineS3Access" {
                 "S3:List*",
                 "S3:Describe*",
                 "S3:CreateBucket",
+                "s3:PutBucketTagging",
                 "S3:PutBucketPolicy"],
       Resource = "*"
     },
