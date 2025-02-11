@@ -51,6 +51,17 @@ output "website_url" {
   description = "React website URL"
 }
 
+resource "aws_sns_topic" "Factoryoutlet_fronntend_cicd_notifications" {
+  name = "factory-outlet-frontend-cicd-notifications-sns"
+
+}
+
+resource "aws_sns_topic_subscription" "Factoryoutlet_fronntend_cicd_notifications" {
+  topic_arn = aws_sns_topic.Factoryoutlet_fronntend_cicd_notifications.arn
+  protocol = "email"
+  endpoint = "ss.mano1998@gmail.com" 
+}
+
 resource "aws_ecr_repository" "custom_nodejs_image" {
   name                 = "nodejs-repo"  
   image_tag_mutability = "MUTABLE"   #This means that you can push a new image to ECR with the same tag name, replacing the old image.             
@@ -228,6 +239,21 @@ resource "aws_codepipeline" "react_app_pipeline" {
     }
   }
 
+    stage {
+    name = "Approval"
+    action {
+      name      = "ManualApproval"
+      category  = "Approval"
+      owner     = "AWS"
+      provider  = "Manual"
+      version   = "1"
+      configuration = {
+        NotificationArn = aws_sns_topic.Factoryoutlet_fronntend_cicd_notifications.arn
+        CustomData      = "Please review the build and approve."
+      }
+    }
+  }
+
   stage {
     name = "Deploy"
     action {
@@ -245,4 +271,61 @@ resource "aws_codepipeline" "react_app_pipeline" {
   }
 }
 
+# Create an ACM SSL Certificate for HTTPS
+resource "aws_acm_certificate" "ssl_cert" {
+  domain_name       = "manoj-techworks.site"  # Change to your domain
+  validation_method = "DNS"
 
+    subject_alternative_names = [
+    "www.manoj-techworks.site"
+  ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# CloudFront Distribution with S3 as Origin
+
+resource "aws_cloudfront_distribution" "factoryoutlet-frontend-distribution" {
+  origin {
+    domain_name = "factoryoulet-front-end-host.s3.amazonaws.com"
+    origin_id   = "factoryoutlet-origin-id"
+  }
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
+
+
+  # Viewer (HTTPS) Settings
+  viewer_certificate {
+    acm_certificate_arn      = aws_acm_certificate.ssl_cert.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
+  }
+
+    # Cache Behavior
+  default_cache_behavior {
+    viewer_protocol_policy = "redirect-to-https"
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "factoryoutlet-origin-id"
+    forwarded_values {
+      query_string = false
+      cookies { forward = "none" }
+    }
+  }
+
+    restrictions {
+    geo_restriction {
+      restriction_type = "none"  # No restrictions, or use "whitelist"/"blacklist" with countries
+    }
+  }
+  # Attach custom domain
+  aliases = ["manoj-techworks.site", "www.manoj-techworks.site"]
+}
+
+output "cloudfront_url" {
+  value = aws_cloudfront_distribution.factoryoutlet-frontend-distribution.domain_name
+}
