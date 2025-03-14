@@ -12,8 +12,8 @@ provider "aws" {
   alias   = "Root"
   region  = "us-east-1"
   assume_role {
-    role_arn     = "arn:aws:iam::039612868338:role/FactoryOutlet-Front-End-Root-Role"
-    session_name = "USERCREATIONNOTIFICATIONS"
+    role_arn     = "arn:aws:iam::039612868338:role/FactoryOutletDBRootRole"
+    session_name = "USERCREATION"
   } 
   profile = "default"   
 }

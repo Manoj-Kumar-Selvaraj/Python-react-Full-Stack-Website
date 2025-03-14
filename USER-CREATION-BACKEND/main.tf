@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "factoryoutlet-terraform-lock-bucket"
-    key            = "Root/terraform.tfstate"
+    bucket         = "factoryoutletbackend-terraform-lock-bucket"
+    key            = "BackendRoot/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "factoryoutlet-terraform-lock-table"
+    dynamodb_table = "factoryoutletbackend-terraform-lock-table"
   }
 }
 
@@ -16,6 +16,6 @@ module "IAM" {
   user_name = "Factory_outlet_frontend_developer1"
   group_name = "FactoryOutletFrontEndDevelopers"
   providers = {
-    aws = aws.Root
+    aws = aws.FactoryOutletBackendRoot
   }
 }
