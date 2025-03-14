@@ -1,0 +1,8 @@
+# CALLING CLOUDTRAILUSERNOTIFICATION
+
+module "CLOUDTRAILUSERNOTIFICATION" {
+    source = "./modules/CLOUDTRAILUSERNOTIFICATION"
+    cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn = var.cloudtrial_cloudtrialusernotification_cloudwatch_cloudtrailusernotification_cloud_watch_logs_group_arn
+    cloudtrial_cloudtrialusernotification_iam_permissions_cloud_watch_logs_role_arn = var.cloudtrial_cloudtrialusernotification_iam_permissions_cloud_watch_logs_role_arn
+    cloudtrial_cloudtrialusernotification_s3_s3trail_s3_bucket_name = var.cloudtrial_cloudtrialusernotification_s3_s3trail_s3_bucket_name
+}
