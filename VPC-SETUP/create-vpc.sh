@@ -10,6 +10,8 @@ read -p "Enter Number of Private Subnets: " NO_OF_PRIVATE_SUBNETS
 read -p "Enter Public Route Table Name: " PUBLIC_ROUTE_TABLE_NAME
 read -p "Enter Private Route Table Name: " PRIVATE_ROUTE_TABLE_NAME
 read -p "Enter Internet Gateway Name: " IGW_NAME
+read -p "Enter FlowLogName Name:" FlowLogName
+read -p "ENTER SECURITY GROUP NAME: " SG_NAME
 
 # Validate NO_OF_PUBLIC_SUBNETS and NO_OF_PRIVATE_SUBNETS as numeric values
 if ! [[ "$NO_OF_PUBLIC_SUBNETS" =~ ^[0-9]+$ ]] || ! [[ "$NO_OF_PRIVATE_SUBNETS" =~ ^[0-9]+$ ]]; then
@@ -192,7 +194,7 @@ create_subnets "public" "$NO_OF_PUBLIC_SUBNETS" "$PUBLIC_RT_ID"
 create_subnets "private" "$NO_OF_PRIVATE_SUBNETS" "$PRIVATE_RT_ID"
 
 # Check For Security Group
-read -p "ENTER SECURITY GROUP NAME: " SG_NAME
+
 SG_ID=$(aws ec2 describe-security-groups \
     --filters "Name=vpc-id,Values=$VPC_ID" \
              "Name=tag:Name,Values=$SG_NAME" \
@@ -204,6 +206,10 @@ if [ "$SG_ID" == "None" ]; then
     read -p "ENTER SUBNET PROTOCOL TYPE(tcp, udp, icmp, or all) " sg_protocol
     read -p "ENTER CIDR " sg_cidr
     read -p "ENTER PORT NO " sg_port
+    SG_ID=$(aws ec2 describe-security-groups \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+             "Name=tag:Name,Values=$SG_NAME" \
+    --query "SecurityGroups[0].GroupId" --output text --region "$AWS_REGION" 2>/dev/null )
     # Allow SSH (Port 22) - Restrict to your IP for security
     aws ec2 authorize-security-group-ingress --group-id "$SG_ID" --protocol "$sg_protocol" --port $sg_port --cidr "sg_cidr"
 
@@ -233,6 +239,51 @@ FlowLog_Id=$(aws ec2 describe-flow-logs \
 if [ -z "$FlowLog_Id" ]; then
     echo "No Flow Log found for VPC: $VPC_ID with Name: $FlowLogName"
     echo "Creating Flow Log..."
+    # Creating a Custom Policy for VPC flog log role to access cloud watch
+    aws iam create-policy \
+    --policy-name VPCFlowLogsPolicy \
+    --policy-document '{
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents",
+                    "logs:DescribeLogGroups",
+                    "logs:DescribeLogStreams"
+                ],
+                "Resource": "arn:aws:logs:*:*:*"
+            }
+        ]
+    }'
+
+    #Create a Role
+
+    aws iam create-role \
+    --role-name VPCFlowLogsRole \
+    --assume-role-policy-document '{
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "vpc-flow-logs.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }'
+
+    AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+
+    # Attach the Custom Policy to the Role
+
+    aws iam attach-role-policy \
+    --role-name VPCFlowLogsRole \
+    --policy-arn arn:aws:iam::"$AWS_ACCOUNT_ID":policy/VPCFlowLogsPolicy
+
 
     FlowLog_Id=$(aws ec2 create-flow-logs \
         --resource-type VPC \
@@ -240,7 +291,7 @@ if [ -z "$FlowLog_Id" ]; then
         --traffic-type ALL \
         --log-destination-type cloud-watch-logs \
         --log-group-name "/aws/vpc-flow-logs/$FlowLogName" \
-        --deliver-logs-permission-arn "arn:aws:iam::<AWS_ACCOUNT_ID>:role/VPCFlowLogsRole" \
+        --deliver-logs-permission-arn "arn:aws:iam::"$AWS_ACCOUNT_ID":role/VPCFlowLogsRole" \
         --query "FlowLogIds[0]" \
         --output text 2>>FlowLog.Log)
 
@@ -251,4 +302,4 @@ if [ -z "$FlowLog_Id" ]; then
     fi
 else
     echo "Flow Log already exists: $FlowLog_Id"
-fi
+fi  
