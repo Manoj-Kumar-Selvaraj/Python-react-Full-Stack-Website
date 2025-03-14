@@ -1,0 +1,30 @@
+/*
+DB Can be migrated using:
+AWS Database Migration Service (DMS):
+
+    Supports minimal downtime migrations.
+    Can replicate data from MySQL, Oracle, SQL Server, etc., to AWS RDS, Aurora, or DynamoDB.
+    Allows continuous replication for live migrations.
+
+AWS Snowball:
+
+    For large datasets (e.g., petabytes) where network migration isn't feasible.
+    Data is transferred to a physical device, shipped to AWS, and uploaded to S3.
+
+Third-Party Tools:
+
+    Tools like Datadog, Flyway, or Percona XtraBackup are used for customized migration scenarios.
+
+Custom Scripts:
+
+    Companies may also write Python or Bash scripts for custom workflows using mysqldump or mysqlimport.
+
+*/
+
+/*
+
+Using AWS Database Migration Service (DMS)
+    AWS DMS is a great option for migrating databases with minimal downtime. 
+    It supports both homogeneous migrations (e.g., MySQL to MySQL) and heterogeneous migrations (e.g., MySQL to Aurora).
+
+*/
