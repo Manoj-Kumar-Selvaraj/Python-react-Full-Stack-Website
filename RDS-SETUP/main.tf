@@ -1,6 +1,3 @@
-
-
-
 resource "aws_db_instance" "my_rds_instance" {
   provider           = aws.account2
   allocated_storage  = 20
