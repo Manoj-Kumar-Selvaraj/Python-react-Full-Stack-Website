@@ -1,0 +1,122 @@
+{
+  "version": 4,
+  "terraform_version": "1.11.2",
+  "serial": 6,
+  "lineage": "1af7d734-45c5-1648-182a-b9583a5c4f74",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_group",
+      "name": "factory_outlet_db_developer_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].FactoryOutletDBRootRole",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:group/FactoryOutletDBDevelopers",
+            "id": "FactoryOutletDBDevelopers",
+            "name": "FactoryOutletDBDevelopers",
+            "path": "/",
+            "unique_id": "AGPAQSOI4M3ZMFMRLPANB"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user",
+      "name": "factory_outlet_db_developer",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].FactoryOutletDBRootRole",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::039612868338:user/FactoryOutletDBDeveloper1",
+            "force_destroy": false,
+            "id": "FactoryOutletDBDeveloper1",
+            "name": "FactoryOutletDBDeveloper1",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Department": "Backend",
+              "Project": "FactoryOutlet"
+            },
+            "tags_all": {
+              "Department": "Backend",
+              "Project": "FactoryOutlet"
+            },
+            "unique_id": "AIDAQSOI4M3ZCBV3SUNBC"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user_group_membership",
+      "name": "factory_outlet_db_developer1_to_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].FactoryOutletDBRootRole",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "groups": [
+              "FactoryOutletDBDevelopers"
+            ],
+            "id": "terraform-20250315144026272400000001",
+            "user": "FactoryOutletDBDeveloper1"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_group.factory_outlet_db_developer_group",
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_db_developer"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.IAM.module.RESOURCES",
+      "mode": "managed",
+      "type": "aws_iam_user_login_profile",
+      "name": "factory_outlet_db_developer_login",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].FactoryOutletDBRootRole",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "encrypted_password": null,
+            "id": "FactoryOutletDBDeveloper1",
+            "key_fingerprint": null,
+            "password": "i#hi=M}S[9H*PmL%\u0026LGx",
+            "password_length": 20,
+            "password_reset_required": true,
+            "pgp_key": null,
+            "user": "FactoryOutletDBDeveloper1"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "password"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.IAM.module.RESOURCES.aws_iam_user.factory_outlet_db_developer"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
+
