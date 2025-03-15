@@ -2,10 +2,6 @@
 
 resource "aws_iam_group" "factory_outlet_db_developer_group" {
   name = var.group_name
-  tags = {
-    "Department" = "Backend",
-    "Project" = "FactoryOutlet"
-  }
 }
 
 

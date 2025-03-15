@@ -13,6 +13,6 @@ module "IAM" {
   user_name = "FactoryOutletDBDeveloper1"
   group_name = "FactoryOutletDBDevelopers"
   providers = {
-    aws = aws.FactoryOutletDBRoot
+    aws = aws.FactoryOutletDBRootRole
   }
 }
